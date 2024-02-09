@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bge658ih8ch4w"]
+
+[ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_0v084"]
+
+[node name="BaseLevel" instance=ExtResource("1_0v084")]
+
+[node name="Towers" parent="." index="1"]
+layer_0/tile_data = PackedInt32Array(131075, 0, 65536, 196613, 0, 65536, 65542, 0, 65536)
