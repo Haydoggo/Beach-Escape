@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c4wbjtwvt7vt5"]
+
+[node name="DesignNotes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Units" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 0
+offset_left = 1012.0
+offset_top = 164.0
+offset_right = 1960.0
+offset_bottom = 801.0
+text = "Player Units
+- Fish: small, weak, walks in a straight line and deals small damage. Kind of like a bullet?
+- Crab: bigger, slower, walks in a zig zag, deals adjacent damage
+- Urchin: moves slowly, straight line, high damage aoe. Kind of like a bomb?
+- Shark: typically 1-use, but does a ton of damage, moves fast, and moves through towers
+- Octopus: When this creature moves into the space of a tower, it will prevent the tower from shooting for a period of time.
+- Pufferfish: When a tower hits this fish, they will puff up, stopping them but causing them to take significantly less damage.
+
+Enemy Units / Defenses
+- Sand Cannon: points in one direction, deals big damage
+- Pit: a hole, can be filled with units 
+- Tack shooter: Aoe tower (oh it's also sand) 
+- Seagull: Flies back and forth between two locations on the grid, and attacks whatever is in front of it for significant damage. If it kills a creature, it will fly away with it.
+- Pelican: Will consume a fish instantly, preventing the fish from moving (or drying out). After a certain amount of time, the fish will break out and continue moving, having been damaged significantly 
+- Jellyfish: When a fish moves into a tile with a dead jellyfish on it, they will take damage and move slower for a period of time.
+- Shovel: Faces toward the castle; when a fish moves in front of it, it launches them a few tiles toward the castle, messing up their pathing."
+wrap_mode = 1
+
+[node name="Creators" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 86.0
+offset_top = 440.0
+offset_right = 330.0
+offset_bottom = 616.0
+text = "Hayden - Lead Dev
+plexsoup - dev
+KingRonnockJ - Audio
+Diurmuid - Design
+Bob the Seagull - Visual Art
+"
+wrap_mode = 1
+
+[node name="Summary" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(350, 250)
+layout_mode = 0
+offset_left = 359.0
+offset_top = 23.0
+offset_right = 849.0
+offset_bottom = 365.0
+text = "REVERSE TOWER-DEFENSE GAME:
+
+You are a group of sea creatures in a sand castle undergoing a siege by a human. Your objective is to get the sea creatures out of the castle, which have various movement patterns that must be accommodated for. In your way are various human-made towers (siege weapons, etc), which 1. can rotate (not always?), 2. have limited ammunition (not always?), and 3. have variable attack patterns (range, area, firing speed, damage, etc)."
+wrap_mode = 1
