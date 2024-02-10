@@ -7,8 +7,8 @@ var max_queue_size : int = 5
 func _ready():
 	pass # Replace with function body.
 
-func spawn(unit_scene):
-	var new_unit = unit_scene.instantiate()
+func spawn(unit_info : UnitInfo):
+	var new_unit = unit_info.packed_scene.instantiate()
 	assert( $QueuedUnits.get_child_count() > 0)
 	add_child(new_unit)
 	new_unit.global_position = global_position
@@ -18,14 +18,17 @@ func spawn(unit_scene):
 func _on_spawn_timer_timeout():
 	if queued_units.size() > 0:
 		spawn(queued_units.pop_front())
-		
+	for child in get_children():
+		if child is BaseUnit:
+			child.move()
 
-func queue_spawn(unit_scene):
+
+func queue_spawn(unit_info : UnitInfo):
 	if queued_units.size() < max_queue_size:
-		# briefly load the scene, so we can grab an icon, then drop it
-		var new_unit = unit_scene.instantiate()
-		var icon = new_unit.generate_icon()
+		var icon = TextureRect.new()
+		icon.texture = unit_info.icon
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		icon.custom_minimum_size = Vector2(128,128)
 		$QueuedUnits.add_child(icon)
-		queued_units.push_back(unit_scene)
-		#$QueuedUnits.move_child(icon, 0)
-		new_unit.queue_free()
+		print($QueuedUnits.get_children())
+		queued_units.push_back(unit_info)

@@ -6,12 +6,7 @@ var current_lane_node
 
 
 
-var units = [ 
-		load("res://App/Scenes/Entities/Units/BaseUnit.tscn"),
-		load("res://App/Scenes/Entities/Units/BaseUnit.tscn"),
-		load("res://App/Scenes/Entities/Units/BaseUnit.tscn"),
-		load("res://App/Scenes/Entities/Units/BaseUnit.tscn"),
-	] # assume each unit scene also has an icon texture
+@export var units : Array[UnitInfo] # assume each unit scene also has an icon texture
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

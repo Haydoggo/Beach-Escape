@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://epm2h0e8duc1"]
+[gd_scene load_steps=5 format=3 uid="uid://epm2h0e8duc1"]
 
 [ext_resource type="Script" path="res://App/Scenes/Spawners/FriendlyUnitSpawner.gd" id="1_d5qv7"]
+[ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="2_1y47f"]
+[ext_resource type="Resource" uid="uid://bs31lf1urfggr" path="res://App/Scenes/Entities/Units/Urchin/UrchinInfo.tres" id="3_8wt55"]
+[ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="4_2csgi"]
 
 [node name="FriendlyUnitSpawner" type="Node2D"]
 script = ExtResource("1_d5qv7")
+units = Array[Resource("res://App/Scenes/Entities/Units/UnitInfo.gd")]([ExtResource("2_1y47f"), ExtResource("3_8wt55"), ExtResource("4_2csgi")])
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-41, 32, -41, -28, 37, -32, 37, -64, 99, 16, 37, 74, 37, 46)
