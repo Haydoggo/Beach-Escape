@@ -31,7 +31,7 @@ func move():
 	.set_trans(Tween.TRANS_CUBIC)
 
 
-func _on_hit(attack_packet):
+func _on_hit(attack_packet : AttackPacket):
 	health -= attack_packet.damage
 	if health <= 0:
 		queue_free()
