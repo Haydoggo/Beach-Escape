@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://de3bma3kyx7em"]
+[gd_scene load_steps=9 format=3 uid="uid://de3bma3kyx7em"]
 
 [ext_resource type="TileSet" uid="uid://dwo7o7lpg52g0" path="res://App/Scenes/Levels/towers_tile_set.tres" id="1_sr1u4"]
+[ext_resource type="PackedScene" uid="uid://epm2h0e8duc1" path="res://App/Scenes/Spawners/FriendlyUnitSpawner.tscn" id="2_s8wsn"]
+[ext_resource type="PackedScene" uid="uid://dno872yjrj031" path="res://App/Scenes/Spawners/Lanes.tscn" id="3_n7aa5"]
 
 [sub_resource type="Gradient" id="Gradient_dd2dx"]
 interpolation_mode = 1
@@ -32,6 +34,7 @@ metadata/_snap_enabled = true
 [node name="BaseLevel" type="Node2D"]
 
 [node name="Towers" type="TileMap" parent="."]
+position = Vector2(430, 10)
 tile_set = ExtResource("1_sr1u4")
 format = 2
 layer_0/tile_data = PackedInt32Array(131075, 0, 65536, 65541, 0, 65536, 196614, 0, 65536)
@@ -52,11 +55,19 @@ texture = SubResource("NoiseTexture2D_qpn3i")
 stretch_mode = 1
 
 [node name="Tiles" type="TextureRect" parent="Background"]
-offset_left = 128.0
-offset_top = 128.0
-offset_right = 1142.0
-offset_bottom = 635.0
+offset_left = 528.0
+offset_top = 138.0
+offset_right = 1542.0
+offset_bottom = 645.0
 texture = SubResource("GradientTexture2D_rbnnt")
 stretch_mode = 1
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="FriendlyUnitSpawner" parent="." node_paths=PackedStringArray("lanes_container") instance=ExtResource("2_s8wsn")]
+lanes_container = NodePath("../Lanes")
+
+[node name="Lanes" parent="." instance=ExtResource("3_n7aa5")]
+position = Vector2(302, -2)
+
+[editable path="Lanes"]

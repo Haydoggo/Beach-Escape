@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://epm2h0e8duc1"]
+
+[ext_resource type="Script" path="res://App/Scenes/Spawners/FriendlyUnitSpawner.gd" id="1_d5qv7"]
+
+[node name="FriendlyUnitSpawner" type="Node2D"]
+script = ExtResource("1_d5qv7")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-41, 32, -41, -28, 37, -32, 37, -64, 99, 16, 37, 74, 37, 46)
