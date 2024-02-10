@@ -1,5 +1,6 @@
 class_name BaseUnit extends Node2D
 
+@export var unit_info := UnitInfo
 var path : Array[Vector2] = []
 var path_position := 0 # tracks the index of the path 
 
