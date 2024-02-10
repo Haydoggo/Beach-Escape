@@ -25,9 +25,7 @@ func _process(_delta):
 		if units_remaining == 0:
 			print("Level Complete!")
 			SceneLoader.load_scene(next_scene_path)
-		else:
-			print("Units remaining: ", units_remaining )
-
+		
 
 
 	
