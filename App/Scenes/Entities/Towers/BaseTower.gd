@@ -1,5 +1,8 @@
 ## Towers are mostly static. They have a turret which may or may not rotate.
 
+## Requirements: AnimationPlayer node with shoot and hurt animations
+
+
 class_name BaseTower extends Node2D
 
 @export var projectile : PackedScene
@@ -18,6 +21,9 @@ var health : float = health_max
 
 enum States { INITIALIZING, ACTIVE, DYING, DEAD }
 var State = States.INITIALIZING
+
+@export var animation_player : Node
+
 
 func _ready():
 	
@@ -45,21 +51,26 @@ func _process(delta):
 			turret_rotation = lerp(turret_rotation, global_position.angle_to_point(active_target.global_position), rotation_speed * delta)
 			$Debug/RotationViz.rotation = turret_rotation
 
+
 func shoot():
 	if State != States.ACTIVE:
 		return
 	
 	if shots_remaining > 0:
 		shots_remaining -= 1
-		var new_projectile = projectile.instantiate()
-		# TODO: add a targeting lead based on the velocity of the target and projectile
-		add_sibling(new_projectile)
-		new_projectile.global_position = $MuzzleLocation.global_position
-		new_projectile.activate(Vector2.from_angle(turret_rotation))
-		$RecoilTimer.start()
+		if animation_player != null and animation_player.has_animation("shoot"):
+			animation_player.play("shoot")
 	else:
 		$ReloadTimer.start()
 
+func spawn_projectile():
+	var new_projectile = projectile.instantiate()
+	# TODO: add a targeting lead based on the velocity of the target and projectile
+	add_sibling(new_projectile)
+	new_projectile.global_position = $MuzzleLocation.global_position
+	new_projectile.activate(Vector2.from_angle(turret_rotation))
+	$RecoilTimer.start()
+	
 
 func _on_activation_triggers_body_entered(body):
 	if State == States.ACTIVE:
@@ -115,10 +126,13 @@ func sort_ascending(a, b):
 	return a_dist < b_dist
 
 func _on_hit(attackPacket : AttackPacket):
-	var tween = create_tween()
-	var current_rotation = $Sprite2D.rotation
-	tween.tween_property($Sprite2D, "rotation", current_rotation + 0.3, 0.33)
-	tween.tween_property($Sprite2D, "rotation", current_rotation, 0.1)
+	if animation_player != null and animation_player.has_animation("hurt"):
+		$AnimationPlayer.play("hurt")
+	else:
+		var tween = create_tween()
+		var current_rotation = $Sprite2D.rotation
+		tween.tween_property($Sprite2D, "rotation", current_rotation + 0.3, 0.33)
+		tween.tween_property($Sprite2D, "rotation", current_rotation, 0.1)
 	$HealthComponent._on_hit(attackPacket)
 
 

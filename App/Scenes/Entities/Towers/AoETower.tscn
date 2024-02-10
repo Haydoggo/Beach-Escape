@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtt844ghwbujy"]
+[gd_scene load_steps=9 format=3 uid="uid://dtt844ghwbujy"]
 
 [ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_c6l8k"]
 [ext_resource type="PackedScene" uid="uid://r5p2nal6foju" path="res://App/Scenes/Entities/Projectiles/Melee_AoE_Attack.tscn" id="2_8up7s"]
@@ -8,20 +8,32 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3p6bb"]
 radius = 129.248
 
+[sub_resource type="Animation" id="Animation_1xyyr"]
+resource_name = "hurt"
+length = 0.3
+
+[sub_resource type="Animation" id="Animation_hp6qa"]
+resource_name = "shoot"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n67cj"]
+_data = {
+"hurt": SubResource("Animation_1xyyr"),
+"shoot": SubResource("Animation_hp6qa")
+}
+
 [node name="AoETower" instance=ExtResource("1_c6l8k")]
 projectile = ExtResource("2_8up7s")
 turret_type = 2
 shots_per_magazine = 1
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Shadow" parent="." index="0"]
+visible = false
+
+[node name="Sprite2D" parent="." index="1"]
 position = Vector2(1.90735e-06, -14)
 texture = ExtResource("3_0ta6l")
 
-[node name="Shadow" parent="Sprite2D" index="0"]
-visible = false
-texture = null
-
-[node name="Ant" parent="Sprite2D" index="1" instance=ExtResource("4_0jmv3")]
+[node name="Ant" parent="Sprite2D" index="0" instance=ExtResource("4_0jmv3")]
 
 [node name="MeleeAoEShape2" type="CollisionShape2D" parent="ActivationTriggers" index="0"]
 shape = SubResource("CircleShape2D_3p6bb")
@@ -31,3 +43,8 @@ wait_time = 3.0
 
 [node name="RecoilTimer" parent="." index="4"]
 wait_time = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+libraries = {
+"": SubResource("AnimationLibrary_n67cj")
+}

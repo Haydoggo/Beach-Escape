@@ -12,8 +12,8 @@ height = 662.0
 projectile = ExtResource("2_gw5p6")
 turret_type = 1
 
-[node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.1, 0.1)
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.09, 0.09)
 texture = ExtResource("2_pkgns")
 
 [node name="CircularShape2" type="CollisionShape2D" parent="ActivationTriggers" index="0"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfet1wnvw1f0e"]
+[gd_scene load_steps=8 format=3 uid="uid://bfet1wnvw1f0e"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/BaseTower.gd" id="1_yj2u2"]
 [ext_resource type="PackedScene" uid="uid://v7ugl0dxd5si" path="res://App/Scenes/Entities/Projectiles/SandProjectile.tscn" id="2_13nl8"]
@@ -16,18 +16,6 @@ height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="Animation" id="Animation_lh6hv"]
-resource_name = "die"
-
-[sub_resource type="Animation" id="Animation_q8y8t"]
-resource_name = "shoot"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjn2y"]
-_data = {
-"die": SubResource("Animation_lh6hv"),
-"shoot": SubResource("Animation_q8y8t")
-}
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ofvkc"]
 size = Vector2(128, 128)
 
@@ -36,20 +24,15 @@ script = ExtResource("1_yj2u2")
 projectile = ExtResource("2_13nl8")
 health_max = 5.0
 
+[node name="Shadow" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(48, 48)
+scale = Vector2(0.952805, 0.539311)
+texture = SubResource("GradientTexture2D_t3aoo")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3, 1)
 texture = ExtResource("3_evm77")
-
-[node name="Shadow" type="Sprite2D" parent="Sprite2D"]
-show_behind_parent = true
-position = Vector2(390, 600)
-scale = Vector2(9.62429, 4.90283)
-texture = SubResource("GradientTexture2D_t3aoo")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_pjn2y")
-}
 
 [node name="ActivationTriggers" type="Area2D" parent="."]
 monitorable = false
