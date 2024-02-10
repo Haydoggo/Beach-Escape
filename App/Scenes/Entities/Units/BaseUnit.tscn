@@ -1,13 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://7dr0wg5hwlol"]
+[gd_scene load_steps=5 format=3 uid="uid://7dr0wg5hwlol"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/BaseUnit.gd" id="1_6w2qm"]
 [ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="2_673rk"]
+
+[sub_resource type="GDScript" id="GDScript_rk83b"]
+resource_name = "DestroyOnLoad"
+script/source = "extends ReferenceRect
+
+func _ready() -> void:
+	queue_free()
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ll5tj"]
 radius = 32.0
 
 [node name="BaseUnit" type="Node2D" groups=["Units"]]
 script = ExtResource("1_6w2qm")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+script = SubResource("GDScript_rk83b")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_673rk")

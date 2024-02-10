@@ -12,14 +12,14 @@ size = Vector2(42, 236)
 script = ExtResource("2_o7mpy")
 unit_info = ExtResource("3_ket8w")
 
-[node name="Sprite" parent="." index="0"]
-scale = Vector2(0.0516796, 0.0516796)
+[node name="Sprite" parent="." index="1"]
+scale = Vector2(0.0671835, 0.0671835)
 texture = ExtResource("2_64ly2")
 
-[node name="Hitbox" parent="." index="1"]
+[node name="Hitbox" parent="." index="2"]
 monitoring = false
 
-[node name="AttackRegion" parent="." index="2"]
+[node name="AttackRegion" parent="." index="3"]
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRegion" index="0"]
