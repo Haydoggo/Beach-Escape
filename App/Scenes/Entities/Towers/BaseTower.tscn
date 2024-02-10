@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://c4l0sg83rc5m6" path="res://Assets/Images/Towers/Castle_Cannon.png" id="2_1kdpo"]
 [ext_resource type="PackedScene" uid="uid://v7ugl0dxd5si" path="res://App/Scenes/Entities/Projectiles/SandProjectile.tscn" id="2_13nl8"]
 
-[sub_resource type="Animation" id="Animation_q8y8t"]
-resource_name = "shoot"
-
 [sub_resource type="Animation" id="Animation_lh6hv"]
 resource_name = "die"
+
+[sub_resource type="Animation" id="Animation_q8y8t"]
+resource_name = "shoot"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pjn2y"]
 _data = {
@@ -44,7 +44,7 @@ width = 96
 height = 16
 fill_to = Vector2(0, 1)
 
-[node name="BaseTower" type="Node2D"]
+[node name="BaseTower" type="Node2D" groups=["EnemyTowers"]]
 script = ExtResource("1_yj2u2")
 projectile = ExtResource("2_13nl8")
 
@@ -78,7 +78,7 @@ one_shot = true
 [node name="MuzzleLocation" type="Marker2D" parent="."]
 position = Vector2(-43, 22)
 
-[node name="HitBox" type="Area2D" parent="." groups=["EnemyTowers"]]
+[node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_ofvkc")
