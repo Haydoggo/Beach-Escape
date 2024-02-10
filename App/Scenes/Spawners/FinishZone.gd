@@ -1,6 +1,7 @@
 extends Area2D
 
 var finish_button = preload("res://App/Scenes/Spawners/finish_counter_icon.tscn")
+@export var next_scene_path = "res://App/Scenes/CutScenes/acquire_new_units.tscn"
 
 enum States { WAITING, LISTENING }
 var State = States.WAITING
@@ -23,9 +24,13 @@ func _process(_delta):
 		var units_remaining = get_unit_count_on_field()
 		if units_remaining == 0:
 			print("Level Complete!")
+			SceneLoader.load_scene(next_scene_path)
 		else:
 			print("Units remaining: ", units_remaining )
 
+
+
+	
 
 func get_unit_count_on_field():
 	var num_units = get_tree().get_nodes_in_group("Units").size()

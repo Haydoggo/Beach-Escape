@@ -9,3 +9,4 @@ func activate(unit_info):
 func add_unit():
 	unit_count += 1
 	$UnitCount.text = str(unit_count)
+	Globals.surviving_units[self.name] = unit_count

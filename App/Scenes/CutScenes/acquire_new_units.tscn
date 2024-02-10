@@ -14,6 +14,7 @@ fill_from = Vector2(1, 1)
 script = ExtResource("1_0mvpn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -23,13 +24,23 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_6aalu")
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Label" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -40.0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 631.5
+offset_right = 1268.5
+offset_bottom = 175.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 128
 text = "Procreate!"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(350, 250)
+offset_left = 1224.0
+offset_top = 177.0
+offset_right = 1767.0
+offset_bottom = 443.0
+theme_override_font_sizes/font_size = 24
+text = "Could be a reverse dodge-the-creeps, fish matching game: drag fish onto a matching mate before the shark eats them. Matched fish will run up onto the island to escape the shark, which triggers the next level with all the survivors including babies."
+wrap_mode = 1
