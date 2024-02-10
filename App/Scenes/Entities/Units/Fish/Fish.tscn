@@ -1,13 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://jkq4w83413kb"]
+[gd_scene load_steps=4 format=3 uid="uid://jkq4w83413kb"]
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_582dg"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Fish/Fish.gd" id="2_xd35r"]
 [ext_resource type="Texture2D" uid="uid://ckqwfoi4guv8i" path="res://Assets/Images/02_Fish_Boot.png" id="3_lfh3d"]
-[ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="3_tpqs7"]
 
 [node name="Fish" instance=ExtResource("1_582dg")]
 script = ExtResource("2_xd35r")
-unit_info = ExtResource("3_tpqs7")
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2(0.059387, 0.059387)

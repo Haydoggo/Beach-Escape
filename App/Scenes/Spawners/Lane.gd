@@ -32,3 +32,6 @@ func queue_spawn(unit_info : UnitInfo):
 		$QueuedUnits.add_child(icon)
 		print($QueuedUnits.get_children())
 		queued_units.push_back(unit_info)
+		return true
+	else:
+		return false

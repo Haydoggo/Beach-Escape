@@ -4,6 +4,7 @@ extends Node2D
 var current_lane_id : int
 var current_lane_node
 
+var current_unit_count : UnitCount
 
 
 @export var units : Array[UnitInfo] # assume each unit scene also has an icon texture
@@ -16,7 +17,6 @@ func _ready():
 	current_lane_id = 0
 	global_position = lanes_container.get_child(current_lane_id).global_position
 
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -29,6 +29,16 @@ func _process(delta):
 			current_lane_node.queue_spawn(units[unit_idx])
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("spawn_selected_unit"):
+		queue_spawn_selected()
+
+
+func queue_spawn_selected():
+	if current_unit_count.count > 0 and\
+	current_lane_node.queue_spawn(current_unit_count.unit_info):
+		current_unit_count.count -= 1
+
 
 func switch_lane(direction):
 	var lanes = lanes_container.get_children()
@@ -36,4 +46,7 @@ func switch_lane(direction):
 	global_position = lanes[current_lane_id].global_position
 	current_lane_node = lanes_container.get_child(current_lane_id)
 	
-
+func switch_to_lane(lane_node : Node2D):
+	current_lane_node = lane_node
+	global_position = lane_node.global_position
+	current_lane_id = lanes_container.get_children().find(lane_node)

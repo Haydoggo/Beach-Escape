@@ -2,6 +2,7 @@ extends BaseUnit
 
 
 func get_path_points(origin : Vector2) -> Array[Vector2]:
+	return super(origin)
 	# create a straight line, one tile every index
 	var retval : Array[Vector2] = [origin]
 	for i in 100:
