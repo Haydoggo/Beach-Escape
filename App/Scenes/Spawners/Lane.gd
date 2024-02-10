@@ -3,9 +3,6 @@ extends Marker2D
 var queued_units = []
 var max_queue_size : int = 5
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 func spawn(unit_info : UnitInfo):
 	var new_unit = unit_info.packed_scene.instantiate()
@@ -30,7 +27,6 @@ func queue_spawn(unit_info : UnitInfo):
 		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		icon.custom_minimum_size = Vector2(128,128)
 		$QueuedUnits.add_child(icon)
-		print($QueuedUnits.get_children())
 		queued_units.push_back(unit_info)
 		return true
 	else:
