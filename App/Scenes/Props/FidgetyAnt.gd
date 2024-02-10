@@ -14,5 +14,5 @@ func _process(delta):
 	else:
 		$AnimationPlayer.play("idle")
 
-func _on_hit(attackPacket):
+func _on_hit(_attackPacket):
 	queue_free()

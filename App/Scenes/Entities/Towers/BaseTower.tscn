@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bfet1wnvw1f0e"]
+[gd_scene load_steps=11 format=3 uid="uid://bfet1wnvw1f0e"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/BaseTower.gd" id="1_yj2u2"]
 [ext_resource type="PackedScene" uid="uid://v7ugl0dxd5si" path="res://App/Scenes/Entities/Projectiles/SandProjectile.tscn" id="2_13nl8"]
 [ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="3_evm77"]
+[ext_resource type="PackedScene" uid="uid://b3tsqi2xelo17" path="res://App/Scenes/Entities/health_bar.tscn" id="4_u4suf"]
 
 [sub_resource type="Gradient" id="Gradient_yfvkm"]
 offsets = PackedFloat32Array(0.178082, 0.481735)
@@ -29,24 +30,6 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ofvkc"]
 size = Vector2(128, 128)
-
-[sub_resource type="Gradient" id="Gradient_hfgg0"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ben26"]
-gradient = SubResource("Gradient_hfgg0")
-width = 96
-height = 16
-
-[sub_resource type="Gradient" id="Gradient_702t6"]
-offsets = PackedFloat32Array(0, 0.151613, 1)
-colors = PackedColorArray(0.613809, 1, 0.583565, 1, 2.64275e-07, 0.646142, 4.71442e-08, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_75xv4"]
-gradient = SubResource("Gradient_702t6")
-width = 96
-height = 16
-fill_to = Vector2(0, 1)
 
 [node name="BaseTower" type="Node2D" groups=["EnemyTowers"]]
 script = ExtResource("1_yj2u2")
@@ -87,16 +70,7 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_ofvkc")
 
-[node name="HealthBar" type="TextureProgressBar" parent="."]
-offset_left = -49.0
-offset_top = 74.0
-offset_right = 47.0
-offset_bottom = 114.0
-pivot_offset = Vector2(49, 2)
-size_flags_horizontal = 4
-value = 50.0
-texture_under = SubResource("GradientTexture2D_ben26")
-texture_progress = SubResource("GradientTexture2D_75xv4")
+[node name="HealthBar" parent="." instance=ExtResource("4_u4suf")]
 
 [node name="Debug" type="Node2D" parent="."]
 
