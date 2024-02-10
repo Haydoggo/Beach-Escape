@@ -1,6 +1,7 @@
 class_name BaseUnit extends Node2D
 
 @export var unit_info : UnitInfo
+@onready var attack_region: Area2D = $AttackRegion
 
 var path : Array[Vector2] = []
 var path_position := 0 # tracks the index of the path 
@@ -27,8 +28,25 @@ func move():
 		queue_free()
 		return
 	var next_position = path[path_position]
-	create_tween().tween_property(self, "global_position", next_position, 0.3).set_ease(Tween.EASE_IN_OUT)\
+	var tween = create_tween()
+	tween.tween_property(self, "global_position", next_position, 0.3).set_ease(Tween.EASE_IN_OUT)\
 	.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_callback(move_end)
+
+
+# can override for custom attack patterns
+func move_end():
+	attack()
+
+
+func attack():
+	for area in attack_region.get_overlapping_areas():
+		var tower : BaseTower
+		if area.owner and area.owner.is_in_group("EnemyTowers"):
+			tower = area.owner
+		else:
+			continue
+		tower._on_hit(unit_info.melee_attack)
 
 
 func _on_hit(attack_packet : AttackPacket):

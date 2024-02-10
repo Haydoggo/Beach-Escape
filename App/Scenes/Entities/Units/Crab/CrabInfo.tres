@@ -1,12 +1,19 @@
-[gd_resource type="Resource" script_class="UnitInfo" load_steps=3 format=3 uid="uid://4y1n7vpixqx4"]
+[gd_resource type="Resource" script_class="UnitInfo" load_steps=5 format=3 uid="uid://4y1n7vpixqx4"]
 
 [ext_resource type="Texture2D" uid="uid://dalyydqj0idie" path="res://Assets/Images/04_Crab_Basic.png" id="1_nwo8n"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/UnitInfo.gd" id="1_wn36o"]
+[ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_gcn07"]
+
+[sub_resource type="Resource" id="Resource_iqb6s"]
+script = ExtResource("2_gcn07")
+damage_type = 0
+damage = 5.0
 
 [resource]
 script = ExtResource("1_wn36o")
 name = "Crab"
 path = PackedVector2Array(0, 0, 128, 0, 128, 128, 256, 128, 256, 0, 384, 0, 384, 128, 512, 128, 512, 0, 640, 0, 640, 128, 768, 128, 768, 0, 896, 0, 896, 128, 1024, 128, 1024, 0, 1152, 0, 1152, 128, 1280, 128, 1280, 0, 1408, 0, 1408, 128, 1536, 128, 1536, 0, 1664, 0, 1664, 128, 1792, 128, 1792, 0, 1920, 0, 1920, 128, 2048, 128, 2048, 0, 2176, 0, 2176, 128, 2304, 128, 2304, 0, 2432, 0, 2432, 128, 2560, 128)
 icon = ExtResource("1_nwo8n")
-health = 5
+health = 600
+melee_attack = SubResource("Resource_iqb6s")
 packed_scene_path = "res://App/Scenes/Entities/Units/Crab/Crab.tscn"

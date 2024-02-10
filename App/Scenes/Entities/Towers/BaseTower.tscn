@@ -58,6 +58,7 @@ libraries = {
 }
 
 [node name="ActivationTriggers" type="Area2D" parent="."]
+monitorable = false
 
 [node name="CircularShape" type="CollisionShape2D" parent="ActivationTriggers"]
 rotation = 1.5708
@@ -79,6 +80,7 @@ one_shot = true
 position = Vector2(-43, 22)
 
 [node name="HitBox" type="Area2D" parent="."]
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_ofvkc")

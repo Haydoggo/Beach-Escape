@@ -4,6 +4,7 @@ class_name UnitInfo extends Resource
 @export var path : PackedVector2Array
 @export var icon : Texture2D
 @export var health : int
+@export var melee_attack : AttackPacket
 @export_file("*.tscn") var packed_scene_path
 var packed_scene:
 	get:
