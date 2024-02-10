@@ -1,5 +1,6 @@
 class_name BaseUnit extends Node2D
 
+@export var unit_info := UnitInfo
 @export var icon : Texture2D = preload("res://icon.svg")
 
 var path : Array[Vector2] = []
