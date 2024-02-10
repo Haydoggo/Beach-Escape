@@ -11,3 +11,7 @@ units = Array[Resource("res://App/Scenes/Entities/Units/UnitInfo.gd")]([ExtResou
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-41, 32, -41, -28, 37, -32, 37, -64, 99, 16, 37, 74, 37, 46)
+
+[node name="PathPreview" type="Line2D" parent="."]
+points = PackedVector2Array(254, -3, 314, 151, 524, 13, 571, 250, 726, -35)
+default_color = Color(0.333333, 1, 0.415686, 1)

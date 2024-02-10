@@ -1,12 +1,11 @@
 extends Node2D
 
 @export var lanes_container : Node
-var current_lane_node
-
-var current_unit_count : UnitCount
-
-
 @export var units : Array[UnitInfo] # assume each unit scene also has an icon texture
+var current_lane_node
+var current_unit_count : UnitCount
+@onready var path_preview: Line2D = $PathPreview
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,7 +32,10 @@ func queue_spawn_selected():
 	current_lane_node.queue_spawn(current_unit_count.unit_info):
 		current_unit_count.count -= 1
 
-	
+
 func switch_to_lane(lane_node : Node2D):
+	path_preview.clear_points()
+	for point in current_unit_count.unit_info.path:
+		path_preview.add_point(point)
 	current_lane_node = lane_node
 	global_position = lane_node.global_position

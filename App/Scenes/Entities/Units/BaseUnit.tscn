@@ -16,3 +16,5 @@ texture = ExtResource("2_673rk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_ll5tj")
+
+[node name="AttackRegion" type="Area2D" parent="."]
