@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfet1wnvw1f0e"]
+[gd_scene load_steps=8 format=3 uid="uid://bfet1wnvw1f0e"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/BaseTower.gd" id="1_yj2u2"]
 [ext_resource type="Texture2D" uid="uid://c4l0sg83rc5m6" path="res://Assets/Images/Towers/Castle_Cannon.png" id="2_1kdpo"]
@@ -15,6 +15,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_x77ix"]
 radius = 640.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfowx"]
+size = Vector2(640, 128)
+
 [node name="BaseTower" type="Node2D"]
 script = ExtResource("1_yj2u2")
 projectile = ExtResource("2_13nl8")
@@ -28,13 +31,14 @@ libraries = {
 "": SubResource("AnimationLibrary_pjn2y")
 }
 
-[node name="CircularActivationTrigger" type="Area2D" parent="."]
+[node name="ActivationTriggers" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CircularActivationTrigger"]
+[node name="CircularShape" type="CollisionShape2D" parent="ActivationTriggers"]
 shape = SubResource("CircleShape2D_x77ix")
 
-[node name="LinearActivationTrigger" type="RayCast2D" parent="."]
-target_position = Vector2(-640, 2.08165e-12)
+[node name="LinearShape" type="CollisionShape2D" parent="ActivationTriggers"]
+position = Vector2(-324, -8)
+shape = SubResource("RectangleShape2D_gfowx")
 
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
@@ -43,4 +47,6 @@ one_shot = true
 wait_time = 0.33
 one_shot = true
 
-[connection signal="body_entered" from="CircularActivationTrigger" to="." method="_on_circular_activation_trigger_body_entered"]
+[connection signal="body_entered" from="ActivationTriggers" to="." method="_on_activation_triggers_body_entered"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="RecoilTimer" to="." method="_on_recoil_timer_timeout"]

@@ -9,15 +9,18 @@ enum turret_types { STATIC, ROTATING, AoE }
 var active_target
 var turret_rotation : float # radians from Vector2.RIGHT
 
+var shots_per_magazine = 3
+var shots_remaining = 3
+
 func _ready():
 	if turret_type == turret_types.ROTATING:
-		$CircularActivationTrigger.monitoring = true
-		$LinearActivationTrigger.enabled = false
+		$ActivationTriggers/CircularShape.disabled = false
+		$ActivationTriggers/LinearShape.disabled = true
 	else:
-		$CircularActivationTrigger.monitoring = false
-		$LinearActivationTrigger.enabled = true
+		$ActivationTriggers/CircularShape.disabled = true
+		$ActivationTriggers/LinearShape.disabled = false
 
-	turret_rotation = PI
+	turret_rotation = PI # Vector2.LEFT
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("shoot_all_towers"):
@@ -25,22 +28,32 @@ func _unhandled_input(event):
 	
 
 func shoot():
-	var new_projectile = projectile.instantiate()
-	# TODO: add a targeting lead based on the velocity of the target and projectile
-	add_sibling(new_projectile)
-	new_projectile.global_position = global_position
-	if active_target != null and is_instance_valid(active_target):
-		new_projectile.activate(global_position.direction_to(active_target.global_position))
+	if shots_remaining > 0:
+		shots_remaining -= 1
+		var new_projectile = projectile.instantiate()
+		# TODO: add a targeting lead based on the velocity of the target and projectile
+		add_sibling(new_projectile)
+		new_projectile.global_position = global_position
+		if active_target != null and is_instance_valid(active_target):
+			new_projectile.activate(global_position.direction_to(active_target.global_position))
+		else:
+			new_projectile.activate(Vector2.from_angle(turret_rotation))
+		$RecoilTimer.start()
 	else:
-		new_projectile.activate(Vector2.from_angle(turret_rotation))
+		$ReloadTimer.start()
 
 
+func _on_activation_triggers_body_entered(body):
+	if active_target == null or not is_instance_valid(active_target):
+		if body.is_in_group("Units"):
+			active_target = body
+			shoot()
 
-func _on_circular_activation_trigger_body_entered(body):
-	if turret_type == turret_types.ROTATING:
-		# if you're not currently tracking a unit, start now
-		if active_target == null or not is_instance_valid(active_target):
-			if body.is_in_group("Units"):
-				active_target = body
-				shoot()
 
+func _on_recoil_timer_timeout():
+	shoot()
+
+
+func _on_reload_timer_timeout():
+	shots_remaining = shots_per_magazine
+	shoot()
