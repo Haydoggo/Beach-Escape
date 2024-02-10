@@ -8,13 +8,19 @@ script = ExtResource("1_fdy67")
 [node name="SpawnTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="QueuedUnits" type="GridContainer" parent="."]
+[node name="QueuedUnits" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(400, 128)
+layout_direction = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -420.0
+offset_top = -66.0
+offset_right = -20.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 5
+pivot_offset = Vector2(423, 65)
+size_flags_horizontal = 8
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
