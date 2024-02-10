@@ -1,17 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://v7ugl0dxd5si"]
+[gd_scene load_steps=4 format=3 uid="uid://v7ugl0dxd5si"]
 
-[sub_resource type="Gradient" id="Gradient_qoq1a"]
-offsets = PackedFloat32Array(0.334416, 0.438312, 0.483766)
-colors = PackedColorArray(0.619608, 0.607843, 0.372549, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+[ext_resource type="Texture2D" uid="uid://bvtl8drxctv4b" path="res://Assets/Images/Projectiles/Sand_Ball.png" id="1_hvwsp"]
+[ext_resource type="Script" path="res://App/Scenes/Entities/Projectiles/SandProjectile.gd" id="1_xeysw"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ujgrg"]
-gradient = SubResource("Gradient_qoq1a")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ll0f"]
+radius = 24.0
 
-[node name="SandProjectile" type="Node2D"]
+[node name="SandProjectile" type="Area2D"]
+script = ExtResource("1_xeysw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_ujgrg")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_hvwsp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1ll0f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

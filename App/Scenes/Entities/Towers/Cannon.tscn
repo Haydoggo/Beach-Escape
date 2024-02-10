@@ -2,9 +2,4 @@
 
 [ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_5h0ks"]
 
-[node name="BaseTower" instance=ExtResource("1_5h0ks")]
-
-[node name="Polygon2D" type="Polygon2D" parent="." index="0"]
-position = Vector2(-21, 12)
-color = Color(0.432014, 0.379807, 0.267994, 1)
-polygon = PackedVector2Array(-11, -39, -82, -41, -95, -48, -107, -45, -104, 0, -95, 6, -88, 0, -26, 0, -13, 12, 2, 19, 30, 20, 48, 10, 61, -12, 55, -33, 35, -47, 13, -50)
+[node name="SandCannon" instance=ExtResource("1_5h0ks")]

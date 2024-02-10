@@ -1,14 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfet1wnvw1f0e"]
+[gd_scene load_steps=7 format=3 uid="uid://bfet1wnvw1f0e"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/BaseTower.gd" id="1_yj2u2"]
+[ext_resource type="Texture2D" uid="uid://c4l0sg83rc5m6" path="res://Assets/Images/Towers/Castle_Cannon.png" id="2_1kdpo"]
+[ext_resource type="PackedScene" uid="uid://v7ugl0dxd5si" path="res://App/Scenes/Entities/Projectiles/SandProjectile.tscn" id="2_13nl8"]
+
+[sub_resource type="Animation" id="Animation_q8y8t"]
+resource_name = "shoot"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjn2y"]
+_data = {
+"shoot": SubResource("Animation_q8y8t")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x77ix"]
+radius = 640.0
 
 [node name="BaseTower" type="Node2D"]
 script = ExtResource("1_yj2u2")
+projectile = ExtResource("2_13nl8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_1kdpo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pjn2y")
+}
 
-[node name="ActivationRange" type="Area2D" parent="."]
+[node name="CircularActivationTrigger" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationRange"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CircularActivationTrigger"]
+shape = SubResource("CircleShape2D_x77ix")
+
+[node name="LinearActivationTrigger" type="RayCast2D" parent="."]
+target_position = Vector2(-640, 2.08165e-12)
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RecoilTimer" type="Timer" parent="."]
+wait_time = 0.33
+one_shot = true
+
+[connection signal="body_entered" from="CircularActivationTrigger" to="." method="_on_circular_activation_trigger_body_entered"]
