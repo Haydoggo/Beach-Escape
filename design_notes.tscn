@@ -78,3 +78,13 @@ offset_bottom = 825.0
 text = "Resources:
 Repo: https://github.com/Haydoggo/Beach-Escape
 "
+
+[node name="TextEdit" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_left = 448.0
+offset_top = 477.0
+offset_right = 838.0
+offset_bottom = 605.0
+text = "Diarmuid: each fish type should have a certain number of movements it can do before it dies without taking any tower damage ... which is the \"dry up\" feature"
+wrap_mode = 1

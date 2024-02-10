@@ -13,7 +13,7 @@ config_version=5
 config/name="GWJ66 - Beach Escape"
 run/main_scene="res://Extras/Scenes/InitApp/InitApp.tscn"
 config/features=PackedStringArray("4.2")
-config/icon="res://icon.svg"
+config/icon="res://Assets/Images/04_Crab_Basic.png"
 
 [autoload]
 
