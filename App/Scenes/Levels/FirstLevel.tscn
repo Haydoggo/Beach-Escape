@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bge658ih8ch4w"]
+[gd_scene load_steps=7 format=3 uid="uid://bge658ih8ch4w"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_0v084"]
 [ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_oqp12"]
 [ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="3_s82pn"]
 [ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="4_w02ti"]
-[ext_resource type="Texture2D" uid="uid://ckqwfoi4guv8i" path="res://Assets/Images/02_Fish_Boot.png" id="5_dx0j6"]
 
 [sub_resource type="Resource" id="Resource_xd3nr"]
 script = ExtResource("2_oqp12")
@@ -19,12 +18,7 @@ count = 5
 [node name="BaseLevel" instance=ExtResource("1_0v084")]
 available_units = Array[ExtResource("2_oqp12")]([SubResource("Resource_xd3nr"), SubResource("Resource_0vho7")])
 
-[node name="UI_PanelContainer_MarginContainer_BoxContainer#Button" type="Button" parent="." index="0"]
-text = "#"
-icon = ExtResource("5_dx0j6")
-expand_icon = true
-
-[node name="Towers" parent="." index="1"]
+[node name="Towers" parent="." index="0"]
 layer_0/tile_data = PackedInt32Array(131075, 0, 65536, 196613, 0, 65536, 65542, 0, 65536)
 
 [node name="PanelContainer" parent="UI" index="0"]
