@@ -44,14 +44,14 @@ wrap_mode = 1
 [node name="Creators" type="TextEdit" parent="."]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 0
-offset_left = 86.0
-offset_top = 440.0
-offset_right = 330.0
-offset_bottom = 616.0
+offset_left = 9.0
+offset_top = 415.0
+offset_right = 422.0
+offset_bottom = 591.0
 text = "Diarmuid - Design and chief tie-breaker (aka lead)
 Hayden - Code
 plexsoup - Code
-KingRonnockJ - Audio
+KingRonnocJ - Audio
 Bob the Seagull - Visual Art
 "
 wrap_mode = 1
