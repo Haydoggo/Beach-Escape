@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://dima6utmidwdv"]
+
+[ext_resource type="Script" path="res://App/Scenes/Levels/UnitButton.gd" id="1_bfee0"]
+[ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="2_2afb0"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_rv8sc"]
+resource_local_to_scene = false
+
+[node name="UnitButton" type="MarginContainer"]
+offset_right = 83.0
+offset_bottom = 113.0
+script = ExtResource("1_bfee0")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_rv8sc")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+vertical = true
+
+[node name="ButtonIcon" type="TextureRect" parent="BoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+mouse_filter = 2
+texture = ExtResource("2_2afb0")
+expand_mode = 1
+
+[node name="ButtonLabel" type="Label" parent="BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
