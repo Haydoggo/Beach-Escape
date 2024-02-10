@@ -12,8 +12,11 @@ var turret_rotation : float # radians from Vector2.RIGHT
 var shots_per_magazine : int = 3
 var shots_remaining : int = 3
 
-var health_max : float = 100.0
+var health_max : float = 20.0
 var health : float = health_max
+
+enum States { INITIALIZING, ACTIVE, DYING, DEAD }
+var State = States.INITIALIZING
 
 func _ready():
 	if turret_type == turret_types.ROTATING:
@@ -24,13 +27,20 @@ func _ready():
 		$ActivationTriggers/LinearShape.disabled = false
 
 	turret_rotation = PI # Vector2.LEFT
+	update_health_bar()
+	State = States.ACTIVE
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("shoot_all_towers"):
 		shoot()
+	if Input.is_action_just_pressed("hurt_towers"):
+		_on_hit(AttackPacket.new())
 	
 
 func shoot():
+	if State != States.ACTIVE:
+		return
+	
 	if shots_remaining > 0:
 		shots_remaining -= 1
 		var new_projectile = projectile.instantiate()
@@ -47,27 +57,31 @@ func shoot():
 
 
 func _on_activation_triggers_body_entered(body):
-	if active_target == null or not is_instance_valid(active_target):
-		if body.is_in_group("Units"):
-			active_target = body
-			shoot()
+	if State == States.ACTIVE:
+		if active_target == null or not is_instance_valid(active_target):
+			if body.is_in_group("Units"):
+				active_target = body
+				shoot()
 
 
 func _on_recoil_timer_timeout():
-	shoot()
-
-
-func _on_reload_timer_timeout():
-	shots_remaining = shots_per_magazine
-	if active_target != null:
+	if State == States.ACTIVE:
 		shoot()
 
 
-func _on_activation_triggers_area_entered(area):
-	if active_target == null or not is_instance_valid(active_target):
-		if area.owner != null and area.owner.is_in_group("Units"):
-			active_target = area
+func _on_reload_timer_timeout():
+	if State == States.ACTIVE:
+		shots_remaining = shots_per_magazine
+		if active_target != null:
 			shoot()
+
+
+func _on_activation_triggers_area_entered(area):
+	if State == States.ACTIVE:
+		if active_target == null or not is_instance_valid(active_target):
+			if area.owner != null and area.owner.is_in_group("Units"):
+				active_target = area
+				shoot()
 
 
 func _on_activation_triggers_area_exited(area):
@@ -92,3 +106,28 @@ func sort_ascending(a, b):
 	var b_dist = global_position.distance_squared_to(b)
 	return a_dist < b_dist
 
+func _on_hit(attackPacket : AttackPacket):
+	var tween = create_tween()
+	var current_rotation = $Sprite2D.rotation
+	tween.tween_property($Sprite2D, "rotation", current_rotation + 0.3, 0.33)
+	tween.tween_property($Sprite2D, "rotation", current_rotation, 0.1)
+	health -= attackPacket.damage
+	update_health_bar()
+	if health <= 0:
+		begin_dying()
+		
+		
+func update_health_bar():
+	$HealthBar.max_value = health_max
+	$HealthBar.value = health
+	
+	
+func begin_dying():
+	State = States.DYING
+	var tween = create_tween()
+	var current_scale = $Sprite2D.scale
+	tween.tween_property($Sprite2D, "scale", Vector2(current_scale.x, current_scale.y * 1.2), 0.2)
+	tween.tween_property($Sprite2D, "scale", Vector2(current_scale.x, 0.01), 0.5)
+	await tween.finished
+	queue_free()
+	

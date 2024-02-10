@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfet1wnvw1f0e"]
+[gd_scene load_steps=14 format=3 uid="uid://bfet1wnvw1f0e"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/BaseTower.gd" id="1_yj2u2"]
 [ext_resource type="Texture2D" uid="uid://c4l0sg83rc5m6" path="res://Assets/Images/Towers/Castle_Cannon.png" id="2_1kdpo"]
@@ -7,8 +7,12 @@
 [sub_resource type="Animation" id="Animation_q8y8t"]
 resource_name = "shoot"
 
+[sub_resource type="Animation" id="Animation_lh6hv"]
+resource_name = "die"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pjn2y"]
 _data = {
+"die": SubResource("Animation_lh6hv"),
 "shoot": SubResource("Animation_q8y8t")
 }
 
@@ -21,6 +25,24 @@ size = Vector2(321, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ofvkc"]
 size = Vector2(128, 128)
+
+[sub_resource type="Gradient" id="Gradient_hfgg0"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ben26"]
+gradient = SubResource("Gradient_hfgg0")
+width = 96
+height = 16
+
+[sub_resource type="Gradient" id="Gradient_702t6"]
+offsets = PackedFloat32Array(0, 0.151613, 1)
+colors = PackedColorArray(0.613809, 1, 0.583565, 1, 2.64275e-07, 0.646142, 4.71442e-08, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_75xv4"]
+gradient = SubResource("Gradient_702t6")
+width = 96
+height = 16
+fill_to = Vector2(0, 1)
 
 [node name="BaseTower" type="Node2D"]
 script = ExtResource("1_yj2u2")
@@ -60,6 +82,17 @@ position = Vector2(-43, 22)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_ofvkc")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -49.0
+offset_top = 74.0
+offset_right = 47.0
+offset_bottom = 114.0
+pivot_offset = Vector2(49, 2)
+size_flags_horizontal = 4
+value = 50.0
+texture_under = SubResource("GradientTexture2D_ben26")
+texture_progress = SubResource("GradientTexture2D_75xv4")
 
 [connection signal="area_entered" from="ActivationTriggers" to="." method="_on_activation_triggers_area_entered"]
 [connection signal="area_exited" from="ActivationTriggers" to="." method="_on_activation_triggers_area_exited"]
