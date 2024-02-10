@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dno872yjrj031"]
+
+[ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="1_yx6gb"]
+
+[node name="Lanes" type="Node2D"]
+
+[node name="Lane1" parent="." instance=ExtResource("1_yx6gb")]
+position = Vector2(68, 198)
+
+[node name="Lane2" parent="." instance=ExtResource("1_yx6gb")]
+position = Vector2(62, 314)
+
+[node name="Lane3" parent="." instance=ExtResource("1_yx6gb")]
+position = Vector2(68, 444)
+
+[node name="Lane4" parent="." instance=ExtResource("1_yx6gb")]
+position = Vector2(72, 574)

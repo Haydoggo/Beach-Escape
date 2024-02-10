@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctn4ush7qa7jv"]
+
+[ext_resource type="Script" path="res://App/Scenes/Spawners/Lane.gd" id="1_fdy67"]
+
+[node name="Lane" type="Marker2D"]
+script = ExtResource("1_fdy67")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="QueuedUnits" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(400, 128)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

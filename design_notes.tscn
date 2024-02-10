@@ -14,7 +14,7 @@ layout_mode = 0
 offset_left = 1012.0
 offset_top = 164.0
 offset_right = 1960.0
-offset_bottom = 801.0
+offset_bottom = 934.0
 text = "Player Units
 - Fish: small, weak, walks in a straight line and deals small damage. Kind of like a bullet?
 - Crab: bigger, slower, walks in a zig zag, deals adjacent damage
@@ -22,6 +22,9 @@ text = "Player Units
 - Shark: typically 1-use, but does a ton of damage, moves fast, and moves through towers
 - Octopus: When this creature moves into the space of a tower, it will prevent the tower from shooting for a period of time.
 - Pufferfish: When a tower hits this fish, they will puff up, stopping them but causing them to take significantly less damage.
+- Mudfish: Doesn't dry out, but will stop occasionally to recover their moisture. Can enter pits without dying (they'll come up as if they were recovering moisture).
+- Flying Fish: Can jump over towers. Will not take damage while airborne.
+
 
 Enemy Units / Defenses
 - Sand Cannon: points in one direction, deals big damage
