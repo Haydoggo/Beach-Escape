@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=3 uid="uid://ncccgvmbl1j5"]
+
+[ext_resource type="Script" path="res://App/Scenes/Entities/Towers/SeagullTrap.gd" id="1_r6ph7"]
+[ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_0vh0u"]
+[ext_resource type="Texture2D" uid="uid://b0vwkpxslc2vo" path="res://Assets/Images/placeholder/seagull_2.png" id="2_cm2hj"]
+[ext_resource type="Texture2D" uid="uid://pl4e8m2n0pf1" path="res://Assets/Images/placeholder/seagull_dead.png" id="3_1cwv3"]
+[ext_resource type="Texture2D" uid="uid://byqh2cofkcv4d" path="res://Assets/Images/placeholder/seagull_3.png" id="3_1mpdn"]
+[ext_resource type="Texture2D" uid="uid://cfqsnjfnqsich" path="res://Assets/Images/placeholder/seagull_4.png" id="4_cg1pt"]
+[ext_resource type="Texture2D" uid="uid://de625p6kim5h5" path="res://Assets/Images/placeholder/seagull_1.png" id="5_c7x5q"]
+[ext_resource type="PackedScene" uid="uid://b3tsqi2xelo17" path="res://App/Scenes/Entities/health_bar.tscn" id="8_cwkj7"]
+[ext_resource type="AudioStream" uid="uid://ni17kd3fvvgg" path="res://Assets/SFX/sqwawk.wav" id="9_ncg0j"]
+
+[sub_resource type="Resource" id="Resource_tuo7h"]
+script = ExtResource("2_0vh0u")
+damage_type = 0
+damage = 1.0
+
+[sub_resource type="Curve2D" id="Curve2D_8dc03"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 169, 67, 0, 0, 0, 0, 803, 273, 0, 0, 0, 0, 1065, 469, 0, 0, 0, 0, 1365, 917)
+}
+point_count = 4
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w4n3j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1cwv3")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cm2hj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1mpdn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cg1pt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1mpdn")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_c7x5q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ij52d"]
+radius = 64.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rsqc6"]
+streams_count = 1
+stream_0/stream = ExtResource("9_ncg0j")
+stream_0/weight = 1.0
+
+[node name="SeagullTrap" type="Node2D" groups=["EnemyTowers"]]
+script = ExtResource("1_r6ph7")
+attack_packet = SubResource("Resource_tuo7h")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-802, -274)
+curve = SubResource("Curve2D_8dc03")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(169, 67)
+rotation = 0.314161
+rotates = false
+loop = false
+
+[node name="Seagull" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
+sprite_frames = SubResource("SpriteFrames_w4n3j")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Seagull"]
+position = Vector2(-7.57374, -6.97412)
+rotation = -0.319493
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Seagull/Area2D"]
+shape = SubResource("CircleShape2D_ij52d")
+
+[node name="HealthBar" parent="Path2D/PathFollow2D/Seagull" instance=ExtResource("8_cwkj7")]
+offset_left = -27.5146
+offset_top = 83.5939
+offset_right = 68.4854
+offset_bottom = 123.594
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="IFramesTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="SqwawkSFX" type="AudioStreamPlayer2D" parent="Audio"]
+stream = SubResource("AudioStreamRandomizer_rsqc6")
+volume_db = -8.0
+
+[connection signal="area_entered" from="Path2D/PathFollow2D/Seagull/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

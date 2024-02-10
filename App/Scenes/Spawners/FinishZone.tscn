@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdrk8mkxgd30e"]
+
+[ext_resource type="Script" path="res://App/Scenes/Spawners/FinishZone.gd" id="1_14yyo"]
+
+[sub_resource type="Gradient" id="Gradient_lpvbb"]
+colors = PackedColorArray(0.254482, 0.305069, 1, 1, 1.81946e-07, 0, 0.418299, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_27gm6"]
+gradient = SubResource("Gradient_lpvbb")
+width = 128
+height = 1080
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxut5"]
+size = Vector2(128, 1080)
+
+[node name="FinishZone" type="Area2D"]
+script = ExtResource("1_14yyo")
+
+[node name="Ocean" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_27gm6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wxut5")
+
+[node name="Title" type="Label" parent="."]
+offset_left = -56.0
+offset_top = -523.0
+offset_right = 52.0
+offset_bottom = -452.0
+theme_override_font_sizes/font_size = 24
+text = "Escaping
+Survivors"
+
+[node name="CompletedUnitCounters" type="BoxContainer" parent="."]
+offset_left = -56.0
+offset_top = -459.0
+offset_right = 103.0
+offset_bottom = -331.0
+vertical = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

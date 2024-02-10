@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bge658ih8ch4w"]
+[gd_scene load_steps=10 format=3 uid="uid://bge658ih8ch4w"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_0v084"]
 [ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_oqp12"]
 [ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="3_s82pn"]
 [ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="4_w02ti"]
 [ext_resource type="Resource" uid="uid://bs31lf1urfggr" path="res://App/Scenes/Entities/Units/Urchin/UrchinInfo.tres" id="5_klo7h"]
+[ext_resource type="PackedScene" uid="uid://ncccgvmbl1j5" path="res://App/Scenes/Entities/Towers/SeagullTrap.tscn" id="6_i0eg2"]
 
 [sub_resource type="Resource" id="Resource_xd3nr"]
 resource_name = "20 Fish"
@@ -28,11 +29,14 @@ count = 6
 available_units = Array[ExtResource("2_oqp12")]([SubResource("Resource_xd3nr"), SubResource("Resource_0vho7"), SubResource("Resource_geann")])
 
 [node name="Towers" parent="." index="0"]
-position = Vector2(404, 9)
-layer_0/tile_data = PackedInt32Array(131075, 0, 65536, 196613, 0, 65536, 262148, 0, 131072, 327689, 0, 196608, 65543, 0, 196608)
+position = Vector2(404, 7)
+layer_0/tile_data = PackedInt32Array(131075, 0, 65536, 196613, 0, 65536, 262148, 0, 131072, 327689, 0, 196608, 65543, 0, 196608, 65538, 0, 262144, 327682, 0, 327680, 458755, 0, 327680, 524293, 0, 327680, 524290, 0, 327680, 196610, 0, 327680)
 
 [node name="PanelContainer" parent="UI" index="0"]
 offset_right = 131.0
 offset_bottom = 109.0
+
+[node name="SeagullTrap" parent="." index="6" instance=ExtResource("6_i0eg2")]
+position = Vector2(1156, 262)
 
 [editable path="Lanes"]

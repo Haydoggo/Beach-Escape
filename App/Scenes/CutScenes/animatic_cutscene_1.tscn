@@ -1,0 +1,349 @@
+[gd_scene load_steps=12 format=3 uid="uid://dqwo2aaci115b"]
+
+[ext_resource type="Theme" uid="uid://6h5f7sqktd67" path="res://App/Themes/animatic_theme.tres" id="1_a6s3w"]
+[ext_resource type="Texture2D" uid="uid://dalyydqj0idie" path="res://Assets/Images/04_Crab_Basic.png" id="2_3u44w"]
+[ext_resource type="Script" path="res://App/Scenes/CutScenes/AnimaticCutscene.gd" id="2_lc5yq"]
+[ext_resource type="Texture2D" uid="uid://beqt2qi8j86vu" path="res://Assets/Images/placeholder/island_empty.png" id="3_vktjv"]
+[ext_resource type="Texture2D" uid="uid://c4l0sg83rc5m6" path="res://Assets/Images/Towers/Castle_Cannon.png" id="4_b5ksj"]
+[ext_resource type="Texture2D" uid="uid://d2nynmboek3i2" path="res://Assets/Images/placeholder/cruise_ship.png" id="5_2lj1f"]
+
+[sub_resource type="Gradient" id="Gradient_ttwpq"]
+colors = PackedColorArray(0, 0, 0, 1, 0.160784, 0.65098, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oducm"]
+gradient = SubResource("Gradient_ttwpq")
+width = 1900
+height = 128
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_ue56q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D/Text:current_tab")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CruiseShip:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1946, 468)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera2D:zoom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Crab:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(349, 811)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Castle:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BlackTransition:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_onmyl"]
+resource_name = "animatic_intro"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D/Text:current_tab")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.6, 6, 8, 9.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CruiseShip:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.2, 4.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1946, 470), Vector2(640, 470)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(116, 486)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera2D:zoom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(2, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Crab:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(8, 8.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(349, 811), Vector2(410, 752)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Castle:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(8.7, 9.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BlackTransition:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(10.8, 11.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k3uoo"]
+_data = {
+"RESET": SubResource("Animation_ue56q"),
+"animatic_intro": SubResource("Animation_onmyl")
+}
+
+[node name="AnimaticSlide" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_a6s3w")
+script = ExtResource("2_lc5yq")
+next_scene_path = "res://App/Scenes/Levels/FirstLevel.tscn"
+
+[node name="Crab" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 349.0
+offset_top = 811.0
+offset_right = 477.0
+offset_bottom = 939.0
+texture = ExtResource("2_3u44w")
+expand_mode = 3
+
+[node name="Island" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 486.0
+offset_right = 638.0
+offset_bottom = 998.0
+texture = ExtResource("3_vktjv")
+
+[node name="Castle" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(196, 196)
+layout_mode = 0
+offset_left = 390.0
+offset_top = 709.0
+offset_right = 586.0
+offset_bottom = 905.0
+texture = ExtResource("4_b5ksj")
+expand_mode = 3
+
+[node name="CruiseShip" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1946.0
+offset_top = 468.0
+offset_right = 2407.0
+offset_bottom = 690.0
+scale = Vector2(2.23747, 2.23747)
+texture = ExtResource("5_2lj1f")
+expand_mode = 3
+
+[node name="Ocean" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_oducm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k3uoo")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(2, 2)
+
+[node name="Text" type="TabContainer" parent="Camera2D"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 70.5
+offset_right = 1829.5
+offset_bottom = 300.0
+grow_horizontal = 2
+tabs_visible = false
+
+[node name="Paradise" type="Label" parent="Camera2D/Text"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "It Was a Paradise"
+
+[node name="TheyArrived" type="Label" parent="Camera2D/Text"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Until they arrived."
+
+[node name="PailsAndShovels" type="Label" parent="Camera2D/Text"]
+visible = false
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "With their pails, and their shovels."
+autowrap_mode = 3
+
+[node name="TrappedUs" type="Label" parent="Camera2D/Text"]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "And they trapped us."
+autowrap_mode = 3
+
+[node name="WeWillEscape" type="Label" parent="Camera2D/Text"]
+visible = false
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "But we will escape!"
+autowrap_mode = 3
+
+[node name="BlackTransition" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

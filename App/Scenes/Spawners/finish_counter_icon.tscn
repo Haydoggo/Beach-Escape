@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtamyip8lqavp"]
+
+[ext_resource type="Script" path="res://App/Scenes/Spawners/finish_counter_icon.gd" id="1_tbo55"]
+[ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="2_onnrc"]
+
+[node name="BoxContainer" type="BoxContainer"]
+script = ExtResource("1_tbo55")
+
+[node name="UnitIcon" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_onnrc")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="UnitCount" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "0"

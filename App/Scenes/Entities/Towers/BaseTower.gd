@@ -1,5 +1,8 @@
 ## Towers are mostly static. They have a turret which may or may not rotate.
 
+## Requirements: AnimationPlayer node with shoot and hurt animations
+
+
 class_name BaseTower extends Node2D
 
 @export var projectile : PackedScene
@@ -19,6 +22,9 @@ var health : float = health_max
 enum States { INITIALIZING, ACTIVE, DYING, DEAD }
 var State = States.INITIALIZING
 
+@export var animation_player : Node
+
+
 func _ready():
 	
 	if turret_type == turret_types.ROTATING:
@@ -31,7 +37,6 @@ func _ready():
 
 
 	turret_rotation = PI # Vector2.LEFT
-	update_health_bar()
 	State = States.ACTIVE
 
 func _unhandled_input(_event):
@@ -46,21 +51,26 @@ func _process(delta):
 			turret_rotation = lerp(turret_rotation, global_position.angle_to_point(active_target.global_position), rotation_speed * delta)
 			$Debug/RotationViz.rotation = turret_rotation
 
+
 func shoot():
 	if State != States.ACTIVE:
 		return
 	
 	if shots_remaining > 0:
 		shots_remaining -= 1
-		var new_projectile = projectile.instantiate()
-		# TODO: add a targeting lead based on the velocity of the target and projectile
-		add_sibling(new_projectile)
-		new_projectile.global_position = $MuzzleLocation.global_position
-		new_projectile.activate(Vector2.from_angle(turret_rotation))
-		$RecoilTimer.start()
+		if animation_player != null and animation_player.has_animation("shoot"):
+			animation_player.play("shoot")
 	else:
 		$ReloadTimer.start()
 
+func spawn_projectile():
+	var new_projectile = projectile.instantiate()
+	# TODO: add a targeting lead based on the velocity of the target and projectile
+	add_sibling(new_projectile)
+	new_projectile.global_position = $MuzzleLocation.global_position
+	new_projectile.activate(Vector2.from_angle(turret_rotation))
+	$RecoilTimer.start()
+	
 
 func _on_activation_triggers_body_entered(body):
 	if State == States.ACTIVE:
@@ -91,12 +101,15 @@ func _on_activation_triggers_area_entered(area):
 
 
 func _on_activation_triggers_area_exited(area):
-	if area.owner != null:
-		if active_target == area.owner:
-			choose_new_target()
+	if not is_instance_valid(active_target):
+		# they're gone already?
+		choose_new_target()
+	elif area.owner != null and area.owner == active_target:
+		choose_new_target()
+	
 
 func choose_new_target():
-	var candidates = $ActivationTriggers.get_overlapping.areas()
+	var candidates = $ActivationTriggers.get_overlapping_areas()
 	if candidates.size() > 0:
 		active_target = get_closest(candidates)
 	else:
@@ -108,32 +121,31 @@ func get_closest(nodeList):
 	return candidates[0]
 	
 func sort_ascending(a, b):
-	var a_dist = global_position.distance_squared_to(a)
-	var b_dist = global_position.distance_squared_to(b)
+	var a_dist = global_position.distance_squared_to(a.global_position)
+	var b_dist = global_position.distance_squared_to(b.global_position)
 	return a_dist < b_dist
 
 func _on_hit(attackPacket : AttackPacket):
-	var tween = create_tween()
-	var current_rotation = $Sprite2D.rotation
-	tween.tween_property($Sprite2D, "rotation", current_rotation + 0.3, 0.33)
-	tween.tween_property($Sprite2D, "rotation", current_rotation, 0.1)
-	health -= attackPacket.damage
-	update_health_bar()
-	if health <= 0:
-		begin_dying()
-		
-		
-func update_health_bar():
-	$HealthBar.max_value = health_max
-	$HealthBar.value = health
-	
-	
+	if animation_player != null and animation_player.has_animation("hurt"):
+		$AnimationPlayer.play("hurt")
+	else:
+		var tween = create_tween()
+		var current_rotation = $Sprite2D.rotation
+		tween.tween_property($Sprite2D, "rotation", current_rotation + 0.3, 0.33)
+		tween.tween_property($Sprite2D, "rotation", current_rotation, 0.1)
+	$HealthComponent._on_hit(attackPacket)
+
+
 func begin_dying():
 	State = States.DYING
-	var tween = create_tween()
-	var current_scale = $Sprite2D.scale
-	tween.tween_property($Sprite2D, "scale", Vector2(current_scale.x, current_scale.y * 1.2), 0.2)
-	tween.tween_property($Sprite2D, "scale", Vector2(current_scale.x, 0.01), 0.5)
-	await tween.finished
+	if animation_player != null and animation_player.has_animation("die"):
+		animation_player.play("die")
+		await animation_player.animation_finished
+	else:
+		var tween = create_tween()
+		var current_scale = $Sprite2D.scale
+		tween.tween_property($Sprite2D, "scale", Vector2(current_scale.x, current_scale.y * 1.2), 0.2)
+		tween.tween_property($Sprite2D, "scale", Vector2(current_scale.x, 0.01), 0.5)
+		await tween.finished
 	queue_free()
 	

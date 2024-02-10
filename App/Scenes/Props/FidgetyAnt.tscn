@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnpixhbkoqkqa"]
+
+[ext_resource type="Texture2D" uid="uid://bhd2hf4a0u4fd" path="res://Assets/Images/ant.png" id="1_3ucoj"]
+[ext_resource type="Script" path="res://App/Scenes/Props/FidgetyAnt.gd" id="1_knarw"]
+
+[sub_resource type="Animation" id="Animation_juvkk"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/AntSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.6, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-20, -11), Vector2(0, 0), Vector2(-9, -3), Vector2(0, 0), Vector2(4, -12), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/AntSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_e7gg8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D/AntSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path2D/PathFollow2D/AntSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b1ehg"]
+_data = {
+"RESET": SubResource("Animation_e7gg8"),
+"idle": SubResource("Animation_juvkk")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_frw4x"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 521, -123, 0, 0, 0, 0, 295, -97, 0, 0, 0, 0, 185, -25, 0, 0, 0, 0, 69, -22, 0, 0, 0, 0, 38, 22, 0, 0, 0, 0, -1, 5)
+}
+point_count = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uhed"]
+
+[node name="Ant" type="Node2D" groups=["Units"]]
+script = ExtResource("1_knarw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b1ehg")
+}
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_frw4x")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(521, -123)
+rotation = 3.02705
+loop = false
+
+[node name="AntSprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+rotation = -3.02705
+scale = Vector2(1, 1)
+texture = ExtResource("1_3ucoj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_6uhed")
+disabled = true

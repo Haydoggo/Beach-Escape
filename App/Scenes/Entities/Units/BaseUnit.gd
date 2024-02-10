@@ -41,12 +41,13 @@ func move_end():
 
 func attack():
 	for area in attack_region.get_overlapping_areas():
-		var tower : BaseTower
+		var tower #: BaseTower <-- They're not all BaseTowers anymore
 		if area.owner and area.owner.is_in_group("EnemyTowers"):
 			tower = area.owner
 		else:
 			continue
-		tower._on_hit(unit_info.melee_attack)
+		if tower.has_method("_on_hit"):
+			tower._on_hit(unit_info.melee_attack)
 
 
 func _on_hit(attack_packet : AttackPacket):
@@ -59,3 +60,6 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_M:
 			move()
+
+func _on_finish_line_crossed(): # signal from FinishZone
+	queue_free()

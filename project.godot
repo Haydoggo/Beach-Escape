@@ -21,11 +21,13 @@ SceneLoader="*res://App/Scripts/SceneLoader.gd"
 ProjectUiSoundController="res://Extras/Scenes/Autoloads/ProjectUISoundController.tscn"
 ProjectLevelLoader="res://Extras/Scenes/Autoloads/ProjectLevelLoader.tscn"
 RuntimeLogger="res://Extras/Scripts/RuntimeLogger.gd"
+Globals="*res://App/Globals.gd"
 
 [display]
 
 window/size/viewport_width=1900
 window/size/viewport_height=1080
+window/stretch/mode="viewport"
 
 [gui]
 

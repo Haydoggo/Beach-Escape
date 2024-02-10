@@ -6,4 +6,5 @@
 
 [node name="MainMenu" instance=ExtResource("1_y2dvq")]
 script = ExtResource("1_yww1j")
+game_scene_path = "res://App/Scenes/CutScenes/animatic_cutscene_1.tscn"
 options_packed_scene = ExtResource("2_3vb8r")

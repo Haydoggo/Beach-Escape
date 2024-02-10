@@ -3,6 +3,7 @@ extends Area2D
 @export var speed = 120.0
 @export var damage = 5
 var velocity : Vector2
+@export var rotate_to_face_velocity : bool = false
 
 enum States { INITIALIZING, MOVING, EXPLODING, DEAD } 
 var State = States.INITIALIZING
@@ -21,7 +22,8 @@ func activate(direction : Vector2 = Vector2.LEFT):
 func _process(delta):
 	if State == States.MOVING:
 		global_position += velocity * delta
-
+		if rotate_to_face_velocity:
+			$Sprite2D.rotation = velocity.angle()
 
 func explode():
 	State = States.EXPLODING

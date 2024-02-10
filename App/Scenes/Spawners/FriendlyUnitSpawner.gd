@@ -7,12 +7,12 @@ var current_unit_count : UnitCount
 @onready var path_preview: Line2D = $PathPreview
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await owner.ready
 	if lanes_container == null:
 		lanes_container = get_tree().get_root().find_child("Lanes")
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("spawn_selected_unit"):
