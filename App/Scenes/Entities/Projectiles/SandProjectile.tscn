@@ -1,7 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://v7ugl0dxd5si"]
+[gd_scene load_steps=9 format=3 uid="uid://v7ugl0dxd5si"]
 
 [ext_resource type="Texture2D" uid="uid://bvtl8drxctv4b" path="res://Assets/Images/Projectiles/Sand_Ball.png" id="1_hvwsp"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Projectiles/SandProjectile.gd" id="1_xeysw"]
+
+[sub_resource type="Gradient" id="Gradient_jke4f"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.321918, 0.630137)
+colors = PackedColorArray(0, 0, 0, 0.580392, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5iey2"]
+gradient = SubResource("Gradient_jke4f")
+width = 96
+height = 48
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ll0f"]
 radius = 24.0
@@ -68,6 +80,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shadow:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_2tsgu"]
 resource_name = "explode"
@@ -132,6 +156,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(8, -42), Vector2(24, 0.999996)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shadow:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ymp4x"]
 _data = {
@@ -141,6 +177,12 @@ _data = {
 
 [node name="SandProjectile" type="Area2D"]
 script = ExtResource("1_xeysw")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(26, 29)
+scale = Vector2(0.775606, 0.484829)
+texture = SubResource("GradientTexture2D_5iey2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
