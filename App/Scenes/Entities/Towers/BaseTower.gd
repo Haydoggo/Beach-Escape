@@ -8,6 +8,7 @@ enum turret_types { STATIC, ROTATING, AoE }
 
 var active_target
 var turret_rotation : float # radians from Vector2.RIGHT
+var rotation_speed : float = 3.14159
 
 var shots_per_magazine : int = 3
 var shots_remaining : int = 3
@@ -25,6 +26,7 @@ func _ready():
 	else:
 		$ActivationTriggers/CircularShape.disabled = true
 		$ActivationTriggers/LinearShape.disabled = false
+		$Debug/RotationViz.visible = false
 
 	turret_rotation = PI # Vector2.LEFT
 	update_health_bar()
@@ -35,7 +37,12 @@ func _unhandled_input(_event):
 		shoot()
 	if Input.is_action_just_pressed("hurt_towers"):
 		_on_hit(AttackPacket.new())
-	
+
+func _process(delta):
+	if turret_type == turret_types.ROTATING:
+		if active_target != null and is_instance_valid(active_target):
+			turret_rotation = lerp(turret_rotation, global_position.angle_to_point(active_target.global_position), rotation_speed * delta)
+			$Debug/RotationViz.rotation = turret_rotation
 
 func shoot():
 	if State != States.ACTIVE:
@@ -61,19 +68,19 @@ func _on_activation_triggers_body_entered(body):
 		if active_target == null or not is_instance_valid(active_target):
 			if body.is_in_group("Units"):
 				active_target = body
-				shoot()
+				call_deferred("shoot")
 
 
 func _on_recoil_timer_timeout():
 	if State == States.ACTIVE:
-		shoot()
+		call_deferred("shoot")
 
 
 func _on_reload_timer_timeout():
 	if State == States.ACTIVE:
 		shots_remaining = shots_per_magazine
 		if active_target != null:
-			shoot()
+			call_deferred("shoot")
 
 
 func _on_activation_triggers_area_entered(area):
@@ -81,11 +88,11 @@ func _on_activation_triggers_area_entered(area):
 		if active_target == null or not is_instance_valid(active_target):
 			if area.owner != null and area.owner.is_in_group("Units"):
 				active_target = area
-				shoot()
+				call_deferred("shoot")
 
 
 func _on_activation_triggers_area_exited(area):
-	if area.owner != null and area.owner.is_in_group("Units"):
+	if area.owner != null:
 		if active_target == area.owner:
 			choose_new_target()
 
