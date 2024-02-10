@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://7dr0wg5hwlol"]
+[gd_scene load_steps=3 format=3 uid="uid://7dr0wg5hwlol"]
 
-[node name="BaseUnit" type="Node2D"]
+[ext_resource type="Script" path="res://App/Scenes/Entities/Units/BaseUnit.gd" id="1_6w2qm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ll5tj"]
+radius = 32.0
+
+[node name="BaseUnit" type="Node2D" groups=["Units"]]
+script = ExtResource("1_6w2qm")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_ll5tj")
