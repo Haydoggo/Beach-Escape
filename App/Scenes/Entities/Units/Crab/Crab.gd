@@ -2,6 +2,7 @@ extends BaseUnit
 
 
 func get_path_points(origin : Vector2) -> Array[Vector2]:
+	return super(origin)
 	var retval : Array[Vector2] = [origin]
 	for i in 100:
 		if (i % 2) == 0:
