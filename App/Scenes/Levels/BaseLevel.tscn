@@ -86,6 +86,18 @@ vertical = true
 lanes_container = NodePath("../Lanes")
 
 [node name="Lanes" parent="." instance=ExtResource("3_n7aa5")]
-position = Vector2(302, -2)
+position = Vector2(591, 201)
+
+[node name="Lane1" parent="Lanes" index="0"]
+position = Vector2(0, 0)
+
+[node name="Lane2" parent="Lanes" index="1"]
+position = Vector2(0, 128)
+
+[node name="Lane3" parent="Lanes" index="2"]
+position = Vector2(0, 256)
+
+[node name="Lane4" parent="Lanes" index="3"]
+position = Vector2(0, 384)
 
 [editable path="Lanes"]
