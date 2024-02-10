@@ -25,7 +25,7 @@ func _ready():
 
 	turret_rotation = PI # Vector2.LEFT
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("shoot_all_towers"):
 		shoot()
 	
