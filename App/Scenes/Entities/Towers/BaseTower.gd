@@ -56,10 +56,7 @@ func shoot():
 		# TODO: add a targeting lead based on the velocity of the target and projectile
 		add_sibling(new_projectile)
 		new_projectile.global_position = $MuzzleLocation.global_position
-		if active_target != null and is_instance_valid(active_target):
-			new_projectile.activate(global_position.direction_to(active_target.global_position))
-		else:
-			new_projectile.activate(Vector2.from_angle(turret_rotation))
+		new_projectile.activate(Vector2.from_angle(turret_rotation))
 		$RecoilTimer.start()
 	else:
 		$ReloadTimer.start()
