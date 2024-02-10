@@ -59,4 +59,36 @@ func _on_recoil_timer_timeout():
 
 func _on_reload_timer_timeout():
 	shots_remaining = shots_per_magazine
-	shoot()
+	if active_target != null:
+		shoot()
+
+
+func _on_activation_triggers_area_entered(area):
+	if active_target == null or not is_instance_valid(active_target):
+		if area.owner != null and area.owner.is_in_group("Units"):
+			active_target = area
+			shoot()
+
+
+func _on_activation_triggers_area_exited(area):
+	if area.owner != null and area.owner.is_in_group("Units"):
+		if active_target == area.owner:
+			choose_new_target()
+
+func choose_new_target():
+	var candidates = $ActivationTriggers.get_overlapping.areas()
+	if candidates.size() > 0:
+		active_target = get_closest(candidates)
+	else:
+		active_target = null
+	
+func get_closest(nodeList):
+	var candidates = nodeList.duplicate()
+	candidates.sort_custom(sort_ascending)
+	return candidates[0]
+	
+func sort_ascending(a, b):
+	var a_dist = global_position.distance_squared_to(a)
+	var b_dist = global_position.distance_squared_to(b)
+	return a_dist < b_dist
+
