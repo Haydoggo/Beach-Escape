@@ -1,3 +1,66 @@
-[gd_scene format=3 uid="uid://bfet1wnvw1f0e"]
+[gd_scene load_steps=9 format=3 uid="uid://bfet1wnvw1f0e"]
+
+[ext_resource type="Script" path="res://App/Scenes/Entities/Towers/BaseTower.gd" id="1_yj2u2"]
+[ext_resource type="Texture2D" uid="uid://c4l0sg83rc5m6" path="res://Assets/Images/Towers/Castle_Cannon.png" id="2_1kdpo"]
+[ext_resource type="PackedScene" uid="uid://v7ugl0dxd5si" path="res://App/Scenes/Entities/Projectiles/SandProjectile.tscn" id="2_13nl8"]
+
+[sub_resource type="Animation" id="Animation_q8y8t"]
+resource_name = "shoot"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjn2y"]
+_data = {
+"shoot": SubResource("Animation_q8y8t")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vb2k5"]
+radius = 405.0
+height = 1306.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfowx"]
+size = Vector2(640, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofvkc"]
+size = Vector2(128, 128)
 
 [node name="BaseTower" type="Node2D"]
+script = ExtResource("1_yj2u2")
+projectile = ExtResource("2_13nl8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_1kdpo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pjn2y")
+}
+
+[node name="ActivationTriggers" type="Area2D" parent="."]
+
+[node name="CircularShape" type="CollisionShape2D" parent="ActivationTriggers"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vb2k5")
+
+[node name="LinearShape" type="CollisionShape2D" parent="ActivationTriggers"]
+position = Vector2(-324, -8)
+shape = SubResource("RectangleShape2D_gfowx")
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="RecoilTimer" type="Timer" parent="."]
+wait_time = 0.67
+one_shot = true
+
+[node name="MuzzleLocation" type="Marker2D" parent="."]
+position = Vector2(-43, 22)
+
+[node name="HitBox" type="Area2D" parent="." groups=["EnemyTowers"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_ofvkc")
+
+[connection signal="body_entered" from="ActivationTriggers" to="." method="_on_activation_triggers_body_entered"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="RecoilTimer" to="." method="_on_recoil_timer_timeout"]

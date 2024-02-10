@@ -1,9 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://kwifjoc33wbf"]
 
-[ext_resource type="PackedScene" uid="uid://brp0f5m041sho" path="res://App/Scenes/InitApp/InitApp.tscn" id="1_jg7hl"]
+[ext_resource type="Script" path="res://App/Scenes/InitApp/InitApp.gd" id="1_gcfri"]
 [ext_resource type="PackedScene" uid="uid://c4wbjtwvt7vt5" path="res://design_notes.tscn" id="2_ar830"]
 
-[node name="InitApp" instance=ExtResource("1_jg7hl")]
+[node name="InitApp" type="Node2D"]
+script = ExtResource("1_gcfri")
+_loading_screen = "res://App/Scenes/LoadingScreen/LoadingScreen.tscn"
 _next_scene = "res://Extras/Scenes/Opening/Opening.tscn"
 
-[node name="DesignNotes" parent="." index="0" instance=ExtResource("2_ar830")]
+[node name="DesignNotes" parent="." instance=ExtResource("2_ar830")]
+offset_left = -4.0
+offset_top = -3.0
+offset_right = -4.0
+offset_bottom = -3.0

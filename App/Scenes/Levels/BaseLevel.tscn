@@ -36,7 +36,7 @@ metadata/_snap_enabled = true
 script = ExtResource("1_cs8tg")
 
 [node name="Towers" type="TileMap" parent="."]
-position = Vector2(430, 10)
+position = Vector2(404, 10)
 tile_set = ExtResource("1_sr1u4")
 format = 2
 layer_0/tile_data = PackedInt32Array(131075, 0, 65536, 65541, 0, 65536, 196614, 0, 65536)

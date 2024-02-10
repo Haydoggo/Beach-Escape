@@ -1,17 +1,179 @@
-[gd_scene load_steps=3 format=3 uid="uid://v7ugl0dxd5si"]
+[gd_scene load_steps=7 format=3 uid="uid://v7ugl0dxd5si"]
 
-[sub_resource type="Gradient" id="Gradient_qoq1a"]
-offsets = PackedFloat32Array(0.334416, 0.438312, 0.483766)
-colors = PackedColorArray(0.619608, 0.607843, 0.372549, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+[ext_resource type="Texture2D" uid="uid://bvtl8drxctv4b" path="res://Assets/Images/Projectiles/Sand_Ball.png" id="1_hvwsp"]
+[ext_resource type="Script" path="res://App/Scenes/Entities/Projectiles/SandProjectile.gd" id="1_xeysw"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ujgrg"]
-gradient = SubResource("Gradient_qoq1a")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ll0f"]
+radius = 24.0
 
-[node name="SandProjectile" type="Node2D"]
+[sub_resource type="Animation" id="Animation_2tsgu"]
+resource_name = "explode"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chunks:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chunks/chunk1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-25, -36), Vector2(-39, 15)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chunks/chunk2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(47, -33), Vector2(79, -7.62939e-06)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Chunks/chunk3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(8, -42), Vector2(24, 0.999996)]
+}
+
+[sub_resource type="Animation" id="Animation_018a0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chunks:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chunks/chunk1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chunks/chunk2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Chunks/chunk3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ymp4x"]
+_data = {
+"RESET": SubResource("Animation_018a0"),
+"explode": SubResource("Animation_2tsgu")
+}
+
+[node name="SandProjectile" type="Area2D"]
+script = ExtResource("1_xeysw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_ujgrg")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_hvwsp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1ll0f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ymp4x")
+}
+
+[node name="Chunks" type="Node2D" parent="."]
+visible = false
+
+[node name="chunk1" type="Polygon2D" parent="Chunks"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_hvwsp")
+texture_offset = Vector2(228, 228)
+polygon = PackedVector2Array(-240, 0, -240, -120, -120, -210, -10, -250, 40, -140, 70, -160, 10, -70, -70, -40, -60, 80)
+
+[node name="chunk2" type="Polygon2D" parent="Chunks"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_hvwsp")
+texture_offset = Vector2(228, 228)
+polygon = PackedVector2Array(-70, -20, 10, -60, 170, -170, 260, -100, 240, 30, 210, 140, 60, 250, 90, 100, -50, 90)
+
+[node name="chunk3" type="Polygon2D" parent="Chunks"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_hvwsp")
+texture_offset = Vector2(228, 228)
+polygon = PackedVector2Array(-10, 110, 70, 120, 50, 220, -50, 230, -180, 180, -240, 10, -50, 90)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

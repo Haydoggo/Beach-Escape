@@ -13,7 +13,7 @@ config_version=5
 config/name="GWJ66 - Beach Escape"
 run/main_scene="res://Extras/Scenes/InitApp/InitApp.tscn"
 config/features=PackedStringArray("4.2")
-config/icon="res://Assets/Images/02_Fish_Boot.png"
+config/icon="res://Assets/Images/04_Crab_Basic.png"
 
 [autoload]
 
@@ -112,6 +112,11 @@ spawn_unit_2={
 spawn_unit_3={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":52,"key_label":0,"unicode":52,"echo":false,"script":null)
+]
+}
+shoot_all_towers={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":76,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 spawn_selected_unit={
