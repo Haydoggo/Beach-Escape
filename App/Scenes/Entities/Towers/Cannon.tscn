@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://8tsf2haxf3j"]
-
-[ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_5h0ks"]
-
-[node name="SandCannon" instance=ExtResource("1_5h0ks")]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bfet1wnvw1f0e"]
+[gd_scene load_steps=14 format=3 uid="uid://bfet1wnvw1f0e"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/BaseTower.gd" id="1_yj2u2"]
-[ext_resource type="Texture2D" uid="uid://c4l0sg83rc5m6" path="res://Assets/Images/Towers/Castle_Cannon.png" id="2_1kdpo"]
 [ext_resource type="PackedScene" uid="uid://v7ugl0dxd5si" path="res://App/Scenes/Entities/Projectiles/SandProjectile.tscn" id="2_13nl8"]
+[ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="3_evm77"]
 
 [sub_resource type="Gradient" id="Gradient_yfvkm"]
 offsets = PackedFloat32Array(0.178082, 0.481735)
@@ -26,13 +26,6 @@ _data = {
 "die": SubResource("Animation_lh6hv"),
 "shoot": SubResource("Animation_q8y8t")
 }
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vb2k5"]
-radius = 178.0
-height = 662.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfowx"]
-size = Vector2(321, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ofvkc"]
 size = Vector2(128, 128)
@@ -60,9 +53,8 @@ script = ExtResource("1_yj2u2")
 projectile = ExtResource("2_13nl8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(29, -37)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_1kdpo")
+position = Vector2(3, 1)
+texture = ExtResource("3_evm77")
 
 [node name="Shadow" type="Sprite2D" parent="Sprite2D"]
 show_behind_parent = true
@@ -77,14 +69,6 @@ libraries = {
 
 [node name="ActivationTriggers" type="Area2D" parent="."]
 monitorable = false
-
-[node name="CircularShape" type="CollisionShape2D" parent="ActivationTriggers"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_vb2k5")
-
-[node name="LinearShape" type="CollisionShape2D" parent="ActivationTriggers"]
-position = Vector2(-164.5, -8)
-shape = SubResource("RectangleShape2D_gfowx")
 
 [node name="ReloadTimer" type="Timer" parent="."]
 wait_time = 2.5

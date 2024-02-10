@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var speed = 120.0
+@export var damage = 5
 var velocity : Vector2
 
 enum States { INITIALIZING, MOVING, EXPLODING, DEAD } 
@@ -9,6 +10,8 @@ var State = States.INITIALIZING
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	top_level = true
+	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("spawn"):
+		$AnimationPlayer.play("spawn")
 
 func activate(direction : Vector2 = Vector2.LEFT):
 	velocity = direction * speed
@@ -21,15 +24,20 @@ func _process(delta):
 
 
 func explode():
-	$AnimationPlayer.play("explode")
 	State = States.EXPLODING
-	await $AnimationPlayer.animation_finished
+	if has_node("AnimationPlayer"):
+		$AnimationPlayer.play("explode")
+		await $AnimationPlayer.animation_finished
+	else:
+		var tween = create_tween()
+		tween.tween_property(self, "scale", scale * 2.0, 0.3)
+		await tween.finished
 	State = States.DEAD
 	queue_free()
 
 func create_attack_packet():
 	var attack_packet = AttackPacket.new()
-	attack_packet.damage = 5
+	attack_packet.damage = damage
 	attack_packet.impact_vector = velocity
 	attack_packet.damage_type = attack_packet.damage_types.IMPACT
 	return attack_packet

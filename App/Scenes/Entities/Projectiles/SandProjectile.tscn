@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://v7ugl0dxd5si"]
 
+[ext_resource type="Script" path="res://App/Scenes/Entities/Projectiles/BaseProjectile.gd" id="1_8q4mn"]
 [ext_resource type="Texture2D" uid="uid://bvtl8drxctv4b" path="res://Assets/Images/Projectiles/Sand_Ball.png" id="1_hvwsp"]
-[ext_resource type="Script" path="res://App/Scenes/Entities/Projectiles/SandProjectile.gd" id="1_xeysw"]
 
 [sub_resource type="Gradient" id="Gradient_jke4f"]
 interpolation_mode = 2
@@ -176,7 +176,7 @@ _data = {
 }
 
 [node name="SandProjectile" type="Area2D"]
-script = ExtResource("1_xeysw")
+script = ExtResource("1_8q4mn")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -1

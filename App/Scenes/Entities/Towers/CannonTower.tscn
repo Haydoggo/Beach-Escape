@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://8tsf2haxf3j"]
+
+[ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_dr6oi"]
+[ext_resource type="Texture2D" uid="uid://c4l0sg83rc5m6" path="res://Assets/Images/Towers/Castle_Cannon.png" id="2_22k01"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfowx"]
+size = Vector2(321, 96)
+
+[node name="SandCannon" instance=ExtResource("1_dr6oi")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(27, -36)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_22k01")
+
+[node name="LinearShape2" type="CollisionShape2D" parent="ActivationTriggers" index="0"]
+position = Vector2(-164.5, -8)
+shape = SubResource("RectangleShape2D_gfowx")
