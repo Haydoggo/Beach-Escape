@@ -91,12 +91,15 @@ func _on_activation_triggers_area_entered(area):
 
 
 func _on_activation_triggers_area_exited(area):
-	if area.owner != null:
-		if active_target == area.owner:
-			choose_new_target()
+	if not is_instance_valid(active_target):
+		# they're gone already?
+		choose_new_target()
+	elif area.owner != null and area.owner == active_target:
+		choose_new_target()
+	
 
 func choose_new_target():
-	var candidates = $ActivationTriggers.get_overlapping.areas()
+	var candidates = $ActivationTriggers.get_overlapping_areas()
 	if candidates.size() > 0:
 		active_target = get_closest(candidates)
 	else:
@@ -108,8 +111,8 @@ func get_closest(nodeList):
 	return candidates[0]
 	
 func sort_ascending(a, b):
-	var a_dist = global_position.distance_squared_to(a)
-	var b_dist = global_position.distance_squared_to(b)
+	var a_dist = global_position.distance_squared_to(a.global_position)
+	var b_dist = global_position.distance_squared_to(b.global_position)
 	return a_dist < b_dist
 
 func _on_hit(attackPacket : AttackPacket):
