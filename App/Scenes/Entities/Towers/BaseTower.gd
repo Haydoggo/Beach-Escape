@@ -3,30 +3,32 @@
 class_name BaseTower extends Node2D
 
 @export var projectile : PackedScene
-enum turret_types { STATIC, ROTATING, AoE }
+enum turret_types { STATIC, ROTATING, MELEE_AOE }
 @export var turret_type = turret_types.STATIC
 
 var active_target
 var turret_rotation : float # radians from Vector2.RIGHT
 var rotation_speed : float = 3.14159
 
-var shots_per_magazine : int = 3
+@export var shots_per_magazine : int = 3
 var shots_remaining : int = 3
 
-var health_max : float = 20.0
+@export var health_max : float = 20.0
 var health : float = health_max
 
 enum States { INITIALIZING, ACTIVE, DYING, DEAD }
 var State = States.INITIALIZING
 
 func _ready():
+	
 	if turret_type == turret_types.ROTATING:
-		$ActivationTriggers/CircularShape.disabled = false
-		$ActivationTriggers/LinearShape.disabled = true
-	else:
-		$ActivationTriggers/CircularShape.disabled = true
-		$ActivationTriggers/LinearShape.disabled = false
+		$Debug/RotationViz.visible = true
+	elif turret_type == turret_types.STATIC:
 		$Debug/RotationViz.visible = false
+	elif turret_type == turret_types.MELEE_AOE:
+		$Debug/RotationViz.visible = false
+		
+
 
 	turret_rotation = PI # Vector2.LEFT
 	update_health_bar()

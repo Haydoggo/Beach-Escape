@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8b128ribr7q4"
-path="res://.godot/imported/sand_cannon.png-97d9e01735e004dbf536d218b2194144.ctex"
+uid="uid://dvbqqyj5slckj"
+path="res://.godot/imported/Sand_Flag.png-9920198e17784cbebcd45461e2e01b7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/placeholder/sand_cannon.png"
-dest_files=["res://.godot/imported/sand_cannon.png-97d9e01735e004dbf536d218b2194144.ctex"]
+source_file="res://Assets/Images/Projectiles/Sand_Flag.png"
+dest_files=["res://.godot/imported/Sand_Flag.png-9920198e17784cbebcd45461e2e01b7e.ctex"]
 
 [params]
 
