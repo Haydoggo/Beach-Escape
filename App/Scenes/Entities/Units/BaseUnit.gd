@@ -1,5 +1,7 @@
 class_name BaseUnit extends Node2D
 
+@export var icon : Texture2D = preload("res://icon.svg")
+
 var path : Array[Vector2] = []
 var path_position := 0 # tracks the index of the path 
 
@@ -20,3 +22,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_M:
 			move()
+
+func generate_icon():
+	var new_icon = TextureRect.new()
+	new_icon.size = Vector2(128,128)
+	new_icon.texture = icon
+	return new_icon
