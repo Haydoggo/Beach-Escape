@@ -11,10 +11,10 @@ grow_vertical = 2
 [node name="Units" type="TextEdit" parent="."]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 0
-offset_left = 1012.0
-offset_top = 164.0
-offset_right = 1960.0
-offset_bottom = 934.0
+offset_left = 930.0
+offset_top = 90.0
+offset_right = 1878.0
+offset_bottom = 1000.0
 text = "Player Units
 - Fish: small, weak, walks in a straight line and deals small damage. Kind of like a bullet?
 - Crab: bigger, slower, walks in a zig zag, deals adjacent damage
@@ -33,7 +33,12 @@ Enemy Units / Defenses
 - Seagull: Flies back and forth between two locations on the grid, and attacks whatever is in front of it for significant damage. If it kills a creature, it will fly away with it.
 - Pelican: Will consume a fish instantly, preventing the fish from moving (or drying out). After a certain amount of time, the fish will break out and continue moving, having been damaged significantly 
 - Jellyfish: When a fish moves into a tile with a dead jellyfish on it, they will take damage and move slower for a period of time.
-- Shovel: Faces toward the castle; when a fish moves in front of it, it launches them a few tiles toward the castle, messing up their pathing."
+- Shovel: Faces toward the castle; when a fish moves in front of it, it launches them a few tiles toward the castle, messing up their pathing.
+
+Obstacles and Terrain
+- Palm Trees: 2x2 impassable obstacle
+- Rock: 1x1 impassable obstacle (can be jumped over by flying fish) 
+- Beachgrass: Slows fish that move through it."
 wrap_mode = 1
 
 [node name="Creators" type="TextEdit" parent="."]
@@ -62,3 +67,14 @@ text = "REVERSE TOWER-DEFENSE GAME:
 
 You are a group of sea creatures in a sand castle undergoing a siege by a human. Your objective is to get the sea creatures out of the castle, which have various movement patterns that must be accommodated for. In your way are various human-made towers (siege weapons, etc), which 1. can rotate (not always?), 2. have limited ammunition (not always?), and 3. have variable attack patterns (range, area, firing speed, damage, etc)."
 wrap_mode = 1
+
+[node name="Resources" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_left = 443.0
+offset_top = 709.0
+offset_right = 872.0
+offset_bottom = 825.0
+text = "Resources:
+Repo: https://github.com/Haydoggo/Beach-Escape
+"
