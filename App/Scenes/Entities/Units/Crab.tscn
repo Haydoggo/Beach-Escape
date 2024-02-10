@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://deohxbftxfqrr"]
+
+[ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_m6734"]
+[ext_resource type="Texture2D" uid="uid://dalyydqj0idie" path="res://Assets/Images/04_Crab_Basic.png" id="2_64ly2"]
+[ext_resource type="Script" path="res://App/Scenes/Entities/Units/Crab.gd" id="2_o7mpy"]
+
+[node name="Crab" instance=ExtResource("1_m6734")]
+script = ExtResource("2_o7mpy")
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2(0.0516796, 0.0516796)
+texture = ExtResource("2_64ly2")
