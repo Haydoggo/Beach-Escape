@@ -19,12 +19,13 @@ func _ready():
 	if lanes_container == null:
 		lanes_container = get_tree().get_root().find_child("Lanes")
 	current_lane_id = 0
-	global_position = lanes_container.get_child(current_lane_id).global_position
-
+	current_lane_node = lanes_container.get_child(current_lane_id)
+	global_position = current_lane_node.global_position
+ 
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("move_down"):
 		switch_lane(1)
 	elif Input.is_action_just_pressed("move_up"):

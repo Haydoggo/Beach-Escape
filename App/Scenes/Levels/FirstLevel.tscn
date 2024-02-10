@@ -6,3 +6,5 @@
 
 [node name="Towers" parent="." index="0"]
 layer_0/tile_data = PackedInt32Array(131075, 0, 65536, 196613, 0, 65536, 65542, 0, 65536)
+
+[editable path="Lanes"]
