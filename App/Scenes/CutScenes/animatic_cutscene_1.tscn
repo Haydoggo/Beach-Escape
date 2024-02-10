@@ -322,7 +322,6 @@ text = "With their pails, and their shovels."
 autowrap_mode = 3
 
 [node name="TrappedUs" type="Label" parent="Camera2D/Text"]
-visible = false
 custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 theme_override_font_sizes/font_size = 96
@@ -330,6 +329,7 @@ text = "And they trapped us."
 autowrap_mode = 3
 
 [node name="WeWillEscape" type="Label" parent="Camera2D/Text"]
+visible = false
 custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 theme_override_font_sizes/font_size = 96

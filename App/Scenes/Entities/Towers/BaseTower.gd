@@ -138,10 +138,14 @@ func _on_hit(attackPacket : AttackPacket):
 
 func begin_dying():
 	State = States.DYING
-	var tween = create_tween()
-	var current_scale = $Sprite2D.scale
-	tween.tween_property($Sprite2D, "scale", Vector2(current_scale.x, current_scale.y * 1.2), 0.2)
-	tween.tween_property($Sprite2D, "scale", Vector2(current_scale.x, 0.01), 0.5)
-	await tween.finished
+	if animation_player != null and animation_player.has_animation("die"):
+		animation_player.play("die")
+		await animation_player.animation_finished
+	else:
+		var tween = create_tween()
+		var current_scale = $Sprite2D.scale
+		tween.tween_property($Sprite2D, "scale", Vector2(current_scale.x, current_scale.y * 1.2), 0.2)
+		tween.tween_property($Sprite2D, "scale", Vector2(current_scale.x, 0.01), 0.5)
+		await tween.finished
 	queue_free()
 	
