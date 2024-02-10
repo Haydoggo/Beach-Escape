@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckgmlr182q4qc"]
+
+[ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_24p07"]
+[ext_resource type="Texture2D" uid="uid://cy2kixeq1vwth" path="res://Assets/Images/Towers/Castle_Flag.png" id="2_pkgns"]
+
+[node name="RotatingTower" instance=ExtResource("1_24p07")]
+turret_type = 1
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_pkgns")
