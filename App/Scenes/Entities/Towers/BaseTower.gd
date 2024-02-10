@@ -31,7 +31,6 @@ func _ready():
 
 
 	turret_rotation = PI # Vector2.LEFT
-	update_health_bar()
 	State = States.ACTIVE
 
 func _unhandled_input(_event):
@@ -120,17 +119,9 @@ func _on_hit(attackPacket : AttackPacket):
 	var current_rotation = $Sprite2D.rotation
 	tween.tween_property($Sprite2D, "rotation", current_rotation + 0.3, 0.33)
 	tween.tween_property($Sprite2D, "rotation", current_rotation, 0.1)
-	health -= attackPacket.damage
-	update_health_bar()
-	if health <= 0:
-		begin_dying()
-		
-		
-func update_health_bar():
-	$HealthBar.max_value = health_max
-	$HealthBar.value = health
-	
-	
+	$HealthComponent._on_hit(attackPacket)
+
+
 func begin_dying():
 	State = States.DYING
 	var tween = create_tween()

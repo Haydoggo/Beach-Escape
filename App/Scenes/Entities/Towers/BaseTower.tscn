@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/BaseTower.gd" id="1_yj2u2"]
 [ext_resource type="PackedScene" uid="uid://v7ugl0dxd5si" path="res://App/Scenes/Entities/Projectiles/SandProjectile.tscn" id="2_13nl8"]
 [ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="3_evm77"]
-[ext_resource type="PackedScene" uid="uid://b3tsqi2xelo17" path="res://App/Scenes/Entities/health_bar.tscn" id="4_u4suf"]
+[ext_resource type="PackedScene" uid="uid://cim8b3k5lkraj" path="res://App/Scenes/Entities/Components/health_component.tscn" id="4_wyb4v"]
 
 [sub_resource type="Gradient" id="Gradient_yfvkm"]
 offsets = PackedFloat32Array(0.178082, 0.481735)
@@ -34,6 +34,7 @@ size = Vector2(128, 128)
 [node name="BaseTower" type="Node2D" groups=["EnemyTowers"]]
 script = ExtResource("1_yj2u2")
 projectile = ExtResource("2_13nl8")
+health_max = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3, 1)
@@ -70,13 +71,13 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_ofvkc")
 
-[node name="HealthBar" parent="." instance=ExtResource("4_u4suf")]
-
 [node name="Debug" type="Node2D" parent="."]
 
 [node name="RotationViz" type="Line2D" parent="Debug"]
 points = PackedVector2Array(0, 0, 96, 2.08165e-12)
 default_color = Color(1, 1, 0, 1)
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_wyb4v")]
 
 [connection signal="area_entered" from="ActivationTriggers" to="." method="_on_activation_triggers_area_entered"]
 [connection signal="area_exited" from="ActivationTriggers" to="." method="_on_activation_triggers_area_exited"]
