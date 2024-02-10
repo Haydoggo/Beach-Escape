@@ -21,6 +21,7 @@ SceneLoader="*res://App/Scripts/SceneLoader.gd"
 ProjectUiSoundController="res://Extras/Scenes/Autoloads/ProjectUISoundController.tscn"
 ProjectLevelLoader="res://Extras/Scenes/Autoloads/ProjectLevelLoader.tscn"
 RuntimeLogger="res://Extras/Scripts/RuntimeLogger.gd"
+Globals="*res://App/Globals.gd"
 
 [display]
 
