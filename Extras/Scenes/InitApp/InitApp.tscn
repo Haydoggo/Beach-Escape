@@ -9,3 +9,7 @@ _loading_screen = "res://App/Scenes/LoadingScreen/LoadingScreen.tscn"
 _next_scene = "res://Extras/Scenes/Opening/Opening.tscn"
 
 [node name="DesignNotes" parent="." instance=ExtResource("2_ar830")]
+offset_left = -4.0
+offset_top = -3.0
+offset_right = -4.0
+offset_bottom = -3.0

@@ -9,8 +9,11 @@ enum turret_types { STATIC, ROTATING, AoE }
 var active_target
 var turret_rotation : float # radians from Vector2.RIGHT
 
-var shots_per_magazine = 3
-var shots_remaining = 3
+var shots_per_magazine : int = 3
+var shots_remaining : int = 3
+
+var health_max : float = 100.0
+var health : float = health_max
 
 func _ready():
 	if turret_type == turret_types.ROTATING:
@@ -33,7 +36,7 @@ func shoot():
 		var new_projectile = projectile.instantiate()
 		# TODO: add a targeting lead based on the velocity of the target and projectile
 		add_sibling(new_projectile)
-		new_projectile.global_position = global_position
+		new_projectile.global_position = $MuzzleLocation.global_position
 		if active_target != null and is_instance_valid(active_target):
 			new_projectile.activate(global_position.direction_to(active_target.global_position))
 		else:
