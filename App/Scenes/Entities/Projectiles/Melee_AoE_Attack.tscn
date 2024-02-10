@@ -1,14 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://r5p2nal6foju"]
+[gd_scene load_steps=10 format=3 uid="uid://r5p2nal6foju"]
 
 [ext_resource type="Texture2D" uid="uid://qbpsg0ej0etl" path="res://Assets/Images/hand_slap.png" id="1_4gqbo"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Projectiles/BaseProjectile.gd" id="1_xtkbi"]
+[ext_resource type="AudioStream" uid="uid://bbwmmej2tiaa5" path="res://Assets/SFX/thud.wav" id="3_ximhs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vspf4"]
 radius = 128.0
 
-[sub_resource type="Animation" id="Animation_fo1wc"]
-resource_name = "spawn"
-length = 0.5
+[sub_resource type="Animation" id="Animation_g3twl"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,10 +16,10 @@ tracks/0/path = NodePath("CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -28,10 +28,34 @@ tracks/1/path = NodePath("Sprite2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(220, -701), Vector2(0, 0)]
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio/AudioStreamPlayer2D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_1ou1j"]
@@ -74,8 +98,9 @@ tracks/2/keys = {
 "values": [true, true, false]
 }
 
-[sub_resource type="Animation" id="Animation_g3twl"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_fo1wc"]
+resource_name = "spawn"
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -83,10 +108,10 @@ tracks/0/path = NodePath("CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -95,19 +120,19 @@ tracks/1/path = NodePath("Sprite2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(220, -701), Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/path = NodePath("Audio/AudioStreamPlayer2D:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -119,6 +144,13 @@ _data = {
 "explode": SubResource("Animation_1ou1j"),
 "spawn": SubResource("Animation_fo1wc")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7kcj6"]
+random_pitch = 1.1
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("3_ximhs")
+stream_0/weight = 1.0
 
 [node name="MeleeAoEAttack" type="Area2D"]
 script = ExtResource("1_xtkbi")
@@ -136,6 +168,12 @@ shape = SubResource("CircleShape2D_vspf4")
 libraries = {
 "": SubResource("AnimationLibrary_xx3j8")
 }
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
+stream = SubResource("AudioStreamRandomizer_7kcj6")
+volume_db = -5.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

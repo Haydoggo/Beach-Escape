@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckgmlr182q4qc"]
+[gd_scene load_steps=5 format=3 uid="uid://ckgmlr182q4qc"]
 
 [ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_24p07"]
+[ext_resource type="PackedScene" uid="uid://d112yq11dwo3c" path="res://App/Scenes/Entities/Projectiles/FlagProjectile.tscn" id="2_gw5p6"]
 [ext_resource type="Texture2D" uid="uid://cy2kixeq1vwth" path="res://Assets/Images/Towers/Castle_Flag.png" id="2_pkgns"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vb2k5"]
@@ -8,6 +9,7 @@ radius = 178.0
 height = 662.0
 
 [node name="RotatingTower" instance=ExtResource("1_24p07")]
+projectile = ExtResource("2_gw5p6")
 turret_type = 1
 
 [node name="Sprite2D" parent="." index="0"]
