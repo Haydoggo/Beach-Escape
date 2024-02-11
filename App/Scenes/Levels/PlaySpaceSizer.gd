@@ -10,6 +10,7 @@ const LANE_SCENE = preload("res://App/Scenes/Spawners/Lane.tscn")
 		play_space_size = v
 		size = Vector2(play_space_size) * tile_size
 		for lane in $Lanes.get_children():
+			lane.name = "something" # allows for consistent naming of new nodes
 			lane.queue_free()
 		for i in play_space_size.y:
 			var lane = LANE_SCENE.instantiate()
