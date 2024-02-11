@@ -69,8 +69,8 @@ stream_0/weight = 1.0
 [node name="SeagullTrap" type="Node2D" groups=["EnemyTowers", "Seagulls"]]
 script = ExtResource("1_r6ph7")
 attack_packet = SubResource("Resource_tuo7h")
-move_steps_without_attacking = null
-num_ticks_to_stay_in_each_location = null
+move_steps_without_attacking = 1
+num_ticks_to_stay_in_each_location = 2
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_8dc03")
@@ -103,18 +103,6 @@ position = Vector2(-2.77553e-12, -24)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Seagull/Area2D"]
 shape = SubResource("CircleShape2D_ij52d")
 
-[node name="IdleTimer" type="Timer" parent="."]
-wait_time = 4.0
-one_shot = true
-
-[node name="ReloadTimer" type="Timer" parent="."]
-wait_time = 0.3
-one_shot = true
-
-[node name="IFramesTimer" type="Timer" parent="."]
-wait_time = 0.3
-one_shot = true
-
 [node name="Audio" type="Node2D" parent="."]
 
 [node name="SqwawkSFX" type="AudioStreamPlayer2D" parent="Audio"]
@@ -122,4 +110,3 @@ stream = SubResource("AudioStreamRandomizer_rsqc6")
 volume_db = -8.0
 
 [connection signal="area_entered" from="Path2D/PathFollow2D/Seagull/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

@@ -2,8 +2,8 @@
 
 extends Node2D
 
-enum States { IDLE, MOVING, DYING, DEAD }
-var State = States.IDLE
+enum States { IDLE, MOVING, WAITING, DYING, DEAD }
+var State = States.MOVING
 @export var speed = 150.0
 var direction : int = 1
 @export var attack_packet : AttackPacket
@@ -16,8 +16,8 @@ enum travel_types { WALK, FLY }
 var ticks : int = 0
 var tick_at_last_stop : int = 0
 var tick_at_start_move : int = 0
-@export var move_steps_without_attacking : int = 1
-@export var num_ticks_to_stay_in_each_location : int = 2
+@export var move_steps_without_attacking : int = 2
+@export var tick_delay_between_moves : int = 2
 
 var seagull_position_last_frame : Vector2
 
@@ -73,7 +73,6 @@ func hide_waypoints():
 
 func idle():
 	State = States.IDLE
-	#$IdleTimer.start()
 	$Path2D/PathFollow2D/Seagull.play("idle")
 	
 
@@ -82,8 +81,6 @@ func can_attack():
 	var ready_and_able = true
 	if State in [States.DYING, States.DEAD]:
 		ready_and_able = false
-	#elif not $ReloadTimer.is_stopped:
-		#ready_and_able = false
 	return ready_and_able
 	
 	
@@ -93,17 +90,15 @@ func _on_area_2d_area_entered(area):
 			if area.owner.has_method("_on_hit"):
 				area.owner._on_hit(attack_packet)
 				idle()
-				$ReloadTimer.start()
-
+				
 
 func _on_hit(attackPacket):
-	if $IFramesTimer.is_stopped() and not State in [ States.DYING, States.DEAD ]:
+	if not State in [ States.DYING, States.DEAD ]:
 		health -= attackPacket.damage
 		update_health_bar()
 		if health <= 0:
 			begin_dying()
-		else:
-			$IFramesTimer.start()
+
 
 func update_health_bar():
 	$Path2D/PathFollow2D/Seagull/HealthBar.max_value = health_max
@@ -116,6 +111,7 @@ func begin_dying():
 	queue_free()
 
 func move_next():
+	
 	$Path2D/PathFollow2D/Seagull.play("fly")
 	
 	var block_size = 128
@@ -137,4 +133,5 @@ func _on_move_end():
 
 func _on_tick():
 	if is_top_bird():
+		ticks += 1
 		move_next()
