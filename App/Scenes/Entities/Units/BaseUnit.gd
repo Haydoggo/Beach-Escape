@@ -2,15 +2,18 @@ class_name BaseUnit extends Node2D
 
 @export var unit_info : UnitInfo
 @onready var attack_region: Area2D = $AttackRegion
+@onready var health_component: Node2D = $HealthComponent
+
 
 var path : Array[Vector2] = []
 var path_position := 0 # tracks the index of the path 
-var health : float
 
 
 func _ready() -> void:
 	path = get_path_points(global_position)
-	health = unit_info.health
+	health_component.health_max = unit_info.health
+	health_component.health = unit_info.health
+	health_component.update_health_bar()
 
 
 # override this method for path generation
@@ -55,11 +58,12 @@ func attack_tower(tower):
 
 
 func _on_hit(attack_packet : AttackPacket):
-	health -= attack_packet.damage
+	health_component._on_hit(attack_packet)
 	create_tween().tween_property(self, "modulate", Color.WHITE, 0.3).from(Color.RED)
-	if health <= 0:
-		queue_free()
 
+
+func begin_dying():
+	queue_free()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:

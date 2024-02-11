@@ -6,7 +6,6 @@ var actor
 
 func _ready():
 	actor = owner
-	
 	if owner.get("health_max"):
 		health_max = owner.health_max
 	health = health_max
