@@ -19,7 +19,7 @@ var shots_remaining : int = 3
 @export var health_max : float = 20.0
 var health : float = health_max
 
-enum States { INITIALIZING, ACTIVE, DYING, DEAD }
+enum States { INITIALIZING, DISABLED, ACTIVE, DYING, DEAD }
 var State = States.INITIALIZING
 
 enum WeaponStates { IDLE, RECOIL, RELOADING }
