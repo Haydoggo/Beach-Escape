@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UnitInfo" load_steps=5 format=3 uid="uid://cx6dnvb3ynwbi"]
 
-[ext_resource type="Texture2D" uid="uid://ckqwfoi4guv8i" path="res://Assets/Images/02_Fish_Boot.png" id="1_y8g13"]
+[ext_resource type="Texture2D" uid="uid://ckqwfoi4guv8i" path="res://Assets/Images/Units/02_Fish_Boot.png" id="1_y8g13"]
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_pwn6m"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/UnitInfo.gd" id="3_11hmb"]
 

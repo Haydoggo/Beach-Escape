@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dnpixhbkoqkqa"]
 
-[ext_resource type="Texture2D" uid="uid://bhd2hf4a0u4fd" path="res://Assets/Images/ant.png" id="1_3ucoj"]
+[ext_resource type="Texture2D" uid="uid://bhd2hf4a0u4fd" path="res://Assets/Images/Units/ant.png" id="1_3ucoj"]
 [ext_resource type="Script" path="res://App/Scenes/Props/FidgetyAnt.gd" id="1_knarw"]
 
 [sub_resource type="Animation" id="Animation_juvkk"]

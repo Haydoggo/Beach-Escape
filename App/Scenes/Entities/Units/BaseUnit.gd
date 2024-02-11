@@ -24,30 +24,40 @@ func get_path_points(origin : Vector2) -> Array[Vector2]:
 	return points
 
 
-func move_next():
+func _on_tick():
 	var next_position = global_position + unit_info.path[path_index]
 	
-	var attacking = false
+	var stopped = false
 	tower_check.global_position = next_position
 	tower_check.force_shapecast_update()
 	for i in tower_check.get_collision_count():
 		var col = tower_check.get_collider(i) as Node
-		if col.is_in_group("EnemyTowerHitbox"):
+		if col.is_in_group("BlockerHitbox"):
+			on_blocked()
+			stopped = true
+		elif col.is_in_group("EnemyTowerHitbox"):
 			attack_tower(col.owner)
-			attacking = true
+			stopped = true
 	
-	# movement
-	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_CUBIC)
-	if attacking:
-		tween.tween_property(self, "global_position", next_position, 0.15).set_ease(Tween.EASE_IN)
-		tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
-	else:
-		tween.set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(self, "global_position", next_position, 0.3)
+	if not stopped:
+		move_forward(next_position)
 	
 	path_index += 1
 	path_index %= unit_info.path.size()
+
+
+func move_forward(pos : Vector2):
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "global_position", pos, 0.3)
+
+
+func on_blocked():
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "rotation", 0.1, 0.1)
+	tween.tween_property(self, "rotation", -0.1, 0.2)
+	tween.tween_property(self, "rotation", 0, 0.1)
 
 
 func attack_tower(tower):
@@ -55,6 +65,11 @@ func attack_tower(tower):
 		tower._on_hit(unit_info.melee_attack)
 	swipe_attack_fx.look_at(tower.global_position)
 	swipe_attack_fx.swipe()
+	
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "global_position", tower.global_position, 0.15).set_ease(Tween.EASE_IN)
+	tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
 
 
 func _on_hit(attack_packet : AttackPacket):
@@ -64,12 +79,6 @@ func _on_hit(attack_packet : AttackPacket):
 
 func begin_dying():
 	queue_free()
-
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_M:
-			move_next()
 
 
 func _on_finish_line_crossed(): # signal from FinishZone

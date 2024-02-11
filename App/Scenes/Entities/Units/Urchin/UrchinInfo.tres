@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UnitInfo" load_steps=5 format=3 uid="uid://bs31lf1urfggr"]
 
-[ext_resource type="Texture2D" uid="uid://deg8od0brjbhi" path="res://Assets/Images/03_Urchin.png" id="1_bwd21"]
+[ext_resource type="Texture2D" uid="uid://deg8od0brjbhi" path="res://Assets/Images/Units/03_Urchin.png" id="1_bwd21"]
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_y4iij"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/UnitInfo.gd" id="3_fbb3v"]
 
