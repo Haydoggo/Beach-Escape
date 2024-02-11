@@ -68,7 +68,7 @@ func _on_area_entered(area):
 		if area.get("unit_info") and area.unit_info.name == unit_info.name:
 			State = States.PROCREATING
 			area.State = area.States.PROCREATING
-			print("Procreating")
+			
 			Globals.surviving_units[unit_info.name] += 3 # two parents and one baby
 			
 	

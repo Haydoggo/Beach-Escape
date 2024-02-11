@@ -58,3 +58,9 @@ func _on_area_entered(area):
 			if area.owner.has_method("_on_hit"):
 				area.owner._on_hit(create_attack_packet())
 			explode()
+
+func _on_tick() :
+	# I guess we're supposed to move forward 1 square at a time.
+	# That's a bit weird, but whatever.
+	pass
+	

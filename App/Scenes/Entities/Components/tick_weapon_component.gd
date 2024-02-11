@@ -40,7 +40,7 @@ func _unhandled_input(_event):
 func shoot():
 	tick_at_last_shot = current_tick
 	shots_remaining -= 1
-	print("Shoot")
+	
 	if actor.has_method("shoot"):
 		actor.shoot()
 	await get_tree().create_timer(lag_before_projectile_spawn).timeout
