@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d37cf85kfrq8y"
-path="res://.godot/imported/SFX_SandProjectileHit_01.wav-cd4e790102f2d6480212d92ba321b381.sample"
+path="res://.godot/imported/SFX_SandProjectileHit_01.wav-badd643493278f3adf60558e44e021be.sample"
 
 [deps]
 
-source_file="res://Assets/SFX/SFX_SandProjectileHit_01.wav"
-dest_files=["res://.godot/imported/SFX_SandProjectileHit_01.wav-cd4e790102f2d6480212d92ba321b381.sample"]
+source_file="res://Assets/SFX/Destroy/SFX_SandProjectileHit_01.wav"
+dest_files=["res://.godot/imported/SFX_SandProjectileHit_01.wav-badd643493278f3adf60558e44e021be.sample"]
 
 [params]
 

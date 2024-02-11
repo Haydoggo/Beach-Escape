@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bwaai1fqme3sj"
-path="res://.godot/imported/SFX_CrabDeploy_01.wav-2bc237e997ad36b14d8763e549113810.sample"
+path="res://.godot/imported/SFX_CrabDeploy_01.wav-a9b6a765b1bbff837f186ff0353e4bb8.sample"
 
 [deps]
 
-source_file="res://Assets/SFX/SFX_CrabDeploy_01.wav"
-dest_files=["res://.godot/imported/SFX_CrabDeploy_01.wav-2bc237e997ad36b14d8763e549113810.sample"]
+source_file="res://Assets/SFX/Spawn/SFX_CrabDeploy_01.wav"
+dest_files=["res://.godot/imported/SFX_CrabDeploy_01.wav-a9b6a765b1bbff837f186ff0353e4bb8.sample"]
 
 [params]
 

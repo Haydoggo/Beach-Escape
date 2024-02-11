@@ -1,6 +1,5 @@
 extends BaseUnit
 
-
 func move_forward(position):
 	super.move_forward(position)
 	if (path_index % 2) == 0:

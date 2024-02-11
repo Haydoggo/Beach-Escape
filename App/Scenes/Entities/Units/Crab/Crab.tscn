@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Crab/Crab.gd" id="2_o7mpy"]
 [ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="3_ket8w"]
 [ext_resource type="PackedScene" uid="uid://cg5u8f8i41nqr" path="res://App/Scenes/Props/SwipeAttackFX.tscn" id="5_mrgbq"]
-[ext_resource type="AudioStream" uid="uid://bwaai1fqme3sj" path="res://Assets/SFX/SFX_CrabDeploy_01.wav" id="6_15uyw"]
-[ext_resource type="AudioStream" uid="uid://bjjararbs5o2o" path="res://Assets/SFX/SFX_CrabDeploy_02.wav" id="7_spf48"]
+[ext_resource type="AudioStream" uid="uid://bwaai1fqme3sj" path="res://Assets/SFX/Spawn/SFX_CrabDeploy_01.wav" id="6_15uyw"]
+[ext_resource type="AudioStream" uid="uid://bjjararbs5o2o" path="res://Assets/SFX/Spawn/SFX_CrabDeploy_02.wav" id="7_spf48"]
 
 [sub_resource type="Animation" id="Animation_k13ip"]
 resource_name = "spawn"
@@ -48,13 +48,13 @@ unit_info = ExtResource("3_ket8w")
 scale = Vector2(0.536082, 0.536083)
 texture = ExtResource("2_64ly2")
 
-[node name="Hitbox" parent="." index="2"]
-monitoring = false
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_vhtjx")
 }
+
+[node name="Hitbox" parent="." index="3"]
+monitoring = false
 
 [node name="AttackRegion" parent="." index="4"]
 monitorable = false

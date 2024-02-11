@@ -14,6 +14,8 @@ func _ready() -> void:
 	health_component.health_max = unit_info.health
 	health_component.health = unit_info.health
 	health_component.update_health_bar()
+	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("spawn"):
+		$AnimationPlayer.play("spawn")
 
 
 # override this method for path generation

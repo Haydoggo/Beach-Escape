@@ -1,12 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://jkq4w83413kb"]
+[gd_scene load_steps=11 format=3 uid="uid://jkq4w83413kb"]
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_582dg"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Fish/Fish.gd" id="2_xd35r"]
 [ext_resource type="Texture2D" uid="uid://ckqwfoi4guv8i" path="res://Assets/Images/Units/02_Fish_Boot.png" id="3_lfh3d"]
 [ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="3_tpqs7"]
+[ext_resource type="AudioStream" uid="uid://mubv5tfm4mm" path="res://Assets/SFX/Spawn/SFX_FishDeploy_01.wav" id="5_cdd4e"]
+[ext_resource type="AudioStream" uid="uid://v2gawwhwlaha" path="res://Assets/SFX/Spawn/SFX_FishDeploy_02.wav" id="6_hrgxn"]
+
+[sub_resource type="Animation" id="Animation_yevhs"]
+resource_name = "spawn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio/Spawn:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_whkrj"]
+_data = {
+"spawn": SubResource("Animation_yevhs")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lhysl"]
 radius = 21.5407
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ef8vo"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("5_cdd4e")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_hrgxn")
+stream_1/weight = 1.0
 
 [node name="Fish" instance=ExtResource("1_582dg")]
 script = ExtResource("2_xd35r")
@@ -17,5 +48,15 @@ position = Vector2(-3, 0)
 scale = Vector2(0.763359, 0.763359)
 texture = ExtResource("3_lfh3d")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_whkrj")
+}
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRegion" index="0"]
 shape = SubResource("CircleShape2D_lhysl")
+
+[node name="Audio" type="Node2D" parent="." index="8"]
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="Audio" index="0"]
+stream = SubResource("AudioStreamRandomizer_ef8vo")
