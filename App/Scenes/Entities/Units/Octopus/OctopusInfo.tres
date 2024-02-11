@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UnitInfo" load_steps=3 format=3 uid="uid://che77ris4hjg"]
+
+[ext_resource type="Texture2D" uid="uid://bix3qee4xy824" path="res://Assets/Images/Units/TempOcto.png" id="1_7rax4"]
+[ext_resource type="Script" path="res://App/Scenes/Entities/Units/UnitInfo.gd" id="1_ubwxy"]
+
+[resource]
+script = ExtResource("1_ubwxy")
+name = "Octopus"
+path = PackedVector2Array(128, 0)
+icon = ExtResource("1_7rax4")
+health = 20
+packed_scene_path = "res://App/Scenes/Entities/Units/Octopus/Octopus.tscn"
