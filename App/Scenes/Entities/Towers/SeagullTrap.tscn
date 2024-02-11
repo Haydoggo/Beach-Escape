@@ -17,7 +17,7 @@ damage = 1.0
 
 [sub_resource type="Curve2D" id="Curve2D_8dc03"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 169, 67, 0, 0, 0, 0, 172, 756)
+"points": PackedVector2Array(0, 0, 0, 0, 2.08165e-12, 2.08165e-12, 0, 0, 0, 0, 1, 769)
 }
 point_count = 2
 
@@ -65,16 +65,15 @@ streams_count = 1
 stream_0/stream = ExtResource("9_ncg0j")
 stream_0/weight = 1.0
 
-[node name="SeagullTrap" type="Node2D" groups=["EnemyTowers"]]
+[node name="SeagullTrap" type="Node2D" groups=["EnemyTowers", "Seagulls"]]
 script = ExtResource("1_r6ph7")
 attack_packet = SubResource("Resource_tuo7h")
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2(-168, -70)
 curve = SubResource("Curve2D_8dc03")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(169, 67)
+position = Vector2(2.08165e-12, 2.08165e-12)
 rotation = 0.314161
 rotates = false
 loop = false
