@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://7dr0wg5hwlol"]
+[gd_scene load_steps=7 format=3 uid="uid://7dr0wg5hwlol"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/BaseUnit.gd" id="1_6w2qm"]
 [ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="2_673rk"]
@@ -14,6 +14,8 @@ func _ready() -> void:
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ll5tj"]
 radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rcece"]
 
 [node name="BaseUnit" type="Node2D" groups=["Units"]]
 script = ExtResource("1_6w2qm")
@@ -36,3 +38,10 @@ shape = SubResource("CircleShape2D_ll5tj")
 [node name="AttackRegion" type="Area2D" parent="."]
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_3aksf")]
+
+[node name="TowerCheck" type="ShapeCast2D" parent="."]
+position = Vector2(134, 0)
+shape = SubResource("CircleShape2D_rcece")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false
