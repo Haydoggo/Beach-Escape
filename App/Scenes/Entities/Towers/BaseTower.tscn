@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfet1wnvw1f0e"]
+[gd_scene load_steps=7 format=3 uid="uid://bfet1wnvw1f0e"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/BaseTower.gd" id="1_yj2u2"]
 [ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="3_evm77"]
-[ext_resource type="PackedScene" uid="uid://dxg6fy5je6rwq" path="res://App/Scenes/Entities/Components/pea_shooter_component.tscn" id="4_k7vyk"]
 [ext_resource type="PackedScene" uid="uid://cim8b3k5lkraj" path="res://App/Scenes/Entities/Components/health_component.tscn" id="4_wyb4v"]
 
 [sub_resource type="Gradient" id="Gradient_yfvkm"]
@@ -51,8 +50,6 @@ default_color = Color(1, 1, 0, 1)
 [node name="Components" type="Node2D" parent="."]
 
 [node name="Weapon" type="Node2D" parent="Components"]
-
-[node name="PeaShooterComponent" parent="Components/Weapon" instance=ExtResource("4_k7vyk")]
 
 [node name="HealthComponent" parent="Components" instance=ExtResource("4_wyb4v")]
 

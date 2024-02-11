@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://du1puesoxp0rn"]
+
+[ext_resource type="Script" path="res://App/Scenes/Entities/Components/tick_weapon_component.gd" id="1_i5fwo"]
+[ext_resource type="PackedScene" uid="uid://r5p2nal6foju" path="res://App/Scenes/Entities/Projectiles/Melee_AoE_Attack.tscn" id="2_gbug0"]
+
+[node name="HandSlapComponent" type="Node2D"]
+script = ExtResource("1_i5fwo")
+projectile = ExtResource("2_gbug0")
+
+[node name="MuzzleLocation" type="Marker2D" parent="."]
