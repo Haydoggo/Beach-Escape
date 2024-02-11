@@ -27,6 +27,7 @@ Globals="*res://App/Globals.gd"
 
 window/size/viewport_width=1900
 window/size/viewport_height=1080
+window/size/mode=2
 window/stretch/mode="viewport"
 mouse_cursor/custom_image="res://Assets/Images/UI/00_Cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2(32, 32)
