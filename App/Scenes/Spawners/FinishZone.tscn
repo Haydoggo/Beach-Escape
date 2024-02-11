@@ -1,14 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdrk8mkxgd30e"]
+[gd_scene load_steps=4 format=3 uid="uid://cdrk8mkxgd30e"]
 
 [ext_resource type="Script" path="res://App/Scenes/Spawners/FinishZone.gd" id="1_14yyo"]
-
-[sub_resource type="Gradient" id="Gradient_lpvbb"]
-colors = PackedColorArray(0.254482, 0.305069, 1, 1, 1.81946e-07, 0, 0.418299, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_27gm6"]
-gradient = SubResource("Gradient_lpvbb")
-width = 128
-height = 1080
+[ext_resource type="Texture2D" uid="uid://cppte47udf4ni" path="res://Assets/Images/placeholder/shoreline3.png" id="2_upb64"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxut5"]
 size = Vector2(128, 1080)
@@ -17,19 +10,30 @@ size = Vector2(128, 1080)
 script = ExtResource("1_14yyo")
 
 [node name="Ocean" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_27gm6")
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_upb64")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wxut5")
 
-[node name="Title" type="Label" parent="."]
-offset_left = -56.0
-offset_top = -523.0
-offset_right = 52.0
-offset_bottom = -452.0
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(150, 75)
+offset_left = -66.0
+offset_top = -542.0
+offset_right = 84.0
+offset_bottom = -467.0
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "Escaping
 Survivors"
+horizontal_alignment = 1
 
 [node name="CompletedUnitCounters" type="BoxContainer" parent="."]
 offset_left = -56.0
