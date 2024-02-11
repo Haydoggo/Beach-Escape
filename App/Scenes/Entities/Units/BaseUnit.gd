@@ -31,9 +31,9 @@ func move_next():
 	tower_check.global_position = next_position
 	tower_check.force_shapecast_update()
 	for i in tower_check.get_collision_count():
-		var tower = (tower_check.get_collider(i) as Node).owner
-		if tower and tower.is_in_group("EnemyTowers"):
-			attack_tower(tower)
+		var col = tower_check.get_collider(i) as Node
+		if col.is_in_group("EnemyTowerHitbox"):
+			attack_tower(col.owner)
 			attacking = true
 	
 	# movement

@@ -36,7 +36,7 @@ texture = ExtResource("3_evm77")
 [node name="ActivationTriggers" type="Area2D" parent="."]
 monitorable = false
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." groups=["EnemyTowerHitbox"]]
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
