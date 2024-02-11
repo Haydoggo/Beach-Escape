@@ -8,9 +8,12 @@ const UNIT_BUTTON = preload("res://App/Scenes/Levels/UnitButton.tscn")
 signal last_unit_sent()
 var last_unit_notification_emitted : bool = false
 
-
 func _ready() -> void:
 	Globals.current_level = self
+	add_unit_buttons()
+
+
+func add_unit_buttons():
 	var shortcut_keycode = KEY_1
 	if available_units.size() == 0:
 		generate_available_units_from_global()
@@ -60,3 +63,9 @@ func get_num_units_remaining():
 	for button in %UnitButtons.get_children():
 		total += button.unit_count.count
 	return total
+
+
+func _on_tick_timer_timeout() -> void:
+	get_tree().call_group("Units", "move_next")
+	get_tree().call_group("EnemyTowers", "_on_tick")
+	get_tree().call_group("Lanes", "_on_tick")

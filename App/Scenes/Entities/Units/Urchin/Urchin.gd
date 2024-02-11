@@ -12,7 +12,7 @@ func get_path_points(origin : Vector2) -> Array[Vector2]:
 	return retval
 
 func move():
-	super.move()
+	super.move_next()
 	if (path_position % 2) == 0:
 		create_tween().tween_property(self, "scale:x", 0.5, 0.3).set_ease(Tween.EASE_IN_OUT)\
 		.set_trans(Tween.TRANS_CUBIC)

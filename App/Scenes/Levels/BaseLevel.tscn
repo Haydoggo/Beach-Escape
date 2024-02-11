@@ -1,40 +1,81 @@
-[gd_scene load_steps=11 format=3 uid="uid://de3bma3kyx7em"]
+[gd_scene load_steps=10 format=3 uid="uid://de3bma3kyx7em"]
 
 [ext_resource type="Script" path="res://App/Scenes/Levels/BaseLevel.gd" id="1_cs8tg"]
 [ext_resource type="TileSet" uid="uid://dwo7o7lpg52g0" path="res://App/Scenes/Levels/towers_tile_set.tres" id="1_sr1u4"]
 [ext_resource type="PackedScene" uid="uid://epm2h0e8duc1" path="res://App/Scenes/Spawners/FriendlyUnitSpawner.tscn" id="2_s8wsn"]
-[ext_resource type="PackedScene" uid="uid://dno872yjrj031" path="res://App/Scenes/Spawners/Lanes.tscn" id="3_n7aa5"]
+[ext_resource type="Texture2D" uid="uid://b8p626016sscb" path="res://Assets/Images/Environment/Tile_Background.png" id="3_1px8g"]
+[ext_resource type="Texture2D" uid="uid://bhsasslam54v" path="res://Assets/Images/Environment/Tile_Play_All.png" id="4_66nol"]
+[ext_resource type="Script" path="res://App/Scenes/Levels/PlaySpaceSizer.gd" id="4_xcjau"]
 [ext_resource type="PackedScene" uid="uid://cdrk8mkxgd30e" path="res://App/Scenes/Spawners/FinishZone.tscn" id="5_32fpb"]
-
-[sub_resource type="Gradient" id="Gradient_dd2dx"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0.227273, 0.74026)
-colors = PackedColorArray(0.769852, 0.706129, 0.570918, 1, 0.837574, 0.78306, 0.667648, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_6oy10"]
-frequency = 0.0145
-fractal_type = 2
-fractal_octaves = 1
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qpn3i"]
-seamless = true
-color_ramp = SubResource("Gradient_dd2dx")
-noise = SubResource("FastNoiseLite_6oy10")
-
-[sub_resource type="Gradient" id="Gradient_1g8yw"]
-offsets = PackedFloat32Array(0.642857, 1)
-colors = PackedColorArray(0.656845, 0.590392, 0.448817, 1, 0.837574, 0.78306, 0.667648, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rbnnt"]
-gradient = SubResource("Gradient_1g8yw")
-width = 128
-height = 128
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-metadata/_snap_enabled = true
+[ext_resource type="Texture2D" uid="uid://cfn46omcxn1xu" path="res://Assets/Images/Environment/Border.png" id="5_pgywy"]
+[ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="5_uupqf"]
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_cs8tg")
+
+[node name="TickTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="PlaySpace" type="ReferenceRect" parent="."]
+offset_left = 518.0
+offset_top = 134.0
+offset_right = 1542.0
+offset_bottom = 646.0
+mouse_filter = 2
+border_width = 4.0
+script = ExtResource("4_xcjau")
+metadata/_edit_group_ = true
+
+[node name="Scaler" type="Control" parent="PlaySpace"]
+editor_description = "Just a node with a scale property set
+"
+layout_mode = 1
+anchor_right = 15.25
+anchor_bottom = 15.25
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.0655738, 0.0655738)
+mouse_filter = 2
+
+[node name="Tiles" type="TextureRect" parent="PlaySpace/Scaler"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_66nol")
+stretch_mode = 1
+
+[node name="Border" type="NinePatchRect" parent="PlaySpace/Scaler"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_pgywy")
+patch_margin_left = 1952
+patch_margin_top = 1952
+patch_margin_right = 1952
+patch_margin_bottom = 1952
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="Lanes" type="Node2D" parent="PlaySpace"]
+
+[node name="Lane" parent="PlaySpace/Lanes" instance=ExtResource("5_uupqf")]
+position = Vector2(64, 64)
+
+[node name="Lane2" parent="PlaySpace/Lanes" instance=ExtResource("5_uupqf")]
+position = Vector2(64, 192)
+
+[node name="Lane3" parent="PlaySpace/Lanes" instance=ExtResource("5_uupqf")]
+position = Vector2(64, 320)
+
+[node name="Lane4" parent="PlaySpace/Lanes" instance=ExtResource("5_uupqf")]
+position = Vector2(64, 448)
 
 [node name="Towers" type="TileMap" parent="."]
 position = Vector2(404, 10)
@@ -54,16 +95,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("NoiseTexture2D_qpn3i")
-stretch_mode = 1
-
-[node name="Tiles" type="TextureRect" parent="Background"]
-offset_left = 528.0
-offset_top = 138.0
-offset_right = 1542.0
-offset_bottom = 645.0
-texture = SubResource("GradientTexture2D_rbnnt")
-stretch_mode = 1
+texture = ExtResource("3_1px8g")
+expand_mode = 1
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -84,24 +117,9 @@ layout_mode = 2
 vertical = true
 
 [node name="FriendlyUnitSpawner" parent="." node_paths=PackedStringArray("lanes_container") instance=ExtResource("2_s8wsn")]
-lanes_container = NodePath("../Lanes")
-
-[node name="Lanes" parent="." instance=ExtResource("3_n7aa5")]
-position = Vector2(591, 201)
-
-[node name="Lane1" parent="Lanes" index="0"]
-position = Vector2(0, 0)
-
-[node name="Lane2" parent="Lanes" index="1"]
-position = Vector2(0, 128)
-
-[node name="Lane3" parent="Lanes" index="2"]
-position = Vector2(0, 256)
-
-[node name="Lane4" parent="Lanes" index="3"]
-position = Vector2(0, 384)
+lanes_container = NodePath("../PlaySpace/Lanes")
 
 [node name="FinishZone" parent="." instance=ExtResource("5_32fpb")]
 position = Vector2(1836, 542)
 
-[editable path="Lanes"]
+[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

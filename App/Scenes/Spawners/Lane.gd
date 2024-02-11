@@ -18,19 +18,19 @@ func delayed_ready():
 		printerr("Lane get current_level from Globals?")
 
 func spawn(unit_info : UnitInfo):
-	var new_unit = unit_info.packed_scene.instantiate()
+	var new_unit = unit_info.packed_scene.instantiate() as BaseUnit
 	assert( $QueuedUnits.get_child_count() > 0)
 	add_child(new_unit)
 	new_unit.global_position = global_position
 	$QueuedUnits.get_child(0).queue_free() # remove the icon
 	unit_spawned.emit()
+	var tween = new_unit.create_tween()
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(new_unit, "scale", Vector2.ONE, 0.3).from(Vector2.ZERO)
 
-func _on_spawn_timer_timeout():
+func _on_tick():
 	if queued_units.size() > 0:
 		spawn(queued_units.pop_front())
-	for child in get_children():
-		if child is BaseUnit:
-			child.move()
 
 
 func queue_spawn(unit_info : UnitInfo):
