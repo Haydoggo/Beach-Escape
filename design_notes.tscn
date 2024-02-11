@@ -59,11 +59,11 @@ wrap_mode = 1
 [node name="Summary" type="TextEdit" parent="."]
 custom_minimum_size = Vector2(350, 250)
 layout_mode = 0
-offset_left = 359.0
-offset_top = 23.0
-offset_right = 849.0
-offset_bottom = 365.0
-text = "REVERSE TOWER-DEFENSE GAME:
+offset_left = 365.0
+offset_top = -1.0
+offset_right = 855.0
+offset_bottom = 341.0
+text = "REVERSE TOWER-DEFENSE GAME with Crypt of the NecroDancer step-based movment:
 
 You are a group of sea creatures in a sand castle undergoing a siege by a human. Your objective is to get the sea creatures out of the castle, which have various movement patterns that must be accommodated for. In your way are various human-made towers (siege weapons, etc), which 1. can rotate (not always?), 2. have limited ammunition (not always?), and 3. have variable attack patterns (range, area, firing speed, damage, etc)."
 wrap_mode = 1
@@ -71,10 +71,10 @@ wrap_mode = 1
 [node name="Resources" type="TextEdit" parent="."]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 0
-offset_left = 443.0
-offset_top = 709.0
-offset_right = 872.0
-offset_bottom = 825.0
+offset_left = 455.0
+offset_top = 623.0
+offset_right = 884.0
+offset_bottom = 739.0
 text = "Resources:
 Repo: https://github.com/Haydoggo/Beach-Escape
 "
@@ -102,4 +102,20 @@ Unit requirements for level win (eg get the goldfish to the end)
 Crab has a longer walking pattern
 Drying out when not moving
 seasgulls go faaster"
+wrap_mode = 1
+
+[node name="Contracts" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 771.0
+offset_right = 857.0
+offset_bottom = 1046.0
+text = "CONTRACTS:
+
+Player Creeps and Enemy Towers implement _on_hit(AttackPacket)
+Player Creeps in group \"Units\"
+Enemy Towers in group \"EnemyTowers\"
+
+Anything moving or attacking needs _on_tick() method and should respect timing.
+"
 wrap_mode = 1
