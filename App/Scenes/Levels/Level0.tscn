@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://w58j2xcp2kje"]
+[gd_scene load_steps=10 format=3 uid="uid://w58j2xcp2kje"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_f45ew"]
 [ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_2vs3p"]
 [ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="3_ta7kf"]
 [ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="4_eqqws"]
 [ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="5_sm4tc"]
+[ext_resource type="Resource" uid="uid://bjvlagw6io1pi" path="res://App/Scenes/Entities/Units/Seahorse/SeahorseInfo.tres" id="5_tf8ib"]
 
 [sub_resource type="Resource" id="Resource_wwftx"]
 resource_name = "1 Crab"
@@ -18,12 +19,19 @@ script = ExtResource("2_2vs3p")
 unit_info = ExtResource("4_eqqws")
 count = 5
 
+[sub_resource type="Resource" id="Resource_boik5"]
+resource_name = "2 Seahorse"
+script = ExtResource("2_2vs3p")
+unit_info = ExtResource("5_tf8ib")
+count = 2
+
 [node name="BaseLevel" instance=ExtResource("1_f45ew")]
-available_units = Array[ExtResource("2_2vs3p")]([SubResource("Resource_wwftx"), SubResource("Resource_hn1nb")])
+available_units = Array[ExtResource("2_2vs3p")]([SubResource("Resource_wwftx"), SubResource("Resource_hn1nb"), SubResource("Resource_boik5")])
 
 [node name="PlaySpace" parent="." index="1"]
 offset_right = 1798.0
 offset_bottom = 1158.0
+texture_tile_size = 1952
 
 [node name="Lane5" parent="PlaySpace/Lanes" index="4" instance=ExtResource("5_sm4tc")]
 position = Vector2(64, 576)
