@@ -12,6 +12,7 @@ damage = 20.0
 [resource]
 script = ExtResource("1_3vw8l")
 name = "Shark"
+description = "Why is there even a shark on the beach, anyways?! Everyone off the beach!"
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_thifv")
 health = 20

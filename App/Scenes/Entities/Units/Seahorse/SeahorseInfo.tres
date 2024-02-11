@@ -12,6 +12,7 @@ damage = 2.0
 [resource]
 script = ExtResource("3_mwuql")
 name = "Seahorse"
+description = "Seahorses embody the spirit of the medieval chess knight."
 path = PackedVector2Array(256, -128, 256, 128)
 icon = ExtResource("1_e1yys")
 health = 5

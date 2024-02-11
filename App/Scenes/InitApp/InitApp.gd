@@ -11,6 +11,7 @@ func _load_next_scene():
 		get_tree().change_scene_to_file(_next_scene)
 
 func _ready():
+	$DesignNotes.hide()
 	AppLog.app_opened()
 	AppSettings.set_from_config_and_window(get_window())
 	SceneLoader.set_loading_screen(_loading_screen)

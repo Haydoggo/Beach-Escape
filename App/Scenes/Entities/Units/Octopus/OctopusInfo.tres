@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_ubwxy")
 name = "Octopus"
+description = "We call him, Grabby!"
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_7rax4")
 health = 20

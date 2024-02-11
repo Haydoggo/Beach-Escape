@@ -12,7 +12,7 @@ damage = 10.0
 [resource]
 script = ExtResource("3_fbb3v")
 name = "Urchin"
-description = ""
+description = "Stepping on these can be painful."
 path = PackedVector2Array(128, 0, 0, 0)
 icon = ExtResource("1_bwd21")
 health = 20

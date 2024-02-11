@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://App/Scenes/GUI/button_hover_text_popout.gd" id="1_2cdgj"]
 
 [node name="ButtonHoverTextPopout" type="Panel"]
-custom_minimum_size = Vector2(800, 128)
+custom_minimum_size = Vector2(1024, 128)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -17,7 +17,7 @@ grow_vertical = 0
 script = ExtResource("1_2cdgj")
 
 [node name="UnitDescription" type="Label" parent="."]
-custom_minimum_size = Vector2(800, 128)
+custom_minimum_size = Vector2(1024, 128)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
