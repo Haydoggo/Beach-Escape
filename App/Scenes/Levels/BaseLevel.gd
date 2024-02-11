@@ -12,6 +12,9 @@ var last_unit_notification_emitted : bool = false
 func _ready() -> void:
 	Globals.current_level = self
 	var shortcut_keycode = KEY_1
+	if available_units.size() == 0:
+		generate_available_units_from_global()
+
 	for unit_count in available_units:
 		add_unit_button(unit_count, shortcut_keycode)
 		shortcut_keycode += 1
@@ -19,6 +22,13 @@ func _ready() -> void:
 	if has_node("FinishZone") and $FinishZone.has_method("_on_last_unit_sent"):
 		last_unit_sent.connect($FinishZone._on_last_unit_sent)
 
+func generate_available_units_from_global():
+	for unit_type in Globals.unit_metadata:
+		var new_unit_count = UnitCount.new()
+		new_unit_count.unit_info = unit_type
+		new_unit_count.count = Globals.surviving_units[unit_type.name]
+		available_units.push_back(new_unit_count)
+		
 
 func add_unit_button(unit_count : UnitCount, shortcut_keycode : int):
 	var button = UNIT_BUTTON.instantiate()

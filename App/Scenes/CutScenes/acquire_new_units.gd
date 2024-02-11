@@ -8,6 +8,7 @@ func _ready():
 		while (num_remaining > 0):
 			num_remaining -= 1
 			spawn_unit(unit_metadata)
+		Globals.surviving_units[unit_metadata.name] = 0
 	
 func spawn_unit(unit_metadata):
 	var new_unit = load("res://App/Scenes/Entities/Units/Procreator.tscn").instantiate()
@@ -15,8 +16,4 @@ func spawn_unit(unit_metadata):
 	new_unit.global_position = Vector2(randf_range(10, screen_size.x-10), randf_range(10, screen_size.y-10))
 	new_unit.activate(unit_metadata)
 	add_child(new_unit)
-	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

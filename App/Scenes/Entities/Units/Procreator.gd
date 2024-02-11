@@ -44,13 +44,13 @@ func activate(unitInfo):
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if State == States.DRAGGING:
 		global_position = get_global_mouse_position()
 		if Input.is_action_just_released("drag_procreator"):
 			State = States.IDLE
 			
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if State == States.HOVER:
 		if Input.is_action_just_pressed("drag_procreator"):
 			State = States.DRAGGING
@@ -63,6 +63,7 @@ func _on_area_entered(area):
 			State = States.PROCREATING
 			area.State = area.States.PROCREATING
 			print("Procreating")
+			Globals.surviving_units[unit_info.name] += 3 # two parents and one baby
 			
 	
 

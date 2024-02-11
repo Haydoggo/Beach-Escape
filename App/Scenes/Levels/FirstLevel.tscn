@@ -1,32 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bge658ih8ch4w"]
+[gd_scene load_steps=3 format=3 uid="uid://bge658ih8ch4w"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_0v084"]
-[ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_oqp12"]
-[ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="3_s82pn"]
-[ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="4_w02ti"]
-[ext_resource type="Resource" uid="uid://bs31lf1urfggr" path="res://App/Scenes/Entities/Units/Urchin/UrchinInfo.tres" id="5_klo7h"]
 [ext_resource type="PackedScene" uid="uid://ncccgvmbl1j5" path="res://App/Scenes/Entities/Towers/SeagullTrap.tscn" id="6_i0eg2"]
 
-[sub_resource type="Resource" id="Resource_xd3nr"]
-resource_name = "20 Fish"
-script = ExtResource("2_oqp12")
-unit_info = ExtResource("3_s82pn")
-count = 20
-
-[sub_resource type="Resource" id="Resource_0vho7"]
-resource_name = "10 Crab"
-script = ExtResource("2_oqp12")
-unit_info = ExtResource("4_w02ti")
-count = 10
-
-[sub_resource type="Resource" id="Resource_geann"]
-resource_name = "6 Urchin"
-script = ExtResource("2_oqp12")
-unit_info = ExtResource("5_klo7h")
-count = 6
-
 [node name="BaseLevel" instance=ExtResource("1_0v084")]
-available_units = Array[ExtResource("2_oqp12")]([SubResource("Resource_xd3nr"), SubResource("Resource_0vho7"), SubResource("Resource_geann")])
 
 [node name="Towers" parent="." index="0"]
 position = Vector2(404, 7)
