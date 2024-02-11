@@ -4,6 +4,7 @@ class_name BaseUnit extends Node2D
 @onready var attack_region: Area2D = $AttackRegion
 @onready var health_component: Node2D = $HealthComponent
 @onready var tower_check: ShapeCast2D = $TowerCheck
+@onready var swipe_attack_fx: Path2D = $SwipeAttackFX
 
 
 var path_index := 0 # tracks the index of the path 
@@ -27,10 +28,11 @@ func move_next():
 	var next_position = global_position + unit_info.path[path_index]
 	
 	var attacking = false
+	tower_check.global_position = next_position
 	tower_check.force_shapecast_update()
 	for i in tower_check.get_collision_count():
 		var tower = (tower_check.get_collider(i) as Node).owner
-		if tower.is_in_group("EnemyTowers"):
+		if tower and tower.is_in_group("EnemyTowers"):
 			attack_tower(tower)
 			attacking = true
 	
@@ -43,31 +45,16 @@ func move_next():
 	else:
 		tween.set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(self, "global_position", next_position, 0.3)
-		tween.tween_callback(_on_move_end)
 	
 	path_index += 1
 	path_index %= unit_info.path.size()
 
 
-# can override for custom attack patterns
-func _on_move_end():
-	return
-	attack()
-
-
-func attack():
-	for area in attack_region.get_overlapping_areas():
-		var tower #: BaseTower <-- They're not all BaseTowers anymore
-		if area.owner and area.owner.is_in_group("EnemyTowers"):
-			tower = area.owner
-		else:
-			continue
-		attack_tower(tower)
-
-
 func attack_tower(tower):
 	if tower.has_method("_on_hit"):
 		tower._on_hit(unit_info.melee_attack)
+	swipe_attack_fx.look_at(tower.global_position)
+	swipe_attack_fx.swipe()
 
 
 func _on_hit(attack_packet : AttackPacket):
