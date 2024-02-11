@@ -41,7 +41,7 @@ shape = SubResource("CircleShape2D_ll5tj")
 [node name="HealthComponent" parent="." instance=ExtResource("3_3aksf")]
 
 [node name="TowerCheck" type="ShapeCast2D" parent="."]
-position = Vector2(134, 0)
+position = Vector2(128, 0)
 enabled = false
 shape = SubResource("CircleShape2D_rcece")
 target_position = Vector2(0, 0)

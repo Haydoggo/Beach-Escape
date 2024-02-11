@@ -30,10 +30,7 @@ func _on_tick():
 	var next_position = global_position + unit_info.path[path_index]
 	
 	var stopped = false
-	tower_check.global_position = next_position
-	tower_check.force_shapecast_update()
-	for i in tower_check.get_collision_count():
-		var col = tower_check.get_collider(i) as Node
+	for col in get_objects_in_path(next_position):
 		if col.is_in_group("BlockerHitbox"):
 			on_blocked()
 			stopped = true
@@ -46,6 +43,15 @@ func _on_tick():
 	
 	path_index += 1
 	path_index %= unit_info.path.size()
+
+
+func get_objects_in_path(next_position) -> Array[Node]:
+	var retval : Array[Node] = []
+	tower_check.global_position = next_position
+	tower_check.force_shapecast_update()
+	for i in tower_check.get_collision_count():
+		retval.append(tower_check.get_collider(i))
+	return retval
 
 
 func move_forward(pos : Vector2):

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="UnitInfo" load_steps=5 format=3 uid="uid://cniawdoeb00bm"]
+
+[ext_resource type="Script" path="res://App/Scenes/Entities/Units/UnitInfo.gd" id="1_d5e6e"]
+[ext_resource type="Texture2D" uid="uid://tetlcu8xl653" path="res://Assets/Images/Units/TempSeaSlug.png" id="1_mwm1l"]
+[ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_4wt3s"]
+
+[sub_resource type="Resource" id="Resource_7eqqu"]
+script = ExtResource("2_4wt3s")
+damage_type = 0
+damage = 100.0
+
+[resource]
+script = ExtResource("1_d5e6e")
+name = "Sea Slug"
+path = PackedVector2Array(128, 0)
+icon = ExtResource("1_mwm1l")
+health = 1
+melee_attack = SubResource("Resource_7eqqu")
+packed_scene_path = "res://App/Scenes/Entities/Units/SeaSlug/SeaSlug.tscn"
