@@ -8,3 +8,9 @@
 script = ExtResource("1_yww1j")
 game_scene_path = "res://App/Scenes/CutScenes/animatic_cutscene_1.tscn"
 options_packed_scene = ExtResource("2_3vb8r")
+
+[node name="Title" parent="MarginContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="0"]
+text = "Beach Escape"
+
+[node name="SubTitle" parent="MarginContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="1"]
+text = "The Quest for Peace"

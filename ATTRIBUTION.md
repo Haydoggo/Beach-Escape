@@ -1,6 +1,13 @@
 # Attribution
 ## Collaborators
 
+## Diarmuid - Lead Design
+## Hayden - Code
+## plexsoup - Code
+## KingRonnocJ - Audio
+## Bob the Seagull - Visual Art
+
+
 ### Godot Game Template
 Author: [Marek Belski](https://github.com/Maaack)  
 Source: [github: Godot-Game-Template](https://github.com/Maaack/Godot-Game-Template)  
