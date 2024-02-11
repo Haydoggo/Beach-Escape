@@ -16,7 +16,7 @@ func _toggled(toggled_on: bool) -> void:
 "
 
 [node name="UnitButton" type="MarginContainer"]
-custom_minimum_size = Vector2(0, 155)
+custom_minimum_size = Vector2(120, 155)
 offset_right = 120.0
 offset_bottom = 154.0
 script = ExtResource("1_bfee0")
