@@ -28,18 +28,26 @@ func move_next():
 	var next_position = global_position + unit_info.path[path_index]
 	
 	var attacking = false
+	var blocked = false
 	tower_check.global_position = next_position
 	tower_check.force_shapecast_update()
 	for i in tower_check.get_collision_count():
 		var col = tower_check.get_collider(i) as Node
-		if col.is_in_group("EnemyTowerHitbox"):
+		if col.is_in_group("BlockerHitbox"):
+			blocked = true
+		elif col.is_in_group("EnemyTowerHitbox"):
 			attack_tower(col.owner)
 			attacking = true
 	
 	# movement
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
-	if attacking:
+	if blocked:
+		tween.set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, "rotation", 0.1, 0.1)
+		tween.tween_property(self, "rotation", -0.1, 0.2)
+		tween.tween_property(self, "rotation", 0, 0.1)
+	elif attacking:
 		tween.tween_property(self, "global_position", next_position, 0.15).set_ease(Tween.EASE_IN)
 		tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
 	else:

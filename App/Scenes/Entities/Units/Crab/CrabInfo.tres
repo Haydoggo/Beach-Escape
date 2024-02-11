@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UnitInfo" load_steps=5 format=3 uid="uid://4y1n7vpixqx4"]
 
-[ext_resource type="Texture2D" uid="uid://dalyydqj0idie" path="res://Assets/Images/04_Crab_Basic.png" id="1_nwo8n"]
+[ext_resource type="Texture2D" uid="uid://dalyydqj0idie" path="res://Assets/Images/Units/04_Crab_Basic.png" id="1_nwo8n"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/UnitInfo.gd" id="1_wn36o"]
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_gcn07"]
 

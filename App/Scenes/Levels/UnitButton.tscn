@@ -1,26 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://dima6utmidwdv"]
+[gd_scene load_steps=6 format=3 uid="uid://dima6utmidwdv"]
 
 [ext_resource type="Script" path="res://App/Scenes/Levels/UnitButton.gd" id="1_bfee0"]
 [ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="2_2afb0"]
+[ext_resource type="Texture2D" uid="uid://b0y2rxixafef1" path="res://Assets/Images/UI/01_Unit_Box.png" id="2_veqpy"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_rv8sc"]
 resource_local_to_scene = false
 
+[sub_resource type="GDScript" id="GDScript_q5otx"]
+resource_name = "ButtonHighlight"
+script/source = "extends TextureButton
+
+func _toggled(toggled_on: bool) -> void:
+	$Line2D.visible = toggled_on
+"
+
 [node name="UnitButton" type="MarginContainer"]
-offset_right = 83.0
-offset_bottom = 113.0
+custom_minimum_size = Vector2(0, 155)
+offset_right = 120.0
+offset_bottom = 154.0
 script = ExtResource("1_bfee0")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="TextureButton" parent="."]
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
 button_group = SubResource("ButtonGroup_rv8sc")
+texture_normal = ExtResource("2_veqpy")
+ignore_texture_size = true
+stretch_mode = 0
+script = SubResource("GDScript_q5otx")
+
+[node name="Line2D" type="Line2D" parent="Button"]
+visible = false
+points = PackedVector2Array(0, 0, 120, 0, 120, 155, 0, 155, 0, 0)
+joint_mode = 2
+end_cap_mode = 2
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 2
 mouse_filter = 2
 vertical = true
+
+[node name="Control" type="Control" parent="BoxContainer"]
+custom_minimum_size = Vector2(0, 20.62)
+layout_mode = 2
 
 [node name="ButtonIcon" type="TextureRect" parent="BoxContainer"]
 unique_name_in_owner = true
@@ -31,9 +55,12 @@ size_flags_vertical = 6
 mouse_filter = 2
 texture = ExtResource("2_2afb0")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="ButtonLabel" type="Label" parent="BoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "100"
 horizontal_alignment = 1
+vertical_alignment = 1

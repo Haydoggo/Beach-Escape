@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dtt844ghwbujy"]
 
 [ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_c6l8k"]
-[ext_resource type="Texture2D" uid="uid://c36mnro4lh7jk" path="res://Assets/Images/hand_shadow.png" id="3_0ta6l"]
+[ext_resource type="Texture2D" uid="uid://c36mnro4lh7jk" path="res://Assets/Images/Units/hand_shadow.png" id="3_0ta6l"]
 [ext_resource type="PackedScene" uid="uid://dnpixhbkoqkqa" path="res://App/Scenes/Props/FidgetyAnt.tscn" id="4_0jmv3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3p6bb"]
