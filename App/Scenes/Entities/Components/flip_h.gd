@@ -5,7 +5,7 @@ var position_last_frame : Vector2 = Vector2.ZERO
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if position_last_frame.x < global_position.x:
 		flip_h = false
 	elif position_last_frame.x > global_position.x:

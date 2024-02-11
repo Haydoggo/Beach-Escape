@@ -40,6 +40,8 @@ func add_unit_button(unit_count : UnitCount, shortcut_keycode : int):
 	button.icon = unit_count.unit_info.icon
 	button.unit_count = unit_count
 	button.pressed.connect(button_pressed.bind(button))
+	button.get_node("Button").mouse_entered.connect(button_hovered.bind(unit_count.unit_info))
+	button.get_node("Button").mouse_exited.connect(button_mouse_exited)
 	unit_count.count_updated.connect(func():
 		button.text = str(unit_count.count))
 	button.shortcut_keycode = shortcut_keycode
@@ -48,6 +50,11 @@ func add_unit_button(unit_count : UnitCount, shortcut_keycode : int):
 func button_pressed(button : UnitButton):
 	$FriendlyUnitSpawner.current_unit_count = button.unit_count
 	
+func button_hovered(unit_info : UnitInfo):
+	%ButtonHoverTextPopout.popup( unit_info.description )
+
+func button_mouse_exited():
+	%ButtonHoverTextPopout.close()
 
 func _on_unit_spawned(): # signal comes from Lanes
 	if get_num_units_remaining() == 0:

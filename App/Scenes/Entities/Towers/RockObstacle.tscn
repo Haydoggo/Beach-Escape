@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3wt4bpu0wwo1"]
+[gd_scene load_steps=7 format=3 uid="uid://d3wt4bpu0wwo1"]
 
 [ext_resource type="Texture2D" uid="uid://ckwrie1du8twt" path="res://Assets/Images/placeholder/rock.png" id="1_8hgpc"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/RockObstacle.gd" id="1_uo1ww"]
-[ext_resource type="PackedScene" uid="uid://cim8b3k5lkraj" path="res://App/Scenes/Entities/Components/health_component.tscn" id="3_axcw4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0g15"]
 size = Vector2(64, 64)
@@ -75,9 +74,6 @@ script = ExtResource("1_uo1ww")
 position = Vector2(0, -33)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_8hgpc")
-
-[node name="HealthComponent" parent="." instance=ExtResource("3_axcw4")]
-position = Vector2(0, -20)
 
 [node name="Hitbox" type="Area2D" parent="." groups=["BlockerHitbox"]]
 

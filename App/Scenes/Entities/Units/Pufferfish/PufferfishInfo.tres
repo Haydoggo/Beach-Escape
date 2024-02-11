@@ -12,6 +12,7 @@ damage = 5.0
 [resource]
 script = ExtResource("1_ojimx")
 name = "Pufferfish"
+description = "Puffs up like a balloon, obviously. It's a pufferfish."
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_ah5uq")
 health = 10

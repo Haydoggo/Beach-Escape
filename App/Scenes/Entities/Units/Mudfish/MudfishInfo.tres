@@ -12,6 +12,7 @@ damage = 5.0
 [resource]
 script = ExtResource("1_ulce5")
 name = "Mudfish"
+description = "The timid mudfish, hides under the mud for brief intervals."
 path = PackedVector2Array(128, 0, 0, 0, 128, 0, 128, 0)
 icon = ExtResource("1_e521y")
 health = 5

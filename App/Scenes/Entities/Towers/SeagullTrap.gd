@@ -121,7 +121,7 @@ func move_next():
 	var block_size = 128
 	
 	var tween = create_tween()
-	var path = $Path2D
+	#var path = $Path2D
 	var progress = $Path2D/PathFollow2D.progress
 	tween.tween_property($Path2D/PathFollow2D, "progress", progress+(direction * block_size), 0.3).set_ease(Tween.EASE_IN_OUT)\
 	.set_trans(Tween.TRANS_CUBIC)
