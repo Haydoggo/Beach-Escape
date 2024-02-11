@@ -27,24 +27,19 @@ func get_path_points(origin : Vector2) -> Array[Vector2]:
 func _on_tick():
 	var next_position = global_position + unit_info.path[path_index]
 	
-	var attacking = false
-	var blocked = false
+	var stopped = false
 	tower_check.global_position = next_position
 	tower_check.force_shapecast_update()
 	for i in tower_check.get_collision_count():
 		var col = tower_check.get_collider(i) as Node
 		if col.is_in_group("BlockerHitbox"):
-			blocked = true
+			on_blocked()
+			stopped = true
 		elif col.is_in_group("EnemyTowerHitbox"):
 			attack_tower(col.owner)
-			attacking = true
-
-	# movement
-	if blocked:
-		on_blocked()
-	elif attacking:
-		attack_forward(next_position)
-	else:
+			stopped = true
+	
+	if not stopped:
 		move_forward(next_position)
 	
 	path_index += 1
@@ -55,13 +50,6 @@ func move_forward(pos : Vector2):
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "global_position", pos, 0.3)
-
-
-func attack_forward(pos):
-	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(self, "global_position", pos, 0.15).set_ease(Tween.EASE_IN)
-	tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
 
 
 func on_blocked():
@@ -77,6 +65,11 @@ func attack_tower(tower):
 		tower._on_hit(unit_info.melee_attack)
 	swipe_attack_fx.look_at(tower.global_position)
 	swipe_attack_fx.swipe()
+	
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "global_position", tower.global_position, 0.15).set_ease(Tween.EASE_IN)
+	tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
 
 
 func _on_hit(attack_packet : AttackPacket):
