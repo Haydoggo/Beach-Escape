@@ -131,13 +131,16 @@ func move_next():
 	var path = $Path2D
 	var curve = path.curve
 	var progress = $Path2D/PathFollow2D.progress
-	tween.tween_property($Path2D/PathFollow2D, "progress", progress+block_size, 0.3).set_ease(Tween.EASE_IN_OUT)\
+	tween.tween_property($Path2D/PathFollow2D, "progress", progress+(direction * block_size), 0.3).set_ease(Tween.EASE_IN_OUT)\
 	.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_callback(_on_move_end)
 
 
 func _on_move_end():
-	pass
+	if direction == 1 and $Path2D/PathFollow2D.get_progress_ratio() > 0.9:
+		direction = -1
+	elif direction == -1 and $Path2D/PathFollow2D.get_progress_ratio() < 0.1:
+		direction = 1
 
 func _on_tick():
 	if is_top_bird():
