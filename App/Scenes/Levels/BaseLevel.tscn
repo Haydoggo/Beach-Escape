@@ -15,6 +15,7 @@
 script = ExtResource("1_cs8tg")
 
 [node name="TickTimer" type="Timer" parent="."]
+wait_time = 0.625
 autostart = true
 
 [node name="PlaySpace" type="ReferenceRect" parent="."]

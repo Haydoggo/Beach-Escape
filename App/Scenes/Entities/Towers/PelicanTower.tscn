@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd6hxhux1nflh"]
+
+[ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_311mb"]
+[ext_resource type="Texture2D" uid="uid://bmvndhs2hyj2v" path="res://Assets/Images/placeholder/pelican.png" id="2_rr62w"]
+[ext_resource type="PackedScene" uid="uid://dqsia6ajsrmdm" path="res://App/Scenes/Entities/Components/pelican_beak_fish_grabber.tscn" id="3_jqu5w"]
+
+[node name="PelicanTower" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_311mb")]
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_rr62w")
+hframes = 2
+
+[node name="PelicanBeakFishGrabber" parent="Components/Weapon" index="0" instance=ExtResource("3_jqu5w")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]

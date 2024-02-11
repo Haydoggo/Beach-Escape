@@ -117,5 +117,7 @@ Player Creeps in group \"Units\"
 Enemy Towers in group \"EnemyTowers\"
 
 Anything moving or attacking needs _on_tick() method and should respect timing.
+
+To block player creeps, tower hitboxes must be in group \"BlockerHitbox\" or \"EnemyTowerHitbox\"
 "
 wrap_mode = 1
