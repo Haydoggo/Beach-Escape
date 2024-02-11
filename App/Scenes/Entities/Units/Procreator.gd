@@ -36,6 +36,12 @@ func tween_offscreen():
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", global_position + Vector2.RIGHT * 1900, 0.67)
 
+func can_procreate():
+	if State in [States.IDLE, States.HOVER, States.DRAGGING]:
+		return true
+	else:
+		return false
+		
 
 func activate(unitInfo):
 	unit_info = unitInfo

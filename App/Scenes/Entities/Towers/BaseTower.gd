@@ -148,4 +148,8 @@ func begin_dying():
 		tween.tween_property($Sprite2D, "scale", Vector2(current_scale.x, 0.01), 0.5)
 		await tween.finished
 	queue_free()
-	
+
+
+func _on_tick(): # signal from level to synchronize tower shots
+	# TODO: replace timers with this signal
+	pass
