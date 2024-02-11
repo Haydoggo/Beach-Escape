@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dqwo2aaci115b"]
 
 [ext_resource type="Theme" uid="uid://6h5f7sqktd67" path="res://App/Themes/animatic_theme.tres" id="1_a6s3w"]
-[ext_resource type="Texture2D" uid="uid://dalyydqj0idie" path="res://Assets/Images/04_Crab_Basic.png" id="2_3u44w"]
+[ext_resource type="Texture2D" uid="uid://dalyydqj0idie" path="res://Assets/Images/Units/04_Crab_Basic.png" id="2_3u44w"]
 [ext_resource type="Script" path="res://App/Scenes/CutScenes/AnimaticCutscene.gd" id="2_lc5yq"]
 [ext_resource type="Texture2D" uid="uid://beqt2qi8j86vu" path="res://Assets/Images/placeholder/island_empty.png" id="3_vktjv"]
 [ext_resource type="Texture2D" uid="uid://c4l0sg83rc5m6" path="res://Assets/Images/Towers/Castle_Cannon.png" id="4_b5ksj"]

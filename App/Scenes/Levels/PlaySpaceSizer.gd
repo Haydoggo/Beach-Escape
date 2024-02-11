@@ -27,7 +27,7 @@ const LANE_SCENE = preload("res://App/Scenes/Spawners/Lane.tscn")
 @export var tile_size = 128
 @export var texture_tile_size = 1952 :
 	set(v):
-		if not owner.is_node_ready():
+		if not(is_node_ready() and owner.is_node_ready()):
 			return
 		texture_tile_size = v
 		var scale_factor = float(tile_size) / texture_tile_size

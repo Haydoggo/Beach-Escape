@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://deohxbftxfqrr"]
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_m6734"]
-[ext_resource type="Texture2D" uid="uid://dalyydqj0idie" path="res://Assets/Images/04_Crab_Basic.png" id="2_64ly2"]
+[ext_resource type="Texture2D" uid="uid://dalyydqj0idie" path="res://Assets/Images/Units/04_Crab_Basic.png" id="2_64ly2"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Crab/Crab.gd" id="2_o7mpy"]
 [ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="3_ket8w"]
 [ext_resource type="PackedScene" uid="uid://cg5u8f8i41nqr" path="res://App/Scenes/Props/SwipeAttackFX.tscn" id="5_mrgbq"]
@@ -14,7 +14,7 @@ script = ExtResource("2_o7mpy")
 unit_info = ExtResource("3_ket8w")
 
 [node name="Sprite" parent="." index="1"]
-scale = Vector2(0.0671835, 0.0671835)
+scale = Vector2(0.536082, 0.536083)
 texture = ExtResource("2_64ly2")
 
 [node name="Hitbox" parent="." index="2"]
