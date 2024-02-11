@@ -34,8 +34,14 @@ func queue_spawn_selected():
 
 
 func switch_to_lane(lane_node : Node2D):
-	path_preview.clear_points()
-	for point in current_unit_count.unit_info.path:
-		path_preview.add_point(point)
 	current_lane_node = lane_node
 	global_position = lane_node.global_position
+	
+	# update path preview
+	var path = current_unit_count.unit_info.path
+	path_preview.clear_points()
+	var point = Vector2.ZERO
+	path_preview.add_point(point)
+	for i in 100:
+		point += path[i % path.size()]
+		path_preview.add_point(point)

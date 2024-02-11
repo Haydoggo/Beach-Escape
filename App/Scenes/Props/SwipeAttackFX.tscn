@@ -78,8 +78,9 @@ position = Vector2(1, -2)
 rotation = -1.17471
 
 [node name="Polygon2D" type="Polygon2D" parent="PathFollow2D"]
+z_index = 20
 scale = Vector2(1e-05, 1e-05)
-polygon = PackedVector2Array(15.6252, -1.65587, -1.97833, 9.02667, -26.2278, 0.862747, -46.2774, -20.09, -19.6776, -10.846, -0.822979, -13.0338)
+polygon = PackedVector2Array(27.9923, -2.62558, -4.22691, 22.9072, -88.8817, -8.05354, 1.94925, -23.8567)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

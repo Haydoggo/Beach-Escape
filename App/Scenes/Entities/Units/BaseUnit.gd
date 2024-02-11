@@ -5,12 +5,10 @@ class_name BaseUnit extends Node2D
 @onready var health_component: Node2D = $HealthComponent
 
 
-var path : Array[Vector2] = []
-var path_position := 0 # tracks the index of the path 
+var path_index := 0 # tracks the index of the path 
 
 
 func _ready() -> void:
-	path = get_path_points(global_position)
 	health_component.health_max = unit_info.health
 	health_component.health = unit_info.health
 	health_component.update_health_bar()
@@ -25,16 +23,14 @@ func get_path_points(origin : Vector2) -> Array[Vector2]:
 
 
 func move_next():
-	path_position += 1
-	# end of the path
-	if path_position >= path.size():
-		queue_free()
-		return
-	var next_position = path[path_position]
+	var next_position = global_position + unit_info.path[path_index]
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", next_position, 0.3).set_ease(Tween.EASE_IN_OUT)\
 	.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_callback(_on_move_end)
+	
+	path_index += 1
+	path_index %= unit_info.path.size()
 
 
 # can override for custom attack patterns

@@ -12,7 +12,7 @@ damage = 10.0
 [resource]
 script = ExtResource("3_fbb3v")
 name = "Urchin"
-path = PackedVector2Array(0, 0, 128, 0, 128, 0, 256, 0, 256, 0, 384, 0, 384, 0, 512, 0, 512, 0, 640, 0, 640, 0, 768, 0, 768, 0, 896, 0, 896, 0, 1024, 0, 1024, 0, 1152, 0, 1152, 0, 1280, 0, 1280, 0, 1408, 0, 1408, 0, 1536, 0, 1536, 0, 1664, 0, 1664, 0, 1792, 0, 1792, 0, 1920, 0, 1920, 0, 2048, 0, 2048, 0, 2176, 0, 2176, 0, 2304, 0, 2304, 0, 2432, 0, 2432, 0, 2560, 0)
+path = PackedVector2Array(128, 0, 0, 0)
 icon = ExtResource("1_bwd21")
 health = 20
 melee_attack = SubResource("Resource_goji5")
