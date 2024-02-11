@@ -5,6 +5,7 @@ extends Node
 var level_paths = [
 	"res://App/Scenes/Levels/FirstLevel.tscn",
 	"res://App/Scenes/Levels/SecondLevel.tscn",
+	"res://App/Scenes/CutScenes/win_screen.tscn"
 ]
 
 var current_level_index : int = -1 # so get_next_level() returns 0 on first call
