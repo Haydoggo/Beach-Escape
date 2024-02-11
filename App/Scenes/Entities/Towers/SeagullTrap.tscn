@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ncccgvmbl1j5"]
+[gd_scene load_steps=16 format=3 uid="uid://ncccgvmbl1j5"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/SeagullTrap.gd" id="1_r6ph7"]
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_0vh0u"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://byqh2cofkcv4d" path="res://Assets/Images/placeholder/seagull_3.png" id="3_1mpdn"]
 [ext_resource type="Texture2D" uid="uid://cfqsnjfnqsich" path="res://Assets/Images/placeholder/seagull_4.png" id="4_cg1pt"]
 [ext_resource type="Texture2D" uid="uid://de625p6kim5h5" path="res://Assets/Images/placeholder/seagull_1.png" id="5_c7x5q"]
+[ext_resource type="Script" path="res://App/Scenes/Entities/Components/flip_h.gd" id="8_7dfah"]
 [ext_resource type="PackedScene" uid="uid://b3tsqi2xelo17" path="res://App/Scenes/Entities/health_bar.tscn" id="8_cwkj7"]
 [ext_resource type="AudioStream" uid="uid://ni17kd3fvvgg" path="res://Assets/SFX/sqwawk.wav" id="9_ncg0j"]
 
@@ -46,7 +47,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"fly",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -68,33 +69,39 @@ stream_0/weight = 1.0
 [node name="SeagullTrap" type="Node2D" groups=["EnemyTowers", "Seagulls"]]
 script = ExtResource("1_r6ph7")
 attack_packet = SubResource("Resource_tuo7h")
+move_steps_without_attacking = null
+num_ticks_to_stay_in_each_location = null
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_8dc03")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
-rotation = 0.314161
 rotates = false
 loop = false
 
 [node name="Seagull" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
+position = Vector2(0, -1)
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_w4n3j")
-animation = &"idle"
+animation = &"fly"
 autoplay = "idle"
-
-[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Seagull"]
-position = Vector2(-7.57374, -6.97412)
-rotation = -0.319493
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Seagull/Area2D"]
-shape = SubResource("CircleShape2D_ij52d")
+frame = 3
+frame_progress = 0.388182
+offset = Vector2(2.66667, -53.3333)
+script = ExtResource("8_7dfah")
 
 [node name="HealthBar" parent="Path2D/PathFollow2D/Seagull" instance=ExtResource("8_cwkj7")]
 offset_left = -27.5146
 offset_top = 83.5939
 offset_right = 68.4854
 offset_bottom = 123.594
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Seagull"]
+position = Vector2(-2.77553e-12, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Seagull/Area2D"]
+shape = SubResource("CircleShape2D_ij52d")
 
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 4.0

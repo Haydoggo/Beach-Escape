@@ -13,10 +13,15 @@ var health = health_max
 enum travel_types { WALK, FLY }
 @export var travel_type : travel_types = travel_types.WALK
 
-#var path : Array = []
-#var path_position : int = 0
+var ticks : int = 0
+var tick_at_last_stop : int = 0
+var tick_at_start_move : int = 0
+@export var move_steps_without_attacking : int = 1
+@export var num_ticks_to_stay_in_each_location : int = 2
 
-# Called when the node enters the scene tree for the first time.
+var seagull_position_last_frame : Vector2
+
+
 func _ready():
 	if Engine.is_editor_hint():
 		colorize_seagulls()
@@ -24,6 +29,8 @@ func _ready():
 		hide_waypoints()
 		await get_tree().create_timer(0.5).timeout
 		delayed_ready()
+
+
 
 func delayed_ready():
 	# wait for other birds to arrive in the scene
@@ -69,27 +76,7 @@ func idle():
 	#$IdleTimer.start()
 	$Path2D/PathFollow2D/Seagull.play("idle")
 	
-	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	#if State == States.MOVING:
-		#$Path2D/PathFollow2D.progress += speed * delta * direction
-		#if direction == 1 and $Path2D/PathFollow2D.progress_ratio > 0.98:
-			#$Path2D/PathFollow2D/Seagull.flip_h = true
-			#direction = -1
-			#idle()
-		#elif direction == -1 and $Path2D/PathFollow2D.progress_ratio < 0.02:
-			#direction = 1
-			#$Path2D/PathFollow2D/Seagull.flip_h = false
-			#idle()
-		
-
-#func _on_idle_timer_timeout():
-	#if State == States.IDLE:
-		#$Audio/SqwawkSFX.play()
-		#State = States.MOVING
-		#$Path2D/PathFollow2D/Seagull.play("fly")
 
 func can_attack():
 	var ready_and_able = true
@@ -130,7 +117,9 @@ func begin_dying():
 
 func move_next():
 	$Path2D/PathFollow2D/Seagull.play("fly")
+	
 	var block_size = 128
+	
 	var tween = create_tween()
 	var path = $Path2D
 	var progress = $Path2D/PathFollow2D.progress
