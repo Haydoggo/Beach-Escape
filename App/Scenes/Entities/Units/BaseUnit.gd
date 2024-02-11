@@ -14,7 +14,7 @@ func _ready() -> void:
 	health_component.health_max = unit_info.health
 	health_component.health = unit_info.health
 	health_component.update_health_bar()
-
+	
 
 # override this method for path generation
 func get_path_points(origin : Vector2) -> Array[Vector2]:
