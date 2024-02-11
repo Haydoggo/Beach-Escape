@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="UnitInfo" load_steps=5 format=3 uid="uid://dkoxp7v5utuf7"]
+
+[ext_resource type="Texture2D" uid="uid://bowamlsunn84i" path="res://Assets/Images/Units/05_Fish_Gold.png" id="1_0eyoi"]
+[ext_resource type="Script" path="res://App/Scenes/Entities/Units/UnitInfo.gd" id="2_1s5oo"]
+[ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_6ct30"]
+
+[sub_resource type="Resource" id="Resource_jq0fq"]
+script = ExtResource("2_6ct30")
+damage_type = 0
+damage = 5.0
+
+[resource]
+script = ExtResource("2_1s5oo")
+name = "Gold Fish"
+description = ""
+path = PackedVector2Array(128, 0)
+icon = ExtResource("1_0eyoi")
+health = 5
+melee_attack = SubResource("Resource_jq0fq")
+packed_scene_path = "res://App/Scenes/Entities/Units/GoldFish/GoldFish.tscn"

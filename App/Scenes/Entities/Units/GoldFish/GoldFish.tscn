@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://7yta8d7hiwii"]
+
+[ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_ns8jx"]
+[ext_resource type="Resource" uid="uid://dkoxp7v5utuf7" path="res://App/Scenes/Entities/Units/GoldFish/GoldFishInfo.tres" id="2_wctia"]
+[ext_resource type="Texture2D" uid="uid://bowamlsunn84i" path="res://Assets/Images/Units/05_Fish_Gold.png" id="3_as5th"]
+[ext_resource type="Texture2D" uid="uid://ch0ay1c6m0fiu" path="res://Assets/Images/Particles/Sand/Sand_01.png" id="4_tg0xx"]
+
+[sub_resource type="Curve" id="Curve_kqh36"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.467606, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="GoldFish" instance=ExtResource("1_ns8jx")]
+unit_info = ExtResource("2_wctia")
+
+[node name="Sprite" parent="." index="1"]
+scale = Vector2(0.887097, 0.887097)
+texture = ExtResource("3_as5th")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="7"]
+amount = 4
+texture = ExtResource("4_tg0xx")
+emission_shape = 3
+emission_rect_extents = Vector2(64, 64)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+angle_min = 45.0
+angle_max = 45.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_kqh36")

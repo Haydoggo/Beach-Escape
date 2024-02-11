@@ -12,6 +12,7 @@ damage = 100.0
 [resource]
 script = ExtResource("1_d5e6e")
 name = "Sea Slug"
+description = ""
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_mwm1l")
 health = 1

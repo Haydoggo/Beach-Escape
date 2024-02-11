@@ -21,6 +21,7 @@ var unit_metadata : Array[UnitInfo] = [
 	load("res://App/Scenes/Entities/Units/Pufferfish/PufferfishInfo.tres"),
 	load("res://App/Scenes/Entities/Units/Octopus/OctopusInfo.tres"),
 	load("res://App/Scenes/Entities/Units/SeaSlug/SeaSlugInfo.tres"),
+	load("res://App/Scenes/Entities/Units/GoldFish/GoldFishInfo.tres"),
 ]
 
 var surviving_units = {
@@ -33,6 +34,7 @@ var surviving_units = {
 	"Pufferfish": 4,
 	"Octopus" : 4,
 	"Sea Slug" : 4,
+	"Gold Fish" : 4,
 } # key is the name of the units, value is the int count
 
 
