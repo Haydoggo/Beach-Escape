@@ -77,14 +77,22 @@ func _on_activation_triggers_area_exited(area):
 
 func choose_new_target():
 	var candidates = $ActivationTriggers.get_overlapping_areas()
-	if candidates.size() > 0:
-		active_target = get_closest(candidates)
+	var valid_candidates = validate_enemies(candidates)
+	if valid_candidates.size() > 0:
+		active_target = get_closest(valid_candidates)
 	else:
 		active_target = null
 		for weapon in $Components/Weapon.get_children():
-			weapon.deactivate()
+			# careful: we add projectiles as siblings of weapons sometimes
+			if weapon.has_method("deactivate"):
+				weapon.deactivate()
 			
-		
+func validate_enemies(nodeList : Array):
+	var valid_enemies = []
+	for node in nodeList:
+		if node.owner and node.owner.is_in_group("Units"):
+			valid_enemies.push_back(node)
+	return valid_enemies
 	
 func get_closest(nodeList):
 	var candidates = nodeList.duplicate()
