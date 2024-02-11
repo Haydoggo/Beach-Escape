@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://cg5u8f8i41nqr"]
+
+[ext_resource type="Script" path="res://App/Scenes/Props/SwipeAttackFX.gd" id="1_cu7c2"]
+
+[sub_resource type="Curve2D" id="Curve2D_6nv1i"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, -2, 0.719079, 19.7523, -0.719079, -19.7523, 47, -112, 43.2462, -0.17977, -43.2462, 0.17977, -1, -173, 0.185756, -22.0618, -0.185756, 22.0618, -53, -115, 0, 0, 0, 0, 1, -2)
+}
+point_count = 5
+
+[sub_resource type="Animation" id="Animation_sdm2k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PathFollow2D/Polygon2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0c7pr"]
+resource_name = "Swipe"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PathFollow2D/Polygon2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r227g"]
+_data = {
+"RESET": SubResource("Animation_sdm2k"),
+"Swipe": SubResource("Animation_0c7pr")
+}
+
+[node name="SwipeAttackFX" type="Path2D"]
+curve = SubResource("Curve2D_6nv1i")
+script = ExtResource("1_cu7c2")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(1, -2)
+rotation = -1.17471
+
+[node name="Polygon2D" type="Polygon2D" parent="PathFollow2D"]
+polygon = PackedVector2Array(15.6252, -1.65587, -1.97833, 9.02667, -26.2278, 0.862747, -46.2774, -20.09, -19.6776, -10.846, -0.822979, -13.0338)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r227g")
+}

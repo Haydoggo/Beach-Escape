@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_0v084"]
 
-[node name="BaseLevel" instance=ExtResource("1_0v084")]
+[node name="BaseLevel2" instance=ExtResource("1_0v084")]
 
 [node name="Towers" parent="." index="2"]
 position = Vector2(404, 7)

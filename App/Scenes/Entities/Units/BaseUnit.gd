@@ -46,8 +46,12 @@ func attack():
 			tower = area.owner
 		else:
 			continue
-		if tower.has_method("_on_hit"):
-			tower._on_hit(unit_info.melee_attack)
+		attack_tower(tower)
+
+
+func attack_tower(tower):
+	if tower.has_method("_on_hit"):
+		tower._on_hit(unit_info.melee_attack)
 
 
 func _on_hit(attack_packet : AttackPacket):

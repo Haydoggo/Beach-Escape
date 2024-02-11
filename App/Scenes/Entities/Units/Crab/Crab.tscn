@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://deohxbftxfqrr"]
+[gd_scene load_steps=7 format=3 uid="uid://deohxbftxfqrr"]
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_m6734"]
 [ext_resource type="Texture2D" uid="uid://dalyydqj0idie" path="res://Assets/Images/04_Crab_Basic.png" id="2_64ly2"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Crab/Crab.gd" id="2_o7mpy"]
 [ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="3_ket8w"]
+[ext_resource type="PackedScene" uid="uid://cg5u8f8i41nqr" path="res://App/Scenes/Props/SwipeAttackFX.tscn" id="5_mrgbq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d86bo"]
 size = Vector2(42, 236)
@@ -24,3 +25,8 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRegion" index="0"]
 shape = SubResource("RectangleShape2D_d86bo")
+
+[node name="TopSwipeAttackFX" parent="." index="4" instance=ExtResource("5_mrgbq")]
+
+[node name="BottomSwipeAttackFX" parent="." index="5" instance=ExtResource("5_mrgbq")]
+scale = Vector2(1, -1)
