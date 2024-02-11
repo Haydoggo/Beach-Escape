@@ -33,9 +33,7 @@ func spawn_projectile():
 	new_projectile.activate(Vector2.from_angle(actor.turret_rotation))
 
 	
-func _unhandled_input(_event):
-	if Input.is_action_just_pressed("shoot_all_towers"):
-		_on_tick()
+
 
 func shoot():
 	tick_at_last_shot = current_tick
