@@ -1,9 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://v7ugl0dxd5si"]
+[gd_scene load_steps=17 format=3 uid="uid://v7ugl0dxd5si"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Projectiles/BaseProjectile.gd" id="1_8q4mn"]
 [ext_resource type="Texture2D" uid="uid://bvtl8drxctv4b" path="res://Assets/Images/Projectiles/Sand_Ball.png" id="1_hvwsp"]
-[ext_resource type="AudioStream" uid="uid://bfvddbnhfp35a" path="res://Assets/SFX/ffft.wav" id="3_qd545"]
-[ext_resource type="AudioStream" uid="uid://lumjc8afyim4" path="res://Assets/SFX/thtt.wav" id="4_lb8rs"]
+[ext_resource type="AudioStream" uid="uid://b3s0ug0kei0w1" path="res://Assets/SFX/SFX_SandProjectileShoot_01.wav" id="3_1uc4b"]
+[ext_resource type="AudioStream" uid="uid://cqjwuxhs6yagf" path="res://Assets/SFX/SFX_SandProjectileShoot_02.wav" id="4_21q33"]
+[ext_resource type="AudioStream" uid="uid://d37cf85kfrq8y" path="res://Assets/SFX/SFX_SandProjectileHit_01.wav" id="5_k7ifv"]
+[ext_resource type="AudioStream" uid="uid://r2pfkpemdgp7" path="res://Assets/SFX/SFX_SandProjectileHit_02.wav" id="6_v06fm"]
+[ext_resource type="AudioStream" uid="uid://btpooalyk76w6" path="res://Assets/SFX/SFX_SandProjectileHit_03.wav" id="7_0lqje"]
 
 [sub_resource type="Gradient" id="Gradient_jke4f"]
 interpolation_mode = 2
@@ -233,14 +236,20 @@ _data = {
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3rprl"]
 random_pitch = 1.2
 random_volume_offset_db = 3.0
-streams_count = 1
-stream_0/stream = ExtResource("3_qd545")
+streams_count = 2
+stream_0/stream = ExtResource("3_1uc4b")
 stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_21q33")
+stream_1/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_18qx1"]
-streams_count = 1
-stream_0/stream = ExtResource("4_lb8rs")
+streams_count = 3
+stream_0/stream = ExtResource("5_k7ifv")
 stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_v06fm")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("7_0lqje")
+stream_2/weight = 1.0
 
 [node name="SandProjectile" type="Area2D"]
 script = ExtResource("1_8q4mn")
@@ -288,8 +297,7 @@ polygon = PackedVector2Array(-10, 110, 70, 120, 50, 220, -50, 230, -180, 180, -2
 
 [node name="SpawnSound" type="AudioStreamPlayer2D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_3rprl")
-volume_db = -7.0
-pitch_scale = 0.7
+volume_db = -5.0
 
 [node name="ImpactSound" type="AudioStreamPlayer2D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_18qx1")
