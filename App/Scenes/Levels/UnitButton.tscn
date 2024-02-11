@@ -11,8 +11,10 @@ resource_local_to_scene = false
 resource_name = "ButtonHighlight"
 script/source = "extends TextureButton
 
+	
 func _toggled(toggled_on: bool) -> void:
 	$Line2D.visible = toggled_on
+
 "
 
 [node name="UnitButton" type="MarginContainer"]

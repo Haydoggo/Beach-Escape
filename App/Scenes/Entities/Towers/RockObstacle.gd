@@ -5,7 +5,7 @@ extends Node2D
 
 
 
-func _on_hit(attack_packet):
+func _on_hit(_attack_packet):
 	pass
 	#$HealthComponent._on_hit(attack_packet)
 	#$AnimationPlayer.play("hurt")

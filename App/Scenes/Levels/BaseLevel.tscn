@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://de3bma3kyx7em"]
+[gd_scene load_steps=11 format=3 uid="uid://de3bma3kyx7em"]
 
 [ext_resource type="Script" path="res://App/Scenes/Levels/BaseLevel.gd" id="1_cs8tg"]
 [ext_resource type="TileSet" uid="uid://dwo7o7lpg52g0" path="res://App/Scenes/Levels/towers_tile_set.tres" id="1_sr1u4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cdrk8mkxgd30e" path="res://App/Scenes/Spawners/FinishZone.tscn" id="5_32fpb"]
 [ext_resource type="Texture2D" uid="uid://cfn46omcxn1xu" path="res://Assets/Images/Environment/Border_Ring.png" id="5_pgywy"]
 [ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="5_uupqf"]
+[ext_resource type="PackedScene" uid="uid://b1hfuapudwucs" path="res://App/Scenes/GUI/button_hover_text_popout.tscn" id="8_w4mm5"]
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_cs8tg")
@@ -122,6 +123,13 @@ horizontal_scroll_mode = 0
 unique_name_in_owner = true
 layout_mode = 2
 vertical = true
+
+[node name="ButtonHoverTextPopout" parent="UI" instance=ExtResource("8_w4mm5")]
+unique_name_in_owner = true
+offset_left = -400.0
+offset_top = 0.0
+offset_right = 400.0
+offset_bottom = 128.0
 
 [node name="FriendlyUnitSpawner" parent="." node_paths=PackedStringArray("lanes_container") instance=ExtResource("2_s8wsn")]
 lanes_container = NodePath("../PlaySpace/Lanes")

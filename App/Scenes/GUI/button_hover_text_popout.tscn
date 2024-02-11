@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1hfuapudwucs"]
+
+[ext_resource type="Script" path="res://App/Scenes/GUI/button_hover_text_popout.gd" id="1_2cdgj"]
+
+[node name="ButtonHoverTextPopout" type="Panel"]
+custom_minimum_size = Vector2(800, 128)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_2cdgj")
+
+[node name="UnitDescription" type="Label" parent="."]
+custom_minimum_size = Vector2(800, 128)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -67.0
+offset_right = 175.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 48
+text = "This is a fish!"
+horizontal_alignment = 1
+autowrap_mode = 3
