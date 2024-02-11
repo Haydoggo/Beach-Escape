@@ -1,19 +1,21 @@
 extends Control
 
-@export_file("*.tscn") var next_scene_path : String
+#@export_file("*.tscn") var next_scene_path : String
+#var next_scene_path
 enum States { RUNNING, ENDING }
 var State : States = States.RUNNING
 
 func _ready():
 	$AnimationPlayer.play("RESET")
-	
+	#next_scene_path = Globals.get_next_level()
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "RESET":
 		$AnimationPlayer.play("animatic_intro")
 	elif anim_name == "animatic_intro":
-		if next_scene_path != "":
-			SceneLoader.load_scene(next_scene_path)
+		Globals.load_next_level()
+		#if next_scene_path != "":
+			#SceneLoader.load_scene(next_scene_path)
 
 func _unhandled_input(_event):
 	if State == States.RUNNING:

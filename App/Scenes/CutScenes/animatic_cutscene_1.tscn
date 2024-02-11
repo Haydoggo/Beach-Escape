@@ -230,7 +230,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_a6s3w")
 script = ExtResource("2_lc5yq")
-next_scene_path = "res://App/Scenes/Levels/FirstLevel.tscn"
 
 [node name="Crab" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(128, 128)
@@ -302,7 +301,6 @@ grow_horizontal = 2
 tabs_visible = false
 
 [node name="Paradise" type="Label" parent="Camera2D/Text"]
-visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 96
 text = "It Was a Paradise"
@@ -322,6 +320,7 @@ text = "With their pails, and their shovels."
 autowrap_mode = 3
 
 [node name="TrappedUs" type="Label" parent="Camera2D/Text"]
+visible = false
 custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 theme_override_font_sizes/font_size = 96

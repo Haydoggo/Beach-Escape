@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://mn35h2hjmdfr"]
+
+[ext_resource type="Script" path="res://App/Scenes/Entities/Units/Procreator.gd" id="1_jepsu"]
+[ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="2_xw1hk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gx7at"]
+size = Vector2(128, 128)
+
+[node name="Procreator" type="Area2D" groups=["Procreators"]]
+script = ExtResource("1_jepsu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xw1hk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gx7at")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

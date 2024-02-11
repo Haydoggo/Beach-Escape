@@ -22,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_6aalu")
 
 [node name="Label" type="Label" parent="."]
@@ -41,6 +42,7 @@ offset_left = 1224.0
 offset_top = 177.0
 offset_right = 1767.0
 offset_bottom = 443.0
+mouse_filter = 2
 theme_override_font_sizes/font_size = 24
 text = "Could be a reverse dodge-the-creeps, fish matching game: drag fish onto a matching mate before the shark eats them. Matched fish will run up onto the island to escape the shark, which triggers the next level with all the survivors including babies."
 wrap_mode = 1
