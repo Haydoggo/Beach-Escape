@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://bagdchotk6suu"]
+
+[ext_resource type="Texture2D" uid="uid://da7unw2nv8m28" path="res://Assets/Images/placeholder/button_sandy_brown.png" id="1_c8cra"]
+[ext_resource type="FontFile" uid="uid://bvkrvs6r4he1k" path="res://App/Themes/Fonts/Miltonian_Tattoo/MiltonianTattoo-Regular.ttf" id="2_axp15"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vfmcj"]
+content_margin_left = 24.0
+content_margin_right = 24.0
+content_margin_bottom = 24.0
+texture = ExtResource("1_c8cra")
+expand_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0v734"]
+content_margin_left = 24.0
+content_margin_right = 24.0
+content_margin_bottom = 24.0
+texture = ExtResource("1_c8cra")
+expand_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a8jdk"]
+content_margin_left = 24.0
+content_margin_right = 24.0
+content_margin_bottom = 24.0
+texture = ExtResource("1_c8cra")
+expand_margin_bottom = 12.0
+modulate_color = Color(0.827451, 0.827451, 0.827451, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_580i2"]
+content_margin_left = 24.0
+content_margin_right = 24.0
+content_margin_bottom = 24.0
+texture = ExtResource("1_c8cra")
+expand_margin_bottom = 12.0
+modulate_color = Color(0.372549, 0.372549, 0.372549, 1)
+
+[resource]
+default_font = ExtResource("2_axp15")
+default_font_size = 36
+Button/font_sizes/font_size = 64
+Button/styles/focus = SubResource("StyleBoxTexture_vfmcj")
+Button/styles/hover = SubResource("StyleBoxTexture_0v734")
+Button/styles/normal = SubResource("StyleBoxTexture_a8jdk")
+Button/styles/pressed = SubResource("StyleBoxTexture_580i2")
