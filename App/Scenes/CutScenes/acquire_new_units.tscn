@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cai7kydql1o31"]
+[gd_scene load_steps=6 format=3 uid="uid://cai7kydql1o31"]
 
 [ext_resource type="Script" path="res://App/Scenes/CutScenes/acquire_new_units.gd" id="1_0mvpn"]
+[ext_resource type="Shader" path="res://App/Materials/water_shader.gdshader" id="2_bskot"]
 
 [sub_resource type="Gradient" id="Gradient_8wrrq"]
 offsets = PackedFloat32Array(0.0147783, 1)
@@ -10,13 +11,32 @@ colors = PackedColorArray(0, 1.29451e-08, 0.477219, 1, 0.575143, 0.779937, 1, 1)
 gradient = SubResource("Gradient_8wrrq")
 fill_from = Vector2(1, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_foftx"]
+shader = ExtResource("2_bskot")
+shader_parameter/WATER_COL = Color(0.176471, 0.635294, 0.85098, 0.121569)
+shader_parameter/WATER2_COL = Color(0.0588235, 0.529412, 0.776471, 0.215686)
+shader_parameter/FOAM_COL = Color(0.87451, 0.988235, 1, 0.364706)
+shader_parameter/distortion_speed = 0.3
+shader_parameter/tile = Vector2(0.1, 0.5)
+shader_parameter/offset = Vector2(0, 0)
+
 [node name="AcquireNewUnits" type="Node2D"]
 script = ExtResource("1_0mvpn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="GradientBG" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_6aalu")
+
+[node name="CausticsShader" type="TextureRect" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.0705882)
+material = SubResource("ShaderMaterial_foftx")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,24 +45,59 @@ grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_6aalu")
 
-[node name="Label" type="Label" parent="."]
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 631.5
-offset_right = 1268.5
+offset_left = -926.0
+offset_right = 926.0
 offset_bottom = 175.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 128
 text = "Procreate!"
+horizontal_alignment = 1
 
-[node name="TextEdit" type="TextEdit" parent="."]
-custom_minimum_size = Vector2(350, 250)
-offset_left = 1224.0
-offset_top = 177.0
-offset_right = 1767.0
-offset_bottom = 443.0
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/Control"]
+custom_minimum_size = Vector2(350, 35)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -350.0
+offset_bottom = 164.0
+grow_horizontal = 0
 mouse_filter = 2
 theme_override_font_sizes/font_size = 24
-text = "Could be a reverse dodge-the-creeps, fish matching game: drag fish onto a matching mate before the shark eats them. Matched fish will run up onto the island to escape the shark, which triggers the next level with all the survivors including babies."
+text = "Use mouse to click and drag fish onto a matching mate."
 wrap_mode = 1
+
+[node name="PairsRemaining" type="HBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -54.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+
+[node name="Title" type="Label" parent="CanvasLayer/Control/PairsRemaining"]
+layout_mode = 2
+text = "Pairs Remaining:"
+
+[node name="RemainingPairCount" type="Label" parent="CanvasLayer/Control/PairsRemaining"]
+layout_mode = 2
+text = "0"
