@@ -9,7 +9,7 @@ func _ready():
 func popup(newText):
 	$UnitDescription.text = newText
 	var tween = create_tween()
-	var height = get_rect().size.y
+	var height = get_rect().size.y + 174
 	tween.tween_property(self, "position", original_position + Vector2.UP * height, 0.2)
 
 func close():

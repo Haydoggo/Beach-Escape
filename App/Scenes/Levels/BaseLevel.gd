@@ -8,12 +8,18 @@ const UNIT_BUTTON = preload("res://App/Scenes/Levels/UnitButton.tscn")
 signal last_unit_sent()
 var last_unit_notification_emitted : bool = false
 
+var unit_buttons : Container
+var button_hover_text_popup : Panel
+
 func _ready() -> void:
 	Globals.current_level = self
 	add_unit_buttons()
 
 
 func add_unit_buttons():
+	unit_buttons = find_child("UnitButtons")
+	button_hover_text_popup = find_child("ButtonHoverTextPopup")
+	remove_dummy_buttons() # dummy button left in for ui sizing in inspector
 	var shortcut_keycode = KEY_1
 	if available_units.size() == 0:
 		generate_available_units_from_global()
@@ -21,9 +27,28 @@ func add_unit_buttons():
 	for unit_count in available_units:
 		add_unit_button(unit_count, shortcut_keycode)
 		shortcut_keycode += 1
-	%UnitButtons.get_child(0).pressed.emit() # Select first button
+	select_first_available_button()
 	if has_node("FinishZone") and $FinishZone.has_method("_on_last_unit_sent"):
 		last_unit_sent.connect($FinishZone._on_last_unit_sent)
+
+func select_first_available_button():
+	# added to prevent selecting invalid buttons
+	var button_selected = null
+	var i: int = 0
+	while not button_selected and i < 100:
+		for button in unit_buttons.get_children():
+			if is_instance_valid(button) and button is UnitButton:
+				button.pressed.emit() # Select first button
+				button_selected = button
+				return
+			else:
+				i += 1
+
+func remove_dummy_buttons():
+	if unit_buttons.get_child_count() > 0:
+		for dummy_button in unit_buttons.get_children():
+			if dummy_button is UnitButton:
+				dummy_button.queue_free()
 
 func generate_available_units_from_global():
 	for unit_type in Globals.unit_metadata:
@@ -35,7 +60,7 @@ func generate_available_units_from_global():
 
 func add_unit_button(unit_count : UnitCount, shortcut_keycode : int):
 	var button = UNIT_BUTTON.instantiate()
-	%UnitButtons.add_child(button)
+	unit_buttons.add_child(button)
 	button.text = str(unit_count.count)
 	button.icon = unit_count.unit_info.icon
 	button.unit_count = unit_count
@@ -51,10 +76,11 @@ func button_pressed(button : UnitButton):
 	$FriendlyUnitSpawner.current_unit_count = button.unit_count
 	
 func button_hovered(unit_info : UnitInfo):
-	%ButtonHoverTextPopout.popup( unit_info.description )
-
+	
+	button_hover_text_popup.popup( unit_info.description )
+	
 func button_mouse_exited():
-	%ButtonHoverTextPopout.close()
+	button_hover_text_popup.close()
 
 func _on_unit_spawned(): # signal comes from Lanes
 	if get_num_units_remaining() == 0:
@@ -67,7 +93,7 @@ func _on_unit_spawned(): # signal comes from Lanes
 func get_num_units_remaining():
 	var total = 0
 	#for unit_count : UnitCount in available_units:
-	for button in %UnitButtons.get_children():
+	for button in unit_buttons.get_children():
 		total += button.unit_count.count
 	return total
 
