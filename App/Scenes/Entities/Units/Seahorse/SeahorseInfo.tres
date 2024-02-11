@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="UnitInfo" load_steps=5 format=3 uid="uid://bjvlagw6io1pi"]
+
+[ext_resource type="Texture2D" uid="uid://bbmberwghuoky" path="res://Assets/Images/Units/TempSeahorse.png" id="1_e1yys"]
+[ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_h4vnp"]
+[ext_resource type="Script" path="res://App/Scenes/Entities/Units/UnitInfo.gd" id="3_mwuql"]
+
+[sub_resource type="Resource" id="Resource_gvo2g"]
+script = ExtResource("2_h4vnp")
+damage_type = 0
+damage = 2.0
+
+[resource]
+script = ExtResource("3_mwuql")
+name = "Seahorse"
+path = PackedVector2Array(256, -128, 256, 128)
+icon = ExtResource("1_e1yys")
+health = 5
+melee_attack = SubResource("Resource_gvo2g")
+packed_scene_path = "res://App/Scenes/Entities/Units/Seahorse/Seahorse.tscn"
