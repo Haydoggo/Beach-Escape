@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://w58j2xcp2kje"]
+[gd_scene load_steps=8 format=3 uid="uid://w58j2xcp2kje"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_f45ew"]
 [ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_2vs3p"]
 [ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="3_ta7kf"]
 [ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="4_eqqws"]
-[ext_resource type="Script" path="res://App/Scenes/Spawners/Lane.gd" id="4_vh1f6"]
 [ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="5_sm4tc"]
 
 [sub_resource type="Resource" id="Resource_wwftx"]
@@ -25,35 +24,18 @@ available_units = Array[ExtResource("2_2vs3p")]([SubResource("Resource_wwftx"), 
 [node name="PlaySpace" parent="." index="1"]
 offset_right = 1798.0
 offset_bottom = 1158.0
-play_space_size = Vector2i(10, 8)
 
-[node name="Lane" parent="PlaySpace/Lanes" index="0" groups=["Lanes"]]
-script = ExtResource("4_vh1f6")
-
-[node name="Lane2" parent="PlaySpace/Lanes" index="1" groups=["Lanes"]]
-script = ExtResource("4_vh1f6")
-
-[node name="Lane3" parent="PlaySpace/Lanes" index="2" groups=["Lanes"]]
-script = ExtResource("4_vh1f6")
-
-[node name="Lane4" parent="PlaySpace/Lanes" index="3" groups=["Lanes"]]
-script = ExtResource("4_vh1f6")
-
-[node name="Lane5" type="Marker2D" parent="PlaySpace/Lanes" index="4" groups=["Lanes"] instance=ExtResource("5_sm4tc")]
+[node name="Lane5" parent="PlaySpace/Lanes" index="4" instance=ExtResource("5_sm4tc")]
 position = Vector2(64, 576)
-script = ExtResource("4_vh1f6")
 
-[node name="Lane6" type="Marker2D" parent="PlaySpace/Lanes" index="5" groups=["Lanes"] instance=ExtResource("5_sm4tc")]
+[node name="Lane6" parent="PlaySpace/Lanes" index="5" instance=ExtResource("5_sm4tc")]
 position = Vector2(64, 704)
-script = ExtResource("4_vh1f6")
 
-[node name="Lane7" type="Marker2D" parent="PlaySpace/Lanes" index="6" groups=["Lanes"] instance=ExtResource("5_sm4tc")]
+[node name="Lane7" parent="PlaySpace/Lanes" index="6" instance=ExtResource("5_sm4tc")]
 position = Vector2(64, 832)
-script = ExtResource("4_vh1f6")
 
-[node name="Lane8" type="Marker2D" parent="PlaySpace/Lanes" index="7" groups=["Lanes"] instance=ExtResource("5_sm4tc")]
+[node name="Lane8" parent="PlaySpace/Lanes" index="7" instance=ExtResource("5_sm4tc")]
 position = Vector2(64, 960)
-script = ExtResource("4_vh1f6")
 
 [node name="Towers" parent="." index="2"]
-layer_0/tile_data = PackedInt32Array()
+layer_0/tile_data = PackedInt32Array(196612, 0, 196608)
