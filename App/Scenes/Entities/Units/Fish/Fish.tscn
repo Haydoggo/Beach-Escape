@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Fish/Fish.gd" id="2_xd35r"]
 [ext_resource type="Texture2D" uid="uid://ckqwfoi4guv8i" path="res://Assets/Images/Units/02_Fish_Boot.png" id="3_lfh3d"]
 [ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="3_tpqs7"]
-[ext_resource type="AudioStream" uid="uid://mubv5tfm4mm" path="res://Assets/SFX/Spawn/SFX_FishDeploy_01.wav" id="5_cdd4e"]
-[ext_resource type="AudioStream" uid="uid://v2gawwhwlaha" path="res://Assets/SFX/Spawn/SFX_FishDeploy_02.wav" id="6_hrgxn"]
+[ext_resource type="AudioStream" uid="uid://d0jg7maanyg5s" path="res://Assets/SFX/Spawn/SFX_FishDeploy_01.wav" id="5_cdd4e"]
+[ext_resource type="AudioStream" uid="uid://besn8slgpfjqj" path="res://Assets/SFX/Spawn/SFX_FishDeploy_02.wav" id="6_hrgxn"]
 
 [sub_resource type="Animation" id="Animation_yevhs"]
 resource_name = "spawn"
