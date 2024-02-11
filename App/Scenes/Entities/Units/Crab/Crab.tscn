@@ -32,8 +32,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d86bo"]
 size = Vector2(42, 236)
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xsrrk"]
-random_pitch = 1.2
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yu4ui"]
+random_pitch = 1.1
 streams_count = 2
 stream_0/stream = ExtResource("6_15uyw")
 stream_0/weight = 1.0
@@ -69,5 +69,5 @@ scale = Vector2(1, -1)
 
 [node name="Audio" type="Node2D" parent="." index="10"]
 
-[node name="Spawn" type="AudioStreamPlayer" parent="Audio" index="0"]
-stream = SubResource("AudioStreamRandomizer_xsrrk")
+[node name="Spawn" type="AudioStreamPlayer2D" parent="Audio" index="0"]
+stream = SubResource("AudioStreamRandomizer_yu4ui")
