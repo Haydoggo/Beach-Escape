@@ -28,7 +28,13 @@ count = 6
 [node name="BaseLevel" instance=ExtResource("1_0v084")]
 available_units = Array[ExtResource("2_oqp12")]([SubResource("Resource_xd3nr"), SubResource("Resource_0vho7"), SubResource("Resource_geann")])
 
-[node name="Towers" parent="." index="0"]
+[node name="TickTimer" type="Timer" parent="." index="0"]
+autostart = true
+
+[node name="PlaySpace" parent="." index="1"]
+play_space_size = Vector2i(8, 4)
+
+[node name="Towers" parent="." index="2"]
 position = Vector2(404, 7)
 layer_0/tile_data = PackedInt32Array(131075, 0, 65536, 196613, 0, 65536, 262148, 0, 131072, 327689, 0, 196608, 65543, 0, 196608, 65538, 0, 262144, 327682, 0, 327680, 458755, 0, 327680, 524293, 0, 327680, 524290, 0, 327680, 196610, 0, 327680)
 
@@ -36,7 +42,7 @@ layer_0/tile_data = PackedInt32Array(131075, 0, 65536, 196613, 0, 65536, 262148,
 offset_right = 131.0
 offset_bottom = 109.0
 
-[node name="SeagullTrap" parent="." index="6" instance=ExtResource("6_i0eg2")]
+[node name="SeagullTrap" parent="." index="7" instance=ExtResource("6_i0eg2")]
 position = Vector2(1156, 262)
 
-[editable path="Lanes"]
+[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

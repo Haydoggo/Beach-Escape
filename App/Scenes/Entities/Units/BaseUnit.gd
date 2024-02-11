@@ -21,7 +21,7 @@ func get_path_points(origin : Vector2) -> Array[Vector2]:
 	return points
 
 
-func move():
+func move_next():
 	path_position += 1
 	# end of the path
 	if path_position >= path.size():
@@ -31,11 +31,11 @@ func move():
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", next_position, 0.3).set_ease(Tween.EASE_IN_OUT)\
 	.set_trans(Tween.TRANS_CUBIC)
-	tween.tween_callback(move_end)
+	tween.tween_callback(_on_move_end)
 
 
 # can override for custom attack patterns
-func move_end():
+func _on_move_end():
 	attack()
 
 
@@ -59,7 +59,7 @@ func _on_hit(attack_packet : AttackPacket):
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_M:
-			move()
+			move_next()
 
 func _on_finish_line_crossed(): # signal from FinishZone
 	queue_free()
