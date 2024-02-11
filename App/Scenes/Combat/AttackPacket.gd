@@ -3,7 +3,7 @@
 
 class_name AttackPacket extends Resource
 
-enum damage_types { IMPACT, WATER, GLUE, BLEED }
+enum damage_types { IMPACT, WATER, GLUE, BLEED, HEAT }
 
 var impact_vector : Vector2 = Vector2.LEFT
 @export var damage_type : damage_types = damage_types.IMPACT
