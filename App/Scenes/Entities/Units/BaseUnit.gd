@@ -24,7 +24,7 @@ func get_path_points(origin : Vector2) -> Array[Vector2]:
 	return points
 
 
-func move_next():
+func _on_tick():
 	var next_position = global_position + unit_info.path[path_index]
 	
 	var attacking = false
@@ -38,24 +38,38 @@ func move_next():
 		elif col.is_in_group("EnemyTowerHitbox"):
 			attack_tower(col.owner)
 			attacking = true
-	
+
 	# movement
-	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_CUBIC)
 	if blocked:
-		tween.set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(self, "rotation", 0.1, 0.1)
-		tween.tween_property(self, "rotation", -0.1, 0.2)
-		tween.tween_property(self, "rotation", 0, 0.1)
+		on_blocked()
 	elif attacking:
-		tween.tween_property(self, "global_position", next_position, 0.15).set_ease(Tween.EASE_IN)
-		tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
+		attack_forward(next_position)
 	else:
-		tween.set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(self, "global_position", next_position, 0.3)
+		move_forward(next_position)
 	
 	path_index += 1
 	path_index %= unit_info.path.size()
+
+
+func move_forward(pos : Vector2):
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "global_position", pos, 0.3)
+
+
+func attack_forward(pos):
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "global_position", pos, 0.15).set_ease(Tween.EASE_IN)
+	tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
+
+
+func on_blocked():
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "rotation", 0.1, 0.1)
+	tween.tween_property(self, "rotation", -0.1, 0.2)
+	tween.tween_property(self, "rotation", 0, 0.1)
 
 
 func attack_tower(tower):
@@ -72,12 +86,6 @@ func _on_hit(attack_packet : AttackPacket):
 
 func begin_dying():
 	queue_free()
-
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_M:
-			move_next()
 
 
 func _on_finish_line_crossed(): # signal from FinishZone
