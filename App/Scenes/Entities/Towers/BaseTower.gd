@@ -5,7 +5,7 @@
 
 class_name BaseTower extends Node2D
 
-@export var projectile : PackedScene
+#@export var projectile : PackedScene
 enum turret_types { STATIC, ROTATING, MELEE_AOE }
 @export var turret_type = turret_types.STATIC
 
@@ -22,8 +22,15 @@ var health : float = health_max
 enum States { INITIALIZING, ACTIVE, DYING, DEAD }
 var State = States.INITIALIZING
 
+enum WeaponStates { IDLE, RECOIL, RELOADING }
+var WeaponState = WeaponStates.IDLE
+
 @export var animation_player : Node
 
+
+var ticks : int = 0
+@export var ticks_between_shots : int = 0
+@export var ticks_between_magazines : int = 2
 
 func _ready():
 	
@@ -39,11 +46,6 @@ func _ready():
 	turret_rotation = PI # Vector2.LEFT
 	State = States.ACTIVE
 
-func _unhandled_input(_event):
-	if Input.is_action_just_pressed("shoot_all_towers"):
-		shoot()
-	if Input.is_action_just_pressed("hurt_towers"):
-		_on_hit(AttackPacket.new())
 
 func _process(delta):
 	if turret_type == turret_types.ROTATING:
@@ -51,45 +53,9 @@ func _process(delta):
 			turret_rotation = lerp(turret_rotation, global_position.angle_to_point(active_target.global_position), rotation_speed * delta)
 			$Debug/RotationViz.rotation = turret_rotation
 
-
 func shoot():
-	if State != States.ACTIVE:
-		return
-	
-	if shots_remaining > 0:
-		shots_remaining -= 1
-		if animation_player != null and animation_player.has_animation("shoot"):
-			animation_player.play("shoot")
-	else:
-		$ReloadTimer.start()
-
-func spawn_projectile():
-	var new_projectile = projectile.instantiate()
-	# TODO: add a targeting lead based on the velocity of the target and projectile
-	add_sibling(new_projectile)
-	new_projectile.global_position = $MuzzleLocation.global_position
-	new_projectile.activate(Vector2.from_angle(turret_rotation))
-	$RecoilTimer.start()
-	
-
-func _on_activation_triggers_body_entered(body):
-	if State == States.ACTIVE:
-		if active_target == null or not is_instance_valid(active_target):
-			if body.is_in_group("Units"):
-				active_target = body
-				call_deferred("shoot")
-
-
-func _on_recoil_timer_timeout():
-	if State == States.ACTIVE:
-		call_deferred("shoot")
-
-
-func _on_reload_timer_timeout():
-	if State == States.ACTIVE:
-		shots_remaining = shots_per_magazine
-		if active_target != null:
-			call_deferred("shoot")
+	if animation_player != null and animation_player.has_animation("shoot"):
+		animation_player.play("shoot")
 
 
 func _on_activation_triggers_area_entered(area):
@@ -97,8 +63,9 @@ func _on_activation_triggers_area_entered(area):
 		if active_target == null or not is_instance_valid(active_target):
 			if area.owner != null and area.owner.is_in_group("Units"):
 				active_target = area
-				call_deferred("shoot")
-
+				for weapon in $Components/Weapon.get_children():
+					weapon.activate()
+				
 
 func _on_activation_triggers_area_exited(area):
 	if not is_instance_valid(active_target):
@@ -114,6 +81,10 @@ func choose_new_target():
 		active_target = get_closest(candidates)
 	else:
 		active_target = null
+		for weapon in $Components/Weapon.get_children():
+			weapon.deactivate()
+			
+		
 	
 func get_closest(nodeList):
 	var candidates = nodeList.duplicate()
@@ -133,7 +104,7 @@ func _on_hit(attackPacket : AttackPacket):
 		var current_rotation = $Sprite2D.rotation
 		tween.tween_property($Sprite2D, "rotation", current_rotation + 0.3, 0.33)
 		tween.tween_property($Sprite2D, "rotation", current_rotation, 0.1)
-	$HealthComponent._on_hit(attackPacket)
+	$Components/HealthComponent._on_hit(attackPacket)
 
 
 func begin_dying():
@@ -151,5 +122,7 @@ func begin_dying():
 
 
 func _on_tick(): # signal from level to synchronize tower shots
-	# TODO: replace timers with this signal
-	pass
+	ticks += 1
+	if State == States.ACTIVE:
+		for weapon in $Components/Weapon.get_children():
+			weapon._on_tick()

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxg6fy5je6rwq"]
+
+[ext_resource type="Script" path="res://App/Scenes/Entities/Components/tick_weapon_component.gd" id="1_kurea"]
+[ext_resource type="PackedScene" uid="uid://v7ugl0dxd5si" path="res://App/Scenes/Entities/Projectiles/SandProjectile.tscn" id="2_lcqpt"]
+
+[node name="PeaShooterComponent" type="Node2D"]
+script = ExtResource("1_kurea")
+projectile = ExtResource("2_lcqpt")
+
+[node name="MuzzleLocation" type="Marker2D" parent="."]
+position = Vector2(1, 1)
