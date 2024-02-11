@@ -212,7 +212,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_2fh3w"]
 resource_name = "spawn"
-length = 0.3
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -243,6 +243,7 @@ stream_1/stream = ExtResource("4_21q33")
 stream_1/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_18qx1"]
+random_pitch = 1.5
 streams_count = 3
 stream_0/stream = ExtResource("5_k7ifv")
 stream_0/weight = 1.0
