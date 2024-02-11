@@ -10,8 +10,8 @@ script = ExtResource("1_d5qv7")
 units = Array[Resource("res://App/Scenes/Entities/Units/UnitInfo.gd")]([ExtResource("2_1y47f"), ExtResource("3_8wt55"), ExtResource("4_2csgi")])
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-41, 32, -41, -28, 37, -32, 37, -64, 99, 16, 37, 74, 37, 46)
+polygon = PackedVector2Array(-40, 24, -40, -24, 40, -24, 40, -40, 80, 0, 40, 40, 40, 24)
 
 [node name="PathPreview" type="Line2D" parent="."]
-points = PackedVector2Array(254, -3, 314, 151, 524, 13, 571, 250, 726, -35)
+points = PackedVector2Array(-24, -21)
 default_color = Color(0.333333, 1, 0.415686, 1)
