@@ -1,3 +1,5 @@
+@tool
+
 extends Node2D
 
 enum States { IDLE, MOVING, DYING, DEAD }
@@ -8,44 +10,90 @@ var direction : int = 1
 @export var health_max : float = 50.0
 var health = health_max
 
+#var path : Array = []
+#var path_position : int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if Engine.is_editor_hint():
+		colorize_seagulls()
+	else:
+		hide_waypoints()
+		await get_tree().create_timer(0.5).timeout
+		delayed_ready()
+
+func delayed_ready():
+	# wait for other birds to arrive in the scene
+	build_path()
 	idle()
 	update_health_bar()
-	
+
+
+func colorize_seagulls():
+	if not is_top_bird():
+		set_modulate(Color.DARK_OLIVE_GREEN)
+	else:
+		set_modulate(Color.WHITE)
+
+
+func is_top_bird():
+	var top_bird = true
+	var seagulls = get_tree().get_nodes_in_group("Seagulls").duplicate()
+	seagulls.erase(self)
+	for seagull in seagulls:
+		if is_instance_valid(seagull) and seagull.get_index() < get_index():
+			top_bird = false
+	return top_bird
+
+
+func build_path():
+	if is_top_bird():
+		var curve = Curve2D.new()
+		
+		var waypoints = get_tree().get_nodes_in_group("Seagulls")
+		for waypoint in waypoints:
+			curve.add_point(to_local(waypoint.global_position))
+		$Path2D.curve = curve
+
+func hide_waypoints():
+	if not is_top_bird():
+		visible = false
+	else:
+		visible = true
+
 func idle():
 	State = States.IDLE
-	$IdleTimer.start()
+	#$IdleTimer.start()
 	$Path2D/PathFollow2D/Seagull.play("idle")
 	
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if State == States.MOVING:
-		$Path2D/PathFollow2D.progress += speed * delta * direction
-		if direction == 1 and $Path2D/PathFollow2D.progress_ratio > 0.98:
-			$Path2D/PathFollow2D/Seagull.flip_h = true
-			direction = -1
-			idle()
-		elif direction == -1 and $Path2D/PathFollow2D.progress_ratio < 0.02:
-			direction = 1
-			$Path2D/PathFollow2D/Seagull.flip_h = false
-			idle()
+#func _process(delta):
+	#if State == States.MOVING:
+		#$Path2D/PathFollow2D.progress += speed * delta * direction
+		#if direction == 1 and $Path2D/PathFollow2D.progress_ratio > 0.98:
+			#$Path2D/PathFollow2D/Seagull.flip_h = true
+			#direction = -1
+			#idle()
+		#elif direction == -1 and $Path2D/PathFollow2D.progress_ratio < 0.02:
+			#direction = 1
+			#$Path2D/PathFollow2D/Seagull.flip_h = false
+			#idle()
 		
 
-func _on_idle_timer_timeout():
-	if State == States.IDLE:
-		$Audio/SqwawkSFX.play()
-		State = States.MOVING
-		$Path2D/PathFollow2D/Seagull.play("fly")
+#func _on_idle_timer_timeout():
+	#if State == States.IDLE:
+		#$Audio/SqwawkSFX.play()
+		#State = States.MOVING
+		#$Path2D/PathFollow2D/Seagull.play("fly")
 
 func can_attack():
 	var ready_and_able = true
 	if State in [States.DYING, States.DEAD]:
 		ready_and_able = false
-	elif not $ReloadTimer.is_stopped:
-		ready_and_able = false
+	#elif not $ReloadTimer.is_stopped:
+		#ready_and_able = false
 	return ready_and_able
 	
 	
@@ -76,4 +124,21 @@ func begin_dying():
 	State = States.DYING
 	await get_tree().create_timer(5).timeout
 	queue_free()
-	
+
+func move_next():
+	var block_size = 128
+	var tween = create_tween()
+	var path = $Path2D
+	var curve = path.curve
+	var progress = $Path2D/PathFollow2D.progress
+	tween.tween_property($Path2D/PathFollow2D, "progress", progress+block_size, 0.3).set_ease(Tween.EASE_IN_OUT)\
+	.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_callback(_on_move_end)
+
+
+func _on_move_end():
+	pass
+
+func _on_tick():
+	if is_top_bird():
+		move_next()
