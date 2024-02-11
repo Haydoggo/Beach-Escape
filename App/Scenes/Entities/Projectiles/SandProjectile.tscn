@@ -121,7 +121,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_2tsgu"]
 resource_name = "explode"
-length = 0.9
+length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -290,9 +290,11 @@ polygon = PackedVector2Array(-10, 110, 70, 120, 50, 220, -50, 230, -180, 180, -2
 stream = SubResource("AudioStreamRandomizer_3rprl")
 volume_db = -7.0
 pitch_scale = 0.7
+bus = &"SFX"
 
 [node name="ImpactSound" type="AudioStreamPlayer2D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_18qx1")
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
