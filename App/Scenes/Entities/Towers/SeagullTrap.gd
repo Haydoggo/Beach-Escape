@@ -10,6 +10,9 @@ var direction : int = 1
 @export var health_max : float = 50.0
 var health = health_max
 
+enum travel_types { WALK, FLY }
+@export var travel_type : travel_types = travel_types.WALK
+
 #var path : Array = []
 #var path_position : int = 0
 
@@ -126,10 +129,10 @@ func begin_dying():
 	queue_free()
 
 func move_next():
+	$Path2D/PathFollow2D/Seagull.play("fly")
 	var block_size = 128
 	var tween = create_tween()
 	var path = $Path2D
-	var curve = path.curve
 	var progress = $Path2D/PathFollow2D.progress
 	tween.tween_property($Path2D/PathFollow2D, "progress", progress+(direction * block_size), 0.3).set_ease(Tween.EASE_IN_OUT)\
 	.set_trans(Tween.TRANS_CUBIC)
@@ -137,6 +140,7 @@ func move_next():
 
 
 func _on_move_end():
+	$Path2D/PathFollow2D/Seagull.play("idle")
 	if direction == 1 and $Path2D/PathFollow2D.get_progress_ratio() > 0.9:
 		direction = -1
 	elif direction == -1 and $Path2D/PathFollow2D.get_progress_ratio() < 0.1:
