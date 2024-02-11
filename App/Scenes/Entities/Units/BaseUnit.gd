@@ -56,6 +56,7 @@ func attack_tower(tower):
 
 func _on_hit(attack_packet : AttackPacket):
 	health -= attack_packet.damage
+	create_tween().tween_property(self, "modulate", Color.WHITE, 0.3).from(Color.RED)
 	if health <= 0:
 		queue_free()
 
