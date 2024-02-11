@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://de3bma3kyx7em"]
+[gd_scene load_steps=10 format=3 uid="uid://de3bma3kyx7em"]
 
 [ext_resource type="Script" path="res://App/Scenes/Levels/BaseLevel.gd" id="1_cs8tg"]
 [ext_resource type="TileSet" uid="uid://dwo7o7lpg52g0" path="res://App/Scenes/Levels/towers_tile_set.tres" id="1_sr1u4"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cdrk8mkxgd30e" path="res://App/Scenes/Spawners/FinishZone.tscn" id="5_32fpb"]
 [ext_resource type="Texture2D" uid="uid://cfn46omcxn1xu" path="res://Assets/Images/Environment/Border.png" id="5_pgywy"]
 [ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="5_uupqf"]
-[ext_resource type="Script" path="res://App/Scenes/Spawners/Lane.gd" id="6_bi54g"]
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_cs8tg")
@@ -19,6 +18,7 @@ offset_left = 518.0
 offset_top = 134.0
 offset_right = 1542.0
 offset_bottom = 646.0
+mouse_filter = 2
 border_width = 4.0
 script = ExtResource("4_xcjau")
 metadata/_edit_group_ = true
@@ -32,6 +32,7 @@ anchor_bottom = 15.25
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.0655738, 0.0655738)
+mouse_filter = 2
 
 [node name="Tiles" type="TextureRect" parent="PlaySpace/Scaler"]
 layout_mode = 1
@@ -40,6 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("4_66nol")
 stretch_mode = 1
 
@@ -60,21 +62,17 @@ axis_stretch_vertical = 2
 
 [node name="Lanes" type="Node2D" parent="PlaySpace"]
 
-[node name="Lane" type="Marker2D" parent="PlaySpace/Lanes" groups=["Lanes"] instance=ExtResource("5_uupqf")]
+[node name="Lane" parent="PlaySpace/Lanes" instance=ExtResource("5_uupqf")]
 position = Vector2(64, 64)
-script = ExtResource("6_bi54g")
 
-[node name="Lane2" type="Marker2D" parent="PlaySpace/Lanes" groups=["Lanes"] instance=ExtResource("5_uupqf")]
+[node name="Lane2" parent="PlaySpace/Lanes" instance=ExtResource("5_uupqf")]
 position = Vector2(64, 192)
-script = ExtResource("6_bi54g")
 
-[node name="Lane3" type="Marker2D" parent="PlaySpace/Lanes" groups=["Lanes"] instance=ExtResource("5_uupqf")]
+[node name="Lane3" parent="PlaySpace/Lanes" instance=ExtResource("5_uupqf")]
 position = Vector2(64, 320)
-script = ExtResource("6_bi54g")
 
-[node name="Lane4" type="Marker2D" parent="PlaySpace/Lanes" groups=["Lanes"] instance=ExtResource("5_uupqf")]
+[node name="Lane4" parent="PlaySpace/Lanes" instance=ExtResource("5_uupqf")]
 position = Vector2(64, 448)
-script = ExtResource("6_bi54g")
 
 [node name="Towers" type="TileMap" parent="."]
 position = Vector2(404, 10)
