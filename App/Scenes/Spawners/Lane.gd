@@ -29,8 +29,9 @@ func spawn(unit_info : UnitInfo):
 	tween.tween_property(new_unit, "scale", Vector2.ONE, 0.3).from(Vector2.ZERO)
 
 func _on_tick():
-	if queued_units.size() > 0:
-		spawn(queued_units.pop_front())
+	pass
+	#if queued_units.size() > 0:
+		#spawn(queued_units.pop_front())
 
 
 func queue_spawn(unit_info : UnitInfo):

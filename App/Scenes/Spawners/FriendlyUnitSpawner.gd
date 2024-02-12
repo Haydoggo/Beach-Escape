@@ -37,20 +37,22 @@ func _process(_delta: float) -> void:
 			var m_pos = get_global_mouse_position()
 			if m_pos.distance_to(lane_node.global_position) < m_pos.distance_to(closest_lane.global_position):
 				closest_lane = lane_node
+		update_path_preview()
 		#switch_to_lane(closest_lane)
 		
 
 func spawn_unit(unit_info : UnitInfo):
-	var new_unit = unit_info.packed_scene.instantiate() as BaseUnit
-	#assert( $QueuedUnits.get_child_count() > 0)
-	Globals.current_level.get_node("UnitContainer").add_child(new_unit)
-	new_unit.global_position = global_position
-	#$QueuedUnits.get_child(0).queue_free() # remove the icon
-	unit_spawned.emit()
-	var tween = new_unit.create_tween()
-	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(new_unit, "scale", Vector2.ONE, 0.3).from(Vector2.ZERO)
-
+	if selected_unit_button.count > 0:
+		var new_unit = unit_info.packed_scene.instantiate() as BaseUnit
+		#assert( $QueuedUnits.get_child_count() > 0)
+		Globals.current_level.get_node("UnitContainer").add_child(new_unit)
+		new_unit.global_position = global_position
+		#$QueuedUnits.get_child(0).queue_free() # remove the icon
+		unit_spawned.emit()
+		var tween = new_unit.create_tween()
+		tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(new_unit, "scale", Vector2.ONE, 0.3).from(Vector2.ZERO)
+		selected_unit_button.count -= 1
 
 func queue_spawn_selected():
 	pass
@@ -63,7 +65,7 @@ func switch_to_lane(lane_node : Node2D):
 	current_lane_node = lane_node
 	global_position = lane_node.global_position
 	
-	# update path preview
+func update_path_preview():
 	if selected_unit_button != null:
 		var path = selected_unit_button.unit_info.path
 		path_preview.clear_points()

@@ -54,10 +54,11 @@ func remove_dummy_buttons():
 
 func generate_available_units_from_global():
 	for unit_type in Globals.unit_metadata:
-		var new_unit_count = UnitCount.new()
-		new_unit_count.unit_info = unit_type
-		new_unit_count.count = Globals.surviving_units[unit_type.name]
-		available_units.push_back(new_unit_count)
+		if Globals.surviving_units.has(unit_type.name):
+			var new_unit_count = UnitCount.new()
+			new_unit_count.unit_info = unit_type
+			new_unit_count.count = Globals.surviving_units[unit_type.name]
+			available_units.push_back(new_unit_count)
 		
 
 func add_unit_button(unit_count : UnitCount, shortcut_keycode : int):
@@ -84,7 +85,7 @@ func button_hovered(unit_info : UnitInfo):
 func button_mouse_exited():
 	button_hover_text_popup.close()
 
-func _on_unit_spawned(): # signal comes from Lanes
+func _on_unit_spawned(): # signal comes from FriendlyUnitSpawner
 	if get_num_units_remaining() == 0:
 		if not last_unit_notification_emitted:
 			last_unit_sent.emit()

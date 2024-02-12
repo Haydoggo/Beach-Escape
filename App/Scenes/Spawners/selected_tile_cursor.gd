@@ -10,7 +10,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if active:
-		var zone = get_parent()
+		#var zone = get_parent()
 		var mouse_pos = get_global_mouse_position()
 		#var constraints : Rect2 = zone.get_node("CollisionShape2D").shape.get_rect()
 		#if constraints.has_point(mouse_pos):
