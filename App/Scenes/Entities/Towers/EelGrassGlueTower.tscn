@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://wykl862gv5fc"]
+[gd_scene load_steps=11 format=3 uid="uid://wykl862gv5fc"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/StaticTrap_OnTick.gd" id="1_rj7qc"]
 [ext_resource type="Texture2D" uid="uid://b22y2epv8g5p0" path="res://Assets/Images/placeholder/EelGrass.png" id="2_lkby1"]
 [ext_resource type="PackedScene" uid="uid://bu4vg8os8fnp4" path="res://App/Scenes/Entities/Components/Weapons/persistent_stationary_weapon.tscn" id="3_mgioi"]
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="4_airjr"]
+[ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="5_hks4k"]
 
 [sub_resource type="Gradient" id="Gradient_yfvkm"]
 offsets = PackedFloat32Array(0.178082, 0.481735)
@@ -32,6 +33,7 @@ _data = {
 
 [node name="EelGrassGlueTower" type="Node2D" groups=["EnemyTraps"]]
 script = ExtResource("1_rj7qc")
+description = "Eel Grass: slows fish down"
 
 [node name="Shadow" type="Sprite2D" parent="."]
 show_behind_parent = true
@@ -50,6 +52,8 @@ texture = ExtResource("2_lkby1")
 
 [node name="PersistentStationaryWeapon" parent="Components/Weapons" instance=ExtResource("3_mgioi")]
 attack_packet = SubResource("Resource_gfjlk")
+
+[node name="HoverPopupInfo" parent="Components" instance=ExtResource("5_hks4k")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

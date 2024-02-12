@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfet1wnvw1f0e"]
+[gd_scene load_steps=8 format=3 uid="uid://bfet1wnvw1f0e"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/BaseTower.gd" id="1_yj2u2"]
 [ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="3_evm77"]
+[ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="4_fcfwh"]
 [ext_resource type="PackedScene" uid="uid://cim8b3k5lkraj" path="res://App/Scenes/Entities/Components/health_component.tscn" id="4_wyb4v"]
 
 [sub_resource type="Gradient" id="Gradient_yfvkm"]
@@ -52,6 +53,8 @@ default_color = Color(1, 1, 0, 1)
 [node name="Weapon" type="Node2D" parent="Components"]
 
 [node name="HealthComponent" parent="Components" instance=ExtResource("4_wyb4v")]
+
+[node name="HoverPopupInfo" parent="Components" instance=ExtResource("4_fcfwh")]
 
 [connection signal="area_entered" from="ActivationTriggers" to="." method="_on_activation_triggers_area_entered"]
 [connection signal="area_exited" from="ActivationTriggers" to="." method="_on_activation_triggers_area_exited"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://b60xpjnh47rv8"]
+[gd_scene load_steps=15 format=3 uid="uid://b60xpjnh47rv8"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/PitTrap.gd" id="1_o0acg"]
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_ku88v"]
 [ext_resource type="Texture2D" uid="uid://dysq2u3840crl" path="res://Assets/Images/Towers/Sand_Pit.png" id="2_n8g11"]
 [ext_resource type="AudioStream" uid="uid://dqremj0i0gfp1" path="res://Assets/SFX/close1.wav" id="4_roctm"]
 [ext_resource type="AudioStream" uid="uid://bmcdir5sqa0rj" path="res://Assets/SFX/close2.wav" id="5_pacfs"]
+[ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="6_68mip"]
 
 [sub_resource type="Resource" id="Resource_6bheb"]
 script = ExtResource("2_ku88v")
@@ -190,5 +191,9 @@ libraries = {
 
 [node name="ClosingNoise" type="AudioStreamPlayer2D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_frgpl")
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="HoverPopupInfo" parent="Components" instance=ExtResource("6_68mip")]
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

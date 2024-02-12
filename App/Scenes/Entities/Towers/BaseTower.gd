@@ -5,10 +5,11 @@
 
 class_name BaseTower extends Node2D
 
+@export var description = "Enemy tower wants to keep you on the beach."
+
 #@export var projectile : PackedScene
 enum turret_types { STATIC, ROTATING, MELEE_AOE }
 @export var turret_type = turret_types.STATIC
-
 var active_target
 var turret_rotation : float # radians from Vector2.RIGHT
 var rotation_speed : float = 3.14159

@@ -2,6 +2,8 @@
 
 extends Node2D
 
+@export var description : String = "Seagull moves between tiles. Dangerous."
+
 enum States { IDLE, MOVING, WAITING, DYING, DEAD }
 var State = States.MOVING
 @export var speed = 150.0
@@ -101,8 +103,9 @@ func _on_hit(attackPacket):
 
 
 func update_health_bar():
-	$Path2D/PathFollow2D/Seagull/HealthBar.max_value = health_max
-	$Path2D/PathFollow2D/Seagull/HealthBar.value = health
+	var health_bar = $Path2D/PathFollow2D/Seagull/Components/HealthBar
+	health_bar.max_value = health_max
+	health_bar.value = health
 
 func begin_dying():
 	$Path2D/PathFollow2D/Seagull.play("die")

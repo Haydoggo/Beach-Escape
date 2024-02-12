@@ -96,6 +96,12 @@ func button_hovered(unit_info : UnitInfo):
 func button_mouse_exited():
 	button_hover_text_popup.close()
 
+func _on_tower_hovered(description):
+	button_hover_text_popup.popup(description)
+	
+func _on_tower_mouse_exited():
+	button_hover_text_popup.close()
+
 func _on_unit_spawned(): # signal comes from FriendlyUnitSpawner
 	if get_num_units_remaining() == 0:
 		if not last_unit_notification_emitted:

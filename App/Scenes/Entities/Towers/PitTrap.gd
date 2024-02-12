@@ -4,7 +4,7 @@
 extends Node2D
 
 @export var attack_packet : AttackPacket
-
+@export var description : String = "Pit trap: grabs the first fish it encounters."
 enum States { OPEN, CLOSED }
 var State = States.OPEN
 

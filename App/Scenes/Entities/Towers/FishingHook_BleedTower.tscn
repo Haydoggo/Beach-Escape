@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bch3hc5ug6j73"]
+[gd_scene load_steps=10 format=3 uid="uid://bch3hc5ug6j73"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/StaticTrap_OnTick.gd" id="1_thnx5"]
 [ext_resource type="Texture2D" uid="uid://huumkbuqyulj" path="res://Assets/Images/placeholder/fish_hook.png" id="2_2o2p6"]
 [ext_resource type="PackedScene" uid="uid://bu4vg8os8fnp4" path="res://App/Scenes/Entities/Components/Weapons/persistent_stationary_weapon.tscn" id="3_86pm3"]
+[ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="4_ii13g"]
 
 [sub_resource type="Gradient" id="Gradient_yfvkm"]
 offsets = PackedFloat32Array(0.178082, 0.481735)
@@ -46,6 +47,8 @@ texture = ExtResource("2_2o2p6")
 [node name="Weapons" type="Node2D" parent="Components"]
 
 [node name="PersistentStationaryWeapon" parent="Components/Weapons" instance=ExtResource("3_86pm3")]
+
+[node name="HoverPopupInfo" parent="Components" instance=ExtResource("4_ii13g")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

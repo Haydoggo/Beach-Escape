@@ -130,6 +130,11 @@ drag_procreator={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Towers, Units, Projectiles"
+2d_physics/layer_2="Mouseover Hover Popups"
+
 [physics]
 
 common/enable_pause_aware_picking=true
