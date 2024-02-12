@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://jrw3uu7ccapn"]
+[gd_scene load_steps=6 format=3 uid="uid://xya6xspmx2gu"]
 
 [ext_resource type="Script" path="res://App/Scenes/Spawners/DeploymentZone.gd" id="1_0c34f"]
-[ext_resource type="PackedScene" uid="uid://dj1uute6i0kn2" path="res://App/Scenes/Spawners/selected_tile_cursor.tscn" id="2_jehyn"]
+[ext_resource type="PackedScene" path="res://App/Scenes/Spawners/selected_tile_cursor.tscn" id="2_jehyn"]
 [ext_resource type="PackedScene" uid="uid://epm2h0e8duc1" path="res://App/Scenes/Spawners/FriendlyUnitSpawner.tscn" id="3_hclq4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwf0a"]
-size = Vector2(384, 512)
+resource_local_to_scene = true
+size = Vector2(384, 768)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6ostm"]
 blend_mode = 1
