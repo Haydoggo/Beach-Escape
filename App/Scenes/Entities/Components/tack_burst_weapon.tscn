@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cck31mqtd2h5y"]
+
+[ext_resource type="Script" path="res://App/Scenes/Entities/Components/tick_weapon_component.gd" id="1_sksyn"]
+[ext_resource type="PackedScene" uid="uid://dnd2jdv68cysc" path="res://App/Scenes/Entities/Projectiles/TackBurst_AoE_Projectile.tscn" id="2_3llgt"]
+
+[node name="TackBurstAoEWeapon" type="Node2D"]
+script = ExtResource("1_sksyn")
+projectile = ExtResource("2_3llgt")
+
+[node name="MuzzleLocation" type="Marker2D" parent="."]

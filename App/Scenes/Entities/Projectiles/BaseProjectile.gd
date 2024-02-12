@@ -45,11 +45,12 @@ func create_attack_packet():
 	return attack_packet
 	
 func _on_body_entered(body):
-	if State == States.MOVING:
-		if body.is_in_group("Units"):
-			if body.has_method("_on_hit"):
-				body._on_hit(create_attack_packet())
-			explode()
+	pass
+	#if State == States.MOVING:
+		#if body.is_in_group("Units"):
+			#if body.has_method("_on_hit"):
+				#body._on_hit(create_attack_packet())
+			#explode()
 
 
 func _on_area_entered(area):
@@ -64,3 +65,7 @@ func _on_tick() :
 	# That's a bit weird, but whatever.
 	pass
 	
+
+
+func _on_animation_player_animation_finished(anim_name):
+	pass
