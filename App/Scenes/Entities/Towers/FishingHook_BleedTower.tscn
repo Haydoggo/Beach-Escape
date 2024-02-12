@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bch3hc5ug6j73"]
 
-[ext_resource type="Script" path="res://App/Scenes/Entities/Towers/FishingHook_BleedTower.gd" id="1_thnx5"]
+[ext_resource type="Script" path="res://App/Scenes/Entities/Towers/StaticTrap_OnTick.gd" id="1_thnx5"]
 [ext_resource type="Texture2D" uid="uid://huumkbuqyulj" path="res://Assets/Images/placeholder/fish_hook.png" id="2_2o2p6"]
 [ext_resource type="PackedScene" uid="uid://bu4vg8os8fnp4" path="res://App/Scenes/Entities/Components/Weapons/persistent_stationary_weapon.tscn" id="3_86pm3"]
 
