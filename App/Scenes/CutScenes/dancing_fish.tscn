@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://crxciga68aqtd"]
+
+[ext_resource type="Script" path="res://App/Scenes/CutScenes/dancing_fish.gd" id="1_6fukm"]
+[ext_resource type="Texture2D" uid="uid://dalyydqj0idie" path="res://Assets/Images/Units/04_Crab_Basic.png" id="1_tspdr"]
+[ext_resource type="Script" path="res://App/Scenes/Entities/Components/wobble_tween.gd" id="2_0un4f"]
+[ext_resource type="Texture2D" uid="uid://ckqwfoi4guv8i" path="res://Assets/Images/Units/02_Fish_Boot.png" id="2_sc5gb"]
+[ext_resource type="Texture2D" uid="uid://bix3qee4xy824" path="res://Assets/Images/Units/TempOcto.png" id="3_6co8d"]
+
+[node name="DancingFish" type="Node2D"]
+script = ExtResource("1_6fukm")
+
+[node name="BeatTimer" type="Timer" parent="."]
+wait_time = 0.625
+autostart = true
+
+[node name="Dancers" type="Node2D" parent="."]
+
+[node name="Crab" type="Sprite2D" parent="Dancers"]
+position = Vector2(722, 796)
+texture = ExtResource("1_tspdr")
+script = ExtResource("2_0un4f")
+
+[node name="RegularFish" type="Sprite2D" parent="Dancers"]
+position = Vector2(512, 810)
+texture = ExtResource("2_sc5gb")
+script = ExtResource("2_0un4f")
+
+[node name="Octopus" type="Sprite2D" parent="Dancers"]
+position = Vector2(275, 830)
+scale = Vector2(0.535635, 0.535635)
+texture = ExtResource("3_6co8d")
+script = ExtResource("2_0un4f")
+
+[connection signal="timeout" from="BeatTimer" to="." method="_on_beat_timer_timeout"]

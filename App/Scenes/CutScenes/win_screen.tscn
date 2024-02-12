@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://cip3cotv4eag3"]
+[gd_scene load_steps=11 format=3 uid="uid://cip3cotv4eag3"]
 
 [ext_resource type="Script" path="res://App/Scenes/CutScenes/WinScreen.gd" id="1_n5dl8"]
+[ext_resource type="Theme" uid="uid://6h5f7sqktd67" path="res://App/Themes/animatic_theme.tres" id="1_w6sdv"]
+[ext_resource type="Texture2D" uid="uid://beqt2qi8j86vu" path="res://Assets/Images/placeholder/island_empty.png" id="2_tm77b"]
+[ext_resource type="Texture2D" uid="uid://c4g4n4sfyjr5a" path="res://Assets/Images/placeholder/cloud_1.png" id="3_1r2ch"]
+[ext_resource type="PackedScene" uid="uid://crxciga68aqtd" path="res://App/Scenes/CutScenes/dancing_fish.tscn" id="3_lgi36"]
+[ext_resource type="AudioStream" uid="uid://bl2utd3tyx5jb" path="res://Assets/Music/Crab_Craze_Demo_2.ogg" id="4_a0v8k"]
+[ext_resource type="Script" path="res://App/Scenes/CutScenes/h_scroll.gd" id="4_iu6q3"]
+[ext_resource type="Texture2D" uid="uid://qd5byj3m2bwj" path="res://Assets/Images/placeholder/cloud_2.png" id="5_5xb5y"]
+
+[sub_resource type="Gradient" id="Gradient_ltvxu"]
+offsets = PackedFloat32Array(0, 0.249467, 0.296375, 0.942431)
+colors = PackedColorArray(0, 0, 0.69, 1, 0.2829, 0.2829, 0.69, 1, 1, 1, 1, 1, 0.682353, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sax8b"]
+gradient = SubResource("Gradient_ltvxu")
+fill_from = Vector2(1, 1)
 
 [node name="WinScreen" type="Control"]
 layout_mode = 3
@@ -9,19 +24,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_w6sdv")
 script = ExtResource("1_n5dl8")
 
-[node name="Label" type="Label" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 128
-text = "You Win!"
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_sax8b")
+
+[node name="Cloud1" type="TextureRect" parent="TextureRect2"]
+offset_left = 1144.0
+offset_top = 150.0
+offset_right = 1916.0
+offset_bottom = 514.0
+scale = Vector2(0.821633, 0.821633)
+texture = ExtResource("3_1r2ch")
+script = ExtResource("4_iu6q3")
+
+[node name="Cloud2" type="TextureRect" parent="TextureRect2"]
+offset_left = 142.0
+offset_top = 88.0
+offset_right = 982.0
+offset_bottom = 569.0
+scale = Vector2(0.572828, 0.572828)
+texture = ExtResource("5_5xb5y")
+expand_mode = 3
+script = ExtResource("4_iu6q3")
+speed = 55.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -30,15 +64,42 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = 131.0
+offset_top = 121.0
+offset_right = 437.0
+offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 154.0
+offset_right = 896.0
+offset_bottom = 1020.0
+texture = ExtResource("2_tm77b")
+
+[node name="DancingFish" parent="." instance=ExtResource("3_lgi36")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_a0v8k")
+autoplay = true
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
+offset_left = 966.0
+offset_top = 142.0
+offset_right = 1360.0
+offset_bottom = 374.0
+tabs_visible = false
+
+[node name="Label" type="Label" parent="TabContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "We Win!"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
