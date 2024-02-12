@@ -44,7 +44,7 @@ func create_attack_packet():
 	attack_packet.damage_type = attack_packet.damage_types.IMPACT
 	return attack_packet
 	
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	pass
 	#if State == States.MOVING:
 		#if body.is_in_group("Units"):
@@ -67,5 +67,5 @@ func _on_tick() :
 	
 
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_anim_name):
 	pass

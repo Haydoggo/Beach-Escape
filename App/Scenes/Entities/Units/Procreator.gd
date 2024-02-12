@@ -2,6 +2,11 @@ extends Area2D
 
 var unit_info : UnitInfo
 
+var velocity : Vector2
+var desired_direction : Vector2
+var speed : float = 50.0
+
+
 enum States { IDLE, HOVER, DRAGGING, PROCREATING, HIDING, DYING, DEAD }
 var State = States.IDLE :
 	set(value): # might be useful
@@ -14,7 +19,25 @@ var State = States.IDLE :
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	speed = randf_range(50, 100)
+	set_desired_direction()
+	wiggle()
 	pass # Replace with function body.
+
+func set_desired_direction():
+	var center_screen = get_viewport_rect().size/2
+	var direction = global_position.direction_to(center_screen)
+	var deviation = 1.2
+	direction = direction.rotated(randf_range(-deviation, deviation))
+	velocity = direction * speed
+
+func wiggle():
+	var tween = create_tween()
+	var magnitude = randf_range(-0.4, 0.4) # radians
+	var duration = randf_range(0.6, 0.65)
+	tween.tween_property($Sprite2D, "rotation", magnitude, duration )
+	tween.tween_callback(self.wiggle)
 
 func _on_state_changed(state):
 	if state == States.HOVER:
@@ -55,6 +78,14 @@ func _process(_delta):
 		global_position = get_global_mouse_position()
 		if Input.is_action_just_released("drag_procreator"):
 			State = States.IDLE
+	elif State == States.IDLE:
+		global_position += velocity * _delta
+		if is_outside_viewport():
+			queue_free()
+		
+func is_outside_viewport():
+	return !get_viewport_rect().has_point(global_position)
+
 			
 func _unhandled_input(_event):
 	if State == States.HOVER:
