@@ -41,15 +41,12 @@ func select_first_available_button():
 	# added to prevent selecting invalid buttons
 	var button_selected = null
 	var i: int = 0
-	while not button_selected and i < 100:
-		for button in unit_buttons.get_children():
-			if is_instance_valid(button) and button is UnitButton:
-				button.pressed.emit() # Select first button
-				button_selected = button
-				return
-			else:
-				i += 1
-
+	for button in unit_buttons.get_children():
+		if is_instance_valid(button) and button is UnitButton and button.unit_count.count > 0:
+			button.pressed.emit() # Select first button
+			button_selected = button
+			return
+	
 func remove_dummy_buttons():
 	if unit_buttons.get_child_count() > 0:
 		for dummy_button in unit_buttons.get_children():
@@ -84,6 +81,7 @@ func add_unit_button(unit_count : UnitCount, shortcut_keycode : int):
 
 func button_pressed(button : UnitButton):
 	friendly_unit_spawner.selected_unit_button = button.unit_count
+
 	
 func button_hovered(unit_info : UnitInfo):
 	
@@ -98,7 +96,8 @@ func _on_unit_spawned(): # signal comes from FriendlyUnitSpawner
 			last_unit_sent.emit()
 			print("Last unit sent")
 			last_unit_notification_emitted = true
-
+	if friendly_unit_spawner.selected_unit_button.count == 0:
+		select_first_available_button()
 
 func get_num_units_remaining():
 	var total = 0

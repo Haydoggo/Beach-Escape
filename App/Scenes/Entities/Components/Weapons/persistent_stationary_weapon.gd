@@ -12,7 +12,6 @@ func attack_units_in_my_zone():
 	for enemy in present_enemies:
 		if enemy.has_method("_on_hit"):
 			enemy._on_hit(attack_packet)
-			print(owner.name + " attacked " + enemy.name)
 	
 	
 func get_local_enemies():
