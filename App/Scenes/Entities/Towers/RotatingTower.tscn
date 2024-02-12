@@ -10,6 +10,9 @@ height = 662.0
 [node name="RotatingTower" instance=ExtResource("1_24p07")]
 turret_type = 1
 
+[node name="Shadow" parent="." index="0"]
+position = Vector2(12, 54)
+
 [node name="Sprite2D" parent="." index="1"]
 scale = Vector2(0.09, 0.09)
 texture = ExtResource("2_pkgns")
