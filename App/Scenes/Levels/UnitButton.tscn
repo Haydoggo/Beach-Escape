@@ -66,3 +66,10 @@ layout_mode = 2
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="NumberKeyLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "1"

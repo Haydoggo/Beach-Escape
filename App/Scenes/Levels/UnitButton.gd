@@ -18,6 +18,7 @@ var shortcut_keycode : int:
 	set(v):
 		shortcut_keycode = v
 		shortcut_event.keycode = shortcut_keycode as Key
+		$NumberKeyLabel.text = str(v-48)
 var unit_count : UnitCount
 var shortcut_event : InputEventKey
 
@@ -27,3 +28,4 @@ func _ready() -> void:
 	shortcut_event = InputEventKey.new()
 	button.shortcut.events.append(shortcut_event)	
 	button.pressed.connect(func():pressed.emit())
+
