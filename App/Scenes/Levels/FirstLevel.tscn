@@ -40,7 +40,7 @@ count = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ym5j7"]
 resource_local_to_scene = true
-size = Vector2(384, 768)
+size = Vector2(384, 512)
 
 [node name="FirstLevel" instance=ExtResource("1_0v084")]
 available_units = Array[ExtResource("2_llxw0")]([SubResource("Resource_gf6h3"), SubResource("Resource_5t3u0"), SubResource("Resource_p1pbo"), SubResource("Resource_mu784"), SubResource("Resource_k0y0f"), null])

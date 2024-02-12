@@ -11,11 +11,12 @@ func _ready():
 func _process(_delta):
 	if active:
 		#var zone = get_parent()
-		var mouse_pos = get_global_mouse_position()
+		var mouse_pos = get_global_mouse_position() - get_parent().global_position
 		#var constraints : Rect2 = zone.get_node("CollisionShape2D").shape.get_rect()
 		#if constraints.has_point(mouse_pos):
 			#global_position = mouse_pos.snapped(Vector2(128,128))
-		global_position = mouse_pos.snapped(Vector2(128,128))
+		var snap = Vector2(128, 128)
+		position = (mouse_pos - snap/2).snapped(snap) + snap/2
 		
 		
 func activate():
