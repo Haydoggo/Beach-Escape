@@ -109,7 +109,7 @@ layout_mode = 0
 offset_left = 464.0
 offset_top = 771.0
 offset_right = 857.0
-offset_bottom = 1156.0
+offset_bottom = 1303.0
 text = "CONTRACTS:
 
 Player Creeps and Enemy Towers implement _on_hit(AttackPacket)
@@ -119,5 +119,8 @@ Enemy Towers in group \"EnemyTowers\"
 Anything moving or attacking needs _on_tick() method and should respect timing.
 
 To block player creeps, tower hitboxes must be in group \"BlockerHitbox\" or \"EnemyTowerHitbox\"
+
+GUI Mouseover hover stuff can go on layer 2, so creeps and towers don't detect them.
+
 "
 wrap_mode = 1
