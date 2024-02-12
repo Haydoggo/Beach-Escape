@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://jrw3uu7ccapn"]
+[gd_scene load_steps=6 format=3 uid="uid://jrw3uu7ccapn"]
 
 [ext_resource type="Script" path="res://App/Scenes/Spawners/DeploymentZone.gd" id="1_0c34f"]
 [ext_resource type="PackedScene" uid="uid://dj1uute6i0kn2" path="res://App/Scenes/Spawners/selected_tile_cursor.tscn" id="2_jehyn"]
+[ext_resource type="PackedScene" uid="uid://epm2h0e8duc1" path="res://App/Scenes/Spawners/FriendlyUnitSpawner.tscn" id="3_hclq4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwf0a"]
 size = Vector2(384, 512)
@@ -43,6 +44,9 @@ mouse_filter = 2
 color = Color(1, 1, 0.313726, 0.0509804)
 
 [node name="SelectedTileCursor" parent="." instance=ExtResource("2_jehyn")]
+
+[node name="FriendlyUnitSpawner" parent="SelectedTileCursor" node_paths=PackedStringArray("deployment_zone") instance=ExtResource("3_hclq4")]
+deployment_zone = NodePath("../..")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

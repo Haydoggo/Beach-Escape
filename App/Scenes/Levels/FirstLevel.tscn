@@ -1,28 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bge658ih8ch4w"]
+[gd_scene load_steps=2 format=3 uid="uid://bge658ih8ch4w"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_0v084"]
-[ext_resource type="Script" path="res://App/Scenes/Spawners/Lane.gd" id="2_ge5ov"]
 
 [node name="BaseLevel2" instance=ExtResource("1_0v084")]
 
 [node name="PlaySpace" parent="." index="1"]
 offset_right = 1595.0
-play_space_size = Vector2i(12, 4)
-
-[node name="Lane" parent="PlaySpace/Lanes" index="0" groups=["Lanes"]]
-script = ExtResource("2_ge5ov")
-
-[node name="Lane2" parent="PlaySpace/Lanes" index="1" groups=["Lanes"]]
-script = ExtResource("2_ge5ov")
-
-[node name="Lane3" parent="PlaySpace/Lanes" index="2" groups=["Lanes"]]
-script = ExtResource("2_ge5ov")
-
-[node name="Lane4" parent="PlaySpace/Lanes" index="3" groups=["Lanes"]]
-script = ExtResource("2_ge5ov")
 
 [node name="Towers" parent="." index="2"]
 position = Vector2(442, -51)
 layer_0/tile_data = PackedInt32Array(131075, 0, 65536, 196613, 0, 65536, 262148, 0, 131072, 327689, 0, 196608, 65543, 0, 196608, 65538, 0, 262144, 327682, 0, 327680, 458755, 0, 327680, 524293, 0, 327680, 524290, 0, 327680, 196610, 0, 327680, 4, 0, 393216, 65540, 0, 393216, 65542, 0, 393216, 327686, 0, 393216)
 
+[editable path="PlaySpace/DeploymentZone"]
 [editable path="UI"]

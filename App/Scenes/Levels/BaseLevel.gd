@@ -10,9 +10,11 @@ var last_unit_notification_emitted : bool = false
 
 var unit_buttons : Container
 var button_hover_text_popup : Panel
-
+var friendly_unit_spawner : Node
+	
 func _ready() -> void:
 	Globals.current_level = self
+	friendly_unit_spawner = find_child("FriendlyUnitSpawner")
 	add_unit_buttons()
 
 
@@ -73,7 +75,7 @@ func add_unit_button(unit_count : UnitCount, shortcut_keycode : int):
 
 
 func button_pressed(button : UnitButton):
-	$FriendlyUnitSpawner.current_unit_count = button.unit_count
+	friendly_unit_spawner.selected_unit_button = button.unit_count
 	
 func button_hovered(unit_info : UnitInfo):
 	

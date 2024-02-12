@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://de3bma3kyx7em"]
+[gd_scene load_steps=11 format=3 uid="uid://de3bma3kyx7em"]
 
 [ext_resource type="Script" path="res://App/Scenes/Levels/BaseLevel.gd" id="1_cs8tg"]
 [ext_resource type="TileSet" uid="uid://dwo7o7lpg52g0" path="res://App/Scenes/Levels/towers_tile_set.tres" id="1_sr1u4"]
-[ext_resource type="PackedScene" uid="uid://epm2h0e8duc1" path="res://App/Scenes/Spawners/FriendlyUnitSpawner.tscn" id="2_s8wsn"]
 [ext_resource type="Texture2D" uid="uid://b8p626016sscb" path="res://Assets/Images/Environment/Tile_Background.png" id="3_1px8g"]
 [ext_resource type="Texture2D" uid="uid://bhsasslam54v" path="res://Assets/Images/Environment/Tile_Play.png" id="4_66nol"]
 [ext_resource type="Script" path="res://App/Scenes/Levels/PlaySpaceSizer.gd" id="4_xcjau"]
@@ -83,6 +82,9 @@ position = Vector2(64, 448)
 [node name="DeploymentZone" parent="PlaySpace" instance=ExtResource("6_6lisd")]
 position = Vector2(3, 0)
 
+[node name="FriendlyUnitSpawner" parent="PlaySpace/DeploymentZone/SelectedTileCursor" index="0" node_paths=PackedStringArray("lanes_container")]
+lanes_container = NodePath("../../../Lanes")
+
 [node name="Towers" type="TileMap" parent="."]
 position = Vector2(439, -58)
 tile_set = ExtResource("1_sr1u4")
@@ -106,11 +108,10 @@ expand_mode = 1
 
 [node name="UI" parent="." instance=ExtResource("8_3kuke")]
 
-[node name="FriendlyUnitSpawner" parent="." node_paths=PackedStringArray("lanes_container") instance=ExtResource("2_s8wsn")]
-lanes_container = NodePath("../PlaySpace/Lanes")
-
 [node name="FinishZone" parent="." instance=ExtResource("5_32fpb")]
 position = Vector2(1836, 542)
+
+[node name="UnitContainer" type="Node2D" parent="."]
 
 [connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]
 
