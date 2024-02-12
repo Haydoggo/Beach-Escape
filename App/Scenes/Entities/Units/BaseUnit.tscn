@@ -75,3 +75,17 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="SwipeAttackFX" parent="." instance=ExtResource("4_d2n8w")]
+
+[node name="BloodFX" type="CPUParticles2D" parent="."]
+emitting = false
+one_shot = true
+explosiveness = 0.9
+texture = ExtResource("5_74x33")
+emission_shape = 3
+emission_rect_extents = Vector2(32, 32)
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 500)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+color = Color(1, 0, 0, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://de3bma3kyx7em"]
+[gd_scene load_steps=12 format=3 uid="uid://de3bma3kyx7em"]
 
 [ext_resource type="Script" path="res://App/Scenes/Levels/BaseLevel.gd" id="1_cs8tg"]
 [ext_resource type="TileSet" uid="uid://dwo7o7lpg52g0" path="res://App/Scenes/Levels/towers_tile_set.tres" id="1_sr1u4"]
@@ -8,8 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://cdrk8mkxgd30e" path="res://App/Scenes/Spawners/FinishZone.tscn" id="5_32fpb"]
 [ext_resource type="Texture2D" uid="uid://cfn46omcxn1xu" path="res://Assets/Images/Environment/Border_Ring.png" id="5_pgywy"]
 [ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="5_uupqf"]
-[ext_resource type="PackedScene" uid="uid://jrw3uu7ccapn" path="res://App/Scenes/Spawners/DeploymentZone.tscn" id="6_6lisd"]
-[ext_resource type="PackedScene" uid="uid://bchfxguqqtrom" path="res://App/Scenes/GUI/ButtonBarUI.tscn" id="8_3kuke"]
+[ext_resource type="PackedScene" uid="uid://xya6xspmx2gu" path="res://App/Scenes/Spawners/DeploymentZone.tscn" id="6_6lisd"]
+[ext_resource type="PackedScene" path="res://App/Scenes/GUI/ButtonBarUI.tscn" id="8_3kuke"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k81qk"]
+resource_local_to_scene = true
+size = Vector2(384, 512)
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_cs8tg")
@@ -82,6 +86,9 @@ position = Vector2(64, 448)
 [node name="DeploymentZone" parent="PlaySpace" instance=ExtResource("6_6lisd")]
 position = Vector2(3, 0)
 
+[node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
+shape = SubResource("RectangleShape2D_k81qk")
+
 [node name="FriendlyUnitSpawner" parent="PlaySpace/DeploymentZone/SelectedTileCursor" index="0" node_paths=PackedStringArray("lanes_container")]
 lanes_container = NodePath("../../../Lanes")
 
@@ -89,7 +96,6 @@ lanes_container = NodePath("../../../Lanes")
 position = Vector2(439, -58)
 tile_set = ExtResource("1_sr1u4")
 format = 2
-layer_0/tile_data = PackedInt32Array(131075, 0, 65536, 65541, 0, 65536, 196614, 0, 65536)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

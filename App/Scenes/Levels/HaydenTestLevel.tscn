@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6p8x7m7ij133"]
+
+[ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_4i6nq"]
+[ext_resource type="Script" path="res://App/Scenes/Levels/HaydenTestLevel.gd" id="2_kaoqm"]
+[ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="3_y7vxo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_504sy"]
+resource_local_to_scene = true
+size = Vector2(384, 768)
+
+[node name="BaseLevel" instance=ExtResource("1_4i6nq")]
+script = ExtResource("2_kaoqm")
+
+[node name="PlaySpace" parent="." index="1"]
+offset_bottom = 841.0
+
+[node name="Lane5" parent="PlaySpace/Lanes" index="4" instance=ExtResource("3_y7vxo")]
+position = Vector2(64, 576)
+
+[node name="Lane6" parent="PlaySpace/Lanes" index="5" instance=ExtResource("3_y7vxo")]
+position = Vector2(64, 704)
+
+[node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
+position = Vector2(192, 384)
+shape = SubResource("RectangleShape2D_504sy")
+
+[node name="ColorRect" parent="PlaySpace/DeploymentZone" index="2"]
+offset_bottom = 768.0
+
+[editable path="PlaySpace/DeploymentZone"]
+[editable path="UI"]

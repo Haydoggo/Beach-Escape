@@ -6,10 +6,14 @@ class_name BaseUnit extends Node2D
 @onready var moisture_indicator: Node2D = $MoistureIndicator
 @onready var tower_check: ShapeCast2D = $TowerCheck
 @onready var swipe_attack_fx: Path2D = $SwipeAttackFX
+@onready var blood_fx: CPUParticles2D = $BloodFX
 
 
 var path_index := 0 # tracks the index of the path 
 var moisture : int
+var is_bleeding = false
+var is_slow = false
+var slow_counter = 0
 
 func _ready() -> void:
 	health_component.health_max = unit_info.health
@@ -32,7 +36,19 @@ func get_path_points(origin : Vector2) -> Array[Vector2]:
 
 
 func _on_tick():
-	do_movement()
+	if is_bleeding:
+		var ap = AttackPacket.new()
+		ap.damage = 2
+		_on_hit(ap)
+		blood_fx.emitting = true
+	if is_slow:
+		if (slow_counter % 2) == 0:
+			pass # wobble or something
+		else:
+			do_movement()
+		slow_counter += 1
+	else:
+		do_movement()
 
 
 func do_movement():
@@ -99,6 +115,10 @@ func do_drying():
 
 
 func _on_hit(attack_packet : AttackPacket):
+	if attack_packet.damage_type == AttackPacket.damage_types.BLEED:
+		is_bleeding = true
+	if attack_packet.damage_type == AttackPacket.damage_types.GLUE:
+		is_slow = true
 	health_component._on_hit(attack_packet)
 	create_tween().tween_property(self, "modulate", Color.WHITE, 0.3).from(Color.RED)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bge658ih8ch4w"]
+[gd_scene load_steps=14 format=3 uid="uid://bge658ih8ch4w"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_0v084"]
 [ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_llxw0"]
@@ -38,11 +38,18 @@ script = ExtResource("2_llxw0")
 unit_info = ExtResource("7_335f8")
 count = 1
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ym5j7"]
+resource_local_to_scene = true
+size = Vector2(384, 768)
+
 [node name="FirstLevel" instance=ExtResource("1_0v084")]
 available_units = Array[ExtResource("2_llxw0")]([SubResource("Resource_gf6h3"), SubResource("Resource_5t3u0"), SubResource("Resource_p1pbo"), SubResource("Resource_mu784"), SubResource("Resource_k0y0f"), null])
 
 [node name="PlaySpace" parent="." index="1"]
 offset_right = 1595.0
+
+[node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
+shape = SubResource("RectangleShape2D_ym5j7")
 
 [node name="Towers" parent="." index="2"]
 position = Vector2(442, -51)
