@@ -304,6 +304,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
 game_scene_path = "res://App/Scenes/Levels/FirstLevel.tscn"
+level_select_scene = "res://App/Scenes/Menus/LevelSelectMenu/LevelSelectMenu.tscn"
 options_packed_scene = ExtResource("2_ewwbc")
 credits_packed_scene = ExtResource("3_lcwf5")
 
@@ -391,6 +392,12 @@ custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
 text = "Play"
 
+[node name="SelectLevelButton" type="Button" parent="MarginContainer/VBoxContainer/MenuMargin/MenuButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Select Level"
+
 [node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/MenuMargin/MenuButtons"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 40)
@@ -462,6 +469,7 @@ text = "Back"
 script = ExtResource("6_bs342")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuMargin/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuMargin/MenuButtons/SelectLevelButton" to="." method="_on_select_level_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuMargin/MenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuMargin/MenuButtons/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MenuMargin/MenuButtons/ExitButton" to="." method="_on_exit_button_pressed"]

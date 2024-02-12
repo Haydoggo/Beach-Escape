@@ -74,6 +74,7 @@ script = ExtResource("6_gmmsk")
 speed = 55.0
 
 [node name="Island" type="TextureRect" parent="Backdrop" index="2"]
+layout_mode = 0
 offset_left = 126.0
 offset_top = 486.0
 offset_right = 638.0
@@ -82,6 +83,7 @@ texture = ExtResource("6_ewcv4")
 
 [node name="Urchin" type="TextureRect" parent="Backdrop" index="3"]
 custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
 offset_left = 349.0
 offset_top = 811.0
 offset_right = 481.35
@@ -91,6 +93,7 @@ expand_mode = 3
 
 [node name="Fish" type="TextureRect" parent="Backdrop" index="4"]
 custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
 offset_left = 203.0
 offset_top = 811.0
 offset_right = 335.35
@@ -100,6 +103,7 @@ expand_mode = 3
 
 [node name="Crab" type="TextureRect" parent="Backdrop" index="5"]
 custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
 offset_left = 463.0
 offset_top = 811.0
 offset_right = 591.0

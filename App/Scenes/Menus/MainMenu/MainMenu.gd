@@ -2,6 +2,8 @@ extends Control
 
 
 @export_file("*.tscn") var game_scene_path : String
+@export_file("*.tscn") var level_select_scene : String
+
 @export var options_packed_scene : PackedScene
 @export var credits_packed_scene : PackedScene
 @export var version_name: String = '0.0.0'
@@ -108,3 +110,7 @@ func _on_credits_end_reached():
 
 func _on_back_button_pressed():
 	_close_sub_menu()
+
+
+func _on_select_level_button_pressed():
+	SceneLoader.load_scene(level_select_scene)
