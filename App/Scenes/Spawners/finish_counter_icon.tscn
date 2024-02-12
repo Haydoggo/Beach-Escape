@@ -14,5 +14,5 @@ stretch_mode = 5
 
 [node name="UnitCount" type="Label" parent="."]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "0"
+theme_override_font_sizes/font_size = 40
+text = "0/0"
