@@ -17,5 +17,6 @@ description = ""
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_mwm1l")
 health = 1
+moisture = 1
 melee_attack = SubResource("Resource_7eqqu")
 packed_scene_path = "res://App/Scenes/Entities/Units/SeaSlug/SeaSlug.tscn"

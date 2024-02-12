@@ -15,7 +15,9 @@ func do_movement():
 		if not is_instance_valid(hugged_tower):
 			hugging = false
 			hugged_tower = null
-	if not hugging:
+	if hugging:
+		do_drying()
+	else:
 		super.do_movement()
 
 func begin_dying():

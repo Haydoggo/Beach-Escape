@@ -26,6 +26,8 @@ func tunnel_down():
 	create_tween().tween_property(self, "modulate:a", 0.5, 0.5)
 
 func tunnel_up():
+	moisture = unit_info.moisture
+	moisture_indicator.moisture = moisture
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 1, 0.5)
 	await tween.finished

@@ -3,17 +3,22 @@ class_name BaseUnit extends Node2D
 @export var unit_info : UnitInfo
 @onready var attack_region: Area2D = $AttackRegion
 @onready var health_component: Node2D = $HealthComponent
+@onready var moisture_indicator: Node2D = $MoistureIndicator
 @onready var tower_check: ShapeCast2D = $TowerCheck
 @onready var swipe_attack_fx: Path2D = $SwipeAttackFX
 
 
 var path_index := 0 # tracks the index of the path 
-
+var moisture : int
 
 func _ready() -> void:
 	health_component.health_max = unit_info.health
 	health_component.health = unit_info.health
 	health_component.update_health_bar()
+	
+	moisture = unit_info.moisture
+	moisture_indicator.max_moisture = moisture
+	moisture_indicator.moisture = moisture
 	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("spawn"):
 		$AnimationPlayer.play("spawn")
 
@@ -42,11 +47,14 @@ func do_movement():
 			attack_tower(col.owner)
 			stopped = true
 	
-	if not stopped:
+	if stopped:
+		do_drying()
+	else:
 		move_forward(next_position)
 	
 	path_index += 1
 	path_index %= unit_info.path.size()
+
 
 func get_objects_in_path(next_position) -> Array[Node]:
 	var retval : Array[Node] = []
@@ -81,6 +89,13 @@ func attack_tower(tower):
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "global_position", tower.global_position, 0.15).set_ease(Tween.EASE_IN)
 	tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
+
+
+func do_drying():
+	moisture -= 1
+	moisture_indicator.moisture = moisture
+	if moisture <= 0:
+		begin_dying()
 
 
 func _on_hit(attack_packet : AttackPacket):

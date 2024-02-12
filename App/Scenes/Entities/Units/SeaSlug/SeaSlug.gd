@@ -36,7 +36,9 @@ func do_movement():
 				stopped = true
 	
 	# then we try to move forward
-	if not stopped:
+	if stopped:
+		do_drying()
+	else:
 		move_forward(next_position)
 	
 	path_index += 1

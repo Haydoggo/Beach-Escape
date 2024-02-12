@@ -17,5 +17,6 @@ description = "Stepping on these can be painful."
 path = PackedVector2Array(128, 0, 0, 0)
 icon = ExtResource("1_bwd21")
 health = 20
+moisture = 5
 melee_attack = SubResource("Resource_goji5")
 packed_scene_path = "res://App/Scenes/Entities/Units/Urchin/Urchin.tscn"
