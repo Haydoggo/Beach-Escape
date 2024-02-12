@@ -10,13 +10,13 @@ func attack_tower(tower : BaseTower):
 		tower.State = tower.States.DISABLED
 		hugged_tower = tower
 
-func _on_tick():
+func do_movement():
 	if hugging:
 		if not is_instance_valid(hugged_tower):
 			hugging = false
 			hugged_tower = null
 	if not hugging:
-		super._on_tick()
+		super.do_movement()
 
 func begin_dying():
 	if is_instance_valid(hugged_tower):

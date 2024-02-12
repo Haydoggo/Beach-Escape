@@ -16,7 +16,7 @@ func attack_tower(tower : BaseTower):
 	super.attack_tower(tower)
 	move_forward(tower.global_position)
 
-func _on_tick():
+func do_movement():
 	var next_position = global_position + unit_info.path[path_index]
 	
 	var stopped = false

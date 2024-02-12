@@ -27,6 +27,10 @@ func get_path_points(origin : Vector2) -> Array[Vector2]:
 
 
 func _on_tick():
+	do_movement()
+
+
+func do_movement():
 	var next_position = global_position + unit_info.path[path_index]
 	
 	var stopped = false
@@ -43,7 +47,6 @@ func _on_tick():
 	
 	path_index += 1
 	path_index %= unit_info.path.size()
-
 
 func get_objects_in_path(next_position) -> Array[Node]:
 	var retval : Array[Node] = []

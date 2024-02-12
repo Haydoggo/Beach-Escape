@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b60xpjnh47rv8" path="res://App/Scenes/Entities/Towers/PitTrap.tscn" id="4_fncjh"]
 [ext_resource type="PackedScene" uid="uid://d3wt4bpu0wwo1" path="res://App/Scenes/Entities/Towers/RockObstacle.tscn" id="5_kbwpa"]
 [ext_resource type="PackedScene" uid="uid://ncccgvmbl1j5" path="res://App/Scenes/Entities/Towers/SeagullTrap.tscn" id="6_7tncc"]
-[ext_resource type="PackedScene" uid="uid://x3d860eid5cw" path="res://App/Scenes/Entities/Towers/AoETower2_TackBurst.tscn" id="7_1e73d"]
-[ext_resource type="PackedScene" uid="uid://2a44ktsxrwk1" path="res://App/Scenes/Entities/Towers/HandSlapTower.tscn" id="7_e2pow"]
+[ext_resource type="PackedScene" path="res://App/Scenes/Entities/Towers/AoETower2_TackBurst.tscn" id="7_1e73d"]
+[ext_resource type="PackedScene" path="res://App/Scenes/Entities/Towers/HandSlapTower.tscn" id="7_e2pow"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_tmigf"]
 resource_name = "Towers"

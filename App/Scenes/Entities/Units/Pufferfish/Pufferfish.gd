@@ -21,5 +21,8 @@ func _on_tick():
 			$AnimationPlayer.play("Deflate")
 			await $AnimationPlayer.animation_finished
 			is_inflated = false
-	else:
-		super._on_tick()
+	super._on_tick()
+
+func do_movement():
+	if inflated_countdown == 0:
+		super.do_movement()
