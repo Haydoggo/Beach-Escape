@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://dwo7o7lpg52g0"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://dwo7o7lpg52g0"]
 
 [ext_resource type="PackedScene" uid="uid://8tsf2haxf3j" path="res://App/Scenes/Entities/Towers/CannonTower.tscn" id="1_b1hh1"]
 [ext_resource type="PackedScene" uid="uid://ckgmlr182q4qc" path="res://App/Scenes/Entities/Towers/RotatingTower.tscn" id="2_536sn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b60xpjnh47rv8" path="res://App/Scenes/Entities/Towers/PitTrap.tscn" id="4_fncjh"]
 [ext_resource type="PackedScene" uid="uid://d3wt4bpu0wwo1" path="res://App/Scenes/Entities/Towers/RockObstacle.tscn" id="5_kbwpa"]
 [ext_resource type="PackedScene" uid="uid://ncccgvmbl1j5" path="res://App/Scenes/Entities/Towers/SeagullTrap.tscn" id="6_7tncc"]
+[ext_resource type="PackedScene" uid="uid://x3d860eid5cw" path="res://App/Scenes/Entities/Towers/AoETower2_TackBurst.tscn" id="7_1e73d"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_tmigf"]
 resource_name = "Towers"
@@ -15,6 +16,7 @@ scenes/3/scene = ExtResource("3_6utg8")
 scenes/4/scene = ExtResource("4_fncjh")
 scenes/5/scene = ExtResource("5_kbwpa")
 scenes/6/scene = ExtResource("6_7tncc")
+scenes/7/scene = ExtResource("7_1e73d")
 
 [resource]
 tile_size = Vector2i(128, 128)

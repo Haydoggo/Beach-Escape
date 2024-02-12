@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://x3d860eid5cw"]
+
+[ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_hj8eg"]
+[ext_resource type="Texture2D" uid="uid://cy2kixeq1vwth" path="res://Assets/Images/Towers/Castle_Flag.png" id="2_f76at"]
+[ext_resource type="PackedScene" uid="uid://cck31mqtd2h5y" path="res://App/Scenes/Entities/Components/tack_burst_weapon.tscn" id="3_q5t64"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8aew6"]
+radius = 125.0
+
+[sub_resource type="Animation" id="Animation_1xyyr"]
+resource_name = "hurt"
+length = 0.3
+
+[sub_resource type="Animation" id="Animation_hp6qa"]
+resource_name = "shoot"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n67cj"]
+_data = {
+"hurt": SubResource("Animation_1xyyr"),
+"shoot": SubResource("Animation_hp6qa")
+}
+
+[node name="TackThrowerAoETower" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_hj8eg")]
+turret_type = 2
+shots_per_magazine = 1
+health_max = 500.0
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Shadow" parent="." index="0"]
+visible = false
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(1.90735e-06, -14)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_f76at")
+
+[node name="MeleeAoEShape2" type="CollisionShape2D" parent="ActivationTriggers" index="0"]
+shape = SubResource("CircleShape2D_8aew6")
+
+[node name="TackBurstAoEWeapon" parent="Components/Weapon" index="0" instance=ExtResource("3_q5t64")]
+lag_before_projectile_spawn = 2.08165e-12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_n67cj")
+}
