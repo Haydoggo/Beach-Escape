@@ -1,8 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://bge658ih8ch4w"]
+[gd_scene load_steps=13 format=3 uid="uid://bge658ih8ch4w"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_0v084"]
+[ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_llxw0"]
+[ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="3_aw4bj"]
+[ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="4_lg6r0"]
+[ext_resource type="Resource" uid="uid://dkoxp7v5utuf7" path="res://App/Scenes/Entities/Units/GoldFish/GoldFishInfo.tres" id="5_ki54v"]
+[ext_resource type="Resource" uid="uid://246577vjl121" path="res://App/Scenes/Entities/Units/Mudfish/MudfishInfo.tres" id="6_hembn"]
+[ext_resource type="Resource" uid="uid://che77ris4hjg" path="res://App/Scenes/Entities/Units/Octopus/OctopusInfo.tres" id="7_335f8"]
 
-[node name="BaseLevel2" instance=ExtResource("1_0v084")]
+[sub_resource type="Resource" id="Resource_gf6h3"]
+resource_name = "3 Fish"
+script = ExtResource("2_llxw0")
+unit_info = ExtResource("3_aw4bj")
+count = 3
+
+[sub_resource type="Resource" id="Resource_5t3u0"]
+resource_name = "0 Crab"
+script = ExtResource("2_llxw0")
+unit_info = ExtResource("4_lg6r0")
+count = 0
+
+[sub_resource type="Resource" id="Resource_p1pbo"]
+resource_name = "2 Gold Fish"
+script = ExtResource("2_llxw0")
+unit_info = ExtResource("5_ki54v")
+count = 2
+
+[sub_resource type="Resource" id="Resource_mu784"]
+resource_name = "2 Mudfish"
+script = ExtResource("2_llxw0")
+unit_info = ExtResource("6_hembn")
+count = 2
+
+[sub_resource type="Resource" id="Resource_k0y0f"]
+resource_name = "1 Octopus"
+script = ExtResource("2_llxw0")
+unit_info = ExtResource("7_335f8")
+count = 1
+
+[node name="FirstLevel" instance=ExtResource("1_0v084")]
+available_units = Array[ExtResource("2_llxw0")]([SubResource("Resource_gf6h3"), SubResource("Resource_5t3u0"), SubResource("Resource_p1pbo"), SubResource("Resource_mu784"), SubResource("Resource_k0y0f"), null])
 
 [node name="PlaySpace" parent="." index="1"]
 offset_right = 1595.0

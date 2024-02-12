@@ -66,6 +66,9 @@ func generate_available_units_from_global():
 		
 
 func add_unit_button(unit_count : UnitCount, shortcut_keycode : int):
+	if unit_count == null:
+		return
+
 	var button = UNIT_BUTTON.instantiate()
 	unit_buttons.add_child(button)
 	button.text = str(unit_count.count)

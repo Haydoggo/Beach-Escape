@@ -8,6 +8,7 @@
 script = ExtResource("2_6ct30")
 damage_type = 0
 damage = 5.0
+payload_scene_path = ""
 
 [resource]
 script = ExtResource("2_1s5oo")
