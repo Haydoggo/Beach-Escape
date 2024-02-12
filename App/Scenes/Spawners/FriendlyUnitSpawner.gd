@@ -27,7 +27,8 @@ func _ready():
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("spawn_selected_unit"):
-		spawn_unit(selected_unit_button.unit_info)
+		if is_square_free():
+			spawn_unit(selected_unit_button.unit_info)
 		#queue_spawn_selected()
 
 func _process(_delta: float) -> void:
@@ -40,6 +41,13 @@ func _process(_delta: float) -> void:
 		update_path_preview()
 		#switch_to_lane(closest_lane)
 		
+func is_square_free() -> bool:
+	var is_free : bool = true
+	for area in $Area2D.get_overlapping_areas():
+		for group_name in [ "Units", "EnemyTowers", "BlockerHitBox", "EnemyTowerHitBox"]:
+			if area.is_in_group(group_name) or (area.owner and area.owner.is_in_group(group_name)):
+				is_free = false
+	return is_free
 
 func spawn_unit(unit_info : UnitInfo):
 	if selected_unit_button.count > 0:
@@ -75,3 +83,7 @@ func update_path_preview():
 			point += path[i % path.size()]
 			path_preview.add_point(point)
 
+
+
+func _on_area_2d_area_entered(area):
+	pass

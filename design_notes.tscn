@@ -109,7 +109,7 @@ layout_mode = 0
 offset_left = 464.0
 offset_top = 771.0
 offset_right = 857.0
-offset_bottom = 1046.0
+offset_bottom = 1156.0
 text = "CONTRACTS:
 
 Player Creeps and Enemy Towers implement _on_hit(AttackPacket)
