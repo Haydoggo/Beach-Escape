@@ -294,29 +294,38 @@ zoom = Vector2(2, 2)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 70.5
-offset_right = 1829.5
-offset_bottom = 300.0
+offset_left = 859.0
+offset_top = -1.0
+offset_right = 1742.0
+offset_bottom = 402.0
 grow_horizontal = 2
+theme = ExtResource("1_a6s3w")
 tabs_visible = false
 
 [node name="Paradise" type="Label" parent="Camera2D/Text"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 96
 text = "It Was a Paradise"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TheyArrived" type="Label" parent="Camera2D/Text"]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 96
 text = "Until they arrived."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PailsAndShovels" type="Label" parent="Camera2D/Text"]
 visible = false
 custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 theme_override_font_sizes/font_size = 96
-text = "With their pails, and their shovels."
+text = "With their pails,
+and their shovels."
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="TrappedUs" type="Label" parent="Camera2D/Text"]
@@ -325,6 +334,8 @@ custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 theme_override_font_sizes/font_size = 96
 text = "And they trapped us."
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="WeWillEscape" type="Label" parent="Camera2D/Text"]
@@ -333,6 +344,8 @@ custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 theme_override_font_sizes/font_size = 96
 text = "But we will escape!"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="BlackTransition" type="ColorRect" parent="."]
@@ -344,5 +357,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
