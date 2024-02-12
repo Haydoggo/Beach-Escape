@@ -4,6 +4,7 @@ const UNIT_COUNT = &"unit_info"
 const UNIT_BUTTON = preload("res://App/Scenes/Levels/UnitButton.tscn")
 
 @export var available_units : Array[UnitCount]
+@export var required_units_for_win : Array[UnitCount]
 
 signal last_unit_sent()
 var last_unit_notification_emitted : bool = false
@@ -15,7 +16,12 @@ var friendly_unit_spawner : Node
 
 func _init():
 	Globals.current_level = self
-	
+
+func _enter_tree() -> void:
+	# annoying workaround to allow reloading these values on scene reload
+	for i in available_units.size():
+		if is_instance_valid(available_units[i]):
+			available_units[i] = available_units[i].duplicate()
 	
 func _ready() -> void:
 	friendly_unit_spawner = find_child("FriendlyUnitSpawner")
@@ -32,7 +38,7 @@ func add_unit_buttons():
 
 	for unit_count in available_units:
 		add_unit_button(unit_count, shortcut_keycode)
-		shortcut_keycode += 1
+		shortcut_keycode = (shortcut_keycode + 1) as Key
 	select_first_available_button()
 	if has_node("FinishZone") and $FinishZone.has_method("_on_last_unit_sent"):
 		last_unit_sent.connect($FinishZone._on_last_unit_sent)

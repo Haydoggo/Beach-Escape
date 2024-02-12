@@ -1,8 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6p8x7m7ij133"]
+[gd_scene load_steps=11 format=3 uid="uid://c6p8x7m7ij133"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_4i6nq"]
 [ext_resource type="Script" path="res://App/Scenes/Levels/HaydenTestLevel.gd" id="2_kaoqm"]
+[ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="3_r8jfn"]
 [ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="3_y7vxo"]
+[ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="4_l0o43"]
+[ext_resource type="Resource" uid="uid://dkoxp7v5utuf7" path="res://App/Scenes/Entities/Units/GoldFish/GoldFishInfo.tres" id="5_xkupb"]
+
+[sub_resource type="Resource" id="Resource_rn1te"]
+resource_name = "2 Crab"
+script = ExtResource("3_r8jfn")
+unit_info = ExtResource("4_l0o43")
+count = 2
+
+[sub_resource type="Resource" id="Resource_577xj"]
+resource_name = "1 Gold Fish"
+script = ExtResource("3_r8jfn")
+unit_info = ExtResource("5_xkupb")
+count = 1
+
+[sub_resource type="Resource" id="Resource_ddemg"]
+resource_name = "2 Crab"
+script = ExtResource("3_r8jfn")
+unit_info = ExtResource("4_l0o43")
+count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_504sy"]
 resource_local_to_scene = true
@@ -10,6 +31,8 @@ size = Vector2(384, 768)
 
 [node name="BaseLevel" instance=ExtResource("1_4i6nq")]
 script = ExtResource("2_kaoqm")
+available_units = Array[ExtResource("3_r8jfn")]([SubResource("Resource_rn1te"), SubResource("Resource_577xj")])
+required_units_for_win = Array[ExtResource("3_r8jfn")]([SubResource("Resource_ddemg")])
 
 [node name="PlaySpace" parent="." index="1"]
 offset_bottom = 841.0
@@ -26,6 +49,9 @@ shape = SubResource("RectangleShape2D_504sy")
 
 [node name="ColorRect" parent="PlaySpace/DeploymentZone" index="2"]
 offset_bottom = 768.0
+
+[node name="Towers" parent="." index="2"]
+layer_0/tile_data = PackedInt32Array(327680, 0, 327680, 393216, 0, 327680, 262144, 0, 327680, 196609, 0, 65536)
 
 [editable path="PlaySpace/DeploymentZone"]
 [editable path="UI"]

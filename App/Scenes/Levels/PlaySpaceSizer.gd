@@ -18,7 +18,9 @@ const LANE_SCENE = preload("res://App/Scenes/Spawners/Lane.tscn")
 			lane.queue_free()
 		for i in play_space_size.y:
 			var lane = LANE_SCENE.instantiate()
+			@warning_ignore("integer_division")
 			lane.position.x = tile_size/2
+			@warning_ignore("integer_division")
 			lane.position.y = tile_size/2 + tile_size * i
 			$Lanes.add_child(lane, true)
 			lane.owner = owner

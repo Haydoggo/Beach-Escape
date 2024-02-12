@@ -1,12 +1,23 @@
 extends BoxContainer
 var unit_count = 0
+var required_unit_count = 0
 
 func activate(unit_info):
 	self.name = unit_info.name
 	$UnitIcon.texture = unit_info.icon
-	$UnitCount.text = str(unit_count)
+	update_text()
 
 func add_unit():
 	unit_count += 1
-	$UnitCount.text = str(unit_count)
+	update_text()
 	Globals.surviving_units[self.name] = unit_count
+
+func update_text():
+	if required_unit_count > 0:
+		$UnitCount.text = "%d/%d" % [unit_count, required_unit_count]
+		if unit_count < required_unit_count:
+			$UnitCount.modulate = Color.DARK_RED
+		else:
+			$UnitCount.modulate = Color.LAWN_GREEN
+	else:
+		$UnitCount.text = str(unit_count)
