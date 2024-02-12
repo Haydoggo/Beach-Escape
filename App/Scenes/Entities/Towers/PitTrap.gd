@@ -37,4 +37,7 @@ func disappear():
 	tween.tween_property(self, "modulate", Color(1,1,1,0), 0.33)
 	await tween.finished
 	queue_free()
+
+func _on_tick():
+	pass
 	

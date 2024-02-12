@@ -20,7 +20,7 @@ func get_local_enemies():
 	var present_enemies = []
 	for candidate in candidates:
 		if candidate.is_in_group("Units"):
-			present_enemies = candidate
+			present_enemies.push_back(candidate)
 		elif candidate.owner and candidate.owner.is_in_group("Units"):
-			present_enemies = candidate.owner
+			present_enemies.push_back(candidate.owner)
 	return present_enemies

@@ -1,8 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bch3hc5ug6j73"]
+[gd_scene load_steps=9 format=3 uid="uid://bch3hc5ug6j73"]
 
-[ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_ovn0a"]
+[ext_resource type="Script" path="res://App/Scenes/Entities/Towers/FishingHook_BleedTower.gd" id="1_thnx5"]
 [ext_resource type="Texture2D" uid="uid://huumkbuqyulj" path="res://Assets/Images/placeholder/fish_hook.png" id="2_2o2p6"]
 [ext_resource type="PackedScene" uid="uid://bu4vg8os8fnp4" path="res://App/Scenes/Entities/Components/Weapons/persistent_stationary_weapon.tscn" id="3_86pm3"]
+
+[sub_resource type="Gradient" id="Gradient_yfvkm"]
+offsets = PackedFloat32Array(0.178082, 0.481735)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t3aoo"]
+gradient = SubResource("Gradient_yfvkm")
+width = 256
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Animation" id="Animation_it45u"]
 resource_name = "idle"
@@ -16,16 +27,27 @@ _data = {
 "shoot": SubResource("Animation_y1l3e")
 }
 
-[node name="FishingHookBleedTower" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_ovn0a")]
-animation_player = NodePath("AnimationPlayer")
+[node name="FishingHookBleedTower" type="Node2D" groups=["EnemyTraps"]]
+script = ExtResource("1_thnx5")
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="Shadow" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(39, 45)
+scale = Vector2(0.952805, 0.210937)
+texture = SubResource("GradientTexture2D_t3aoo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, 1)
 scale = Vector2(0.67, 0.67)
 texture = ExtResource("2_2o2p6")
 
-[node name="PersistentStationaryWeapon" parent="Components/Weapon" index="0" instance=ExtResource("3_86pm3")]
+[node name="Components" type="Node2D" parent="."]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+[node name="Weapons" type="Node2D" parent="Components"]
+
+[node name="PersistentStationaryWeapon" parent="Components/Weapons" instance=ExtResource("3_86pm3")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ic0pc")
 }

@@ -109,6 +109,14 @@ func get_num_units_remaining():
 
 
 func _on_tick_timer_timeout() -> void:
-	get_tree().call_group("Units", "_on_tick")
-	get_tree().call_group("EnemyTowers", "_on_tick")
-	get_tree().call_group("Lanes", "_on_tick")
+	var synchronized_groups = [ 
+			"Units",
+			"EnemyTowers",
+			"EnemyTraps",
+			"Lanes",
+			]
+	for group_name in synchronized_groups:
+		get_tree().call_group(group_name, "_on_tick")
+	#get_tree().call_group("Units", "_on_tick")
+	#get_tree().call_group("EnemyTowers", "_on_tick")
+	#get_tree().call_group("Lanes", "_on_tick")
