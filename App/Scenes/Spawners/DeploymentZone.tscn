@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://jrw3uu7ccapn"]
+
+[ext_resource type="Script" path="res://App/Scenes/Spawners/DeploymentZone.gd" id="1_0c34f"]
+[ext_resource type="PackedScene" uid="uid://dj1uute6i0kn2" path="res://App/Scenes/Spawners/selected_tile_cursor.tscn" id="2_jehyn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwf0a"]
+size = Vector2(384, 512)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6ostm"]
+blend_mode = 1
+
+[node name="DeploymentZone" type="Area2D"]
+script = ExtResource("1_0c34f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(192, 256)
+shape = SubResource("RectangleShape2D_wwf0a")
+
+[node name="DeploymentZoneTitle" type="Panel" parent="."]
+offset_left = 1.0
+offset_top = -42.0
+offset_right = 385.0
+offset_bottom = 1.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="DeploymentZoneTitle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Deployment Zone"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_6ostm")
+offset_right = 384.0
+offset_bottom = 512.0
+mouse_filter = 2
+color = Color(1, 1, 0.313726, 0.0509804)
+
+[node name="SelectedTileCursor" parent="." instance=ExtResource("2_jehyn")]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

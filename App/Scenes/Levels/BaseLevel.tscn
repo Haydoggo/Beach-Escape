@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://de3bma3kyx7em"]
+[gd_scene load_steps=12 format=3 uid="uid://de3bma3kyx7em"]
 
 [ext_resource type="Script" path="res://App/Scenes/Levels/BaseLevel.gd" id="1_cs8tg"]
 [ext_resource type="TileSet" uid="uid://dwo7o7lpg52g0" path="res://App/Scenes/Levels/towers_tile_set.tres" id="1_sr1u4"]
@@ -9,13 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cdrk8mkxgd30e" path="res://App/Scenes/Spawners/FinishZone.tscn" id="5_32fpb"]
 [ext_resource type="Texture2D" uid="uid://cfn46omcxn1xu" path="res://Assets/Images/Environment/Border_Ring.png" id="5_pgywy"]
 [ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="5_uupqf"]
+[ext_resource type="PackedScene" uid="uid://jrw3uu7ccapn" path="res://App/Scenes/Spawners/DeploymentZone.tscn" id="6_6lisd"]
 [ext_resource type="PackedScene" uid="uid://bchfxguqqtrom" path="res://App/Scenes/GUI/ButtonBarUI.tscn" id="8_3kuke"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwf0a"]
-size = Vector2(384, 512)
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6ostm"]
-blend_mode = 1
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_cs8tg")
@@ -25,9 +20,9 @@ wait_time = 0.625
 autostart = true
 
 [node name="PlaySpace" type="ReferenceRect" parent="."]
-offset_left = 59.0
+offset_left = 61.0
 offset_top = 73.0
-offset_right = 1083.0
+offset_right = 1085.0
 offset_bottom = 585.0
 mouse_filter = 2
 border_width = 4.0
@@ -85,37 +80,8 @@ position = Vector2(64, 320)
 [node name="Lane4" parent="PlaySpace/Lanes" instance=ExtResource("5_uupqf")]
 position = Vector2(64, 448)
 
-[node name="DeploymentZone" type="Area2D" parent="PlaySpace"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaySpace/DeploymentZone"]
-position = Vector2(192, 256)
-shape = SubResource("RectangleShape2D_wwf0a")
-
-[node name="DeploymentZoneTitle" type="Panel" parent="PlaySpace/DeploymentZone"]
-offset_left = 1.0
-offset_top = -42.0
-offset_right = 385.0
-offset_bottom = 1.0
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="PlaySpace/DeploymentZone/DeploymentZoneTitle"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Deployment Zone"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="ColorRect" type="ColorRect" parent="PlaySpace/DeploymentZone"]
-material = SubResource("CanvasItemMaterial_6ostm")
-offset_right = 384.0
-offset_bottom = 512.0
-mouse_filter = 2
-color = Color(1, 1, 0.313726, 0.0509804)
+[node name="DeploymentZone" parent="PlaySpace" instance=ExtResource("6_6lisd")]
+position = Vector2(3, 0)
 
 [node name="Towers" type="TileMap" parent="."]
 position = Vector2(439, -58)
@@ -140,13 +106,13 @@ expand_mode = 1
 
 [node name="UI" parent="." instance=ExtResource("8_3kuke")]
 
-[node name="FriendlyUnitSpawner" parent="." node_paths=PackedStringArray("lanes_container", "deployment_zone") instance=ExtResource("2_s8wsn")]
+[node name="FriendlyUnitSpawner" parent="." node_paths=PackedStringArray("lanes_container") instance=ExtResource("2_s8wsn")]
 lanes_container = NodePath("../PlaySpace/Lanes")
-deployment_zone = NodePath("../PlaySpace/DeploymentZone")
 
 [node name="FinishZone" parent="." instance=ExtResource("5_32fpb")]
 position = Vector2(1836, 542)
 
 [connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]
 
+[editable path="PlaySpace/DeploymentZone"]
 [editable path="UI"]

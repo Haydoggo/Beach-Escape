@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj1uute6i0kn2"]
+
+[ext_resource type="Script" path="res://App/Scenes/Spawners/selected_tile_cursor.gd" id="1_8si2m"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rn5iw"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_5xgqx"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.350746, 0.58209, 0.656716)
+colors = PackedColorArray(1, 1, 1, 0, 0.921569, 0.803922, 0.682353, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w2qbk"]
+gradient = SubResource("Gradient_5xgqx")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.479798, 0.482323)
+
+[node name="SelectedTileCursor" type="Sprite2D"]
+material = SubResource("CanvasItemMaterial_rn5iw")
+texture = SubResource("GradientTexture2D_w2qbk")
+script = ExtResource("1_8si2m")
