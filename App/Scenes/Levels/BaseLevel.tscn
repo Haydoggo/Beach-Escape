@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cfn46omcxn1xu" path="res://Assets/Images/Environment/Border_Ring.png" id="5_pgywy"]
 [ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="5_uupqf"]
 [ext_resource type="PackedScene" uid="uid://xya6xspmx2gu" path="res://App/Scenes/Spawners/DeploymentZone.tscn" id="6_6lisd"]
-[ext_resource type="PackedScene" path="res://App/Scenes/GUI/ButtonBarUI.tscn" id="8_3kuke"]
+[ext_resource type="PackedScene" uid="uid://bchfxguqqtrom" path="res://App/Scenes/GUI/ButtonBarUI.tscn" id="8_3kuke"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k81qk"]
 resource_local_to_scene = true
