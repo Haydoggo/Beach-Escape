@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://6l54uqxvychm"]
+
+[ext_resource type="Shader" path="res://App/Materials/grass_sway_wind.gdshader" id="1_gj74d"]
+
+[resource]
+shader = ExtResource("1_gj74d")
+shader_parameter/x_intensity = 3.0
+shader_parameter/y_intensity = 0.5
+shader_parameter/offset = 0.0
+shader_parameter/speed = 2.0
+shader_parameter/wave_frequency = 20.0
+shader_parameter/wave_length = 200.0

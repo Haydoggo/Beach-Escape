@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cai7kydql1o31"]
+[gd_scene load_steps=10 format=3 uid="uid://cai7kydql1o31"]
 
 [ext_resource type="Script" path="res://App/Scenes/CutScenes/acquire_new_units.gd" id="1_0mvpn"]
 [ext_resource type="Shader" path="res://App/Materials/water_shader.gdshader" id="2_bskot"]
+[ext_resource type="Texture2D" uid="uid://b22y2epv8g5p0" path="res://Assets/Images/placeholder/EelGrass.png" id="3_ahbfk"]
+[ext_resource type="Material" uid="uid://6l54uqxvychm" path="res://App/Materials/grass_sway_wind_material.tres" id="3_cs5b6"]
+[ext_resource type="Script" path="res://App/Scenes/CutScenes/BubbleGenerator.gd" id="5_k42m4"]
+[ext_resource type="PackedScene" uid="uid://ckjjdsagj8l3w" path="res://App/Scenes/Props/bubble.tscn" id="6_5prd1"]
 
 [sub_resource type="Gradient" id="Gradient_8wrrq"]
 offsets = PackedFloat32Array(0.0147783, 1)
@@ -101,3 +105,44 @@ text = "Pairs Remaining:"
 [node name="RemainingPairCount" type="Label" parent="CanvasLayer/Control/PairsRemaining"]
 layout_mode = 2
 text = "0"
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Grass" type="Node2D" parent="Props"]
+
+[node name="EelGrass" type="Sprite2D" parent="Props/Grass"]
+material = ExtResource("3_cs5b6")
+position = Vector2(202, 878)
+scale = Vector2(1.91641, 1.91641)
+texture = ExtResource("3_ahbfk")
+
+[node name="EelGrass2" type="Sprite2D" parent="Props/Grass"]
+material = ExtResource("3_cs5b6")
+position = Vector2(472, 964)
+scale = Vector2(1.91641, 1.91641)
+texture = ExtResource("3_ahbfk")
+
+[node name="EelGrass3" type="Sprite2D" parent="Props/Grass"]
+material = ExtResource("3_cs5b6")
+position = Vector2(738, 892)
+scale = Vector2(1.91641, 1.91641)
+texture = ExtResource("3_ahbfk")
+
+[node name="EelGrass4" type="Sprite2D" parent="Props/Grass"]
+material = ExtResource("3_cs5b6")
+position = Vector2(1016, 1018)
+scale = Vector2(1.35009, 1.35009)
+texture = ExtResource("3_ahbfk")
+
+[node name="EelGrass5" type="Sprite2D" parent="Props/Grass"]
+material = ExtResource("3_cs5b6")
+position = Vector2(2.00006, 958)
+scale = Vector2(1.17617, 1.17617)
+texture = ExtResource("3_ahbfk")
+
+[node name="BubbleGenerator" type="Node2D" parent="Props"]
+position = Vector2(1583, 1295)
+script = ExtResource("5_k42m4")
+
+[node name="Bubble" parent="Props/BubbleGenerator" instance=ExtResource("6_5prd1")]
+position = Vector2(-20, -5)

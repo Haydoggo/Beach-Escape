@@ -73,15 +73,18 @@ func activate(unitInfo):
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	if State == States.DRAGGING:
 		global_position = get_global_mouse_position()
 		if Input.is_action_just_released("drag_procreator"):
 			State = States.IDLE
 	elif State == States.IDLE:
-		global_position += velocity * _delta
+		global_position += velocity * delta
 		if is_outside_viewport():
 			queue_free()
+		if randf() < 0.1 * delta:
+			set_desired_direction()
+			
 		
 func is_outside_viewport():
 	return !get_viewport_rect().has_point(global_position)

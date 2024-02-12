@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckjjdsagj8l3w"]
+
+[ext_resource type="Script" path="res://App/Scenes/Props/bubble.gd" id="1_o5jl1"]
+
+[sub_resource type="Gradient" id="Gradient_ax64v"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.748815, 0.919431)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4xeq4"]
+gradient = SubResource("Gradient_ax64v")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.486726, 0)
+
+[node name="Bubble" type="Sprite2D"]
+position = Vector2(1624, 1267)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("GradientTexture2D_4xeq4")
+script = ExtResource("1_o5jl1")
