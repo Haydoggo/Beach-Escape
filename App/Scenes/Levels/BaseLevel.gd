@@ -12,8 +12,12 @@ var unit_buttons : Container
 var button_hover_text_popup : Panel
 var friendly_unit_spawner : Node
 	
-func _ready() -> void:
+
+func _init():
 	Globals.current_level = self
+	
+	
+func _ready() -> void:
 	friendly_unit_spawner = find_child("FriendlyUnitSpawner")
 	add_unit_buttons()
 

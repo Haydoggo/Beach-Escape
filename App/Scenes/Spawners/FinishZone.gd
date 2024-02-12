@@ -33,9 +33,9 @@ func _process(_delta):
 
 func get_unit_count_on_field():
 	var num_units = get_tree().get_nodes_in_group("Units").size()
-	
+	$DebugInfo/RemainingFish.text = str(num_units) + " fish remaining"
 	return num_units
 	
-func _on_last_unit_sent():
+func _on_last_unit_sent(): # from BaseLevel
 	# start checking the field to see if there are any units remaining alive
 	State = States.LISTENING

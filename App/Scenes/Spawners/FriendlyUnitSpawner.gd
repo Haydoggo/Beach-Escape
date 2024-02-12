@@ -18,11 +18,16 @@ func _ready():
 	await owner.ready
 	if lanes_container == null:
 		lanes_container = get_tree().get_root().find_child("Lanes")
-	State = States.READY
+	
+	await get_tree().create_timer(0.5).timeout
+	delayed_ready()
 
+func delayed_ready():
+	
 	var current_level = Globals.current_level
 	if current_level != null and current_level.has_method("_on_unit_spawned"):
 		unit_spawned.connect(current_level._on_unit_spawned)
+	State = States.READY
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -56,12 +61,12 @@ func spawn_unit(unit_info : UnitInfo):
 		Globals.current_level.get_node("UnitContainer").add_child(new_unit)
 		new_unit.global_position = global_position
 		#$QueuedUnits.get_child(0).queue_free() # remove the icon
-		unit_spawned.emit()
 		var tween = new_unit.create_tween()
 		tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(new_unit, "scale", Vector2.ONE, 0.3).from(Vector2.ZERO)
 		selected_unit_button.count -= 1
-
+		unit_spawned.emit()
+		
 func queue_spawn_selected():
 	pass
 	#if selected_unit_button.count > 0 and\

@@ -6,11 +6,12 @@ var State = States.INITIALIZING
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for unit_metadata in Globals.unit_metadata:
-		var num_remaining = Globals.surviving_units[unit_metadata.name]
-		while (num_remaining > 0):
-			num_remaining -= 1
-			spawn_unit(unit_metadata)
-		Globals.surviving_units[unit_metadata.name] = 0
+		if Globals.surviving_units.has(unit_metadata.name):
+			var num_remaining = Globals.surviving_units[unit_metadata.name]
+			while (num_remaining > 0):
+				num_remaining -= 1
+				spawn_unit(unit_metadata)
+			Globals.surviving_units[unit_metadata.name] = 0
 	State = States.READY
 
 	
