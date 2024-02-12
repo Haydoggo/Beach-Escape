@@ -20,7 +20,8 @@ func _init():
 func _enter_tree() -> void:
 	# annoying workaround to allow reloading these values on scene reload
 	for i in available_units.size():
-		available_units[i] = available_units[i].duplicate()
+		if is_instance_valid(available_units[i]):
+			available_units[i] = available_units[i].duplicate()
 	
 func _ready() -> void:
 	friendly_unit_spawner = find_child("FriendlyUnitSpawner")
