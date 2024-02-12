@@ -13,7 +13,7 @@ payload_scene_path = ""
 [resource]
 script = ExtResource("1_d5e6e")
 name = "Sea Slug"
-description = ""
+description = "Sea Slug"
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_mwm1l")
 health = 1

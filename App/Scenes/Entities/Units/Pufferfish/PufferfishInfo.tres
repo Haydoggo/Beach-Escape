@@ -8,6 +8,7 @@
 script = ExtResource("2_xbkr4")
 damage_type = 0
 damage = 5.0
+payload_scene_path = ""
 
 [resource]
 script = ExtResource("1_ojimx")
@@ -16,5 +17,6 @@ description = "Puffs up like a balloon, obviously. It's a pufferfish."
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_ah5uq")
 health = 10
+moisture = 5
 melee_attack = SubResource("Resource_vrnvv")
 packed_scene_path = "res://App/Scenes/Entities/Units/Pufferfish/Pufferfish.tscn"
