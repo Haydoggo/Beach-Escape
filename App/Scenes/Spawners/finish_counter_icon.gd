@@ -3,7 +3,7 @@ var unit_count = 0
 var required_unit_count = 0
 
 func activate(unit_info):
-	self.name = unit_info.name
+	self.name = unit_info.name.to_pascal_case()
 	$UnitIcon.texture = unit_info.icon
 	update_text()
 

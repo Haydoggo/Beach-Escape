@@ -23,3 +23,4 @@ WIP/
 # IDE and OS specific
 .idea/
 .DS_Store
+App/Scenes/Levels/SecondLevel.tscn

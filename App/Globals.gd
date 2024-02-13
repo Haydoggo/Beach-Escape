@@ -2,6 +2,14 @@
 
 extends Node
 
+# Puzzle levels are custom hand-crafted puzzles, with specified starting units and completion requirements
+# Arcade levels are procedurally generated levels, with increasing difficulty and 
+enum game_modes { PUZZLE, ARCADE }
+var game_mode = game_modes.PUZZLE
+var arcade_difficulty_level = 0 # increments with each arcade level completed
+
+var arcade_level_path = "res://App/Scenes/Levels/arcade_level.tscn"
+
 var level_paths = [
 	"res://App/Scenes/Levels/FirstLevel.tscn",
 	"res://App/Scenes/Levels/SecondLevel.tscn",
@@ -40,8 +48,13 @@ var surviving_units = {
 
 
 func load_next_level():
-	current_level_index += 1
-	if current_level_index < level_paths.size():
-		SceneLoader.load_scene(level_paths[current_level_index])
-	else:
-		printerr("Global.gd: current_level_index out of bounds in load_next_level")
+	if game_mode == game_modes.ARCADE:
+		arcade_difficulty_level += 1
+		SceneLoader.load_scene(arcade_level_path)
+
+	elif game_mode == game_modes.PUZZLE:
+		current_level_index += 1
+		if current_level_index < level_paths.size():
+			SceneLoader.load_scene(level_paths[current_level_index])
+		else:
+			printerr("Global.gd: current_level_index out of bounds in load_next_level")

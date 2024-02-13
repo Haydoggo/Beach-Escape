@@ -53,5 +53,6 @@ func expand_deployment_area():
 	$DeploymentZone/DeploymentZoneTitle.size.x = collision_shape.shape.size.x
 
 func _ready():
-	Globals.tile_size = tile_size
+	if not Engine.is_editor_hint(): # in-game only
+		Globals.tile_size = tile_size
 	
