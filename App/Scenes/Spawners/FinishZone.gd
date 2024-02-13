@@ -26,7 +26,7 @@ func _on_area_entered(area):
 				var new_unit_counter = finish_button.instantiate()
 				new_unit_counter.activate(unit.unit_info) # sets the name
 				$CompletedUnitCounters.add_child(new_unit_counter)
-			$CompletedUnitCounters.get_node(unit.unit_info.name).add_unit()
+			$CompletedUnitCounters.get_node(unit.unit_info.name.to_pascal_case()).add_unit()
 			arrived_units[unit.unit_info.name] += 1
 			
 		if area.owner.has_method("_on_finish_line_crossed"):
