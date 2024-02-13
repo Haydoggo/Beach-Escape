@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://7dr0wg5hwlol"]
+[gd_scene load_steps=11 format=3 uid="uid://7dr0wg5hwlol"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/BaseUnit.gd" id="1_6w2qm"]
 [ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="2_673rk"]
 [ext_resource type="PackedScene" uid="uid://cim8b3k5lkraj" path="res://App/Scenes/Entities/Components/health_component.tscn" id="3_3aksf"]
+[ext_resource type="PackedScene" uid="uid://nbtvtnucj37y" path="res://App/Scenes/Entities/Components/drop_shadow.tscn" id="3_cxcf1"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/MoistureIndicator.gd" id="4_1qujt"]
 [ext_resource type="PackedScene" uid="uid://cg5u8f8i41nqr" path="res://App/Scenes/Props/SwipeAttackFX.tscn" id="4_d2n8w"]
 [ext_resource type="Texture2D" uid="uid://c3yrn257dc4sc" path="res://Assets/Images/Particles/Fish/Water_02.png" id="5_74x33"]
@@ -32,6 +33,9 @@ script = SubResource("GDScript_rk83b")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_673rk")
+
+[node name="Shadow" parent="Sprite" instance=ExtResource("3_cxcf1")]
+region_enabled = false
 
 [node name="Hitbox" type="Area2D" parent="."]
 

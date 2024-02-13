@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://nbtvtnucj37y"]
+
+[ext_resource type="Shader" path="res://App/Materials/drop_shadow_shader.gdshader" id="1_5ka36"]
+[ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="2_qnx8j"]
+[ext_resource type="Script" path="res://App/Scenes/Entities/Components/drop_shadow.gd" id="3_g7pys"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jdo1"]
+shader = ExtResource("1_5ka36")
+shader_parameter/strength = 10
+
+[node name="Shadow" type="Sprite2D"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_0jdo1")
+position = Vector2(6, 5)
+texture = ExtResource("2_qnx8j")
+region_enabled = true
+region_rect = Rect2(-22, -20, 173, 169)
+script = ExtResource("3_g7pys")
