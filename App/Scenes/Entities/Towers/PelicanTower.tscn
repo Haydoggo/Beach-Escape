@@ -1,8 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd6hxhux1nflh"]
+[gd_scene load_steps=9 format=3 uid="uid://dd6hxhux1nflh"]
 
 [ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_311mb"]
 [ext_resource type="Texture2D" uid="uid://bmvndhs2hyj2v" path="res://Assets/Images/placeholder/pelican.png" id="2_rr62w"]
 [ext_resource type="PackedScene" uid="uid://dqsia6ajsrmdm" path="res://App/Scenes/Entities/Components/pelican_beak_fish_grabber.tscn" id="3_jqu5w"]
+[ext_resource type="Texture2D" uid="uid://cu77vmstglo2s" path="res://Assets/Images/Towers/07_Pelican.png" id="3_sdygk"]
+[ext_resource type="Texture2D" uid="uid://bm61632qqahhn" path="res://Assets/Images/Towers/07_Pelican_Gulp.png" id="4_b1bcv"]
+[ext_resource type="Texture2D" uid="uid://ca7nk0mfwd4ii" path="res://Assets/Images/Towers/07_Pelican_Gulp_2.png" id="5_kkd6s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_waemt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sdygk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_b1bcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kkd6s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pqa1e"]
 size = Vector2(96, 96)
@@ -14,15 +34,21 @@ animation_player = NodePath("AnimationPlayer")
 ticks_between_magazines = 0
 
 [node name="Sprite2D" parent="." index="1"]
+visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_rr62w")
 hframes = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(-7, -32)
+scale = Vector2(0.717172, 0.717172)
+sprite_frames = SubResource("SpriteFrames_waemt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationTriggers" index="0"]
 position = Vector2(-125, 0)
 shape = SubResource("RectangleShape2D_pqa1e")
 
 [node name="PelicanBeakFishGrabber" parent="Components/Weapon" index="0" node_paths=PackedStringArray("sprite") instance=ExtResource("3_jqu5w")]
-sprite = NodePath("../../../Sprite2D")
+sprite = NodePath("../../../AnimatedSprite2D")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
