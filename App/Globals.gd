@@ -11,6 +11,7 @@ var arcade_difficulty_level = 0 # increments with each arcade level completed
 var arcade_level_path = "res://App/Scenes/Levels/arcade_level.tscn"
 
 var level_paths = [
+	"res://App/Scenes/Levels/Level0.tscn",
 	"res://App/Scenes/Levels/FirstLevel.tscn",
 	"res://App/Scenes/Levels/SecondLevel.tscn",
 	"res://App/Scenes/CutScenes/win_screen.tscn"
