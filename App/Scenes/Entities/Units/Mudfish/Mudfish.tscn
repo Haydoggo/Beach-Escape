@@ -12,3 +12,6 @@ unit_info = ExtResource("3_2i1rr")
 [node name="Sprite" parent="." index="1"]
 modulate = Color(0.34902, 0.290196, 0.203922, 1)
 texture = ExtResource("4_vp5yr")
+
+[node name="MoistureIndicator" parent="." index="5"]
+visible = false

@@ -12,3 +12,9 @@ unit_info = ExtResource("2_m770k")
 [node name="Sprite" parent="." index="1"]
 scale = Vector2(0.195313, 0.195313)
 texture = ExtResource("2_4frry")
+
+[node name="HealthComponent" parent="." index="4"]
+visible = false
+
+[node name="MoistureIndicator" parent="." index="5"]
+visible = false
