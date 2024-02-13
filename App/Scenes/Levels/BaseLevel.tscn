@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://de3bma3kyx7em"]
+[gd_scene load_steps=19 format=3 uid="uid://de3bma3kyx7em"]
 
 [ext_resource type="Script" path="res://App/Scenes/Levels/BaseLevel.gd" id="1_cs8tg"]
 [ext_resource type="TileSet" uid="uid://dwo7o7lpg52g0" path="res://App/Scenes/Levels/towers_tile_set.tres" id="1_sr1u4"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://App/Scenes/Levels/PlaySpaceSizer.gd" id="4_xcjau"]
 [ext_resource type="PackedScene" uid="uid://cdrk8mkxgd30e" path="res://App/Scenes/Spawners/FinishZone.tscn" id="5_32fpb"]
 [ext_resource type="Texture2D" uid="uid://cfn46omcxn1xu" path="res://Assets/Images/Environment/Border_Ring.png" id="5_pgywy"]
-[ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="5_uupqf"]
 [ext_resource type="PackedScene" uid="uid://xya6xspmx2gu" path="res://App/Scenes/Spawners/DeploymentZone.tscn" id="6_6lisd"]
 [ext_resource type="PackedScene" uid="uid://bchfxguqqtrom" path="res://App/Scenes/GUI/ButtonBarUI.tscn" id="8_3kuke"]
 [ext_resource type="AudioStream" uid="uid://lyfloletgdw" path="res://Assets/Music/MUS_MainLoopV2_01.ogg" id="11_ibc0y"]
@@ -17,6 +16,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k81qk"]
 resource_local_to_scene = true
 size = Vector2(384, 512)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_clshk"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bs6u3"]
 
 [sub_resource type="Animation" id="Animation_fp6ob"]
 resource_name = "fade2"
@@ -108,31 +112,26 @@ patch_margin_bottom = 244
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="Lanes" type="Node2D" parent="PlaySpace"]
-
-[node name="Lane" parent="PlaySpace/Lanes" instance=ExtResource("5_uupqf")]
-position = Vector2(64, 64)
-
-[node name="Lane2" parent="PlaySpace/Lanes" instance=ExtResource("5_uupqf")]
-position = Vector2(64, 192)
-
-[node name="Lane3" parent="PlaySpace/Lanes" instance=ExtResource("5_uupqf")]
-position = Vector2(64, 320)
-
-[node name="Lane4" parent="PlaySpace/Lanes" instance=ExtResource("5_uupqf")]
-position = Vector2(64, 448)
-
 [node name="DeploymentZone" parent="PlaySpace" instance=ExtResource("6_6lisd")]
 position = Vector2(3, 0)
 
 [node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
 shape = SubResource("RectangleShape2D_k81qk")
 
-[node name="FriendlyUnitSpawner" parent="PlaySpace/DeploymentZone/SelectedTileCursor" index="0" node_paths=PackedStringArray("lanes_container")]
-lanes_container = NodePath("../../../Lanes")
+[node name="SelectedTileCursor" parent="PlaySpace/DeploymentZone" index="3"]
+position = Vector2(64, 64)
 
-[node name="Towers" type="TileMap" parent="."]
-position = Vector2(439, -58)
+[node name="Borders" type="Area2D" parent="PlaySpace" groups=["BlockerHitbox"]]
+
+[node name="TopBorder" type="CollisionShape2D" parent="PlaySpace/Borders"]
+position = Vector2(0, -32)
+shape = SubResource("WorldBoundaryShape2D_clshk")
+
+[node name="BottomBorder" type="CollisionShape2D" parent="PlaySpace/Borders"]
+position = Vector2(0, -32)
+shape = SubResource("WorldBoundaryShape2D_bs6u3")
+
+[node name="Towers" type="TileMap" parent="PlaySpace"]
 tile_set = ExtResource("1_sr1u4")
 format = 2
 

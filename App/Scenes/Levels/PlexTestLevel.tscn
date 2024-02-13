@@ -1,52 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq68aggh3rxym"]
+[gd_scene load_steps=3 format=3 uid="uid://dq68aggh3rxym"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_evr2g"]
-[ext_resource type="Script" path="res://App/Scenes/Spawners/Lane.gd" id="2_m5p2u"]
-[ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="3_0nrhl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdvsl"]
 resource_local_to_scene = true
-size = Vector2(384, 896)
+size = Vector2(384, 512)
 
 [node name="SecondLevel" instance=ExtResource("1_evr2g")]
 
 [node name="PlaySpace" parent="." index="1"]
 offset_right = 1725.0
 offset_bottom = 969.0
-play_space_size = Vector2i(13, 7)
-
-[node name="Lane" parent="PlaySpace/Lanes" index="0" groups=["Lanes"]]
-script = ExtResource("2_m5p2u")
-
-[node name="Lane2" parent="PlaySpace/Lanes" index="1" groups=["Lanes"]]
-script = ExtResource("2_m5p2u")
-
-[node name="Lane3" parent="PlaySpace/Lanes" index="2" groups=["Lanes"]]
-script = ExtResource("2_m5p2u")
-
-[node name="Lane4" parent="PlaySpace/Lanes" index="3" groups=["Lanes"]]
-script = ExtResource("2_m5p2u")
-
-[node name="Lane5" type="Marker2D" parent="PlaySpace/Lanes" index="4" groups=["Lanes"] instance=ExtResource("3_0nrhl")]
-position = Vector2(64, 576)
-script = ExtResource("2_m5p2u")
-
-[node name="Lane6" type="Marker2D" parent="PlaySpace/Lanes" index="5" groups=["Lanes"] instance=ExtResource("3_0nrhl")]
-position = Vector2(64, 704)
-script = ExtResource("2_m5p2u")
-
-[node name="Lane7" type="Marker2D" parent="PlaySpace/Lanes" index="6" groups=["Lanes"] instance=ExtResource("3_0nrhl")]
-position = Vector2(64, 832)
-script = ExtResource("2_m5p2u")
 
 [node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
-position = Vector2(192, 448)
 shape = SubResource("RectangleShape2D_rdvsl")
 
-[node name="ColorRect" parent="PlaySpace/DeploymentZone" index="2"]
-offset_bottom = 896.0
+[node name="BottomBorder" parent="PlaySpace/Borders" index="1"]
+position = Vector2(0, 544)
 
-[node name="Towers" parent="." index="2"]
+[node name="Towers" parent="PlaySpace" index="3"]
 position = Vector2(404, 7)
 layer_0/tile_data = PackedInt32Array(131075, 0, 262144, 65539, 0, 262144, 262147, 0, 262144, 196613, 0, 65536, 196615, 0, 65536, 196611, 0, 327680, 262148, 0, 393216, 196610, 0, 393216, 65538, 0, 393216, 131079, 0, 393216)
 

@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(0.7, 0.7)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -246,6 +246,7 @@ script = ExtResource("2_k82f0")
 unit_info = ExtResource("3_2i1rr")
 
 [node name="Sprite" parent="." index="1"]
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("4_ge3ig")
 
 [node name="TunnellingSprite" type="Sprite2D" parent="." index="2"]

@@ -1,7 +1,6 @@
 @tool
 extends ReferenceRect
 
-const LANE_SCENE = preload("res://App/Scenes/Spawners/Lane.tscn")
 @export var deployment_area_width : int = 3:
 	set(value):
 		deployment_area_width = value
@@ -13,17 +12,6 @@ const LANE_SCENE = preload("res://App/Scenes/Spawners/Lane.tscn")
 			return
 		play_space_size = v
 		size = Vector2(play_space_size) * tile_size
-		for lane in $Lanes.get_children():
-			lane.name = "something" # allows for consistent naming of new nodes
-			lane.queue_free()
-		for i in play_space_size.y:
-			var lane = LANE_SCENE.instantiate()
-			@warning_ignore("integer_division")
-			lane.position.x = tile_size/2
-			@warning_ignore("integer_division")
-			lane.position.y = tile_size/2 + tile_size * i
-			$Lanes.add_child(lane, true)
-			lane.owner = owner
 		expand_deployment_area()
 
 @export var snap : bool:
@@ -51,11 +39,15 @@ func expand_deployment_area():
 	collision_shape.position = collision_shape.shape.size / 2.0
 	$DeploymentZone/ColorRect.size = collision_shape.shape.size
 	$DeploymentZone/DeploymentZoneTitle.size.x = collision_shape.shape.size.x
+	$Borders/BottomBorder.position.y = (play_space_size.y + 0.25) * tile_size
 
 func _ready():
 	if not Engine.is_editor_hint(): # in-game only
 		Globals.tile_size = tile_size
-
+		snap = true
+		expand_deployment_area() 	# make sure changes are applied to scenes that haven't
+									# been opened in editor since update to code
+	
 
 func spawn_random_towers():
 	if Globals.game_mode == Globals.game_modes.ARCADE:
@@ -64,7 +56,7 @@ func spawn_random_towers():
 			spawn_random_tower()
 
 
-	
+
 func spawn_random_tower():
 	var rand_square = Vector2(randi_range(deployment_area_width+1, play_space_size.x), randi()%play_space_size.y)
 	var square_position = global_position + rand_square * Globals.tile_size

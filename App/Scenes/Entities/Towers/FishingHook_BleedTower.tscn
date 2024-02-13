@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bch3hc5ug6j73"]
+[gd_scene load_steps=11 format=3 uid="uid://bch3hc5ug6j73"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/StaticTrap_OnTick.gd" id="1_thnx5"]
-[ext_resource type="Texture2D" uid="uid://huumkbuqyulj" path="res://Assets/Images/placeholder/fish_hook.png" id="2_2o2p6"]
+[ext_resource type="Texture2D" uid="uid://b38i6myap3pyo" path="res://Assets/Images/Towers/06_Hook.png" id="2_xff24"]
+[ext_resource type="Texture2D" uid="uid://c1trferrq3ib7" path="res://Assets/Images/Towers/06_Hook_Rope.png" id="2_ygcwe"]
 [ext_resource type="PackedScene" uid="uid://bu4vg8os8fnp4" path="res://App/Scenes/Entities/Components/Weapons/persistent_stationary_weapon.tscn" id="3_86pm3"]
 [ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="4_ii13g"]
 
@@ -37,10 +38,19 @@ position = Vector2(39, 45)
 scale = Vector2(0.952805, 0.210937)
 texture = SubResource("GradientTexture2D_t3aoo")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3, 1)
+[node name="06HookRope" type="TextureRect" parent="."]
+offset_left = -5.0
+offset_top = -2997.0
+offset_right = 51.0
+offset_bottom = 1297.0
 scale = Vector2(0.67, 0.67)
-texture = ExtResource("2_2o2p6")
+texture = ExtResource("2_ygcwe")
+stretch_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, -54)
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("2_xff24")
 
 [node name="Components" type="Node2D" parent="."]
 

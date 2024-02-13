@@ -8,7 +8,7 @@ extends Node2D
 
 var active : bool = false
 var captive_fish : Array[BaseUnit]
-@export var sprite : Sprite2D
+@export var sprite : AnimatedSprite2D
 @export var hold_duration : int = 3
 var hold_ticks_remaining : int = 0
 var original_sprite_position : Vector2 # global_coords

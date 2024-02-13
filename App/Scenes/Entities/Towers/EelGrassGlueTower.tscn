@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://wykl862gv5fc"]
+[gd_scene load_steps=12 format=3 uid="uid://wykl862gv5fc"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/StaticTrap_OnTick.gd" id="1_rj7qc"]
-[ext_resource type="Texture2D" uid="uid://b22y2epv8g5p0" path="res://Assets/Images/placeholder/EelGrass.png" id="2_lkby1"]
+[ext_resource type="Texture2D" uid="uid://c5qqvw5a3myge" path="res://Assets/Images/Towers/05_Grass_Back.png" id="2_old06"]
 [ext_resource type="PackedScene" uid="uid://bu4vg8os8fnp4" path="res://App/Scenes/Entities/Components/Weapons/persistent_stationary_weapon.tscn" id="3_mgioi"]
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="4_airjr"]
 [ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="5_hks4k"]
+[ext_resource type="Texture2D" uid="uid://cgcsq38mdy1jt" path="res://Assets/Images/Towers/05_Grass_Front.png" id="6_iwf05"]
 
 [sub_resource type="Gradient" id="Gradient_yfvkm"]
 offsets = PackedFloat32Array(0.178082, 0.481735)
@@ -44,7 +45,12 @@ texture = SubResource("GradientTexture2D_t3aoo")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4, -12)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_lkby1")
+texture = ExtResource("2_old06")
+
+[node name="GrassFront" type="Sprite2D" parent="."]
+position = Vector2(4, 11)
+scale = Vector2(0.493421, 0.493421)
+texture = ExtResource("6_iwf05")
 
 [node name="Components" type="Node2D" parent="."]
 

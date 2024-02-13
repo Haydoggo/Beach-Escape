@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UnitInfo" load_steps=5 format=3 uid="uid://c8jmkxi6ybst4"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/UnitInfo.gd" id="1_3vw8l"]
-[ext_resource type="Texture2D" uid="uid://b7m4o2vmjb3q2" path="res://Assets/Images/Units/TempShark.png" id="1_thifv"]
+[ext_resource type="Texture2D" uid="uid://booxgo33iddgn" path="res://Assets/Images/Units/07_Shark.png" id="1_k5ae0"]
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_8e2rr"]
 
 [sub_resource type="Resource" id="Resource_ljvsf"]
@@ -15,7 +15,7 @@ script = ExtResource("1_3vw8l")
 name = "Shark"
 description = "Why is there even a shark on the beach, anyways?! Everyone off the beach!"
 path = PackedVector2Array(128, 0)
-icon = ExtResource("1_thifv")
+icon = ExtResource("1_k5ae0")
 health = 999
 moisture = 999
 melee_attack = SubResource("Resource_ljvsf")
