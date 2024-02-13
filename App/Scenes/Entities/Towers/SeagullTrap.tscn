@@ -15,7 +15,7 @@
 [sub_resource type="Resource" id="Resource_tuo7h"]
 script = ExtResource("2_0vh0u")
 damage_type = 0
-damage = 1.0
+damage = 40.0
 payload_scene_path = ""
 
 [sub_resource type="Curve2D" id="Curve2D_8dc03"]
@@ -70,8 +70,8 @@ stream_0/weight = 1.0
 
 [node name="SeagullTrap" type="Node2D" groups=["EnemyTowers", "Seagulls"]]
 script = ExtResource("1_r6ph7")
-description = null
 attack_packet = SubResource("Resource_tuo7h")
+health_max = 40.0
 move_steps_without_attacking = 1
 
 [node name="Path2D" type="Path2D" parent="."]

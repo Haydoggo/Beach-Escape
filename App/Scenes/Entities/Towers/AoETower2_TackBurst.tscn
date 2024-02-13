@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_hj8eg"]
 [ext_resource type="Texture2D" uid="uid://cy2kixeq1vwth" path="res://Assets/Images/Towers/Castle_Flag.png" id="2_f76at"]
-[ext_resource type="PackedScene" uid="uid://cck31mqtd2h5y" path="res://App/Scenes/Entities/Components/tack_burst_weapon.tscn" id="3_q5t64"]
+[ext_resource type="PackedScene" path="res://App/Scenes/Entities/Components/tack_burst_weapon.tscn" id="3_q5t64"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8aew6"]
 radius = 125.0
@@ -24,7 +24,7 @@ _data = {
 description = "Tack Thrower: causes damage in a short radius"
 turret_type = 2
 shots_per_magazine = 1
-health_max = 500.0
+health_max = 75.0
 animation_player = NodePath("AnimationPlayer")
 
 [node name="Shadow" parent="." index="0"]

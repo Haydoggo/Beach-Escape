@@ -9,7 +9,7 @@ size = Vector2(96, 96)
 
 [node name="PelicanTower" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_311mb")]
 shots_per_magazine = 1
-health_max = 200.0
+health_max = 80.0
 animation_player = NodePath("AnimationPlayer")
 ticks_between_magazines = 0
 

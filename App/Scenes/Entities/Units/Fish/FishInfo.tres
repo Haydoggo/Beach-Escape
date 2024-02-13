@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_texr2"]
 script = ExtResource("2_pwn6m")
 damage_type = 0
-damage = 2.0
+damage = 10.0
 payload_scene_path = ""
 
 [resource]
@@ -16,7 +16,7 @@ name = "Fish"
 description = "Standard weak unit. Moves in a straight line."
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_y8g13")
-health = 2
-moisture = 5
+health = 75
+moisture = 3
 melee_attack = SubResource("Resource_texr2")
 packed_scene_path = "res://App/Scenes/Entities/Units/Fish/Fish.tscn"

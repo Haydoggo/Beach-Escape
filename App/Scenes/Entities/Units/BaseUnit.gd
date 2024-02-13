@@ -41,7 +41,7 @@ func _on_tick():
 		return
 	if is_bleeding:
 		var ap = AttackPacket.new()
-		ap.damage = 2
+		ap.damage = 15
 		_on_hit(ap)
 		blood_fx.emitting = true
 	if is_slow:
