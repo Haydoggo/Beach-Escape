@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2a44ktsxrwk1"]
+[gd_scene load_steps=9 format=3 uid="uid://dc2sp61cgei3v"]
 
 [ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_mfq3r"]
 [ext_resource type="Texture2D" uid="uid://c36mnro4lh7jk" path="res://Assets/Images/Units/hand_shadow.png" id="2_2icuc"]
@@ -24,7 +24,6 @@ _data = {
 [node name="AoETower" instance=ExtResource("1_mfq3r")]
 turret_type = 2
 shots_per_magazine = 1
-health_max = 500.0
 
 [node name="Shadow" parent="." index="0"]
 visible = false
@@ -38,7 +37,13 @@ texture = ExtResource("2_2icuc")
 [node name="MeleeAoEShape2" type="CollisionShape2D" parent="ActivationTriggers" index="0"]
 shape = SubResource("CircleShape2D_3p6bb")
 
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+disabled = true
+
 [node name="HandSlapComponent" parent="Components/Weapon" index="0" instance=ExtResource("4_6tmv8")]
+
+[node name="HealthComponent" parent="Components" index="1"]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 libraries = {
