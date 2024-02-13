@@ -31,3 +31,9 @@ alignment = 1
 [node name="DummyButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Dummy Button"
+
+[node name="BackToMain" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Back to Main Menu"
+
+[connection signal="pressed" from="VBoxContainer/BackToMain" to="." method="_on_back_to_main_pressed"]

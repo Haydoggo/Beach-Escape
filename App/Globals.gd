@@ -36,7 +36,7 @@ var unit_metadata : Array[UnitInfo] = [
 var surviving_units = {
 	"Fish" : 4,
 	"Crab" : 4,
-	"Urchin" : 4,
+	#"Urchin" : 4,
 	#"Seahorse" : 4,
 	#"Mudfish" : 4,
 	#"Shark" : 4,
@@ -46,6 +46,17 @@ var surviving_units = {
 	#"Gold Fish" : 4,
 } # key is the name of the units, value is the int count
 
+var tower_paths = {
+	"SandCannon":"res://App/Scenes/Entities/Towers/CannonTower.tscn",
+	"TackBurst":"res://App/Scenes/Entities/Towers/AoETower2_TackBurst.tscn",
+	"Pelican":"res://App/Scenes/Entities/Towers/PelicanTower.tscn",
+	"EelGrass":"res://App/Scenes/Entities/Towers/EelGrassGlueTower.tscn",
+	"FishingHook":"res://App/Scenes/Entities/Towers/FishingHook_BleedTower.tscn",
+	"Seagull":"res://App/Scenes/Entities/Towers/SeagullTrap.tscn",
+	"HandSlap":"res://App/Scenes/Entities/Towers/HandSlapTower.tscn",
+	"PitTrap":"res://App/Scenes/Entities/Towers/PitTrap.tscn",
+	"Rock":"res://App/Scenes/Entities/Towers/RockObstacle.tscn",
+}
 
 func load_next_level():
 	if game_mode == game_modes.ARCADE:

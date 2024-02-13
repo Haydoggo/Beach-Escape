@@ -32,7 +32,7 @@ func _ready() -> void:
 	add_unit_buttons()
 	total_units = get_num_units_remaining()
 
-func _process(delta):
+func _process(_delta):
 	var units_remaining = get_num_units_remaining()
 	if units_remaining < (total_units * 0.66) and music_level == 0:
 		fade_in_music("fade2")
@@ -114,6 +114,14 @@ func _on_tower_hovered(description):
 	
 func _on_tower_mouse_exited():
 	button_hover_text_popup.close()
+
+func spawn_random_towers():
+	if Globals.game_mode == Globals.game_modes.ARCADE:
+		var num_towers = Globals.arcade_difficulty_level
+		for i in range(num_towers):
+			$PlaySpace.spawn_random_tower()
+			
+
 
 func _on_unit_spawned(): # signal comes from FriendlyUnitSpawner
 	if get_num_units_remaining() == 0:

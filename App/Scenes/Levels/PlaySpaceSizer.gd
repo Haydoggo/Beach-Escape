@@ -57,3 +57,10 @@ func _ready():
 	if not Engine.is_editor_hint(): # in-game only
 		Globals.tile_size = tile_size
 	
+func spawn_random_tower():
+	var rand_square = Vector2(randi()%play_space_size.x, randi()%play_space_size.y)
+	var square_position = global_position + rand_square * Globals.tile_size
+	var random_tower_path = Globals.tower_paths.values().pick_random()
+	var random_tower = load(random_tower_path).instantiate()
+	random_tower.position = square_position
+	add_child(random_tower)

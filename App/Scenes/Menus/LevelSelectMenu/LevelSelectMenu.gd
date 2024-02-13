@@ -21,3 +21,7 @@ func remove_dummy_buttons():
 
 func _on_level_selected(level_path):
 	SceneLoader.load_scene(level_path)
+
+
+func _on_back_to_main_pressed():
+	SceneLoader.load_scene("res://Extras/Scenes/Menus/MainMenu/MainMenu.tscn")

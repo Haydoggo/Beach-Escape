@@ -92,6 +92,7 @@ func _ready():
 	animation_state_machine = $MenuAnimationTree.get("parameters/playback")
 
 func _on_play_button_pressed():
+	Globals.game_mode = Globals.game_modes.ARCADE
 	play_game()
 
 func _on_options_button_pressed():
@@ -113,4 +114,6 @@ func _on_back_button_pressed():
 
 
 func _on_select_level_button_pressed():
+	Globals.game_mode = Globals.game_modes.PUZZLE
+	#_open_sub_menu(%PuzzleLevelsMenu)
 	SceneLoader.load_scene(level_select_scene)

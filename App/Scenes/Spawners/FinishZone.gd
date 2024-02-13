@@ -36,9 +36,14 @@ func _process(_delta):
 	if State == States.LISTENING and Engine.get_process_frames() % 10 == 0:
 		var units_remaining = get_unit_count_on_field()
 		if units_remaining == 0:
+			
 			if has_enough_units_to_win():
-				print("Level Complete!")
-				SceneLoader.load_scene(next_scene_path)
+				if Globals.game_mode == Globals.game_modes.PUZZLE:
+					print("Level Complete!")
+					Globals.load_next_level()
+				else:
+					SceneLoader.load_scene("res://App/Scenes/CutScenes/acquire_new_units.tscn")
+				#SceneLoader.load_scene(next_scene_path)
 			else:
 				print("Very sad, you lose :(((")
 				SceneLoader.reload_current_scene()
