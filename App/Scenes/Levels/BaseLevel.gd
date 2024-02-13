@@ -1,5 +1,6 @@
 class_name BaseLevel extends Node2D
 
+
 const UNIT_COUNT = &"unit_info"
 const UNIT_BUTTON = preload("res://App/Scenes/Levels/UnitButton.tscn")
 
@@ -14,6 +15,9 @@ var button_hover_text_popup : Panel
 var friendly_unit_spawner : Node
 @onready var fish_container = $UnitContainer
 
+var total_units : int
+var music_level : int
+
 func _init():
 	Globals.current_level = self
 
@@ -26,7 +30,15 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	friendly_unit_spawner = find_child("FriendlyUnitSpawner")
 	add_unit_buttons()
+	total_units = get_num_units_remaining()
 
+func _process(delta):
+	if get_num_units_remaining() < (total_units * 0.66) and music_level == 0:
+		fade_in_music("fade2")
+		music_level += 1
+	if get_num_units_remaining() < (total_units * 0.33) and music_level == 1:
+		fade_in_music("fade3")
+		music_level += 1
 
 func add_unit_buttons():
 	unit_buttons = find_child("UnitButtons")
@@ -131,3 +143,7 @@ func _on_tick_timer_timeout() -> void:
 	#get_tree().call_group("Units", "_on_tick")
 	#get_tree().call_group("EnemyTowers", "_on_tick")
 	#get_tree().call_group("Lanes", "_on_tick")
+
+func fade_in_music(fade : String) -> void:
+	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation(fade):
+		$AnimationPlayer.play(fade)

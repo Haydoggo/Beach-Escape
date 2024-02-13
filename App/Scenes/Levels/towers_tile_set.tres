@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d3wt4bpu0wwo1" path="res://App/Scenes/Entities/Towers/RockObstacle.tscn" id="5_kbwpa"]
 [ext_resource type="PackedScene" uid="uid://ncccgvmbl1j5" path="res://App/Scenes/Entities/Towers/SeagullTrap.tscn" id="6_7tncc"]
 [ext_resource type="PackedScene" uid="uid://x3d860eid5cw" path="res://App/Scenes/Entities/Towers/AoETower2_TackBurst.tscn" id="7_1e73d"]
-[ext_resource type="PackedScene" path="res://App/Scenes/Entities/Towers/HandSlapTower.tscn" id="7_e2pow"]
+[ext_resource type="PackedScene" uid="uid://dc2sp61cgei3v" path="res://App/Scenes/Entities/Towers/HandSlapTower.tscn" id="7_e2pow"]
 [ext_resource type="PackedScene" uid="uid://wykl862gv5fc" path="res://App/Scenes/Entities/Towers/EelGrassGlueTower.tscn" id="8_70wli"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_tmigf"]

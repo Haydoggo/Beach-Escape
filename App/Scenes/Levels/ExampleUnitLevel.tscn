@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://f3mjubew8bl6"]
+[gd_scene load_steps=7 format=3 uid="uid://f3mjubew8bl6"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_rlvhh"]
 [ext_resource type="PackedScene" uid="uid://deohxbftxfqrr" path="res://App/Scenes/Entities/Units/Crab/Crab.tscn" id="2_a8227"]
@@ -6,11 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://cgd8xhw13e1wa" path="res://App/Scenes/Entities/Units/Urchin/Urchin.tscn" id="4_nfgyh"]
 [ext_resource type="AudioStream" uid="uid://bl2utd3tyx5jb" path="res://Assets/Music/Crab_Craze_Demo_2.ogg" id="5_qm0eg"]
 
-[node name="ExampleUnitLevel" instance=ExtResource("1_rlvhh")]
-available_units = null
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdpgx"]
+resource_local_to_scene = true
+size = Vector2(384, 512)
 
-[node name="PlaySpace" parent="." index="1"]
-texture_tile_size = 1952
+[node name="ExampleUnitLevel" instance=ExtResource("1_rlvhh")]
+
+[node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
+shape = SubResource("RectangleShape2D_xdpgx")
 
 [node name="Units" type="Node2D" parent="." index="4"]
 y_sort_enabled = true
@@ -30,3 +33,6 @@ position = Vector2(195, 200)
 stream = ExtResource("5_qm0eg")
 volume_db = -10.0
 autoplay = true
+
+[editable path="PlaySpace/DeploymentZone"]
+[editable path="UI"]
