@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6p8x7m7ij133"]
+[gd_scene load_steps=10 format=3 uid="uid://c6p8x7m7ij133"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_4i6nq"]
 [ext_resource type="Script" path="res://App/Scenes/Levels/HaydenTestLevel.gd" id="2_kaoqm"]
 [ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="3_r8jfn"]
-[ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="3_y7vxo"]
 [ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="4_l0o43"]
 [ext_resource type="Resource" uid="uid://dkoxp7v5utuf7" path="res://App/Scenes/Entities/Units/GoldFish/GoldFishInfo.tres" id="5_xkupb"]
 
@@ -27,7 +26,7 @@ count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_504sy"]
 resource_local_to_scene = true
-size = Vector2(384, 768)
+size = Vector2(384, 512)
 
 [node name="BaseLevel" instance=ExtResource("1_4i6nq")]
 script = ExtResource("2_kaoqm")
@@ -37,21 +36,14 @@ required_units_for_win = Array[ExtResource("3_r8jfn")]([SubResource("Resource_dd
 [node name="PlaySpace" parent="." index="1"]
 offset_bottom = 841.0
 
-[node name="Lane5" parent="PlaySpace/Lanes" index="4" instance=ExtResource("3_y7vxo")]
-position = Vector2(64, 576)
-
-[node name="Lane6" parent="PlaySpace/Lanes" index="5" instance=ExtResource("3_y7vxo")]
-position = Vector2(64, 704)
-
 [node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
-position = Vector2(192, 384)
 shape = SubResource("RectangleShape2D_504sy")
 
-[node name="ColorRect" parent="PlaySpace/DeploymentZone" index="2"]
-offset_bottom = 768.0
+[node name="BottomBorder" parent="PlaySpace/Borders" index="1"]
+position = Vector2(0, 544)
 
-[node name="Towers" parent="." index="2"]
-layer_0/tile_data = PackedInt32Array(327680, 0, 327680, 393216, 0, 327680, 262144, 0, 327680, 196609, 0, 65536)
+[node name="Towers" parent="PlaySpace" index="3"]
+layer_0/tile_data = PackedInt32Array(65538, 0, 327680, 196611, 0, 327680, 327683, 0, 327680, 196612, 0, 327680, 4, 0, 327680)
 
 [editable path="PlaySpace/DeploymentZone"]
 [editable path="UI"]
