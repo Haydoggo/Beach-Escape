@@ -8,6 +8,7 @@
 script = ExtResource("2_h4vnp")
 damage_type = 0
 damage = 2.0
+payload_scene_path = ""
 
 [resource]
 script = ExtResource("3_mwuql")
@@ -16,5 +17,6 @@ description = "Seahorses embody the spirit of the medieval chess knight."
 path = PackedVector2Array(256, -128, 256, 128)
 icon = ExtResource("1_e1yys")
 health = 5
+moisture = 5
 melee_attack = SubResource("Resource_gvo2g")
 packed_scene_path = "res://App/Scenes/Entities/Units/Seahorse/Seahorse.tscn"

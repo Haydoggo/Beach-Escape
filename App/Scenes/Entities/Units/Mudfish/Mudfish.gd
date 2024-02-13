@@ -4,10 +4,15 @@ extends BaseUnit
 func move_forward(pos : Vector2):
 	super.move_forward(pos)
 	if path_index == 1:
-		tunnel_down()
+		if not is_near_finish_line():
+			tunnel_down()
 	elif path_index == 2:
 		global_position = pos
 		tunnel_up()
+
+func is_near_finish_line():
+	if global_position.x < get_viewport_rect().size.x - 256:
+		return true
 
 func attack_tower(tower):
 	if path_index == 2:
@@ -22,7 +27,7 @@ func on_blocked():
 		super.on_blocked()
 
 func tunnel_down():
-	$Hitbox.monitorable = false
+	$Hitbox.monitorable = false # <-- prevents finish line seeing you
 	create_tween().tween_property(self, "modulate:a", 0.5, 0.5)
 
 func tunnel_up():
