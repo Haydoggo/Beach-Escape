@@ -8,7 +8,6 @@ func move_forward(pos : Vector2):
 	if path_index == 1:
 		tunnel_down()
 	elif path_index == 2:
-		global_position = pos
 		tunnel_up()
 
 func attack_tower(tower):
@@ -32,11 +31,13 @@ func _on_hit(attack_packet : AttackPacket):
 func tunnel_down():
 	animation_player.play("TunnelDown")
 	$Hitbox/CollisionShape2D.disabled = true
+	await get_tree().create_timer(0.4).timeout
+	super.move_forward(global_position + Vector2(128,0))
+	
 
 func tunnel_up():
 	moisture = unit_info.moisture
 	moisture_indicator.moisture = moisture
-	var tween = create_tween()
 	animation_player.play("TunnelUp")
 	await animation_player.animation_finished
 	$Hitbox/CollisionShape2D.disabled = false
