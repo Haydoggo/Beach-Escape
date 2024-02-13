@@ -14,6 +14,7 @@ var moisture : int
 var is_bleeding = false
 var is_slow = false
 var slow_counter = 0
+var is_captive = false
 
 func _ready() -> void:
 	health_component.health_max = unit_info.health
@@ -36,6 +37,8 @@ func get_path_points(origin : Vector2) -> Array[Vector2]:
 
 
 func _on_tick():
+	if is_captive:
+		return
 	if is_bleeding:
 		var ap = AttackPacket.new()
 		ap.damage = 2
@@ -129,3 +132,25 @@ func begin_dying():
 
 func _on_finish_line_crossed(): # signal from FinishZone
 	queue_free()
+
+func _on_captured():
+	is_captive = true
+	disable_collision_areas()
+	visible = false
+
+func _on_released():
+	is_captive = false
+	enable_collision_areas()
+	visible = true
+	# should move forward two squares to get past the threat?
+
+func disable_collision_areas():
+	for area in find_children("", "Area2D"):
+		area.monitoring = false
+		area.monitorable = false
+	
+func enable_collision_areas():
+	for area in find_children("", "Area2D"):
+		area.monitoring = true
+		area.monitorable = true
+
