@@ -10,6 +10,7 @@ var level_paths = [
 
 var current_level_index : int = -1 # so get_next_level() returns 0 on first call
 var current_level : BaseLevel
+var tile_size # from playspace sizer
 
 var unit_metadata : Array[UnitInfo] = [
 	load("res://App/Scenes/Entities/Units/Crab/CrabInfo.tres"),

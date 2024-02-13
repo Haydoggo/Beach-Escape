@@ -134,4 +134,7 @@ func _on_tick(): # signal from level to synchronize tower shots
 	ticks += 1
 	if State == States.ACTIVE:
 		for weapon in $Components/Weapon.get_children():
-			weapon._on_tick()
+			if weapon.has_method("_on_tick"):
+				weapon._on_tick()
+			else:
+				printerr("BaseTower.gd: weapon " + weapon.name + ", requires _on_tick() method.")

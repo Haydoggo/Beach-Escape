@@ -12,7 +12,7 @@ var last_unit_notification_emitted : bool = false
 var unit_buttons : Container
 var button_hover_text_popup : Panel
 var friendly_unit_spawner : Node
-	
+@onready var fish_container = $UnitContainer
 
 func _init():
 	Globals.current_level = self

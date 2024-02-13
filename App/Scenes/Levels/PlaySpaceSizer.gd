@@ -51,3 +51,7 @@ func expand_deployment_area():
 	collision_shape.position = collision_shape.shape.size / 2.0
 	$DeploymentZone/ColorRect.size = collision_shape.shape.size
 	$DeploymentZone/DeploymentZoneTitle.size.x = collision_shape.shape.size.x
+
+func _ready():
+	Globals.tile_size = tile_size
+	
