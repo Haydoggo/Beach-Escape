@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_u6h5h"]
 script = ExtResource("2_g27du")
 damage_type = 0
-damage = 5.0
+damage = 15.0
 payload_scene_path = ""
 
 [resource]
@@ -16,7 +16,7 @@ name = "Mudfish"
 description = "The timid mudfish, hides under the mud for brief intervals."
 path = PackedVector2Array(128, 0, 0, 0, 128, 0, 128, 0)
 icon = ExtResource("1_e521y")
-health = 5
+health = 80
 moisture = 5
 melee_attack = SubResource("Resource_u6h5h")
 packed_scene_path = "res://App/Scenes/Entities/Units/Mudfish/Mudfish.tscn"

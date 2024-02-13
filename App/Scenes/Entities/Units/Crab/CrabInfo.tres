@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_iqb6s"]
 script = ExtResource("2_gcn07")
 damage_type = 0
-damage = 5.0
+damage = 15.0
 payload_scene_path = ""
 
 [resource]
@@ -16,7 +16,7 @@ name = "Crab"
 description = "You've got crabs! Very strong unit which moves in a zig-zag pattern."
 path = PackedVector2Array(128, 0, 128, 128, 128, 0, 128, -128)
 icon = ExtResource("1_nwo8n")
-health = 600
-moisture = 5
+health = 100
+moisture = 4
 melee_attack = SubResource("Resource_iqb6s")
 packed_scene_path = "res://App/Scenes/Entities/Units/Crab/Crab.tscn"
