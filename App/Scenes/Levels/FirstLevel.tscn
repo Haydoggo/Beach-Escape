@@ -51,9 +51,11 @@ offset_right = 1595.0
 [node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
 shape = SubResource("RectangleShape2D_ym5j7")
 
-[node name="Towers" parent="." index="2"]
-position = Vector2(442, -51)
-layer_0/tile_data = PackedInt32Array(131075, 0, 65536, 196613, 0, 65536, 262148, 0, 131072, 327689, 0, 196608, 65543, 0, 196608, 65538, 0, 262144, 4, 0, 393216, 65540, 0, 393216, 65542, 0, 393216, 327686, 0, 393216, 262142, 0, 327680, 131072, 0, 196608, 262145, 0, 196608, 262152, 0, 458752, 196608, 0, 524288, 196609, 0, 524288, 65536, 0, 524288, 327679, 0, 655360, 131071, 0, 327680)
+[node name="BottomBorder" parent="PlaySpace/Borders" index="1"]
+position = Vector2(0, 544)
+
+[node name="Towers" parent="PlaySpace" index="3"]
+layer_0/tile_data = PackedInt32Array(131075, 0, 524288, 65542, 0, 65536, 131073, 0, 327680, 2, 0, 327680, 196610, 0, 655360, 3, 0, 524288, 65539, 0, 196608, 131076, 0, 524288, 196612, 0, 196608, 5, 0, 262144, -65529, 0, 393216, 7, 0, 393216, 196615, 0, 131072, 131080, 0, 65536, 9, 0, 393216, 262153, 0, 393216, 10, 0, 196608, 196619, 0, 458752, 262156, 0, 196608)
 
 [editable path="PlaySpace/DeploymentZone"]
 [editable path="UI"]
