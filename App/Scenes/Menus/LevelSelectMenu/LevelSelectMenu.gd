@@ -12,10 +12,11 @@ func _ready():
 			level_button.pressed.connect(self._on_level_selected.bind(level_path))
 			level_button.custom_minimum_size = Vector2(256, 64)
 			level_button.text = "Level " + str(i)
-			$VBoxContainer.add_child(level_button)
+			%GridButtonContainer.add_child(level_button)
+
 
 func remove_dummy_buttons():
-	for button in $VBoxContainer.get_children():
+	for button in %GridButtonContainer.get_children():
 		if button is Button and "Dummy" in button.name:
 			button.queue_free()
 

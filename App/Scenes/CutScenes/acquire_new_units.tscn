@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cai7kydql1o31"]
+[gd_scene load_steps=11 format=3 uid="uid://cai7kydql1o31"]
 
 [ext_resource type="Script" path="res://App/Scenes/CutScenes/acquire_new_units.gd" id="1_0mvpn"]
 [ext_resource type="Shader" path="res://App/Materials/water_shader.gdshader" id="2_bskot"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://6l54uqxvychm" path="res://App/Materials/grass_sway_wind_material.tres" id="3_cs5b6"]
 [ext_resource type="Script" path="res://App/Scenes/CutScenes/BubbleGenerator.gd" id="5_k42m4"]
 [ext_resource type="PackedScene" uid="uid://ckjjdsagj8l3w" path="res://App/Scenes/Props/bubble.tscn" id="6_5prd1"]
+[ext_resource type="PackedScene" uid="uid://m5tp746d5riw" path="res://App/Scenes/CutScenes/procreate/hidey_rock.tscn" id="7_e8ufv"]
 
 [sub_resource type="Gradient" id="Gradient_8wrrq"]
 offsets = PackedFloat32Array(0.0147783, 1)
@@ -146,3 +147,11 @@ script = ExtResource("5_k42m4")
 
 [node name="Bubble" parent="Props/BubbleGenerator" instance=ExtResource("6_5prd1")]
 position = Vector2(-20, -5)
+
+[node name="HideyPlaces" type="Node2D" parent="Props"]
+
+[node name="HideyRock" parent="Props/HideyPlaces" instance=ExtResource("7_e8ufv")]
+position = Vector2(136, 953)
+
+[node name="HideyRock2" parent="Props/HideyPlaces" instance=ExtResource("7_e8ufv")]
+position = Vector2(1629, 1004)

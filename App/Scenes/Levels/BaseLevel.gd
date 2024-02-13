@@ -115,12 +115,7 @@ func _on_tower_hovered(description):
 func _on_tower_mouse_exited():
 	button_hover_text_popup.close()
 
-func spawn_random_towers():
-	if Globals.game_mode == Globals.game_modes.ARCADE:
-		var num_towers = Globals.arcade_difficulty_level
-		for i in range(num_towers):
-			$PlaySpace.spawn_random_tower()
-			
+
 
 
 func _on_unit_spawned(): # signal comes from FriendlyUnitSpawner

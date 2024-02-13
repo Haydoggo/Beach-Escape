@@ -4,8 +4,8 @@ var unit_info : UnitInfo
 
 var velocity : Vector2
 var desired_direction : Vector2
-var speed : float = 50.0
-
+var speed : float = 65.0
+var turnaround_chance = 0.075 # per second
 
 enum States { IDLE, HOVER, DRAGGING, PROCREATING, HIDING, DYING, DEAD }
 var State = States.IDLE :
@@ -82,7 +82,7 @@ func _process(delta):
 		global_position += velocity * delta
 		if is_outside_viewport():
 			queue_free()
-		if randf() < 0.1 * delta:
+		if randf() < turnaround_chance * delta:
 			set_desired_direction()
 			
 		
@@ -103,6 +103,8 @@ func _on_area_entered(area):
 			State = States.PROCREATING
 			area.State = area.States.PROCREATING
 			
+			if not Globals.surviving_units.has(unit_info.name):
+				Globals.surviving_units[unit_info.name] = 0
 			Globals.surviving_units[unit_info.name] += 3 # two parents and one baby
 			
 	

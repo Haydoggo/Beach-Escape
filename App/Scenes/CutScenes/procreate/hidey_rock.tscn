@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://m5tp746d5riw"]
+[gd_scene load_steps=3 format=3 uid="uid://m5tp746d5riw"]
+
+[ext_resource type="Script" path="res://App/Scenes/CutScenes/procreate/hidey_rock.gd" id="1_yq7i2"]
+[ext_resource type="Texture2D" uid="uid://bd8gk5qunher4" path="res://Assets/Images/Towers/04_Rock.png" id="2_dcy4r"]
 
 [node name="HideyRock" type="Node2D"]
+script = ExtResource("1_yq7i2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dcy4r")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-110, 79, -112, 26, -81, -56, -21, -110, 42, -125, 59, -113, 92, -54, 91, -4, 114, 27, 102, 67, 110, 77, 104, 92, 88, 106, 31, 106, 12, 123, -24, 124, -75, 88)
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
