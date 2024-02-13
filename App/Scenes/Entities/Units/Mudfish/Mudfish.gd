@@ -36,7 +36,7 @@ func tunnel_down():
 func tunnel_up():
 	moisture = unit_info.moisture
 	moisture_indicator.moisture = moisture
-	var tween = create_tween()
+	#var tween = create_tween()
 	animation_player.play("TunnelUp")
 	await animation_player.animation_finished
 	$Hitbox/CollisionShape2D.disabled = false
