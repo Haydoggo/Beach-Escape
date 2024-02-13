@@ -138,11 +138,14 @@ func _on_captured():
 	disable_collision_areas()
 	visible = false
 
-func _on_released():
+func _on_released(num_squares_to_move_forward):
 	is_captive = false
+	position = position + (Vector2.RIGHT * Globals.tile_size * num_squares_to_move_forward)
 	enable_collision_areas()
+	
 	visible = true
-	# should move forward two squares to get past the threat?
+	
+	# should move forward X squares to get past the pelican?
 
 func disable_collision_areas():
 	for area in find_children("", "Area2D"):

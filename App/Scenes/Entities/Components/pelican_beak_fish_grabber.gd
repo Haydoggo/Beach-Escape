@@ -60,6 +60,7 @@ func catch_fish(fish):
 		
 
 func release_fish():
-	released.emit()
+	var num_squares_to_move_forward = 1
+	released.emit(num_squares_to_move_forward)
 	for connection in released.get_connections():
 		released.disconnect(connection["callable"])
