@@ -27,7 +27,8 @@ func on_blocked():
 		super.on_blocked()
 
 func tunnel_down():
-	$Hitbox.monitorable = false # <-- prevents finish line seeing you
+	#$Hitbox.monitorable = false # <-- prevents finish line seeing you
+	$Hitbox/CollisionShape2D.disabled = true
 	create_tween().tween_property(self, "modulate:a", 0.5, 0.5)
 
 func tunnel_up():
@@ -36,5 +37,5 @@ func tunnel_up():
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 1, 0.5)
 	await tween.finished
-	$Hitbox.monitorable = true
-	
+	#$Hitbox.monitorable = true
+	$Hitbox/CollisionShape2D.disabled = false
