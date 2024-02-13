@@ -33,10 +33,11 @@ func _ready() -> void:
 	total_units = get_num_units_remaining()
 
 func _process(delta):
-	if get_num_units_remaining() < (total_units * 0.66) and music_level == 0:
+	var units_remaining = get_num_units_remaining()
+	if units_remaining < (total_units * 0.66) and music_level == 0:
 		fade_in_music("fade2")
 		music_level += 1
-	if get_num_units_remaining() < (total_units * 0.33) and music_level == 1:
+	if units_remaining < (total_units * 0.33) and music_level == 1:
 		fade_in_music("fade3")
 		music_level += 1
 
