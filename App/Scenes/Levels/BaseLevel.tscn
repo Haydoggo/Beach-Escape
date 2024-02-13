@@ -128,6 +128,9 @@ position = Vector2(3, 0)
 [node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
 shape = SubResource("RectangleShape2D_k81qk")
 
+[node name="SelectedTileCursor" parent="PlaySpace/DeploymentZone" index="3"]
+position = Vector2(64, 64)
+
 [node name="FriendlyUnitSpawner" parent="PlaySpace/DeploymentZone/SelectedTileCursor" index="0" node_paths=PackedStringArray("lanes_container")]
 lanes_container = NodePath("../../../Lanes")
 
