@@ -1,17 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://b60xpjnh47rv8"]
+[gd_scene load_steps=14 format=3 uid="uid://b60xpjnh47rv8"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/PitTrap.gd" id="1_o0acg"]
-[ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_ku88v"]
+[ext_resource type="Resource" uid="uid://k4njdvs2mux0" path="res://App/Scenes/Entities/Towers/PitTrapAttack.tres" id="2_8abuw"]
 [ext_resource type="Texture2D" uid="uid://dysq2u3840crl" path="res://Assets/Images/Towers/Sand_Pit.png" id="2_n8g11"]
 [ext_resource type="AudioStream" uid="uid://dqremj0i0gfp1" path="res://Assets/SFX/close1.wav" id="4_roctm"]
 [ext_resource type="AudioStream" uid="uid://bmcdir5sqa0rj" path="res://Assets/SFX/close2.wav" id="5_pacfs"]
 [ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="6_68mip"]
-
-[sub_resource type="Resource" id="Resource_6bheb"]
-script = ExtResource("2_ku88v")
-damage_type = 2
-damage = 100000.0
-payload_scene_path = ""
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqg8i"]
 size = Vector2(64, 64)
@@ -162,7 +156,7 @@ stream_1/weight = 1.0
 
 [node name="PitTrap" type="Node2D" groups=["EnemyTraps"]]
 script = ExtResource("1_o0acg")
-attack_packet = SubResource("Resource_6bheb")
+attack_packet = ExtResource("2_8abuw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
