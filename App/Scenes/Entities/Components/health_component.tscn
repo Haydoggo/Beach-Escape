@@ -7,3 +7,30 @@
 script = ExtResource("1_lxxa6")
 
 [node name="HealthBar" parent="." instance=ExtResource("1_acjw2")]
+
+[node name="PanelContainer" type="PanelContainer" parent="HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -11.0
+offset_right = 13.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HealthBar/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="Label" parent="HealthBar/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "1/1"
+horizontal_alignment = 1
+vertical_alignment = 1

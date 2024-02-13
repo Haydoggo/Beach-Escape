@@ -16,7 +16,7 @@ func _ready():
 func update_health_bar():
 	$HealthBar.max_value = health_max
 	$HealthBar.value = health
-
+	$HealthBar/PanelContainer/MarginContainer/Label.text = "%d/%d" % [health, health_max]
 
 func _on_hit(attack_packet):
 	health -= attack_packet.damage
