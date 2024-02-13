@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=3 format=3 uid="uid://d0cjw3248jk0u"]
-=======
 [gd_scene load_steps=10 format=3 uid="uid://d0cjw3248jk0u"]
->>>>>>> main
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_oggwx"]
 [ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_rjchk"]
@@ -28,10 +24,6 @@ script = ExtResource("2_rjchk")
 unit_info = ExtResource("5_bbakl")
 count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkfwl"]
-resource_local_to_scene = true
-size = Vector2(384, 512)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qmj8"]
 resource_local_to_scene = true
 size = Vector2(384, 512)
@@ -40,23 +32,10 @@ size = Vector2(384, 512)
 available_units = Array[ExtResource("2_rjchk")]([SubResource("Resource_ebmwj"), SubResource("Resource_g3uyt"), SubResource("Resource_q7pwm")])
 
 [node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
-shape = SubResource("RectangleShape2D_xkfwl")
-
-[node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
 shape = SubResource("RectangleShape2D_1qmj8")
 
 [node name="Towers" parent="." index="2"]
 position = Vector2(404, 7)
 layer_0/tile_data = PackedInt32Array(131075, 0, 262144, 65539, 0, 262144, 262147, 0, 262144, 196613, 0, 65536, 196615, 0, 65536, 196611, 0, 327680, 65541, 0, 393216, 65544, 0, 393216)
 
-<<<<<<< HEAD
-[node name="PanelContainer" parent="UI" index="1"]
-offset_right = 131.0
-offset_bottom = 109.0
-=======
-[node name="Sand" parent="Background" index="0"]
-visible = false
->>>>>>> main
-
 [editable path="PlaySpace/DeploymentZone"]
-[editable path="UI"]
