@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcmhcyfourmry"]
+
+[ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_eynw6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iylqd"]
+resource_local_to_scene = true
+size = Vector2(384, 512)
+
+[node name="ArcadeLevel" instance=ExtResource("1_eynw6")]
+
+[node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
+shape = SubResource("RectangleShape2D_iylqd")
+
+[editable path="PlaySpace/DeploymentZone"]
+[editable path="UI"]

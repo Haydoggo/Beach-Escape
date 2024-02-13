@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://de3bma3kyx7em"]
+[gd_scene load_steps=18 format=3 uid="uid://de3bma3kyx7em"]
 
 [ext_resource type="Script" path="res://App/Scenes/Levels/BaseLevel.gd" id="1_cs8tg"]
 [ext_resource type="TileSet" uid="uid://dwo7o7lpg52g0" path="res://App/Scenes/Levels/towers_tile_set.tres" id="1_sr1u4"]
@@ -10,10 +10,49 @@
 [ext_resource type="PackedScene" uid="uid://ctn4ush7qa7jv" path="res://App/Scenes/Spawners/Lane.tscn" id="5_uupqf"]
 [ext_resource type="PackedScene" uid="uid://xya6xspmx2gu" path="res://App/Scenes/Spawners/DeploymentZone.tscn" id="6_6lisd"]
 [ext_resource type="PackedScene" uid="uid://bchfxguqqtrom" path="res://App/Scenes/GUI/ButtonBarUI.tscn" id="8_3kuke"]
+[ext_resource type="AudioStream" uid="uid://lyfloletgdw" path="res://Assets/Music/MUS_MainLoopV2_01.ogg" id="11_ibc0y"]
+[ext_resource type="AudioStream" uid="uid://blueutm7kq1rw" path="res://Assets/Music/MUS_MainLoopV2_02.ogg" id="12_f5coq"]
+[ext_resource type="AudioStream" uid="uid://dw8iwg5jmxnb3" path="res://Assets/Music/MUS_MainLoopV2_03.ogg" id="13_aiol1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k81qk"]
 resource_local_to_scene = true
 size = Vector2(384, 512)
+
+[sub_resource type="Animation" id="Animation_fp6ob"]
+resource_name = "fade2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MusicMed:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wpvyr"]
+resource_name = "fade3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MusicHigh:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0b7d3"]
+_data = {
+"fade2": SubResource("Animation_fp6ob"),
+"fade3": SubResource("Animation_wpvyr")
+}
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_cs8tg")
@@ -118,6 +157,28 @@ expand_mode = 1
 position = Vector2(1836, 542)
 
 [node name="UnitContainer" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Audio")
+libraries = {
+"": SubResource("AnimationLibrary_0b7d3")
+}
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="MusicLow" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("11_ibc0y")
+autoplay = true
+
+[node name="MusicMed" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("12_f5coq")
+volume_db = -80.0
+autoplay = true
+
+[node name="MusicHigh" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("13_aiol1")
+volume_db = -80.0
+autoplay = true
 
 [connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]
 
