@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfet1wnvw1f0e"]
+[gd_scene load_steps=9 format=3 uid="uid://bfet1wnvw1f0e"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/BaseTower.gd" id="1_yj2u2"]
 [ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="3_evm77"]
+[ext_resource type="PackedScene" uid="uid://nbtvtnucj37y" path="res://App/Scenes/Entities/Components/drop_shadow.tscn" id="3_gfeq5"]
 [ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="4_fcfwh"]
 [ext_resource type="PackedScene" uid="uid://cim8b3k5lkraj" path="res://App/Scenes/Entities/Components/health_component.tscn" id="4_wyb4v"]
 
@@ -24,6 +25,7 @@ script = ExtResource("1_yj2u2")
 health_max = 5.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
+visible = false
 show_behind_parent = true
 position = Vector2(48, 48)
 scale = Vector2(0.952805, 0.539311)
@@ -32,6 +34,8 @@ texture = SubResource("GradientTexture2D_t3aoo")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3, 1)
 texture = ExtResource("3_evm77")
+
+[node name="Shadow" parent="Sprite2D" instance=ExtResource("3_gfeq5")]
 
 [node name="ActivationTriggers" type="Area2D" parent="."]
 monitorable = false

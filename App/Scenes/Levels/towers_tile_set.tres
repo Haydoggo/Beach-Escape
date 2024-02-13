@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=12 format=3 uid="uid://dwo7o7lpg52g0"]
 
-[ext_resource type="PackedScene" uid="uid://8tsf2haxf3j" path="res://App/Scenes/Entities/Towers/CannonTower.tscn" id="1_b1hh1"]
+[ext_resource type="PackedScene" uid="uid://8tsf2haxf3j" path="res://App/Scenes/Entities/Towers/CannonTower.tscn" id="1_518xp"]
 [ext_resource type="PackedScene" uid="uid://dd6hxhux1nflh" path="res://App/Scenes/Entities/Towers/PelicanTower.tscn" id="2_15wm2"]
 [ext_resource type="PackedScene" uid="uid://ckgmlr182q4qc" path="res://App/Scenes/Entities/Towers/RotatingTower.tscn" id="2_536sn"]
 [ext_resource type="PackedScene" uid="uid://bch3hc5ug6j73" path="res://App/Scenes/Entities/Towers/FishingHook_BleedTower.tscn" id="3_s5gp3"]
@@ -13,7 +13,7 @@
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_tmigf"]
 resource_name = "Towers"
-scenes/1/scene = ExtResource("1_b1hh1")
+scenes/1/scene = ExtResource("1_518xp")
 scenes/2/scene = ExtResource("2_536sn")
 scenes/3/scene = ExtResource("3_s5gp3")
 scenes/4/scene = ExtResource("4_fncjh")

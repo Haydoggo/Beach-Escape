@@ -34,8 +34,16 @@ func _process(delta):
 		if global_position.y > get_viewport_rect().size.y:
 			queue_free()
 
+func wiggle():
+	var tween = create_tween()
+	tween.tween_property($Sprite2D, "rotation", -0.3, 0.1)
+	tween.tween_property($Sprite2D, "rotation", 0.3, 0.2)
+	tween.tween_property($Sprite2D, "rotation", 0.0, 0.1)
+	
 func _on_area_2d_mouse_entered():
 	hover = true
+	if State == States.IDLE:
+		wiggle()
 
 
 func _on_area_2d_mouse_exited():

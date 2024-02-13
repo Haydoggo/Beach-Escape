@@ -13,6 +13,5 @@ show_behind_parent = true
 material = SubResource("ShaderMaterial_0jdo1")
 position = Vector2(6, 5)
 texture = ExtResource("2_qnx8j")
-region_enabled = true
 region_rect = Rect2(-22, -20, 173, 169)
 script = ExtResource("3_g7pys")

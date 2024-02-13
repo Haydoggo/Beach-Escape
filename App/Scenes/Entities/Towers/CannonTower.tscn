@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://8tsf2haxf3j"]
 
 [ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_dr6oi"]
-[ext_resource type="Texture2D" uid="uid://c4l0sg83rc5m6" path="res://Assets/Images/Towers/Castle_Cannon.png" id="2_22k01"]
+[ext_resource type="Texture2D" uid="uid://cv051lcrak5b4" path="res://Assets/Images/Towers/Castle_Cannon-s.png" id="2_pikh2"]
 [ext_resource type="PackedScene" uid="uid://dxg6fy5je6rwq" path="res://App/Scenes/Entities/Components/pea_shooter_component.tscn" id="3_xvmua"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfowx"]
@@ -12,38 +12,38 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.1, 0.1)]
+"values": [Vector2(27, -36)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/path = NodePath("Sprite2D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(27, -36)]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/path = NodePath("Sprite2D:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(0.5, 0.5)]
 }
 
 [sub_resource type="Animation" id="Animation_wsql4"]
@@ -147,8 +147,8 @@ scale = Vector2(1.28516, 0.5195)
 
 [node name="Sprite2D" parent="." index="1"]
 position = Vector2(27, -36)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_22k01")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_pikh2")
 
 [node name="LinearShape2" type="CollisionShape2D" parent="ActivationTriggers" index="0"]
 position = Vector2(-164.5, -8)
