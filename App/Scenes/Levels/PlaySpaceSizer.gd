@@ -51,6 +51,7 @@ func expand_deployment_area():
 	collision_shape.position = collision_shape.shape.size / 2.0
 	$DeploymentZone/ColorRect.size = collision_shape.shape.size
 	$DeploymentZone/DeploymentZoneTitle.size.x = collision_shape.shape.size.x
+	$Borders/BottomBorder.position.y = (play_space_size.y + 0.25) * tile_size
 
 func _ready():
 	if not Engine.is_editor_hint(): # in-game only

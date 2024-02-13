@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://de3bma3kyx7em"]
+[gd_scene load_steps=20 format=3 uid="uid://de3bma3kyx7em"]
 
 [ext_resource type="Script" path="res://App/Scenes/Levels/BaseLevel.gd" id="1_cs8tg"]
 [ext_resource type="TileSet" uid="uid://dwo7o7lpg52g0" path="res://App/Scenes/Levels/towers_tile_set.tres" id="1_sr1u4"]
@@ -17,6 +17,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k81qk"]
 resource_local_to_scene = true
 size = Vector2(384, 512)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_clshk"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bs6u3"]
 
 [sub_resource type="Animation" id="Animation_fp6ob"]
 resource_name = "fade2"
@@ -133,6 +138,16 @@ position = Vector2(64, 64)
 
 [node name="FriendlyUnitSpawner" parent="PlaySpace/DeploymentZone/SelectedTileCursor" index="0" node_paths=PackedStringArray("lanes_container")]
 lanes_container = NodePath("../../../Lanes")
+
+[node name="Borders" type="Area2D" parent="PlaySpace" groups=["BlockerHitbox"]]
+
+[node name="TopBorder" type="CollisionShape2D" parent="PlaySpace/Borders"]
+position = Vector2(0, -32)
+shape = SubResource("WorldBoundaryShape2D_clshk")
+
+[node name="BottomBorder" type="CollisionShape2D" parent="PlaySpace/Borders"]
+position = Vector2(0, -32)
+shape = SubResource("WorldBoundaryShape2D_bs6u3")
 
 [node name="Towers" type="TileMap" parent="."]
 position = Vector2(439, -58)
