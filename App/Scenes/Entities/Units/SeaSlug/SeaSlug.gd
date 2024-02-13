@@ -3,6 +3,12 @@ extends BaseUnit
 @onready var upper_attack_check: ShapeCast2D = $TowerCheck/UpperAttackCheck
 @onready var lower_attack_check: ShapeCast2D = $TowerCheck/LowerAttackCheck
 
+
+func _ready() -> void:
+	$RandomSprite.frame = randi() % 3
+	super._ready()
+
+
 func get_objects_in_attack_zones(next_position : Vector2) -> Array[Node]:
 	tower_check.global_position = next_position
 	var retval : Array[Node] = []

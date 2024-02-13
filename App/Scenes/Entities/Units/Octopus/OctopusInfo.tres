@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UnitInfo" load_steps=3 format=3 uid="uid://che77ris4hjg"]
 
-[ext_resource type="Texture2D" uid="uid://bix3qee4xy824" path="res://Assets/Images/Units/TempOcto.png" id="1_7rax4"]
+[ext_resource type="Texture2D" uid="uid://c2h2fk543mv8m" path="res://Assets/Images/Units/09_Octopus.png" id="1_ryd7i"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/UnitInfo.gd" id="1_ubwxy"]
 
 [resource]
@@ -8,7 +8,7 @@ script = ExtResource("1_ubwxy")
 name = "Octopus"
 description = "We call him, Grabby!"
 path = PackedVector2Array(128, 0)
-icon = ExtResource("1_7rax4")
+icon = ExtResource("1_ryd7i")
 health = 70
 moisture = 4
 packed_scene_path = "res://App/Scenes/Entities/Units/Octopus/Octopus.tscn"

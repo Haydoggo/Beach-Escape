@@ -1,9 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdq5sjyx14mwk"]
+[gd_scene load_steps=9 format=3 uid="uid://cdq5sjyx14mwk"]
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_hdff4"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/SeaSlug/SeaSlug.gd" id="2_c25ln"]
 [ext_resource type="Resource" uid="uid://cniawdoeb00bm" path="res://App/Scenes/Entities/Units/SeaSlug/SeaSlugInfo.tres" id="2_jbjag"]
-[ext_resource type="Texture2D" uid="uid://tetlcu8xl653" path="res://Assets/Images/Units/TempSeaSlug.png" id="3_twgtf"]
+[ext_resource type="Texture2D" uid="uid://carc0lof7f1fx" path="res://Assets/Images/Units/10_SeaSlug_A.png" id="4_b5uc8"]
+[ext_resource type="Texture2D" uid="uid://cadiq24f4bx2a" path="res://Assets/Images/Units/10_SeaSlug_B.png" id="5_l0j38"]
+[ext_resource type="Texture2D" uid="uid://cb8hj5vp4agpp" path="res://Assets/Images/Units/10_SeaSlug_C.png" id="6_fjra1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cd7ff"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_b5uc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_l0j38")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fjra1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rcece"]
 
@@ -12,9 +31,12 @@ script = ExtResource("2_c25ln")
 unit_info = ExtResource("2_jbjag")
 
 [node name="Sprite" parent="." index="1"]
-rotation = -0.523598
+visible = false
 scale = Vector2(-0.064, 0.064)
-texture = ExtResource("3_twgtf")
+
+[node name="RandomSprite" type="AnimatedSprite2D" parent="." index="2"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_cd7ff")
 
 [node name="UpperAttackCheck" type="ShapeCast2D" parent="TowerCheck" index="0"]
 position = Vector2(0, -128)

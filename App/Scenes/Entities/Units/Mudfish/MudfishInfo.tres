@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UnitInfo" load_steps=5 format=3 uid="uid://246577vjl121"]
 
-[ext_resource type="Texture2D" uid="uid://bdnlwwcc3wgm8" path="res://Assets/Images/Units/01_Fish_Sad.png" id="1_e521y"]
+[ext_resource type="Texture2D" uid="uid://v7idg24g2ma8" path="res://Assets/Images/Units/06_Mudfish_A.png" id="1_44khv"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/UnitInfo.gd" id="1_ulce5"]
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_g27du"]
 
@@ -15,7 +15,7 @@ script = ExtResource("1_ulce5")
 name = "Mudfish"
 description = "The timid mudfish, hides under the mud for brief intervals."
 path = PackedVector2Array(128, 0, 0, 0, 128, 0, 128, 0)
-icon = ExtResource("1_e521y")
+icon = ExtResource("1_44khv")
 health = 80
 moisture = 999
 melee_attack = SubResource("Resource_u6h5h")

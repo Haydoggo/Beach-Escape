@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UnitInfo" load_steps=5 format=3 uid="uid://cniawdoeb00bm"]
 
+[ext_resource type="Texture2D" uid="uid://carc0lof7f1fx" path="res://Assets/Images/Units/10_SeaSlug_A.png" id="1_073vf"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/UnitInfo.gd" id="1_d5e6e"]
-[ext_resource type="Texture2D" uid="uid://tetlcu8xl653" path="res://Assets/Images/Units/TempSeaSlug.png" id="1_mwm1l"]
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_4wt3s"]
 
 [sub_resource type="Resource" id="Resource_7eqqu"]
@@ -15,7 +15,7 @@ script = ExtResource("1_d5e6e")
 name = "Sea Slug"
 description = "Sea Slug"
 path = PackedVector2Array(128, 0)
-icon = ExtResource("1_mwm1l")
+icon = ExtResource("1_073vf")
 health = 1
 moisture = 1
 melee_attack = SubResource("Resource_7eqqu")

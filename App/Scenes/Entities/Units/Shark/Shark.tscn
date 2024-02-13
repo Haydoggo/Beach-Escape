@@ -1,17 +1,18 @@
 [gd_scene load_steps=5 format=3 uid="uid://dbhcc46xtc4a8"]
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_x1oo8"]
-[ext_resource type="Texture2D" uid="uid://b7m4o2vmjb3q2" path="res://Assets/Images/Units/TempShark.png" id="2_4frry"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Shark/Shark.gd" id="2_ip7ji"]
 [ext_resource type="Resource" uid="uid://c8jmkxi6ybst4" path="res://App/Scenes/Entities/Units/Shark/SharkInfo.tres" id="2_m770k"]
+[ext_resource type="Texture2D" uid="uid://booxgo33iddgn" path="res://Assets/Images/Units/07_Shark.png" id="4_0bmue"]
 
 [node name="BaseUnit" instance=ExtResource("1_x1oo8")]
 script = ExtResource("2_ip7ji")
 unit_info = ExtResource("2_m770k")
 
 [node name="Sprite" parent="." index="1"]
-scale = Vector2(0.195313, 0.195313)
-texture = ExtResource("2_4frry")
+position = Vector2(3, -51)
+scale = Vector2(0.477773, 0.477773)
+texture = ExtResource("4_0bmue")
 
 [node name="HealthComponent" parent="." index="4"]
 visible = false

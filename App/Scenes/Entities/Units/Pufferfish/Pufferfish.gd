@@ -1,16 +1,16 @@
 extends BaseUnit
 
-const INFLATION_DURATION = 1
+const INFLATION_DURATION = 2
 var inflated_countdown = 0
 var is_inflated = false
 
 func _on_hit(attack_packet : AttackPacket):
+	inflated_countdown = INFLATION_DURATION
 	if is_inflated:
 		attack_packet = attack_packet.duplicate() # dont want to nerf the source
 		attack_packet.damage *= 0.2
 	else:
 		$AnimationPlayer.play("Inflate")
-		inflated_countdown = INFLATION_DURATION
 		is_inflated = true
 	super._on_hit(attack_packet)
 
