@@ -14,9 +14,11 @@ var unit_buttons : Container
 var button_hover_text_popup : Panel
 var friendly_unit_spawner : Node
 @onready var fish_container = $UnitContainer
+var user_instructions
 
 var total_units : int
 var music_level : int
+var units_spawned : int = 0
 
 func _init():
 	Globals.current_level = self
@@ -29,8 +31,11 @@ func _enter_tree() -> void:
 	
 func _ready() -> void:
 	friendly_unit_spawner = find_child("FriendlyUnitSpawner")
+	user_instructions = find_child("UserInstructions")
 	add_unit_buttons()
 	total_units = get_num_units_remaining()
+	if user_instructions != null and user_instructions.has_method("popup"):
+		user_instructions.popup()
 
 func _process(_delta):
 	var units_remaining = get_num_units_remaining()
@@ -119,6 +124,7 @@ func _on_tower_mouse_exited():
 
 
 func _on_unit_spawned(): # signal comes from FriendlyUnitSpawner
+	units_spawned += 1
 	if get_num_units_remaining() == 0:
 		if not last_unit_notification_emitted:
 			last_unit_sent.emit()
@@ -136,17 +142,18 @@ func get_num_units_remaining():
 
 
 func _on_tick_timer_timeout() -> void:
-	var synchronized_groups = [ 
-			"Units",
-			"EnemyTowers",
-			"EnemyTraps",
-			"Lanes",
-			]
-	for group_name in synchronized_groups:
-		get_tree().call_group(group_name, "_on_tick")
-	#get_tree().call_group("Units", "_on_tick")
-	#get_tree().call_group("EnemyTowers", "_on_tick")
-	#get_tree().call_group("Lanes", "_on_tick")
+	if units_spawned == 3:
+		user_instructions.set_text("Continue placing units in the deployment zone.")
+	if units_spawned >= 3: # testing a design where player has to place multiple spawns in the deployment zone before they start moving.
+		var synchronized_groups = [ 
+				"Units",
+				"EnemyTowers",
+				"EnemyTraps",
+				"Lanes",
+				]
+		for group_name in synchronized_groups:
+			get_tree().call_group(group_name, "_on_tick")
+
 
 func fade_in_music(fade : String) -> void:
 	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation(fade):

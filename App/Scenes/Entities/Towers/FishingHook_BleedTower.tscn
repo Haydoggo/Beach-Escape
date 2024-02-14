@@ -32,15 +32,16 @@ texture = ExtResource("2_xff24")
 
 [node name="Shadow" parent="Sprite2D" instance=ExtResource("2_es4er")]
 
-[node name="Line2D" type="Line2D" parent="Sprite2D"]
+[node name="Line2D" type="Line2D" parent="."]
 z_index = 1
 texture_repeat = 2
-points = PackedVector2Array(17, -101, 3103, -2939)
+position = Vector2(-2, -29)
+scale = Vector2(0.5, 0.5)
+points = PackedVector2Array(56, -102, 3103, -2939)
 width = 24.0
 texture = SubResource("AtlasTexture_gafwi")
 texture_mode = 1
 joint_mode = 2
-begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Components" type="Node2D" parent="."]

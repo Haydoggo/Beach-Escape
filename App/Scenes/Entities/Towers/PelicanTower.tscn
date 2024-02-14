@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_311mb"]
 [ext_resource type="Texture2D" uid="uid://bmvndhs2hyj2v" path="res://Assets/Images/placeholder/pelican.png" id="2_rr62w"]
 [ext_resource type="PackedScene" uid="uid://dqsia6ajsrmdm" path="res://App/Scenes/Entities/Components/pelican_beak_fish_grabber.tscn" id="3_jqu5w"]
-[ext_resource type="Texture2D" uid="uid://cu77vmstglo2s" path="res://Assets/Images/Towers/07_Pelican.png" id="3_sdygk"]
-[ext_resource type="Texture2D" uid="uid://bm61632qqahhn" path="res://Assets/Images/Towers/07_Pelican_Gulp.png" id="4_b1bcv"]
-[ext_resource type="Texture2D" uid="uid://ca7nk0mfwd4ii" path="res://Assets/Images/Towers/07_Pelican_Gulp_2.png" id="5_kkd6s"]
+[ext_resource type="Texture2D" uid="uid://75lgf0qo3mu3" path="res://Assets/Images/Towers/07_Pelican.png" id="3_sdygk"]
+[ext_resource type="Texture2D" uid="uid://8c5uxh850y3v" path="res://Assets/Images/Towers/07_Pelican_Gulp.png" id="4_b1bcv"]
+[ext_resource type="Texture2D" uid="uid://dquq83j2vxldo" path="res://Assets/Images/Towers/07_Pelican_Gulp_2.png" id="5_kkd6s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_waemt"]
 animations = [{

@@ -1,7 +1,7 @@
 extends Area2D
 
 const finish_button = preload("res://App/Scenes/Spawners/finish_counter_icon.tscn")
-@export var next_scene_path = "res://App/Scenes/CutScenes/acquire_new_units.tscn"
+@export var next_scene_path = "res://App/Scenes/CutScenes/procreate_acquire_new_units.tscn"
 
 enum States { WAITING, LISTENING }
 var State = States.WAITING
@@ -42,7 +42,7 @@ func _process(_delta):
 					print("Level Complete!")
 					Globals.load_next_level()
 				else:
-					SceneLoader.load_scene("res://App/Scenes/CutScenes/acquire_new_units.tscn")
+					SceneLoader.load_scene("res://App/Scenes/CutScenes/procreate_acquire_new_units.tscn")
 				#SceneLoader.load_scene(next_scene_path)
 			else:
 				print("Very sad, you lose :(((")
