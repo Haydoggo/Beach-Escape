@@ -52,11 +52,12 @@ func _on_area_2d_mouse_exited():
 func spawn_new_procreators():
 	var unit_info = Globals.unit_metadata.pick_random()
 
-	for i in range(3):
+	for i in randi_range(2,5):
 		var newProcreator = load("res://App/Scenes/Entities/Units/Procreator.tscn").instantiate()
 		newProcreator.activate(unit_info)
 		add_child(newProcreator)
 		
 		var jitter = Vector2(randf_range(-64, 64), randf_range(-64, 64))
 		newProcreator.global_position = global_position + jitter
-		
+		newProcreator.start_iframes()
+

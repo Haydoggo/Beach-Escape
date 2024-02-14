@@ -74,12 +74,16 @@ func activate(unitInfo):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var speed_multiplier = 1.0
+	if not $IFramesTimer.is_stopped():
+		speed_multiplier = 4.0
+	
 	if State == States.DRAGGING:
 		global_position = get_global_mouse_position()
 		if Input.is_action_just_released("drag_procreator"):
 			State = States.IDLE
 	elif State == States.IDLE:
-		global_position += velocity * delta
+		global_position += velocity * speed_multiplier * delta
 		if is_outside_viewport():
 			queue_free()
 		if randf() < turnaround_chance * delta:
@@ -100,18 +104,22 @@ func _unhandled_input(_event):
 func _on_area_entered(area):
 	if State == States.DRAGGING:
 		if area.get("unit_info") and area.unit_info.name == unit_info.name:
-			State = States.PROCREATING
-			area.State = area.States.PROCREATING
+			procreate(area)
 			
-			if not Globals.surviving_units.has(unit_info.name):
-				Globals.surviving_units[unit_info.name] = 0
-			Globals.surviving_units[unit_info.name] += 3 # two parents and one baby
+func procreate(area):
+	State = States.PROCREATING
+	area.State = area.States.PROCREATING
+	
+	if not Globals.surviving_units.has(unit_info.name):
+		Globals.surviving_units[unit_info.name] = 1 # 1 bonus because 3 can never beget more than 3 if the breeding pairs disappear
+	Globals.surviving_units[unit_info.name] += 3 # two parents and one baby
 			
 	
 
 
 func _on_mouse_entered():
-	if State == States.IDLE:
+	
+	if State == States.IDLE and $IFramesTimer.is_stopped():
 		State = States.HOVER
 		
 
@@ -120,3 +128,10 @@ func _on_mouse_exited():
 	if State == States.HOVER:
 		State = States.IDLE
 		
+
+func start_iframes():
+	$IFramesTimer.start()
+	
+	
+func _on_i_frames_timer_timeout():
+	pass # Replace with function body.
