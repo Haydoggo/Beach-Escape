@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://d0ahpatgrmes"]
+
+[ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_fb1ii"]
+[ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_ivt6g"]
+[ext_resource type="Resource" uid="uid://dkoxp7v5utuf7" path="res://App/Scenes/Entities/Units/GoldFish/GoldFishInfo.tres" id="3_ujyrf"]
+[ext_resource type="Resource" uid="uid://d22k7iw4b7nid" path="res://App/Scenes/Entities/Units/Pufferfish/PufferfishInfo.tres" id="4_0clw1"]
+[ext_resource type="Resource" uid="uid://246577vjl121" path="res://App/Scenes/Entities/Units/Mudfish/MudfishInfo.tres" id="6_tipdw"]
+
+[sub_resource type="Resource" id="Resource_pkb6i"]
+resource_name = "2 Mudfish"
+script = ExtResource("2_ivt6g")
+unit_info = ExtResource("6_tipdw")
+count = 2
+
+[sub_resource type="Resource" id="Resource_nea78"]
+resource_name = "1 Pufferfish"
+script = ExtResource("2_ivt6g")
+unit_info = ExtResource("4_0clw1")
+count = 1
+
+[sub_resource type="Resource" id="Resource_ksyl3"]
+resource_name = "1 Gold Fish"
+script = ExtResource("2_ivt6g")
+unit_info = ExtResource("3_ujyrf")
+count = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmset"]
+resource_local_to_scene = true
+size = Vector2(384, 640)
+
+[node name="BaseLevel" instance=ExtResource("1_fb1ii")]
+available_units = Array[ExtResource("2_ivt6g")]([SubResource("Resource_pkb6i"), SubResource("Resource_nea78"), SubResource("Resource_ksyl3")])
+
+[node name="PlaySpace" parent="." index="1"]
+offset_right = 1981.0
+offset_bottom = 713.0
+play_space_size = Vector2i(15, 5)
+
+[node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
+position = Vector2(192, 320)
+shape = SubResource("RectangleShape2D_nmset")
+
+[node name="ColorRect" parent="PlaySpace/DeploymentZone" index="2"]
+offset_bottom = 640.0
+
+[node name="BottomBorder" parent="PlaySpace/Borders" index="1"]
+position = Vector2(0, 672)
+
+[node name="Towers" parent="PlaySpace" index="3"]
+layer_0/tile_data = PackedInt32Array(9, 0, 393216, 262153, 0, 393216, 131080, 0, 327680, 131082, 0, 327680, 262154, 0, 262144, 10, 0, 262144, 131081, 0, 458752, 196620, 0, 655360, 65548, 0, 655360)
+
+[editable path="PlaySpace/DeploymentZone"]
+[editable path="UI"]
