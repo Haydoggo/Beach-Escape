@@ -55,6 +55,7 @@ offset_top = 538.0
 offset_right = 659.0
 offset_bottom = 923.0
 grow_horizontal = 2
+mouse_filter = 0
 theme_override_constants/margin_left = 76
 theme_override_constants/margin_top = 128
 theme_override_constants/margin_right = 76
@@ -62,6 +63,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="TexturePanel" type="PanelContainer" parent="UserInstructions"]
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("2_bj3ru")
 theme_override_styles/panel = SubResource("StyleBoxTexture_povqq")
 

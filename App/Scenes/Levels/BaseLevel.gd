@@ -34,8 +34,8 @@ func _ready() -> void:
 	user_instructions = find_child("UserInstructions")
 	add_unit_buttons()
 	total_units = get_num_units_remaining()
-	if user_instructions != null and user_instructions.has_method("popup"):
-		user_instructions.popup()
+	#if user_instructions != null and user_instructions.has_method("popup"):
+		#user_instructions.popup()
 
 func _process(_delta):
 	var units_remaining = get_num_units_remaining()

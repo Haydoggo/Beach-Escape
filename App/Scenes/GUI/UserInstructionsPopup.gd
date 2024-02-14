@@ -8,8 +8,7 @@ var State = States.CLOSED
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	$UserInstructions.hide()
 
 
 
@@ -65,7 +64,7 @@ func _on_user_instructions_gui_input(event):
 			close()
 
 func _on_user_instructions_mouse_entered():
-	pass
+	
 	#popup()
 	hover = true
 
