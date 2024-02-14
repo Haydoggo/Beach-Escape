@@ -31,7 +31,7 @@ func _enter_tree() -> void:
 	
 func _ready() -> void:
 	friendly_unit_spawner = find_child("FriendlyUnitSpawner")
-	user_instructions = find_child("UserInstructions")
+	user_instructions = find_child("HelpSystem")
 	add_unit_buttons()
 	total_units = get_num_units_remaining()
 	#if user_instructions != null and user_instructions.has_method("popup"):

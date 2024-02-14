@@ -1,5 +1,6 @@
 @tool
 extends ReferenceRect
+var available_spaces = []
 
 @export var deployment_area_width : int = 3:
 	set(value):
@@ -52,14 +53,20 @@ func _ready():
 func spawn_random_towers():
 	if Globals.game_mode == Globals.game_modes.ARCADE:
 		var num_towers = min(2 + Globals.arcade_difficulty_level * 2, get_squares_count())
+		generate_available_spaces_list() # no duplicates
 		for i in range(num_towers):
 			spawn_random_tower()
 
-
-
+func generate_available_spaces_list():
+	for row in range(play_space_size.y):
+		for col in range(play_space_size.x - deployment_area_width):
+			var y_pos = row
+			var x_pos = (col + deployment_area_width)
+			available_spaces.push_back(global_position + Vector2(x_pos, y_pos)*Globals.tile_size)
+	available_spaces.shuffle()
+	
 func spawn_random_tower():
-	var rand_square = Vector2(randi_range(deployment_area_width+1, play_space_size.x), randi()%play_space_size.y)
-	var square_position = global_position + rand_square * Globals.tile_size
+	var square_position = available_spaces.pop_back()
 	var random_tower_path = Globals.tower_paths.values().pick_random()
 	var random_tower = load(random_tower_path).instantiate()
 	random_tower.position = square_position
