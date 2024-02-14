@@ -132,8 +132,14 @@ position = Vector2(0, -32)
 shape = SubResource("WorldBoundaryShape2D_bs6u3")
 
 [node name="Towers" type="TileMap" parent="PlaySpace"]
+y_sort_enabled = true
 tile_set = ExtResource("1_sr1u4")
 format = 2
+layer_0/name = "Ground"
+layer_0/y_sort_enabled = true
+layer_1/name = "Sky"
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array()
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

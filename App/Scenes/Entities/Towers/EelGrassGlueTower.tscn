@@ -1,22 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://wykl862gv5fc"]
+[gd_scene load_steps=11 format=3 uid="uid://wykl862gv5fc"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/StaticTrap_OnTick.gd" id="1_rj7qc"]
-[ext_resource type="Texture2D" uid="uid://c5qqvw5a3myge" path="res://Assets/Images/Towers/05_Grass_Back.png" id="2_old06"]
+[ext_resource type="Texture2D" uid="uid://c6lcaw260rw81" path="res://Assets/Images/Towers/05_Grass_Back.png" id="2_old06"]
+[ext_resource type="PackedScene" uid="uid://nbtvtnucj37y" path="res://App/Scenes/Entities/Components/drop_shadow.tscn" id="3_a8y05"]
 [ext_resource type="PackedScene" uid="uid://bu4vg8os8fnp4" path="res://App/Scenes/Entities/Components/Weapons/persistent_stationary_weapon.tscn" id="3_mgioi"]
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="4_airjr"]
 [ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="5_hks4k"]
-[ext_resource type="Texture2D" uid="uid://cgcsq38mdy1jt" path="res://Assets/Images/Towers/05_Grass_Front.png" id="6_iwf05"]
-
-[sub_resource type="Gradient" id="Gradient_yfvkm"]
-offsets = PackedFloat32Array(0.178082, 0.481735)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_t3aoo"]
-gradient = SubResource("Gradient_yfvkm")
-width = 256
-height = 128
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[ext_resource type="Texture2D" uid="uid://bnbsl8jitsu1n" path="res://Assets/Images/Towers/05_Grass_Front.png" id="6_iwf05"]
 
 [sub_resource type="Resource" id="Resource_gfjlk"]
 script = ExtResource("4_airjr")
@@ -36,16 +26,12 @@ _data = {
 script = ExtResource("1_rj7qc")
 description = "Eel Grass: slows fish down"
 
-[node name="Shadow" type="Sprite2D" parent="."]
-show_behind_parent = true
-position = Vector2(7, 43)
-scale = Vector2(0.952805, 0.210937)
-texture = SubResource("GradientTexture2D_t3aoo")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4, -12)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_old06")
+
+[node name="Shadow" parent="Sprite2D" instance=ExtResource("3_a8y05")]
 
 [node name="GrassFront" type="Sprite2D" parent="."]
 position = Vector2(4, 11)

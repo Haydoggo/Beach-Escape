@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3wt4bpu0wwo1"]
+[gd_scene load_steps=8 format=3 uid="uid://d3wt4bpu0wwo1"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/RockObstacle.gd" id="1_uo1ww"]
 [ext_resource type="Texture2D" uid="uid://bd8gk5qunher4" path="res://Assets/Images/Towers/04_Rock.png" id="2_620xl"]
+[ext_resource type="PackedScene" uid="uid://nbtvtnucj37y" path="res://App/Scenes/Entities/Components/drop_shadow.tscn" id="3_1ia84"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0g15"]
 size = Vector2(64, 64)
@@ -74,6 +75,8 @@ script = ExtResource("1_uo1ww")
 position = Vector2(2.08165e-12, -12)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_620xl")
+
+[node name="Shadow" parent="Sprite2D" instance=ExtResource("3_1ia84")]
 
 [node name="Hitbox" type="Area2D" parent="." groups=["BlockerHitbox"]]
 
