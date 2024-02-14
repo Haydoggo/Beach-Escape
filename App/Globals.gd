@@ -7,6 +7,7 @@ extends Node
 enum game_modes { PUZZLE, ARCADE }
 var game_mode = game_modes.PUZZLE
 var arcade_difficulty_level = 0 # increments with each arcade level completed
+var max_units_per_type : int = 20
 
 var arcade_level_path = "res://App/Scenes/Levels/arcade_level.tscn"
 

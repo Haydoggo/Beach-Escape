@@ -158,6 +158,9 @@ expand_mode = 1
 
 [node name="UI" parent="." instance=ExtResource("8_3kuke")]
 
+[node name="MasterOptionsMenu" parent="UI/PauseMenu/VBoxContainer" index="0"]
+visible = false
+
 [node name="FinishZone" parent="." instance=ExtResource("5_32fpb")]
 position = Vector2(1836, 542)
 

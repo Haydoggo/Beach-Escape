@@ -113,7 +113,7 @@ func procreate(area):
 	if not Globals.surviving_units.has(unit_info.name):
 		Globals.surviving_units[unit_info.name] = 1 # 1 bonus because 3 can never beget more than 3 if the breeding pairs disappear
 	Globals.surviving_units[unit_info.name] += 3 # two parents and one baby
-			
+	Globals.surviving_units[unit_info.name] = min(Globals.max_units_per_type, Globals.surviving_units[unit_info.name])
 	
 
 
