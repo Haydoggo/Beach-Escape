@@ -22,4 +22,5 @@ func _on_restart_level_pressed():
 	print("Level Restarting")
 	self.hide()
 	get_tree().set_pause(false)
-	Globals.restart_level()
+	get_tree().reload_current_scene()
+	#Globals.restart_level()
