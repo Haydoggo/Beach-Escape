@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://oy15676fu1xv"]
+
+[ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_k8xo3"]
+[ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_p4enc"]
+[ext_resource type="Resource" uid="uid://c8jmkxi6ybst4" path="res://App/Scenes/Entities/Units/Shark/SharkInfo.tres" id="4_xmvok"]
+[ext_resource type="Resource" uid="uid://dkoxp7v5utuf7" path="res://App/Scenes/Entities/Units/GoldFish/GoldFishInfo.tres" id="5_fcmch"]
+[ext_resource type="Resource" uid="uid://bs31lf1urfggr" path="res://App/Scenes/Entities/Units/Urchin/UrchinInfo.tres" id="5_wiqwj"]
+
+[sub_resource type="Resource" id="Resource_ksyl3"]
+resource_name = "1 Gold Fish"
+script = ExtResource("2_p4enc")
+unit_info = ExtResource("5_fcmch")
+count = 1
+
+[sub_resource type="Resource" id="Resource_am67c"]
+resource_name = "1 Shark"
+script = ExtResource("2_p4enc")
+unit_info = ExtResource("4_xmvok")
+count = 1
+
+[sub_resource type="Resource" id="Resource_tyvuj"]
+resource_name = "2 Urchin"
+script = ExtResource("2_p4enc")
+unit_info = ExtResource("5_wiqwj")
+count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmset"]
+resource_local_to_scene = true
+size = Vector2(384, 896)
+
+[node name="BaseLevel" instance=ExtResource("1_k8xo3")]
+available_units = Array[ExtResource("2_p4enc")]([SubResource("Resource_ksyl3"), SubResource("Resource_am67c"), SubResource("Resource_tyvuj")])
+
+[node name="PlaySpace" parent="." index="1"]
+offset_right = 1981.0
+offset_bottom = 969.0
+play_space_size = Vector2i(15, 7)
+
+[node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
+position = Vector2(192, 448)
+shape = SubResource("RectangleShape2D_nmset")
+
+[node name="ColorRect" parent="PlaySpace/DeploymentZone" index="2"]
+offset_bottom = 896.0
+
+[node name="BottomBorder" parent="PlaySpace/Borders" index="1"]
+position = Vector2(0, 928)
+
+[node name="Towers" parent="PlaySpace" index="3"]
+layer_0/tile_data = PackedInt32Array(65540, 0, 458752, 327684, 0, 458752, 196612, 0, 458752, 262149, 0, 65536, 131077, 0, 65536, 5, 0, 65536, 393221, 0, 65536, 10, 0, 393216, 393224, 0, 393216, 65543, 0, 524288, 131080, 0, 524288, 262151, 0, 524288, 262153, 0, 524288, 196619, 0, 524288, 327692, 0, 655360, 12, 0, 262144, 196620, 0, 327680, 131079, 0, 196608, 65542, 0, 196608)
+
+[editable path="PlaySpace/DeploymentZone"]
+[editable path="UI"]
