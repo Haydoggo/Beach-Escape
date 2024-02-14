@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://App/Scenes/Entities/Components/hover_popup_info.gd" id="1_xelwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2c6t"]
-size = Vector2(128, 128)
+size = Vector2(96, 96)
 
 [node name="HoverPopupInfo" type="Node2D"]
 script = ExtResource("1_xelwl")

@@ -16,3 +16,10 @@ func _unhandled_input(event):
 func _on_return_to_game_pressed():
 	self.hide()
 	get_tree().set_pause(false)
+
+
+func _on_restart_level_pressed():
+	print("Level Restarting")
+	self.hide()
+	get_tree().set_pause(false)
+	Globals.restart_level()

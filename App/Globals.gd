@@ -74,3 +74,12 @@ func load_next_level():
 			SceneLoader.load_scene(level_paths[current_level_index])
 		else:
 			printerr("Global.gd: current_level_index out of bounds in load_next_level")
+
+func restart_level():
+	if game_mode == game_modes.PUZZLE:
+		if current_level_index < level_paths.size():
+			SceneLoader.load_scene(level_paths[current_level_index])
+		else:
+			printerr("Global.gd: current_level_index out of bounds in load_next_level")
+	elif game_mode == game_modes.ARCADE:
+		SceneLoader.load_scene(arcade_level_path)
