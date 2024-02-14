@@ -52,7 +52,7 @@ func _ready():
 
 func spawn_random_towers():
 	if Globals.game_mode == Globals.game_modes.ARCADE:
-		var num_towers = min(2 + Globals.arcade_difficulty_level * 2, get_squares_count())
+		var num_towers = min(4 + Globals.arcade_difficulty_level * 2, get_squares_count())
 		generate_available_spaces_list() # no duplicates
 		for i in range(num_towers):
 			spawn_random_tower()

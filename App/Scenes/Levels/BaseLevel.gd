@@ -12,6 +12,7 @@ var last_unit_notification_emitted : bool = false
 
 var unit_buttons : Container
 var button_hover_text_popup : Panel
+@onready var GUI = $UI
 var friendly_unit_spawner : Node
 @onready var fish_container = $UnitContainer
 var user_instructions
@@ -110,7 +111,8 @@ func button_pressed(button : UnitButton):
 func button_hovered(unit_info : UnitInfo):
 	
 	button_hover_text_popup.popup( unit_info.description )
-	
+	GUI.show_unit_info_card(unit_info)
+
 func button_mouse_exited():
 	button_hover_text_popup.close()
 

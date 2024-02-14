@@ -4,7 +4,7 @@ func _ready():
 	hide()
 
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if not visible and Input.is_action_just_pressed("ui_cancel"):
 		self.show()
 		get_tree().set_pause(true)

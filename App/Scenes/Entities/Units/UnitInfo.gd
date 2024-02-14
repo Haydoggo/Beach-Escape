@@ -2,6 +2,7 @@ class_name UnitInfo extends Resource
 
 @export var name : String
 @export_multiline var description : String
+@export var movement_description : String
 @export var path : PackedVector2Array
 @export var icon : Texture2D
 @export var health : int

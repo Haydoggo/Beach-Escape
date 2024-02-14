@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dncr3oc55jht"]
+
+[ext_resource type="Shader" path="res://App/Materials/drop_shadow_shader.gdshader" id="1_jrwtj"]
+
+[resource]
+shader = ExtResource("1_jrwtj")
+shader_parameter/strength = 10
