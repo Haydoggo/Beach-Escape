@@ -1,6 +1,11 @@
+## Fidgety ant is weird. 
+## It's a prop that appears to be a player unit,
+## so the hand slapper can slap it.
+
 extends Node2D
 
 var speed = 90.0
+var is_captive : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

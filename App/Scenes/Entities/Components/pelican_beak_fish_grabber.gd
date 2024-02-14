@@ -32,7 +32,10 @@ func _on_tick():
 		# there's a fish in front of you.
 		# move the sprite forward and snatch the fish
 		for area in $FishGrabArea.get_overlapping_areas():
-			if area.monitoring and area.owner and area.owner.is_in_group("Units") and not area.owner.is_captive:
+			var fish = area.owner
+			if area.monitoring and fish and fish.is_in_group("Units"):
+				if fish.get("is_captive") and fish.is_captive:
+					return
 				catch_fish(area.owner)
 				caught_fish = true
 	if caught_fish:
