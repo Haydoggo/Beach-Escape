@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://bfbpvnfe42abo"]
+
+[ext_resource type="Script" path="res://App/Scenes/GUI/UserInstructionsPopup.gd" id="1_sokul"]
+[ext_resource type="Theme" uid="uid://6h5f7sqktd67" path="res://App/Themes/animatic_theme.tres" id="2_bj3ru"]
+[ext_resource type="Texture2D" uid="uid://c4g4n4sfyjr5a" path="res://Assets/Images/placeholder/cloud_1.png" id="3_5fvts"]
+[ext_resource type="FontFile" uid="uid://bcsl4f1nq6mwv" path="res://App/Themes/Fonts/Protest_Riot/ProtestRiot-Regular.ttf" id="4_qwwgi"]
+[ext_resource type="Texture2D" uid="uid://b067j6s4soy67" path="res://Assets/Images/placeholder/cloud_help_button_hover.png" id="5_w0cwn"]
+[ext_resource type="Texture2D" uid="uid://bjuuv2tx6okav" path="res://Assets/Images/placeholder/cloud_help_button_2.png" id="6_kfrq2"]
+[ext_resource type="Texture2D" uid="uid://s8pimhwlwbdq" path="res://Assets/Images/placeholder/cloud_help_button_pressed.png" id="7_wqgg7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_povqq"]
+content_margin_top = 32.0
+texture = ExtResource("3_5fvts")
+expand_margin_left = 64.0
+expand_margin_top = 128.0
+expand_margin_right = 64.0
+expand_margin_bottom = 34.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ldnf"]
+texture = ExtResource("5_w0cwn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ojklk"]
+texture = ExtResource("6_kfrq2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6fbni"]
+texture = ExtResource("7_wqgg7")
+
+[sub_resource type="Theme" id="Theme_wh0ns"]
+Button/colors/font_color = Color(0.733333, 0.631373, 0.4, 1)
+Button/colors/font_outline_color = Color(0.690196, 0.521569, 0.266667, 1)
+Button/constants/outline_size = 6
+Button/font_sizes/font_size = 128
+Button/fonts/font = ExtResource("4_qwwgi")
+Button/styles/hover = SubResource("StyleBoxTexture_8ldnf")
+Button/styles/normal = SubResource("StyleBoxTexture_ojklk")
+Button/styles/pressed = SubResource("StyleBoxTexture_6fbni")
+
+[node name="HelpSystem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_sokul")
+
+[node name="UserInstructions" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -594.0
+offset_top = 538.0
+offset_right = 659.0
+offset_bottom = 923.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 76
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 76
+theme_override_constants/margin_bottom = 32
+
+[node name="TexturePanel" type="PanelContainer" parent="UserInstructions"]
+layout_mode = 2
+theme = ExtResource("2_bj3ru")
+theme_override_styles/panel = SubResource("StyleBoxTexture_povqq")
+
+[node name="HelpText" type="Label" parent="UserInstructions/TexturePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Select fish from your button bar
+and place them in your deployment zone."
+horizontal_alignment = 1
+
+[node name="HelpButton" type="Button" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -175.0
+offset_right = 128.0
+grow_vertical = 0
+size_flags_horizontal = 0
+theme = SubResource("Theme_wh0ns")
+text = "?"
+
+[node name="AutoCloseTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="gui_input" from="UserInstructions" to="." method="_on_user_instructions_gui_input"]
+[connection signal="mouse_entered" from="UserInstructions" to="." method="_on_user_instructions_mouse_entered"]
+[connection signal="mouse_exited" from="UserInstructions" to="." method="_on_user_instructions_mouse_exited"]
+[connection signal="pressed" from="HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="timeout" from="AutoCloseTimer" to="UserInstructions" method="_on_auto_close_timer_timeout"]

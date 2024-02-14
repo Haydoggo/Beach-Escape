@@ -57,9 +57,10 @@ var tower_paths = {
 	"EelGrass":"res://App/Scenes/Entities/Towers/EelGrassGlueTower.tscn",
 	"FishingHook":"res://App/Scenes/Entities/Towers/FishingHook_BleedTower.tscn",
 	"Seagull":"res://App/Scenes/Entities/Towers/SeagullTrap.tscn",
-	"HandSlap":"res://App/Scenes/Entities/Towers/HandSlapTower.tscn",
 	"PitTrap":"res://App/Scenes/Entities/Towers/PitTrap.tscn",
 	"Rock":"res://App/Scenes/Entities/Towers/RockObstacle.tscn",
+	#"RotatingTower":"res://App/Scenes/Entities/Towers/RotatingTower.tscn",
+	#"HandSlap":"res://App/Scenes/Entities/Towers/HandSlapTower.tscn",
 }
 
 func load_next_level():

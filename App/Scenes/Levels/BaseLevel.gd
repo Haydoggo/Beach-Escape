@@ -144,7 +144,7 @@ func get_num_units_remaining():
 func _on_tick_timer_timeout() -> void:
 	if units_spawned == 3:
 		user_instructions.set_text("Continue placing units in the deployment zone.")
-	if units_spawned >= 3: # testing a design where player has to place multiple spawns in the deployment zone before they start moving.
+	if units_spawned >= 0: # testing a design where player has to place multiple spawns in the deployment zone before they start moving.
 		var synchronized_groups = [ 
 				"Units",
 				"EnemyTowers",
