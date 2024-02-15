@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cai7kydql1o31"]
+[gd_scene load_steps=13 format=3 uid="uid://cai7kydql1o31"]
 
 [ext_resource type="Script" path="res://App/Scenes/CutScenes/procreate_acquire_new_units.gd" id="1_0mvpn"]
 [ext_resource type="Shader" path="res://App/Materials/water_shader.gdshader" id="2_bskot"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://App/Scenes/CutScenes/BubbleGenerator.gd" id="5_k42m4"]
 [ext_resource type="PackedScene" uid="uid://ckjjdsagj8l3w" path="res://App/Scenes/Props/bubble.tscn" id="6_5prd1"]
 [ext_resource type="PackedScene" uid="uid://m5tp746d5riw" path="res://App/Scenes/CutScenes/procreate/hidey_rock.tscn" id="7_e8ufv"]
+[ext_resource type="PackedScene" uid="uid://caj1bi3amj48r" path="res://App/Scenes/CutScenes/procreate/fishing_hooks_in_ocean.tscn" id="8_rc32h"]
+[ext_resource type="PackedScene" uid="uid://dxe7nqbj04d8v" path="res://App/Scenes/CutScenes/procreate/ocean_hook.tscn" id="9_4b1gr"]
 
 [sub_resource type="Gradient" id="Gradient_8wrrq"]
 offsets = PackedFloat32Array(0.0147783, 1)
@@ -155,3 +157,7 @@ position = Vector2(136, 953)
 
 [node name="HideyRock2" parent="Props/HideyPlaces" instance=ExtResource("7_e8ufv")]
 position = Vector2(1629, 1004)
+
+[node name="FishingHooks" parent="Props" instance=ExtResource("8_rc32h")]
+
+[node name="OceanHook" parent="Props/FishingHooks" instance=ExtResource("9_4b1gr")]

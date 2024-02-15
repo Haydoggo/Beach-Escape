@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxe7nqbj04d8v"]
+
+[ext_resource type="Script" path="res://App/Scenes/CutScenes/procreate/ocean_hook.gd" id="1_saa1s"]
+[ext_resource type="Texture2D" uid="uid://b661vf8m3l75s" path="res://Assets/Images/expanded/Entities/Sand/06_Hook.png" id="1_xg4l0"]
+[ext_resource type="Texture2D" uid="uid://b63jhcpo0cgt3" path="res://Assets/Images/Towers/06_Hook_Rope_line2D.png" id="2_6lu3q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nc2jq"]
+size = Vector2(64, 64)
+
+[node name="OceanHook" type="Area2D"]
+script = ExtResource("1_saa1s")
+
+[node name="Hook" type="Sprite2D" parent="."]
+position = Vector2(24, -11)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xg4l0")
+
+[node name="Line2D" type="Line2D" parent="Hook"]
+show_behind_parent = true
+texture_repeat = 2
+position = Vector2(16, -102)
+points = PackedVector2Array(0, 0, 2.08165e-12, -4000)
+width = 32.0
+texture = ExtResource("2_6lu3q")
+texture_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nc2jq")
+
+[node name="DecisionTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="DecisionTimer" to="." method="_on_decision_timer_timeout"]

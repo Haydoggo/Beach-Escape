@@ -7,7 +7,7 @@ var desired_direction : Vector2
 var speed : float = 65.0
 var turnaround_chance = 0.075 # per second
 
-enum States { IDLE, HOVER, DRAGGING, PROCREATING, HIDING, DYING, DEAD }
+enum States { IDLE, HOVER, DRAGGING, PROCREATING, HIDING, HOOKED, DYING, DEAD }
 var State = States.IDLE :
 	set(value): # might be useful
 		State = value
@@ -88,7 +88,9 @@ func _process(delta):
 			queue_free()
 		if randf() < turnaround_chance * delta:
 			set_desired_direction()
-			
+	elif State == States.HOOKED:
+		if is_outside_viewport():
+			queue_free()
 		
 func is_outside_viewport():
 	return !get_viewport_rect().has_point(global_position)
@@ -135,3 +137,7 @@ func start_iframes():
 	
 func _on_i_frames_timer_timeout():
 	pass # Replace with function body.
+
+func _on_hooked(_hookNode):
+	$CollisionShape2D.set_deferred("disabled", true)
+	State = States.HOOKED

@@ -53,7 +53,7 @@ func _ready():
 
 func spawn_random_towers():
 	if Globals.game_mode == Globals.game_modes.ARCADE:
-		var num_towers = min(4 + Globals.arcade_difficulty_level * 2, get_squares_count())
+		var num_towers = min(2 + Globals.arcade_difficulty_level * 2, get_squares_count())
 		generate_available_spaces_list() # no duplicates
 		for i in range(num_towers):
 			spawn_random_tower()
@@ -68,6 +68,9 @@ func generate_available_spaces_list():
 	available_spaces.shuffle()
 	
 func spawn_random_tower():
+	if available_spaces.is_empty():
+		return
+	
 	var square_position = available_spaces.pop_back()
 	var random_tower_path = Globals.tower_paths.values().pick_random()
 	var random_tower = load(random_tower_path).instantiate()
@@ -76,8 +79,11 @@ func spawn_random_tower():
 
 	if random_tower is SeagullPerch:
 		var second_perch = random_tower.duplicate()
-		second_perch.position = available_spaces.pop_back()
-		add_child(second_perch)
+		if not available_spaces.is_empty():
+			second_perch.position = available_spaces.pop_back()
+			add_child(second_perch)
+		else: # no space left for a perch
+			random_tower.queue_free()
 
 func get_squares_count():
 	return (play_space_size.x - deployment_area_width) * play_space_size.y
