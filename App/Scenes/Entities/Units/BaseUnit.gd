@@ -138,14 +138,17 @@ func _on_captured():
 	disable_collision_areas()
 	visible = false
 
-func _on_released(num_squares_to_move_forward):
+func _on_released(num_squares_to_move_forward, damage_on_release):
 	is_captive = false
+	hurt_yourself(damage_on_release)
 	position = position + (Vector2.RIGHT * Globals.tile_size * num_squares_to_move_forward)
 	enable_collision_areas()
-	
 	visible = true
 	
-	# should move forward X squares to get past the pelican?
+func hurt_yourself(damage):
+	var ap = AttackPacket.new()
+	ap.damage = 5
+	_on_hit(ap)
 
 func disable_collision_areas():
 	for area in find_children("", "Area2D"):

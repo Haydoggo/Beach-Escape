@@ -26,7 +26,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pqa1e"]
-size = Vector2(96, 96)
+size = Vector2(228, 322)
 
 [node name="PelicanTower" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_311mb")]
 description = "Pelican captures fish, but spits them out later if the don't taste good.."
@@ -49,7 +49,7 @@ sprite_frames = SubResource("SpriteFrames_waemt")
 [node name="AnimDropShadow" parent="AnimatedSprite2D" index="0" instance=ExtResource("6_jcwgo")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationTriggers" index="0"]
-position = Vector2(-125, 0)
+position = Vector2(-59, 6)
 shape = SubResource("RectangleShape2D_pqa1e")
 
 [node name="PelicanBeakFishGrabber" parent="Components/Weapon" index="0" node_paths=PackedStringArray("sprite") instance=ExtResource("3_jqu5w")]

@@ -35,7 +35,6 @@ script = SubResource("GDScript_rk83b")
 texture = ExtResource("2_673rk")
 
 [node name="Shadow" parent="Sprite" instance=ExtResource("3_cxcf1")]
-region_enabled = false
 
 [node name="Hitbox" type="Area2D" parent="."]
 

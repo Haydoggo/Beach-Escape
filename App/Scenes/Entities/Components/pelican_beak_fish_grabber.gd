@@ -7,7 +7,9 @@
 extends Node2D
 
 var active : bool = false
-var captive_fish : Array[BaseUnit]
+#var captive_fish : Array[BaseUnit] # removed per requirements. issue #26 may only capture a single fish
+var captive_fish : BaseUnit
+var damage_on_release : int = 20
 @export var sprite : AnimatedSprite2D
 @export var hold_duration : int = 3
 var hold_ticks_remaining : int = 0
@@ -27,43 +29,74 @@ func deactivate():
 	active = false
 
 func _on_tick():
-	var caught_fish = false
-	if active and captive_fish.is_empty():
-		# there's a fish in front of you.
-		# move the sprite forward and snatch the fish
-		for area in $FishGrabArea.get_overlapping_areas():
-			var fish = area.owner
-			if area.monitoring and fish and fish.is_in_group("Units"):
-				if fish.get("is_captive") and fish.is_captive:
-					return
-				catch_fish(area.owner)
-				caught_fish = true
-	if caught_fish:
-		var tween = create_tween()
-		tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(sprite, "position", sprite.position + Vector2.LEFT * Globals.tile_size, 0.2 )
-		tween.tween_interval(0.4)
-		tween.tween_property(sprite, "global_position", original_sprite_position, 0.2)
-		sprite.frame = 1
-
+	if active and captive_fish == null:
+		# if there's a fish near you.
+		# move the sprite toward it and snatch the fish
+		var fish = get_first_available_fish()
+		if fish:
+			catch_fish(fish)
 	elif hold_ticks_remaining > 0:
 		hold_ticks_remaining -= 1
+		hurt_yourself(5)
+
 		if hold_ticks_remaining == 0:
 			release_fish()
+
+func hurt_yourself(damage):
+	if owner.has_method("_on_hit"):
+		var ap = AttackPacket.new()
+		ap.damage = damage
+		owner._on_hit(ap)
+
+func get_first_available_fish():
+	for fish_detector in get_children():
+		var collisions = fish_detector.collision_result
+		if not collisions.is_empty():
+			if not has_tower(collisions):
+				for collision in collisions:
+					var possible_fish = collision["collider"].owner
+					if collision["collider"].monitoring and possible_fish and possible_fish.is_in_group("Units"):
+						var confirmed_fish = possible_fish
+						if not confirmed_fish.is_captive:
+							return confirmed_fish
 	
+
+func has_tower(collisionList):
+	for collision in collisionList:
+		var node = collision["collider"]
+		if node.is_in_group("EnemyTowerHitbox") or node.is_in_group("BlockerHitBox"):
+			return true
+	
+
+
+
 func catch_fish(fish):
 	if fish.get_parent() and is_instance_valid(fish):
 		#captive_fish.push_back(fish.unit_info)
-		hold_ticks_remaining = hold_duration
 		if fish.has_method("_on_captured"):
+			captive_fish = fish
+			hold_ticks_remaining = hold_duration
+		
 			captured.connect(fish._on_captured)
 			released.connect(fish._on_released)
 			captured.emit()
 			captured.disconnect(fish._on_captured)
-		
+			move_toward_fish_and_back(fish)
+			
+			
+			
+func move_toward_fish_and_back(fish):
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(sprite, "global_position", sprite.position + fish.global_position, 0.2 )
+	tween.tween_interval(0.4)
+	tween.tween_property(sprite, "global_position", original_sprite_position, 0.2)
+	sprite.frame = 1
+
 
 func release_fish():
-	var num_squares_to_move_forward = 1
-	released.emit(num_squares_to_move_forward)
+	captive_fish = null
+	var num_squares_to_move_forward = 0
+	released.emit(num_squares_to_move_forward, damage_on_release)
 	for connection in released.get_connections():
 		released.disconnect(connection["callable"])

@@ -10,11 +10,20 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_gafwi"]
 atlas = ExtResource("4_60a27")
 
-[sub_resource type="Animation" id="Animation_it45u"]
-resource_name = "idle"
-
-[sub_resource type="Animation" id="Animation_y1l3e"]
-resource_name = "shoot"
+[sub_resource type="Animation" id="Animation_iqrtq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_bfkv2"]
 resource_name = "attack"
@@ -31,20 +40,11 @@ tracks/0/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_iqrtq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[sub_resource type="Animation" id="Animation_it45u"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_y1l3e"]
+resource_name = "shoot"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ic0pc"]
 _data = {
@@ -54,8 +54,9 @@ _data = {
 "shoot": SubResource("Animation_y1l3e")
 }
 
-[node name="FishingHookBleedTower" type="Node2D" node_paths=PackedStringArray("animation_player") groups=["EnemyTraps"]]
+[node name="BrokenBottleBleedTower" type="Node2D" node_paths=PackedStringArray("animation_player") groups=["EnemyTraps"]]
 script = ExtResource("1_wc1qe")
+description = "Glass Bottle: injury from this causes persistent bleed damage."
 animation_player = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
