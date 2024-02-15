@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_3bmmy"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Octopus/Octopus.gd" id="2_meof8"]
 [ext_resource type="Resource" uid="uid://che77ris4hjg" path="res://App/Scenes/Entities/Units/Octopus/OctopusInfo.tres" id="2_ujpme"]
-[ext_resource type="Texture2D" uid="uid://c2h2fk543mv8m" path="res://Assets/Images/Units/09_Octopus.png" id="4_vgaf7"]
+[ext_resource type="Texture2D" uid="uid://c1tw7nael2ski" path="res://Assets/Images/expanded/Entities/Fish/09_Octopus.png" id="4_0n8rx"]
 
 [node name="Octopus" instance=ExtResource("1_3bmmy")]
 script = ExtResource("2_meof8")
@@ -11,5 +11,5 @@ unit_info = ExtResource("2_ujpme")
 
 [node name="Sprite" parent="." index="1"]
 z_index = 1
-scale = Vector2(0.471698, 0.471698)
-texture = ExtResource("4_vgaf7")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_0n8rx")

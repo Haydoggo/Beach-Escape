@@ -12,6 +12,7 @@ var last_unit_notification_emitted : bool = false
 
 var unit_buttons : Container
 var button_hover_text_popup : Panel
+@onready var GUI = $UI
 var friendly_unit_spawner : Node
 @onready var fish_container = $UnitContainer
 var user_instructions
@@ -31,11 +32,11 @@ func _enter_tree() -> void:
 	
 func _ready() -> void:
 	friendly_unit_spawner = find_child("FriendlyUnitSpawner")
-	user_instructions = find_child("UserInstructions")
+	user_instructions = find_child("HelpSystem")
 	add_unit_buttons()
 	total_units = get_num_units_remaining()
-	if user_instructions != null and user_instructions.has_method("popup"):
-		user_instructions.popup()
+	#if user_instructions != null and user_instructions.has_method("popup"):
+		#user_instructions.popup()
 
 func _process(_delta):
 	var units_remaining = get_num_units_remaining()
@@ -110,7 +111,8 @@ func button_pressed(button : UnitButton):
 func button_hovered(unit_info : UnitInfo):
 	
 	button_hover_text_popup.popup( unit_info.description )
-	
+	GUI.show_unit_info_card(unit_info)
+
 func button_mouse_exited():
 	button_hover_text_popup.close()
 
@@ -144,7 +146,7 @@ func get_num_units_remaining():
 func _on_tick_timer_timeout() -> void:
 	if units_spawned == 3:
 		user_instructions.set_text("Continue placing units in the deployment zone.")
-	if units_spawned >= 3: # testing a design where player has to place multiple spawns in the deployment zone before they start moving.
+	if units_spawned >= 0: # testing a design where player has to place multiple spawns in the deployment zone before they start moving.
 		var synchronized_groups = [ 
 				"Units",
 				"EnemyTowers",

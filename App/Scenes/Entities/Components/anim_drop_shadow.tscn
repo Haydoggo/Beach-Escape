@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://xtoq7vlyrwga"]
+
+[ext_resource type="Script" path="res://App/Scenes/Entities/Components/anim_drop_shadow.gd" id="1_52de8"]
+[ext_resource type="Material" uid="uid://dncr3oc55jht" path="res://App/Materials/drop_shadow_material.tres" id="1_oncpa"]
+[ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="2_oe12f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5spp2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oe12f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimDropShadow" type="AnimatedSprite2D"]
+material = ExtResource("1_oncpa")
+position = Vector2(9.76056, 44.6197)
+scale = Vector2(1.39437, 1.39437)
+sprite_frames = SubResource("SpriteFrames_5spp2")
+script = ExtResource("1_52de8")

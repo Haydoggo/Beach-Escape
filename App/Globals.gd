@@ -13,6 +13,8 @@ var arcade_level_path = "res://App/Scenes/Levels/arcade_level.tscn"
 
 var level_paths = [
 	"res://App/Scenes/Levels/Level0.tscn",
+	"res://App/Scenes/Levels/Level1.tscn",
+	"res://App/Scenes/Levels/Level2.tscn",
 	"res://App/Scenes/Levels/FirstLevel.tscn",
 	"res://App/Scenes/Levels/SecondLevel.tscn",
 	"res://App/Scenes/CutScenes/win_screen.tscn"
@@ -38,14 +40,14 @@ var unit_metadata : Array[UnitInfo] = [
 var surviving_units = {
 	"Fish" : 4,
 	"Crab" : 4,
-	#"Urchin" : 4,
-	#"Seahorse" : 4,
-	#"Mudfish" : 4,
-	#"Shark" : 4,
-	#"Pufferfish": 4,
-	#"Octopus" : 4,
-	#"Sea Slug" : 4,
-	#"Gold Fish" : 4,
+	"Urchin" : 4,
+	"Seahorse" : 4,
+	"Mudfish" : 4,
+	"Shark" : 4,
+	"Pufferfish": 4,
+	"Octopus" : 4,
+	"Sea Slug" : 4,
+	"Gold Fish" : 4,
 } # key is the name of the units, value is the int count
 
 var tower_paths = {
@@ -55,9 +57,10 @@ var tower_paths = {
 	"EelGrass":"res://App/Scenes/Entities/Towers/EelGrassGlueTower.tscn",
 	"FishingHook":"res://App/Scenes/Entities/Towers/FishingHook_BleedTower.tscn",
 	"Seagull":"res://App/Scenes/Entities/Towers/SeagullTrap.tscn",
-	"HandSlap":"res://App/Scenes/Entities/Towers/HandSlapTower.tscn",
 	"PitTrap":"res://App/Scenes/Entities/Towers/PitTrap.tscn",
 	"Rock":"res://App/Scenes/Entities/Towers/RockObstacle.tscn",
+	#"RotatingTower":"res://App/Scenes/Entities/Towers/RotatingTower.tscn",
+	#"HandSlap":"res://App/Scenes/Entities/Towers/HandSlapTower.tscn",
 }
 
 func load_next_level():
@@ -71,3 +74,12 @@ func load_next_level():
 			SceneLoader.load_scene(level_paths[current_level_index])
 		else:
 			printerr("Global.gd: current_level_index out of bounds in load_next_level")
+
+func restart_level():
+	if game_mode == game_modes.PUZZLE:
+		if current_level_index < level_paths.size():
+			SceneLoader.load_scene(level_paths[current_level_index])
+		else:
+			printerr("Global.gd: current_level_index out of bounds in load_next_level")
+	elif game_mode == game_modes.ARCADE:
+		SceneLoader.load_scene(arcade_level_path)

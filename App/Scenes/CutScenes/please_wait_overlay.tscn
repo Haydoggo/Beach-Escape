@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckmra23sbfkvv"]
+
+[ext_resource type="FontFile" uid="uid://bcsl4f1nq6mwv" path="res://App/Themes/Fonts/Protest_Riot/ProtestRiot-Regular.ttf" id="1_hyflp"]
+[ext_resource type="Texture2D" uid="uid://beqt2qi8j86vu" path="res://Assets/Images/placeholder/island_empty.png" id="2_87xr0"]
+[ext_resource type="Texture2D" uid="uid://dalyydqj0idie" path="res://Assets/Images/Units/04_Crab_Basic.png" id="3_iarrj"]
+
+[node name="PleaseWaitOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 396.0
+offset_right = 1091.0
+offset_bottom = 550.0
+rotation = -0.406397
+theme_override_fonts/font = ExtResource("1_hyflp")
+theme_override_font_sizes/font_size = 128
+text = "Please Wait"
+
+[node name="Island" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 576.0
+offset_right = 1402.0
+offset_bottom = 1088.0
+texture = ExtResource("2_87xr0")
+
+[node name="TextureRect" type="TextureRect" parent="Island"]
+layout_mode = 0
+offset_left = -90.0
+offset_top = 258.0
+offset_right = 104.0
+offset_bottom = 460.0
+texture = ExtResource("3_iarrj")
+flip_h = true

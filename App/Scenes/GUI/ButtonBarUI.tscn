@@ -1,32 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://bchfxguqqtrom"]
+[gd_scene load_steps=10 format=3 uid="uid://bchfxguqqtrom"]
 
+[ext_resource type="Script" path="res://App/Scenes/GUI/GUI_BattleMap.gd" id="1_5bjc3"]
 [ext_resource type="PackedScene" uid="uid://b1hfuapudwucs" path="res://App/Scenes/GUI/button_hover_text_popout.tscn" id="1_whve4"]
 [ext_resource type="Theme" uid="uid://c0vvtqxyanoyo" path="res://App/Themes/info_popup_panel_theme.tres" id="2_wshkh"]
 [ext_resource type="Theme" uid="uid://biy6q7375incn" path="res://App/Themes/in_game_ui_theme.tres" id="3_m5uhq"]
-[ext_resource type="Theme" uid="uid://6h5f7sqktd67" path="res://App/Themes/animatic_theme.tres" id="4_5td8m"]
-[ext_resource type="Texture2D" uid="uid://c4g4n4sfyjr5a" path="res://Assets/Images/placeholder/cloud_1.png" id="4_63v6k"]
-[ext_resource type="Script" path="res://App/Scenes/GUI/UserInstructionsPopup.gd" id="6_k0abt"]
 [ext_resource type="Script" path="res://App/Scenes/GUI/PauseMenu.gd" id="7_4clcd"]
+[ext_resource type="PackedScene" uid="uid://bfbpvnfe42abo" path="res://App/Scenes/GUI/help_system.tscn" id="7_bklfj"]
 [ext_resource type="Theme" uid="uid://bagdchotk6suu" path="res://App/Themes/main_menu_theme.tres" id="7_i3wyt"]
 [ext_resource type="PackedScene" uid="uid://cnk2y3bx5fsin" path="res://Extras/Scenes/Menus/OptionsMenu/MasterOptionsMenu.tscn" id="8_3jy5q"]
+[ext_resource type="PackedScene" uid="uid://b38yju0y20va7" path="res://App/Scenes/GUI/unit_info_popup_card.tscn" id="8_t7xuo"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_povqq"]
-content_margin_top = 32.0
-texture = ExtResource("4_63v6k")
-expand_margin_left = 64.0
-expand_margin_top = 128.0
-expand_margin_right = 64.0
-expand_margin_bottom = 34.0
+[node name="GUI_BattleMap" type="CanvasLayer"]
+script = ExtResource("1_5bjc3")
 
-[node name="UI" type="CanvasLayer"]
+[node name="UnitInfoCard" parent="." instance=ExtResource("8_t7xuo")]
+offset_left = 1640.0
+offset_top = 708.0
+offset_right = 1938.0
+offset_bottom = 1090.0
+rotation = 0.214335
+theme = ExtResource("2_wshkh")
 
 [node name="ButtonHoverTextPopup" parent="." instance=ExtResource("1_whve4")]
 unique_name_in_owner = true
-offset_left = -512.0
 offset_top = 0.0
-offset_right = 512.0
 offset_bottom = 128.0
-theme = ExtResource("2_wshkh")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 7
@@ -44,36 +42,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
-
-[node name="UserInstructions" type="MarginContainer" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -626.0
-offset_top = -220.0
-offset_right = 627.0
-offset_bottom = 67.0
-grow_horizontal = 2
-theme_override_constants/margin_left = 76
-theme_override_constants/margin_top = 128
-theme_override_constants/margin_right = 76
-theme_override_constants/margin_bottom = 32
-script = ExtResource("6_k0abt")
-
-[node name="TexturePanel" type="PanelContainer" parent="UserInstructions"]
-layout_mode = 2
-theme = ExtResource("4_5td8m")
-theme_override_styles/panel = SubResource("StyleBoxTexture_povqq")
-
-[node name="Label" type="Label" parent="UserInstructions/TexturePanel"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Place 3 units in the deployment zone to start."
-horizontal_alignment = 1
-
-[node name="AutoCloseTimer" type="Timer" parent="UserInstructions"]
-wait_time = 5.0
-one_shot = true
 
 [node name="PauseMenu" type="Panel" parent="."]
 process_mode = 3
@@ -94,18 +62,26 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MasterOptionsMenu" parent="PauseMenu/VBoxContainer" instance=ExtResource("8_3jy5q")]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ReturnToGame" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 150
+
+[node name="ReturnToGame" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Return to Game
 "
 
-[connection signal="gui_input" from="UserInstructions" to="UserInstructions" method="_on_gui_input"]
-[connection signal="mouse_entered" from="UserInstructions" to="UserInstructions" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="UserInstructions" to="UserInstructions" method="_on_mouse_exited"]
-[connection signal="timeout" from="UserInstructions/AutoCloseTimer" to="UserInstructions" method="_on_auto_close_timer_timeout"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/ReturnToGame" to="PauseMenu" method="_on_return_to_game_pressed"]
+[node name="RestartLevel" type="Button" parent="PauseMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Restart Level"
+
+[node name="HelpSystem" parent="." instance=ExtResource("7_bklfj")]
+
+[connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/ReturnToGame" to="PauseMenu" method="_on_return_to_game_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/RestartLevel" to="PauseMenu" method="_on_restart_level_pressed"]

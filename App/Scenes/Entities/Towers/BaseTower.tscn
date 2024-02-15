@@ -18,7 +18,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ofvkc"]
-size = Vector2(128, 128)
+size = Vector2(96, 96)
 
 [node name="BaseTower" type="Node2D" groups=["EnemyTowers"]]
 script = ExtResource("1_yj2u2")

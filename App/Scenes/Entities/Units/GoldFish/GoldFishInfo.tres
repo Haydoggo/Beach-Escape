@@ -14,6 +14,7 @@ payload_scene_path = ""
 script = ExtResource("2_1s5oo")
 name = "Gold Fish"
 description = "Gold Fish"
+movement_description = ""
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_0eyoi")
 health = 50

@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_oafl0"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Urchin/Urchin.gd" id="2_sqjcq"]
-[ext_resource type="Texture2D" uid="uid://deg8od0brjbhi" path="res://Assets/Images/Units/03_Urchin.png" id="2_uuetn"]
 [ext_resource type="Resource" uid="uid://bs31lf1urfggr" path="res://App/Scenes/Entities/Units/Urchin/UrchinInfo.tres" id="3_v1dl2"]
+[ext_resource type="Texture2D" uid="uid://btnaun7tt8ydf" path="res://Assets/Images/expanded/Entities/Fish/03_Urchin.png" id="4_bhcd8"]
 [ext_resource type="AudioStream" uid="uid://csfnmqm7miu0j" path="res://Assets/SFX/Spawn/SFX_UrchinDeploy_01.wav" id="5_gh15k"]
 [ext_resource type="AudioStream" uid="uid://bhu4081jn00fj" path="res://Assets/SFX/Spawn/SFX_UrchinDeploy_02.wav" id="6_n732a"]
 
@@ -43,8 +43,8 @@ script = ExtResource("2_sqjcq")
 unit_info = ExtResource("3_v1dl2")
 
 [node name="Sprite" parent="." index="1"]
-scale = Vector2(0.582524, 0.582524)
-texture = ExtResource("2_uuetn")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_bhcd8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {

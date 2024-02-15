@@ -14,6 +14,7 @@ payload_scene_path = ""
 script = ExtResource("3_mwuql")
 name = "Seahorse"
 description = "Seahorses embody the spirit of the medieval chess knight."
+movement_description = ""
 path = PackedVector2Array(256, -128, 256, 128)
 icon = ExtResource("1_n03wh")
 health = 50
