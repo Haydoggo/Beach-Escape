@@ -29,7 +29,6 @@ Label/fonts/font = ExtResource("2_h6but")
 Panel/styles/panel = SubResource("StyleBoxFlat_qfr2i")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6ostm"]
-blend_mode = 3
 
 [node name="DeploymentZone" type="Area2D"]
 script = ExtResource("1_0c34f")
@@ -49,7 +48,8 @@ theme = SubResource("Theme_y8hwc")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 39.0
+offset_top = -34.0
+offset_bottom = 5.0
 grow_horizontal = 2
 text = "Deployment Zone"
 horizontal_alignment = 1
@@ -57,14 +57,16 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="ColorRect" type="TextureRect" parent="."]
-visible = false
 self_modulate = Color(1, 1, 1, 0.443137)
 material = SubResource("CanvasItemMaterial_6ostm")
-offset_right = 385.0
-offset_bottom = 348.0
+offset_left = 17.0
+offset_top = 20.0
+offset_right = 370.0
+offset_bottom = 477.0
 mouse_filter = 2
 texture = ExtResource("3_cni2n")
 expand_mode = 5
+flip_h = true
 
 [node name="SelectedTileCursor" parent="." instance=ExtResource("2_jehyn")]
 
