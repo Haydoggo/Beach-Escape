@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_582dg"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Fish/Fish.gd" id="2_xd35r"]
-[ext_resource type="Texture2D" uid="uid://ckqwfoi4guv8i" path="res://Assets/Images/Units/02_Fish_Boot.png" id="3_lfh3d"]
 [ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="3_tpqs7"]
+[ext_resource type="Texture2D" uid="uid://cjglvhh5yfm6s" path="res://Assets/Images/expanded/Entities/Fish/02_Fish_Boot.png" id="4_6d5oa"]
 [ext_resource type="AudioStream" uid="uid://d0jg7maanyg5s" path="res://Assets/SFX/Spawn/SFX_FishDeploy_01.wav" id="5_cdd4e"]
 [ext_resource type="AudioStream" uid="uid://besn8slgpfjqj" path="res://Assets/SFX/Spawn/SFX_FishDeploy_02.wav" id="6_hrgxn"]
 
@@ -45,8 +45,8 @@ unit_info = ExtResource("3_tpqs7")
 
 [node name="Sprite" parent="." index="1"]
 position = Vector2(-3, 0)
-scale = Vector2(0.763359, 0.763359)
-texture = ExtResource("3_lfh3d")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_6d5oa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {

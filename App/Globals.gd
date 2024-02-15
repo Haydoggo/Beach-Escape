@@ -40,14 +40,14 @@ var unit_metadata : Array[UnitInfo] = [
 var surviving_units = {
 	"Fish" : 4,
 	"Crab" : 4,
-	#"Urchin" : 4,
-	#"Seahorse" : 4,
-	#"Mudfish" : 4,
-	#"Shark" : 4,
-	#"Pufferfish": 4,
-	#"Octopus" : 4,
-	#"Sea Slug" : 4,
-	#"Gold Fish" : 4,
+	"Urchin" : 4,
+	"Seahorse" : 4,
+	"Mudfish" : 4,
+	"Shark" : 4,
+	"Pufferfish": 4,
+	"Octopus" : 4,
+	"Sea Slug" : 4,
+	"Gold Fish" : 4,
 } # key is the name of the units, value is the int count
 
 var tower_paths = {

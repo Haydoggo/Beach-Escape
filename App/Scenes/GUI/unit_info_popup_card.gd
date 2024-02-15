@@ -31,7 +31,8 @@ func activate(unitInfo):
 	fields["movement"] = unitInfo.movement_description
 	fields["helath"] = str(unit_info.health)
 	fields["moisture"] = str(unit_info.moisture)
-	fields["damage"] = str(unit_info.melee_attack.damage)
+	if unit_info.melee_attack != null:
+		fields["damage"] = str(unit_info.melee_attack.damage)
 
 	for field in $VBoxContainer/Fields.get_children():
 		field.queue_free()

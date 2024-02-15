@@ -14,6 +14,7 @@ payload_scene_path = ""
 script = ExtResource("1_ojimx")
 name = "Pufferfish"
 description = "Puffs up like a balloon, obviously. It's a pufferfish."
+movement_description = ""
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_v3ld0")
 health = 150

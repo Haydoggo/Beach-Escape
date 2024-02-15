@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_odapq"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Mudfish/Mudfish.gd" id="2_k82f0"]
 [ext_resource type="Resource" uid="uid://246577vjl121" path="res://App/Scenes/Entities/Units/Mudfish/MudfishInfo.tres" id="3_2i1rr"]
-[ext_resource type="Texture2D" uid="uid://v7idg24g2ma8" path="res://Assets/Images/Units/06_Mudfish_A.png" id="4_ge3ig"]
-[ext_resource type="Texture2D" uid="uid://coecgdnaxxbi3" path="res://Assets/Images/Units/06_Mudfish_B.png" id="5_li1tb"]
+[ext_resource type="Texture2D" uid="uid://behvyeovip0tr" path="res://Assets/Images/expanded/Entities/Fish/06_Mudfish_A.png" id="4_ljgfx"]
+[ext_resource type="Texture2D" uid="uid://1u206gdajx8p" path="res://Assets/Images/expanded/Entities/Fish/06_Mudfish_B.png" id="5_jjmx0"]
 
 [sub_resource type="Animation" id="Animation_q6v7f"]
 length = 0.001
@@ -247,13 +247,13 @@ unit_info = ExtResource("3_2i1rr")
 
 [node name="Sprite" parent="." index="1"]
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("4_ge3ig")
+texture = ExtResource("4_ljgfx")
 
 [node name="TunnellingSprite" type="Sprite2D" parent="." index="2"]
 visible = false
 position = Vector2(0, 34)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("5_li1tb")
+texture = ExtResource("5_jjmx0")
 
 [node name="MoistureIndicator" parent="." index="6"]
 visible = false
