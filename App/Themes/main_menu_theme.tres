@@ -1,43 +1,57 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://bagdchotk6suu"]
 
-[ext_resource type="Texture2D" uid="uid://da7unw2nv8m28" path="res://Assets/Images/placeholder/button_sandy_brown.png" id="1_c8cra"]
+[ext_resource type="Texture2D" uid="uid://dq454o5b62kjv" path="res://Assets/Images/expanded/UI/02_Menu_Button.png" id="1_mkmol"]
 [ext_resource type="FontFile" uid="uid://bvkrvs6r4he1k" path="res://App/Themes/Fonts/Miltonian_Tattoo/MiltonianTattoo-Regular.ttf" id="2_axp15"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vfmcj"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0iqs1"]
 content_margin_left = 24.0
 content_margin_right = 24.0
 content_margin_bottom = 24.0
-texture = ExtResource("1_c8cra")
-expand_margin_bottom = 12.0
+texture = ExtResource("1_mkmol")
+expand_margin_left = 36.0
+expand_margin_top = 24.0
+expand_margin_right = 36.0
+expand_margin_bottom = 24.0
+modulate_color = Color(0.745098, 0.780392, 0.760784, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0v734"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_10ron"]
 content_margin_left = 24.0
 content_margin_right = 24.0
 content_margin_bottom = 24.0
-texture = ExtResource("1_c8cra")
-expand_margin_bottom = 12.0
+texture = ExtResource("1_mkmol")
+expand_margin_left = 36.0
+expand_margin_top = 24.0
+expand_margin_right = 36.0
+expand_margin_bottom = 24.0
+modulate_color = Color(0.647059, 0.643137, 0.313726, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a8jdk"]
 content_margin_left = 24.0
 content_margin_right = 24.0
 content_margin_bottom = 24.0
-texture = ExtResource("1_c8cra")
-expand_margin_bottom = 12.0
+texture = ExtResource("1_mkmol")
+expand_margin_left = 36.0
+expand_margin_top = 24.0
+expand_margin_right = 36.0
+expand_margin_bottom = 24.0
 modulate_color = Color(0.827451, 0.827451, 0.827451, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_580i2"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_372gj"]
 content_margin_left = 24.0
 content_margin_right = 24.0
 content_margin_bottom = 24.0
-texture = ExtResource("1_c8cra")
-expand_margin_bottom = 12.0
-modulate_color = Color(0.372549, 0.372549, 0.372549, 1)
+texture = ExtResource("1_mkmol")
+expand_margin_left = 36.0
+expand_margin_top = 24.0
+expand_margin_right = 36.0
+expand_margin_bottom = 24.0
+modulate_color = Color(0.364706, 0.364706, 0.364706, 1)
 
 [resource]
 default_font = ExtResource("2_axp15")
 default_font_size = 36
 Button/font_sizes/font_size = 64
-Button/styles/focus = SubResource("StyleBoxTexture_vfmcj")
-Button/styles/hover = SubResource("StyleBoxTexture_0v734")
+Button/styles/focus = SubResource("StyleBoxTexture_0iqs1")
+Button/styles/hover = SubResource("StyleBoxTexture_10ron")
 Button/styles/normal = SubResource("StyleBoxTexture_a8jdk")
-Button/styles/pressed = SubResource("StyleBoxTexture_580i2")
+Button/styles/pressed = SubResource("StyleBoxTexture_372gj")
