@@ -3,6 +3,9 @@ extends "res://App/Scenes/Entities/Towers/StaticTrap_OnTick.gd"
 var direction = Vector2(2,-1)
 var speed : float = 250.0
 
+func _ready():
+	$Sprite2D/FishSprite.hide()
+
 func _process(delta):
 	if State == States.DISABLED: # reeling in fish
 		global_position += direction * speed * delta

@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bchfxguqqtrom"]
+[gd_scene load_steps=9 format=3 uid="uid://bchfxguqqtrom"]
 
 [ext_resource type="Script" path="res://App/Scenes/GUI/GUI_BattleMap.gd" id="1_5bjc3"]
 [ext_resource type="PackedScene" uid="uid://b1hfuapudwucs" path="res://App/Scenes/GUI/button_hover_text_popout.tscn" id="1_whve4"]
-[ext_resource type="Theme" uid="uid://c0vvtqxyanoyo" path="res://App/Themes/info_popup_panel_theme.tres" id="2_wshkh"]
 [ext_resource type="Theme" uid="uid://biy6q7375incn" path="res://App/Themes/in_game_ui_theme.tres" id="3_m5uhq"]
 [ext_resource type="Script" path="res://App/Scenes/GUI/PauseMenu.gd" id="7_4clcd"]
 [ext_resource type="PackedScene" uid="uid://bfbpvnfe42abo" path="res://App/Scenes/GUI/help_system.tscn" id="7_bklfj"]
@@ -12,14 +11,6 @@
 
 [node name="GUI_BattleMap" type="CanvasLayer"]
 script = ExtResource("1_5bjc3")
-
-[node name="UnitInfoCard" parent="." instance=ExtResource("8_t7xuo")]
-offset_left = 1640.0
-offset_top = 708.0
-offset_right = 1938.0
-offset_bottom = 1090.0
-rotation = 0.214335
-theme = ExtResource("2_wshkh")
 
 [node name="ButtonHoverTextPopup" parent="." instance=ExtResource("1_whve4")]
 unique_name_in_owner = true
@@ -86,6 +77,12 @@ layout_mode = 2
 text = "Main Menu"
 
 [node name="HelpSystem" parent="." instance=ExtResource("7_bklfj")]
+
+[node name="UnitInfoCard" parent="." instance=ExtResource("8_t7xuo")]
+offset_left = 1596.0
+offset_top = -28.0
+offset_right = 1596.0
+offset_bottom = -28.0
 
 [connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/ReturnToGame" to="PauseMenu" method="_on_return_to_game_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/RestartLevel" to="PauseMenu" method="_on_restart_level_pressed"]

@@ -108,16 +108,17 @@ func add_unit_button(unit_count : UnitCount, shortcut_keycode : int):
 
 func button_pressed(button : UnitButton):
 	friendly_unit_spawner.selected_unit_button = button.unit_count
-	GUI.show_unit_info_card(button.unit_count.unit_info)
+	#GUI.show_unit_info_card(button.unit_count.unit_info)
 
 	
 func button_hovered(unit_info : UnitInfo):
 	
 	button_hover_text_popup.popup( unit_info.description )
-	#GUI.show_unit_info_card(unit_info)
+	GUI.show_unit_info_card(unit_info)
 
 func button_mouse_exited():
 	button_hover_text_popup.close()
+	GUI.hide_unit_info_card()
 
 func _on_tower_hovered(description):
 	button_hover_text_popup.popup(description)

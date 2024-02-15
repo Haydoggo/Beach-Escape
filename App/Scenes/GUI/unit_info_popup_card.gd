@@ -13,12 +13,12 @@
 '''	
 
 
-extends Panel
+extends Control
 
 var unit_info : UnitInfo
-var fields = {
-	
-}
+var fields = {}
+enum States { IDLE, TWEENING }
+var State = States.IDLE
 
 func _ready():
 	hide()
@@ -26,7 +26,7 @@ func _ready():
 func activate(unitInfo):
 	show()
 	unit_info = unitInfo
-	$VBoxContainer/Icon.texture = unitInfo.icon
+	$Panel/VBoxContainer/Icon.texture = unitInfo.icon
 	fields["name"] = unitInfo.name
 	fields["movement"] = unitInfo.movement_description
 	fields["health"] = str(unit_info.health)
@@ -36,7 +36,7 @@ func activate(unitInfo):
 	else:
 		fields["damage"] = "none"
 
-	for field in $VBoxContainer/Fields.get_children():
+	for field in $Panel/VBoxContainer/Fields.get_children():
 		field.queue_free()
 	for field_name in fields.keys():
 		spawn_info_field(field_name, fields[field_name] )
@@ -44,10 +44,31 @@ func activate(unitInfo):
 func spawn_info_field(title, description):
 	var new_info_field = load("res://App/Scenes/GUI/unit_info_form_field.tscn").instantiate()
 	new_info_field.activate(title, description)
-	$VBoxContainer/Fields.add_child(new_info_field)
+	$Panel/VBoxContainer/Fields.add_child(new_info_field)
 
 func popup(unitInfo):
 	activate(unitInfo)
+	return
+	
+	# Can't get these to look nice, so I'm not using them yet
+	if State == States.IDLE:
+		State = States.TWEENING
+		var tween = create_tween()
+		tween.tween_property(self, "rotation", 0.25, 0.4)
+		await tween.finished
+		if State == States.TWEENING:
+			State = States.IDLE
 	
 func close():
 	hide()
+	return
+
+	# Can't get these to look nice, so I'm not using them yet
+	if State == States.IDLE:
+		State = States.TWEENING
+		var tween = create_tween()
+		tween.tween_property(self, "rotation", PI/2.0, 0.4)
+		await tween.finished
+		if State == States.TWEENING:
+			State = States.IDLE
+			hide()

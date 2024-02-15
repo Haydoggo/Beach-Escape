@@ -18,15 +18,15 @@ damage_type = 0
 damage = 1000.0
 payload_scene_path = ""
 
+[sub_resource type="Animation" id="Animation_frhdh"]
+resource_name = "attack"
+length = 4.0
+
 [sub_resource type="Animation" id="Animation_it45u"]
 resource_name = "idle"
 
 [sub_resource type="Animation" id="Animation_y1l3e"]
 resource_name = "shoot"
-
-[sub_resource type="Animation" id="Animation_frhdh"]
-resource_name = "attack"
-length = 4.0
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ic0pc"]
 _data = {
@@ -45,11 +45,12 @@ position = Vector2(-2, -29)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_1loh0")
 
+[node name="Shadow" parent="Sprite2D" instance=ExtResource("3_o4k2p")]
+
 [node name="FishSprite" type="Sprite2D" parent="Sprite2D"]
+visible = false
 position = Vector2(-82, 38)
 texture = ExtResource("3_usuvn")
-
-[node name="Shadow" parent="Sprite2D" instance=ExtResource("3_o4k2p")]
 
 [node name="Line2D" type="Line2D" parent="."]
 z_index = 1
