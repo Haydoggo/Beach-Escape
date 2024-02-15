@@ -13,13 +13,18 @@
 [node name="GUI_BattleMap" type="CanvasLayer"]
 script = ExtResource("1_5bjc3")
 
+[node name="UnitInfoCard" parent="." instance=ExtResource("8_t7xuo")]
+offset_left = 1640.0
+offset_top = 708.0
+offset_right = 1938.0
+offset_bottom = 1090.0
+rotation = 0.214335
+theme = ExtResource("2_wshkh")
+
 [node name="ButtonHoverTextPopup" parent="." instance=ExtResource("1_whve4")]
 unique_name_in_owner = true
-offset_left = -512.0
 offset_top = 0.0
-offset_right = 512.0
 offset_bottom = 128.0
-theme = ExtResource("2_wshkh")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 7
@@ -77,13 +82,6 @@ layout_mode = 2
 text = "Restart Level"
 
 [node name="HelpSystem" parent="." instance=ExtResource("7_bklfj")]
-
-[node name="UnitInfoCard" parent="." instance=ExtResource("8_t7xuo")]
-offset_left = 1640.0
-offset_top = 708.0
-offset_right = 1938.0
-offset_bottom = 1090.0
-rotation = 0.214335
 
 [connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/ReturnToGame" to="PauseMenu" method="_on_return_to_game_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/HBoxContainer/RestartLevel" to="PauseMenu" method="_on_restart_level_pressed"]

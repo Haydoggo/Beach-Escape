@@ -29,10 +29,12 @@ func activate(unitInfo):
 	$VBoxContainer/Icon.texture = unitInfo.icon
 	fields["name"] = unitInfo.name
 	fields["movement"] = unitInfo.movement_description
-	fields["helath"] = str(unit_info.health)
+	fields["health"] = str(unit_info.health)
 	fields["moisture"] = str(unit_info.moisture)
 	if unit_info.melee_attack != null:
 		fields["damage"] = str(unit_info.melee_attack.damage)
+	else:
+		fields["damage"] = "none"
 
 	for field in $VBoxContainer/Fields.get_children():
 		field.queue_free()
