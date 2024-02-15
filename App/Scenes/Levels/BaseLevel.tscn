@@ -157,6 +157,7 @@ texture = ExtResource("3_1px8g")
 expand_mode = 1
 
 [node name="UI" parent="." instance=ExtResource("8_3kuke")]
+visible = false
 
 [node name="FinishZone" parent="." instance=ExtResource("5_32fpb")]
 position = Vector2(1836, 542)
