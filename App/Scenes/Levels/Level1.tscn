@@ -47,7 +47,7 @@ offset_bottom = 640.0
 position = Vector2(0, 672)
 
 [node name="Towers" parent="PlaySpace" index="3"]
-layer_0/tile_data = PackedInt32Array(9, 0, 393216, 262153, 0, 393216, 131080, 0, 327680, 131082, 0, 327680, 262154, 0, 262144, 10, 0, 262144, 131081, 0, 458752, 196620, 0, 655360, 65548, 0, 655360)
+layer_0/tile_data = PackedInt32Array(9, 0, 131072, 262153, 0, 131072, 131080, 0, 327680, 131082, 0, 327680, 262154, 0, 262144, 10, 0, 262144, 131081, 0, 458752, 196620, 0, 655360, 65548, 0, 655360)
 
 [editable path="PlaySpace/DeploymentZone"]
 [editable path="UI"]
