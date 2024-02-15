@@ -10,7 +10,7 @@ func popup(newText : String):
 	if newText == null or newText.is_empty():
 		return
 	
-	$UnitDescription.text = newText
+	%UnitDescription.text = newText
 	var tween = create_tween()
 	var height = get_rect().size.y + 174
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)

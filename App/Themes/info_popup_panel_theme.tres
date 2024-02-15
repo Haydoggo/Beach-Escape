@@ -1,13 +1,22 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://c0vvtqxyanoyo"]
 
-[ext_resource type="Texture2D" uid="uid://dceivogwco7o0" path="res://Assets/Images/placeholder/cedar_sign_blank_2.png" id="1_gpmo7"]
+[ext_resource type="Texture2D" uid="uid://ds54y6pvtfuco" path="res://Assets/Images/expanded/UI/04_Dialogue_assembled.png" id="1_mhrjr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_it0v5"]
-texture = ExtResource("1_gpmo7")
-expand_margin_left = 250.0
-expand_margin_top = 48.0
-expand_margin_right = 220.0
-expand_margin_bottom = 64.0
+texture = ExtResource("1_mhrjr")
+texture_margin_left = 58.0
+texture_margin_top = 70.0
+texture_margin_right = 59.0
+texture_margin_bottom = 74.0
+expand_margin_left = 58.0
+expand_margin_top = 70.0
+expand_margin_right = 59.0
+expand_margin_bottom = 74.0
+region_rect = Rect2(0, 0, 458, 503)
 
 [resource]
+MarginContainer/constants/margin_bottom = 24
+MarginContainer/constants/margin_left = 128
+MarginContainer/constants/margin_right = 128
+MarginContainer/constants/margin_top = 32
 Panel/styles/panel = SubResource("StyleBoxTexture_it0v5")
