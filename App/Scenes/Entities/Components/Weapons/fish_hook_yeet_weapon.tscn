@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv84evnrui8iq"]
+
+[ext_resource type="PackedScene" uid="uid://bu4vg8os8fnp4" path="res://App/Scenes/Entities/Components/Weapons/persistent_stationary_weapon.tscn" id="1_7a8o5"]
+[ext_resource type="Script" path="res://App/Scenes/Entities/Components/Weapons/FishHookYeetWeapon.gd" id="2_asae5"]
+
+[node name="FishHookYeetWeapon" instance=ExtResource("1_7a8o5")]
+script = ExtResource("2_asae5")
+attack_packet = null

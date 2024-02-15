@@ -9,10 +9,12 @@ func _on_tick():
 	
 func attack_units_in_my_zone():
 	var present_enemies = get_local_enemies()
-	for enemy in present_enemies:
-		if enemy.has_method("_on_hit"):
-			enemy._on_hit(attack_packet)
-	
+	if not present_enemies.is_empty():
+		for enemy in present_enemies:
+			if enemy.has_method("_on_hit"):
+				enemy._on_hit(attack_packet)
+		if owner.has_method("_on_attacked"):
+			owner._on_attacked()
 	
 func get_local_enemies():
 	var candidates = $Area2D.get_overlapping_areas()

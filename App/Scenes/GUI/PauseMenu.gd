@@ -24,3 +24,9 @@ func _on_restart_level_pressed():
 	get_tree().set_pause(false)
 	get_tree().reload_current_scene()
 	#Globals.restart_level()
+
+
+func _on_main_menu_button_pressed():
+	get_tree().set_pause(false)
+	#SceneLoader.load_scene("res://Extras/Scenes/Opening/Opening.tscn")
+	SceneLoader.load_scene("res://Extras/Scenes/Menus/MainMenu/MainMenu.tscn")

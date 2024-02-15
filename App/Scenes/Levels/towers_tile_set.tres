@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://8tsf2haxf3j" path="res://App/Scenes/Entities/Towers/CannonTower.tscn" id="1_518xp"]
 [ext_resource type="PackedScene" uid="uid://dd6hxhux1nflh" path="res://App/Scenes/Entities/Towers/PelicanTower.tscn" id="2_15wm2"]
 [ext_resource type="PackedScene" uid="uid://c85dec1hd4qwv" path="res://App/Scenes/Entities/Towers/SeagullPerch.tscn" id="3_0eo3j"]
-[ext_resource type="PackedScene" uid="uid://bch3hc5ug6j73" path="res://App/Scenes/Entities/Towers/FishingHook_BleedTower.tscn" id="3_s5gp3"]
+[ext_resource type="PackedScene" uid="uid://bch3hc5ug6j73" path="res://App/Scenes/Entities/Towers/BrokenBottle_BleedTower.tscn" id="3_s5gp3"]
 [ext_resource type="PackedScene" uid="uid://b60xpjnh47rv8" path="res://App/Scenes/Entities/Towers/PitTrap.tscn" id="4_fncjh"]
 [ext_resource type="PackedScene" uid="uid://d3wt4bpu0wwo1" path="res://App/Scenes/Entities/Towers/RockObstacle.tscn" id="5_kbwpa"]
 [ext_resource type="PackedScene" uid="uid://ncccgvmbl1j5" path="res://App/Scenes/Entities/Towers/SeagullTrap.tscn" id="6_7tncc"]

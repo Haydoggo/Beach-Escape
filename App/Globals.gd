@@ -55,11 +55,12 @@ var tower_paths = {
 	"TackBurst":"res://App/Scenes/Entities/Towers/AoETower2_TackBurst.tscn",
 	"Pelican":"res://App/Scenes/Entities/Towers/PelicanTower.tscn",
 	"EelGrass":"res://App/Scenes/Entities/Towers/EelGrassGlueTower.tscn",
-	"FishingHook":"res://App/Scenes/Entities/Towers/FishingHook_BleedTower.tscn",
+	"BrokenBottle":"res://App/Scenes/Entities/Towers/BrokenBottle_BleedTower.tscn",
 	#"Seagull":"res://App/Scenes/Entities/Towers/SeagullTrap.tscn",
 	"SeagullPerch":"res://App/Scenes/Entities/Towers/SeagullPerch.tscn",
 	"PitTrap":"res://App/Scenes/Entities/Towers/PitTrap.tscn",
 	"Rock":"res://App/Scenes/Entities/Towers/RockObstacle.tscn",
+	"FishingHook":"res://App/Scenes/Entities/Towers/NewFishingHook_YeetTower.tscn",
 	#"RotatingTower":"res://App/Scenes/Entities/Towers/RotatingTower.tscn",
 	#"HandSlap":"res://App/Scenes/Entities/Towers/HandSlapTower.tscn",
 }

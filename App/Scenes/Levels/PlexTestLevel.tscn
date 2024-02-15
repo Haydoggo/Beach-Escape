@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq68aggh3rxym"]
+[gd_scene load_steps=4 format=3 uid="uid://dq68aggh3rxym"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_evr2g"]
+[ext_resource type="PackedScene" uid="uid://yp5j1g834v6v" path="res://App/Scenes/Entities/Towers/NewFishingHook_YeetTower.tscn" id="2_f7x1e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdvsl"]
 resource_local_to_scene = true
@@ -22,9 +23,15 @@ position = Vector2(0, 544)
 position = Vector2(404, 7)
 layer_0/tile_data = PackedInt32Array(131075, 0, 262144, 65539, 0, 262144, 262147, 0, 262144, 196613, 0, 65536, 196615, 0, 65536, 196611, 0, 327680, 262148, 0, 131072, 196610, 0, 131072, 65538, 0, 131072, 131079, 0, 131072)
 
-[node name="PanelContainer" parent="UI" index="1"]
+[node name="PanelContainer" parent="UI" index="2"]
 offset_right = 131.0
 offset_bottom = 109.0
+
+[node name="FishingHookYeetower" parent="." index="9" instance=ExtResource("2_f7x1e")]
+position = Vector2(634, 638)
+
+[node name="FishingHookYeetower2" parent="." index="10" instance=ExtResource("2_f7x1e")]
+position = Vector2(622, 270)
 
 [editable path="PlaySpace/DeploymentZone"]
 [editable path="UI"]

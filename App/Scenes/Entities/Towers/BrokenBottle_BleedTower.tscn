@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://bch3hc5ug6j73"]
+
+[ext_resource type="Script" path="res://App/Scenes/Entities/Towers/StaticTrap_OnTick.gd" id="1_wc1qe"]
+[ext_resource type="Texture2D" uid="uid://bp7qrxlcv8pdu" path="res://Assets/Images/placeholder/broken_bottle.png" id="2_kcqf1"]
+[ext_resource type="PackedScene" uid="uid://nbtvtnucj37y" path="res://App/Scenes/Entities/Components/drop_shadow.tscn" id="3_2yfj0"]
+[ext_resource type="Texture2D" uid="uid://b63jhcpo0cgt3" path="res://Assets/Images/Towers/06_Hook_Rope_line2D.png" id="4_60a27"]
+[ext_resource type="PackedScene" uid="uid://bu4vg8os8fnp4" path="res://App/Scenes/Entities/Components/Weapons/persistent_stationary_weapon.tscn" id="5_8h4yb"]
+[ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="6_ltnqm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gafwi"]
+atlas = ExtResource("4_60a27")
+
+[sub_resource type="Animation" id="Animation_it45u"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_y1l3e"]
+resource_name = "shoot"
+
+[sub_resource type="Animation" id="Animation_bfkv2"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_iqrtq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ic0pc"]
+_data = {
+"RESET": SubResource("Animation_iqrtq"),
+"attack": SubResource("Animation_bfkv2"),
+"idle": SubResource("Animation_it45u"),
+"shoot": SubResource("Animation_y1l3e")
+}
+
+[node name="FishingHookBleedTower" type="Node2D" node_paths=PackedStringArray("animation_player") groups=["EnemyTraps"]]
+script = ExtResource("1_wc1qe")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, -29)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_kcqf1")
+hframes = 2
+
+[node name="Shadow" parent="Sprite2D" instance=ExtResource("3_2yfj0")]
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+z_index = 1
+texture_repeat = 2
+position = Vector2(-2, -29)
+scale = Vector2(0.5, 0.5)
+points = PackedVector2Array(56, -102, 3103, -2939)
+width = 24.0
+texture = SubResource("AtlasTexture_gafwi")
+texture_mode = 1
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="Weapons" type="Node2D" parent="Components"]
+
+[node name="PersistentStationaryWeapon" parent="Components/Weapons" instance=ExtResource("5_8h4yb")]
+
+[node name="HoverPopupInfo" parent="Components" instance=ExtResource("6_ltnqm")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ic0pc")
+}
+
+[editable path="Components/Weapons/PersistentStationaryWeapon"]
