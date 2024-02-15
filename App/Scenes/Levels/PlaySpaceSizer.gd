@@ -57,6 +57,7 @@ func spawn_random_towers():
 		generate_available_spaces_list() # no duplicates
 		for i in range(num_towers):
 			spawn_random_tower()
+	
 
 func generate_available_spaces_list():
 	for row in range(play_space_size.y):
@@ -72,6 +73,11 @@ func spawn_random_tower():
 	var random_tower = load(random_tower_path).instantiate()
 	random_tower.position = square_position
 	add_child(random_tower)
+
+	if random_tower is SeagullPerch:
+		var second_perch = random_tower.duplicate()
+		second_perch.position = available_spaces.pop_back()
+		add_child(second_perch)
 
 func get_squares_count():
 	return (play_space_size.x - deployment_area_width) * play_space_size.y
