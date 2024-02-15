@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d3ri40ja5r0mw" path="res://Assets/Images/Towers/08_Seagull_Soar.png" id="4_4oowv"]
 [ext_resource type="Texture2D" uid="uid://c4qxmf2uir0p7" path="res://Assets/Images/Towers/08_Seagull_Sit.png" id="5_odeqt"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Components/flip_h.gd" id="8_7dfah"]
-[ext_resource type="PackedScene" uid="uid://b3tsqi2xelo17" path="res://App/Scenes/Entities/health_bar.tscn" id="8_cwkj7"]
+[ext_resource type="PackedScene" uid="uid://cim8b3k5lkraj" path="res://App/Scenes/Entities/Components/health_component.tscn" id="9_5x6r6"]
 [ext_resource type="AudioStream" uid="uid://ni17kd3fvvgg" path="res://Assets/SFX/sqwawk.wav" id="9_ncg0j"]
 [ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="9_rlpxg"]
 
@@ -16,11 +16,10 @@ damage_type = 0
 damage = 40.0
 payload_scene_path = ""
 
-[sub_resource type="Curve2D" id="Curve2D_8dc03"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2.08165e-12, 2.08165e-12, 0, 0, 0, 0, 1, 769)
-}
-point_count = 2
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rsqc6"]
+streams_count = 1
+stream_0/stream = ExtResource("9_ncg0j")
+stream_0/weight = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w4n3j"]
 animations = [{
@@ -52,51 +51,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ij52d"]
 radius = 64.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rsqc6"]
-streams_count = 1
-stream_0/stream = ExtResource("9_ncg0j")
-stream_0/weight = 1.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_toruj"]
+radius = 64.0
 
 [node name="SeagullTrap" type="Node2D" groups=["EnemyTowers", "Seagulls"]]
 script = ExtResource("1_r6ph7")
 attack_packet = SubResource("Resource_tuo7h")
 health_max = 40.0
-move_steps_without_attacking = 1
-
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_8dc03")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(2.08165e-12, 2.08165e-12)
-rotates = false
-loop = false
-
-[node name="Seagull" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
-position = Vector2(0, -1)
-scale = Vector2(0.75, 0.75)
-sprite_frames = SubResource("SpriteFrames_w4n3j")
-animation = &"idle"
-autoplay = "idle"
-offset = Vector2(2.66667, -53.3333)
-script = ExtResource("8_7dfah")
-
-[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Seagull"]
-position = Vector2(-2.77553e-12, -24)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Seagull/Area2D"]
-shape = SubResource("CircleShape2D_ij52d")
-
-[node name="Components" type="Node2D" parent="Path2D/PathFollow2D/Seagull"]
-position = Vector2(-2.77553e-12, 1.33333)
-scale = Vector2(1.33333, 1.33333)
-
-[node name="HoverPopupInfo" parent="Path2D/PathFollow2D/Seagull/Components" instance=ExtResource("9_rlpxg")]
-
-[node name="HealthBar" parent="Path2D/PathFollow2D/Seagull/Components" instance=ExtResource("8_cwkj7")]
-offset_left = -20.636
-offset_top = 61.6954
-offset_right = 75.3641
-offset_bottom = 101.696
 
 [node name="Audio" type="Node2D" parent="."]
 
@@ -104,4 +65,36 @@ offset_bottom = 101.696
 stream = SubResource("AudioStreamRandomizer_rsqc6")
 volume_db = -8.0
 
-[connection signal="area_entered" from="Path2D/PathFollow2D/Seagull/Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="Seagull" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.08165e-12, -1)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_w4n3j")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(2.66667, -53.3333)
+script = ExtResource("8_7dfah")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(2.38524e-18, -19)
+scale = Vector2(0.75, 0.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_ij52d")
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(2.38524e-18, -19)
+scale = Vector2(0.75, 0.75)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_toruj")
+
+[node name="Components" type="Node2D" parent="."]
+position = Vector2(2.38524e-18, -1.90735e-06)
+scale = Vector2(0.999997, 0.999997)
+
+[node name="HoverPopupInfo" parent="Components" instance=ExtResource("9_rlpxg")]
+
+[node name="HealthComponent" parent="Components" instance=ExtResource("9_5x6r6")]
+
+[connection signal="area_entered" from="AttackArea" to="." method="_on_area_2d_area_entered"]
