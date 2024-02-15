@@ -1,48 +1,70 @@
-[gd_scene load_steps=6 format=3 uid="uid://xya6xspmx2gu"]
+[gd_scene load_steps=10 format=3 uid="uid://xya6xspmx2gu"]
 
 [ext_resource type="Script" path="res://App/Scenes/Spawners/DeploymentZone.gd" id="1_0c34f"]
-[ext_resource type="PackedScene" path="res://App/Scenes/Spawners/selected_tile_cursor.tscn" id="2_jehyn"]
+[ext_resource type="FontFile" uid="uid://bcsl4f1nq6mwv" path="res://App/Themes/Fonts/Protest_Riot/ProtestRiot-Regular.ttf" id="2_h6but"]
+[ext_resource type="PackedScene" uid="uid://dj1uute6i0kn2" path="res://App/Scenes/Spawners/selected_tile_cursor.tscn" id="2_jehyn"]
+[ext_resource type="Texture2D" uid="uid://bpkn7qmmn8o2y" path="res://Assets/Images/placeholder/water_tile.png" id="3_cni2n"]
 [ext_resource type="PackedScene" uid="uid://epm2h0e8duc1" path="res://App/Scenes/Spawners/FriendlyUnitSpawner.tscn" id="3_hclq4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwf0a"]
 resource_local_to_scene = true
 size = Vector2(384, 768)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfr2i"]
+bg_color = Color(0.458824, 0.627451, 0.733333, 0.545098)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.705882, 0.658824, 0.588235, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="Theme" id="Theme_y8hwc"]
+Label/colors/font_color = Color(0.737255, 1, 1, 1)
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("2_h6but")
+Panel/styles/panel = SubResource("StyleBoxFlat_qfr2i")
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6ostm"]
-blend_mode = 1
+blend_mode = 3
 
 [node name="DeploymentZone" type="Area2D"]
 script = ExtResource("1_0c34f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(192, 256)
 shape = SubResource("RectangleShape2D_wwf0a")
 
-[node name="DeploymentZoneTitle" type="Panel" parent="."]
-offset_left = 1.0
-offset_top = -42.0
-offset_right = 385.0
-offset_bottom = 1.0
+[node name="DeploymentZonePanel" type="Panel" parent="."]
+offset_right = 384.0
+offset_bottom = 490.0
 mouse_filter = 2
+theme = SubResource("Theme_y8hwc")
 
-[node name="Label" type="Label" parent="DeploymentZoneTitle"]
+[node name="Label" type="Label" parent="DeploymentZonePanel"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 39.0
 grow_horizontal = 2
-grow_vertical = 2
 text = "Deployment Zone"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.443137)
 material = SubResource("CanvasItemMaterial_6ostm")
-offset_right = 384.0
-offset_bottom = 512.0
+offset_right = 385.0
+offset_bottom = 348.0
 mouse_filter = 2
-color = Color(1, 1, 0.313726, 0.0509804)
+texture = ExtResource("3_cni2n")
+expand_mode = 5
 
 [node name="SelectedTileCursor" parent="." instance=ExtResource("2_jehyn")]
 
