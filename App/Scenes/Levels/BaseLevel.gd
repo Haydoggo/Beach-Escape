@@ -33,6 +33,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	friendly_unit_spawner = find_child("FriendlyUnitSpawner")
 	user_instructions = find_child("HelpSystem")
+	#unit_stats_card = find_child("UnitInfoCard")
 	add_unit_buttons()
 	total_units = get_num_units_remaining()
 	#if user_instructions != null and user_instructions.has_method("popup"):
@@ -70,6 +71,7 @@ func select_first_available_button():
 		if is_instance_valid(button) and button is UnitButton and button.unit_count.count > 0:
 			button.pressed.emit() # Select first button
 			button_selected = button
+			#button_selected.button._toggled(true)
 			return
 	
 func remove_dummy_buttons():
@@ -106,12 +108,13 @@ func add_unit_button(unit_count : UnitCount, shortcut_keycode : int):
 
 func button_pressed(button : UnitButton):
 	friendly_unit_spawner.selected_unit_button = button.unit_count
+	GUI.show_unit_info_card(button.unit_count.unit_info)
 
 	
 func button_hovered(unit_info : UnitInfo):
 	
 	button_hover_text_popup.popup( unit_info.description )
-	GUI.show_unit_info_card(unit_info)
+	#GUI.show_unit_info_card(unit_info)
 
 func button_mouse_exited():
 	button_hover_text_popup.close()

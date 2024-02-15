@@ -20,11 +20,11 @@ var fields = {
 	
 }
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	hide()
 
 func activate(unitInfo):
+	show()
 	unit_info = unitInfo
 	$VBoxContainer/Icon.texture = unitInfo.icon
 	fields["name"] = unitInfo.name
@@ -50,4 +50,4 @@ func popup(unitInfo):
 	activate(unitInfo)
 	
 func close():
-	pass
+	hide()

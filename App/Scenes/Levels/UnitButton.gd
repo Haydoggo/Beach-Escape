@@ -28,4 +28,3 @@ func _ready() -> void:
 	shortcut_event = InputEventKey.new()
 	button.shortcut.events.append(shortcut_event)	
 	button.pressed.connect(func():pressed.emit())
-

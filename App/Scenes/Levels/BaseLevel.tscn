@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cdrk8mkxgd30e" path="res://App/Scenes/Spawners/FinishZone.tscn" id="5_32fpb"]
 [ext_resource type="Texture2D" uid="uid://cfn46omcxn1xu" path="res://Assets/Images/Environment/Border_Ring.png" id="5_pgywy"]
 [ext_resource type="PackedScene" uid="uid://xya6xspmx2gu" path="res://App/Scenes/Spawners/DeploymentZone.tscn" id="6_6lisd"]
-[ext_resource type="PackedScene" uid="uid://bchfxguqqtrom" path="res://App/Scenes/GUI/ButtonBarUI.tscn" id="8_3kuke"]
+[ext_resource type="PackedScene" uid="uid://bchfxguqqtrom" path="res://App/Scenes/GUI/GUI_BattleMap.tscn" id="8_3kuke"]
 [ext_resource type="AudioStream" uid="uid://lyfloletgdw" path="res://Assets/Music/MUS_MainLoopV2_01.ogg" id="11_ibc0y"]
 [ext_resource type="AudioStream" uid="uid://blueutm7kq1rw" path="res://Assets/Music/MUS_MainLoopV2_02.ogg" id="12_f5coq"]
 [ext_resource type="AudioStream" uid="uid://dw8iwg5jmxnb3" path="res://Assets/Music/MUS_MainLoopV2_03.ogg" id="13_aiol1"]
