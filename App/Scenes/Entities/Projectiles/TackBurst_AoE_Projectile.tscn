@@ -126,6 +126,7 @@ scale_curve = SubResource("CurveTexture_yrlfb")
 script = ExtResource("1_o31g5")
 speed = 2.08165e-12
 damage = 15
+duration_in_ticks = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(220, -701)
