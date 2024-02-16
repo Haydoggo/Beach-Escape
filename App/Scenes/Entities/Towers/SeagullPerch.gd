@@ -4,6 +4,7 @@ class_name SeagullPerch extends Node2D
 const PERCHES_GROUP = &"SeagullPerches"
 const SEAGULL_SCENE = preload("res://App/Scenes/Entities/Towers/SeagullTrap.tscn")
 @onready var label: Label = $PanelContainer/Label
+@export var description = "Seagulls perch here and might attaack."
 
 func _ready() -> void:
 	deferred_ready.call_deferred()

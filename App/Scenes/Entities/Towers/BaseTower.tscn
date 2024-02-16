@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfet1wnvw1f0e"]
+[gd_scene load_steps=10 format=3 uid="uid://bfet1wnvw1f0e"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/BaseTower.gd" id="1_yj2u2"]
 [ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="3_evm77"]
 [ext_resource type="PackedScene" uid="uid://nbtvtnucj37y" path="res://App/Scenes/Entities/Components/drop_shadow.tscn" id="3_gfeq5"]
 [ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="4_fcfwh"]
 [ext_resource type="PackedScene" uid="uid://cim8b3k5lkraj" path="res://App/Scenes/Entities/Components/health_component.tscn" id="4_wyb4v"]
+[ext_resource type="PackedScene" uid="uid://bu3jbthd6q22s" path="res://App/Scenes/Entities/Components/relocate_at_intervals.tscn" id="6_dpolc"]
 
 [sub_resource type="Gradient" id="Gradient_yfvkm"]
 offsets = PackedFloat32Array(0.178082, 0.481735)
@@ -59,6 +60,8 @@ default_color = Color(1, 1, 0, 1)
 [node name="HealthComponent" parent="Components" instance=ExtResource("4_wyb4v")]
 
 [node name="HoverPopupInfo" parent="Components" instance=ExtResource("4_fcfwh")]
+
+[node name="RelocateAtIntervals" parent="Components" instance=ExtResource("6_dpolc")]
 
 [connection signal="area_entered" from="ActivationTriggers" to="." method="_on_activation_triggers_area_entered"]
 [connection signal="area_exited" from="ActivationTriggers" to="." method="_on_activation_triggers_area_exited"]

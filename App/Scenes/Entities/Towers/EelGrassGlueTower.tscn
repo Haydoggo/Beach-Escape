@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://wykl862gv5fc"]
+[gd_scene load_steps=13 format=3 uid="uid://wykl862gv5fc"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/StaticTrap_OnTick.gd" id="1_rj7qc"]
 [ext_resource type="Texture2D" uid="uid://c6lcaw260rw81" path="res://Assets/Images/Towers/05_Grass_Back.png" id="2_old06"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="4_airjr"]
 [ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="5_hks4k"]
 [ext_resource type="Texture2D" uid="uid://bnbsl8jitsu1n" path="res://Assets/Images/Towers/05_Grass_Front.png" id="6_iwf05"]
+[ext_resource type="PackedScene" uid="uid://bu3jbthd6q22s" path="res://App/Scenes/Entities/Components/relocate_at_intervals.tscn" id="8_10112"]
 
 [sub_resource type="Resource" id="Resource_gfjlk"]
 script = ExtResource("4_airjr")
@@ -21,6 +22,9 @@ resource_name = "shoot"
 _data = {
 "shoot": SubResource("Animation_11nbr")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0145a"]
+size = Vector2(96, 96)
 
 [node name="EelGrassGlueTower" type="Node2D" groups=["EnemyTraps"]]
 script = ExtResource("1_rj7qc")
@@ -47,7 +51,14 @@ attack_packet = SubResource("Resource_gfjlk")
 
 [node name="HoverPopupInfo" parent="Components" instance=ExtResource("5_hks4k")]
 
+[node name="RelocateAtIntervals" parent="Components" instance=ExtResource("8_10112")]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_425ab")
 }
+
+[node name="Area2D" type="Area2D" parent="." groups=["TrapHitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_0145a")
