@@ -81,7 +81,12 @@ func _process(delta):
 	if State == States.DRAGGING:
 		global_position = get_global_mouse_position()
 		if Input.is_action_just_released("drag_procreator"):
-			State = States.IDLE
+			var overlapping_procreator = get_first_overlapping_procreator()
+			if overlapping_procreator == null:
+				State = States.IDLE
+			else:
+				# edge case where we didn't get the area_entered signal because they started overlapping
+				procreate(overlapping_procreator)
 	elif State == States.IDLE:
 		global_position += velocity * speed_multiplier * delta
 		if is_outside_viewport():
@@ -117,7 +122,11 @@ func procreate(area):
 	Globals.surviving_units[unit_info.name] += 3 # two parents and one baby
 	Globals.surviving_units[unit_info.name] = min(Globals.max_units_per_type, Globals.surviving_units[unit_info.name])
 	
-
+func get_first_overlapping_procreator():
+	var candidates = get_overlapping_areas()
+	for candidate in candidates:
+		if candidate.is_in_group("Procreators") and candidate.State in [ States.IDLE, States.HOVER ]:
+			return candidate
 
 func _on_mouse_entered():
 	

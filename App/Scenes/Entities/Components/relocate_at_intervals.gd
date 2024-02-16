@@ -1,8 +1,8 @@
 extends Node2D
 
 var elapsed_ticks = 0
-@export var ticks_between_relocations : int = 3
-
+@export var ticks_between_relocations : int = 10
+@export var chance_of_relocating : float = 0.33
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,5 +52,6 @@ func _on_tick():
 	if Globals.game_mode == Globals.game_modes.ARCADE:
 		elapsed_ticks += 1
 		if elapsed_ticks % ticks_between_relocations == 0:
-			relocate()
+			if randf()<chance_of_relocating:
+				relocate()
 		
