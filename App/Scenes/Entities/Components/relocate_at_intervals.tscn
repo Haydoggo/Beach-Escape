@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu3jbthd6q22s"]
+
+[ext_resource type="Script" path="res://App/Scenes/Entities/Components/relocate_at_intervals.gd" id="1_wtgul"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pf5om"]
+
+[node name="RelocateAtIntervals" type="Node2D" groups=["TimedComponents"]]
+script = ExtResource("1_wtgul")
+
+[node name="TowerDetector" type="ShapeCast2D" parent="."]
+shape = SubResource("RectangleShape2D_pf5om")
+collide_with_areas = true
+collide_with_bodies = false

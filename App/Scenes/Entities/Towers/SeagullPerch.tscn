@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c85dec1hd4qwv"]
+[gd_scene load_steps=6 format=3 uid="uid://c85dec1hd4qwv"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/SeagullPerch.gd" id="1_e48fo"]
 [ext_resource type="Texture2D" uid="uid://l7ry2rqcbbbn" path="res://Assets/Images/Towers/08_Seagull_Perch.png" id="1_uqolw"]
+[ext_resource type="PackedScene" uid="uid://bu3jbthd6q22s" path="res://App/Scenes/Entities/Components/relocate_at_intervals.tscn" id="3_a704p"]
+[ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="4_57jo1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ovep"]
+size = Vector2(96, 96)
 
 [node name="SeagullPerch" type="Node2D" groups=["SeagullPerches"]]
 script = ExtResource("1_e48fo")
+description = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 7)
@@ -28,3 +34,14 @@ grow_vertical = 2
 layout_mode = 2
 text = "1"
 horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="." groups=["TrapHitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_8ovep")
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="RelocateAtIntervals" parent="Components" instance=ExtResource("3_a704p")]
+
+[node name="HoverPopupInfo" parent="Components" instance=ExtResource("4_57jo1")]

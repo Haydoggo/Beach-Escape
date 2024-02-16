@@ -15,6 +15,7 @@ var button_hover_text_popup : Panel
 @onready var GUI = $UI
 var friendly_unit_spawner : Node
 @onready var fish_container = $UnitContainer
+@onready var play_space = $PlaySpace
 var user_instructions
 
 var total_units : int
@@ -156,9 +157,12 @@ func _on_tick_timer_timeout() -> void:
 				"EnemyTowers",
 				"EnemyTraps",
 				"Lanes",
+				"TimedComponents",
 				]
 		for group_name in synchronized_groups:
 			get_tree().call_group(group_name, "_on_tick")
+	if play_space.has_method("_on_tick"):
+		play_space._on_tick()
 
 
 func fade_in_music(fade : String) -> void:
