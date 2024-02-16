@@ -161,6 +161,7 @@ func _on_tick_timer_timeout() -> void:
 				]
 		for group_name in synchronized_groups:
 			get_tree().call_group(group_name, "_on_tick")
+
 	if play_space.has_method("_on_tick"):
 		play_space._on_tick()
 

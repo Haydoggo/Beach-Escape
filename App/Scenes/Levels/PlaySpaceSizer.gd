@@ -2,8 +2,8 @@
 extends ReferenceRect
 var available_spaces = []
 
-# removed because something's causing playspace to reset to 0,0 size
-#@export var fish_hook_probability = 0.05 * Globals.arcade_difficulty_level
+
+var fish_hook_probability = 0.05
 
 @export var deployment_area_width : int = 3:
 	set(value):
@@ -92,15 +92,14 @@ func get_squares_count():
 	return (play_space_size.x - deployment_area_width) * play_space_size.y
 	
 
-# Removed because playspacesizer is a tool script, and something's causing it to reset all the values to 0
-#func _on_tick():
-	#if Globals.game_mode == Globals.game_modes.ARCADE:
-		#if randf() < fish_hook_probability:
-			#spawn_fish_hook()
+func _on_tick():
+	if Globals.game_mode == Globals.game_modes.ARCADE:
+		if randf() < fish_hook_probability:
+			spawn_fish_hook()
 			#
-#func spawn_fish_hook():
-	#var new_fish_hook = load("res://App/Scenes/Entities/Towers/NewFishingHook_YeetTower.tscn").instantiate()
-	#$Towers.add_child(new_fish_hook)
-	#var x_pos = (randi()%(play_space_size.x - deployment_area_width) + deployment_area_width) * Globals.tile_size + Globals.tile_size/2
-	#var y_pos = (randi()%(play_space_size.y)) * Globals.tile_size + Globals.tile_size/2
-	#new_fish_hook.position = Vector2(x_pos, y_pos)
+func spawn_fish_hook():
+	var new_fish_hook = load("res://App/Scenes/Entities/Towers/NewFishingHook_YeetTower.tscn").instantiate()
+	$Towers.add_child(new_fish_hook)
+	var x_pos = (randi()%(play_space_size.x - deployment_area_width) + deployment_area_width) * Globals.tile_size + Globals.tile_size/2
+	var y_pos = (randi()%(play_space_size.y)) * Globals.tile_size + Globals.tile_size/2
+	new_fish_hook.position = Vector2(x_pos, y_pos)
