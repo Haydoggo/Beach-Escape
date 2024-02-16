@@ -47,9 +47,10 @@ func _process(_delta):
 			else:
 				print("Very sad, you lose :(((")
 				SceneLoader.reload_current_scene()
-		
+
 
 func has_enough_units_to_win() -> bool:
+	# if required units list is empty, returns true
 	for required_unit_count in level.required_units_for_win:
 		if arrived_units[required_unit_count.unit_info.name] < required_unit_count.count:
 			return false
@@ -57,9 +58,13 @@ func has_enough_units_to_win() -> bool:
 	
 
 func get_unit_count_on_field():
-	var num_units = get_tree().get_nodes_in_group("Units").size()
-	$DebugInfo/RemainingFish.text = str(num_units) + " fish remaining"
-	return num_units
+	var confirmed_units = []
+	var possible_units = get_tree().get_nodes_in_group("Units")
+	for fish in possible_units:
+		if is_instance_valid(fish) and !fish.is_captive:
+			confirmed_units.push_back(fish)
+	$DebugInfo/RemainingFish.text = str(confirmed_units.size()) + " fish remaining"
+	return confirmed_units.size()
 	
 func _on_last_unit_sent(): # from BaseLevel
 	# start checking the field to see if there are any units remaining alive
