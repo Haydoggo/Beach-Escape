@@ -8,3 +8,5 @@ func _ready():
 func show_unit_info_card(unitInfo):
 	$UnitInfoCard.popup(unitInfo)
 
+func hide_unit_info_card():
+	$UnitInfoCard.close()

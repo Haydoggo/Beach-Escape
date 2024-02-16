@@ -5,10 +5,16 @@ extends Area2D
 var velocity : Vector2
 @export var rotate_to_face_velocity : bool = false
 
+
+
 enum States { INITIALIZING, MOVING, EXPLODING, DEAD } 
 var State = States.INITIALIZING
 
-# Called when the node enters the scene tree for the first time.
+@export var duration_in_ticks : int = 5
+var ticks_elapsed : int = 0
+
+
+
 func _ready():
 	top_level = true
 	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("spawn"):
@@ -61,11 +67,15 @@ func _on_area_entered(area):
 			explode()
 
 func _on_tick() :
-	# I guess we're supposed to move forward 1 square at a time.
-	# That's a bit weird, but whatever.
-	pass
+	ticks_elapsed += 1
+	
+	if ticks_elapsed > duration_in_ticks:
+		queue_free()
 	
 
 
 func _on_animation_player_animation_finished(_anim_name):
 	pass
+
+
+	

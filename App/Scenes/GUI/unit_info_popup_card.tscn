@@ -1,15 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://b38yju0y20va7"]
+[gd_scene load_steps=5 format=3 uid="uid://b38yju0y20va7"]
 
 [ext_resource type="Script" path="res://App/Scenes/GUI/unit_info_popup_card.gd" id="1_jna32"]
+[ext_resource type="Theme" uid="uid://c0vvtqxyanoyo" path="res://App/Themes/info_popup_panel_theme.tres" id="1_ltiw7"]
 [ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="2_gvoxr"]
 [ext_resource type="PackedScene" uid="uid://h6c7e4aj1dnx" path="res://App/Scenes/GUI/unit_info_form_field.tscn" id="2_mjek8"]
 
-[node name="UnitInfoCard" type="Panel"]
-offset_right = 298.0
-offset_bottom = 382.0
+[node name="UnitInfoCard" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -1086.0
+offset_right = -288.0
+offset_bottom = -1086.0
+grow_vertical = 0
+rotation = 0.121397
+theme = ExtResource("1_ltiw7")
 script = ExtResource("1_jna32")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -382.0
+offset_right = 298.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,15 +36,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer"]
+[node name="Icon" type="TextureRect" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("2_gvoxr")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Fields" type="VBoxContainer" parent="VBoxContainer"]
+[node name="Fields" type="VBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 
-[node name="UnitInfoFormField" parent="VBoxContainer/Fields" instance=ExtResource("2_mjek8")]
+[node name="UnitInfoFormField" parent="Panel/VBoxContainer/Fields" instance=ExtResource("2_mjek8")]
 layout_mode = 2

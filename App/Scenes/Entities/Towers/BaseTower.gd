@@ -5,7 +5,7 @@
 
 class_name BaseTower extends Node2D
 
-@export var description = "Enemy tower wants to keep you on the beach."
+@export_multiline var description = "Enemy tower wants to keep you on the beach."
 
 #@export var projectile : PackedScene
 enum turret_types { STATIC, ROTATING, MELEE_AOE }
