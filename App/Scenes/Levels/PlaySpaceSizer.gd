@@ -103,3 +103,25 @@ func spawn_fish_hook():
 	var x_pos = (randi()%(play_space_size.x - deployment_area_width) + deployment_area_width) * Globals.tile_size + Globals.tile_size/2
 	var y_pos = (randi()%(play_space_size.y)) * Globals.tile_size + Globals.tile_size/2
 	new_fish_hook.position = Vector2(x_pos, y_pos)
+
+func is_inside_rect(point):
+	
+	var ps_rect = get_playable_rect()
+	var has_point = ps_rect.has_point(point)
+	#queue_redraw()
+	return has_point
+	
+func get_playable_rect():
+	var ps_rect = get_rect()
+	ps_rect.size.x -= deployment_area_width * tile_size
+	ps_rect.position.x += deployment_area_width * tile_size
+	var fudge_vector = Vector2(-tile_size/2.0, -tile_size/2.0)
+	ps_rect.position += fudge_vector # I'm not sure why the rectable is off by 1/2 of a tile - plex
+	return ps_rect
+	
+func _draw():
+	pass
+	#draw_rect(get_playable_rect(), Color.RED, false, 5)
+	
+	
+		

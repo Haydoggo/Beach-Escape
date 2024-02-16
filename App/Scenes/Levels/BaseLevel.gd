@@ -169,3 +169,7 @@ func _on_tick_timer_timeout() -> void:
 func fade_in_music(fade : String) -> void:
 	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation(fade):
 		$AnimationPlayer.play(fade)
+
+func is_inside_playspace(point : Vector2) -> bool:
+	return play_space.is_inside_rect(point)
+	

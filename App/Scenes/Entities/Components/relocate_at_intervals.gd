@@ -1,8 +1,10 @@
 extends Node2D
 
 var elapsed_ticks = 0
-@export var ticks_between_relocations : int = 10
+@export var ticks_between_relocations : int = 5
 @export var chance_of_relocating : float = 0.33
+
+var target_point : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,10 +31,11 @@ func relocate():
 		if not collisions_contains_tower(collisions):
 			$TowerDetector.position = Vector2.ZERO
 			# collisions, but no towers
-			owner.position += destination
+			if Globals.current_level.is_inside_playspace(global_position + destination):
+				owner.position += destination
 	else: # no collisions to report
-		
-		owner.position += destination
+		if Globals.current_level.is_inside_playspace(global_position + destination):
+			owner.position += destination
 
 func collisions_contains_tower(collisions):
 	var tower_detected : bool = false
