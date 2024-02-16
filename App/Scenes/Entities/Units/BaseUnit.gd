@@ -3,7 +3,6 @@ class_name BaseUnit extends Node2D
 @export var unit_info : UnitInfo
 @onready var attack_region: Area2D = $AttackRegion
 @onready var health_component: Node2D = $HealthComponent
-@onready var moisture_indicator: Node2D = $MoistureIndicator
 @onready var tower_check: ShapeCast2D = $TowerCheck
 @onready var swipe_attack_fx: Path2D = $SwipeAttackFX
 @onready var blood_fx: CPUParticles2D = $BloodFX
@@ -21,9 +20,6 @@ func _ready() -> void:
 	health_component.health = unit_info.health
 	health_component.update_health_bar()
 	
-	moisture = unit_info.moisture
-	moisture_indicator.max_moisture = moisture
-	moisture_indicator.moisture = moisture
 	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("spawn"):
 		$AnimationPlayer.play("spawn")
 
@@ -111,10 +107,9 @@ func attack_tower(tower):
 
 
 func do_drying():
-	moisture -= 1
-	moisture_indicator.moisture = moisture
-	if moisture <= 0:
-		begin_dying()
+	var dry_damage = AttackPacket.new()
+	dry_damage.damage = 20
+	_on_hit(dry_damage)
 
 
 func _on_hit(attack_packet : AttackPacket):
