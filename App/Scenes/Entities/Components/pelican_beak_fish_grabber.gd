@@ -37,8 +37,9 @@ func _on_tick():
 			catch_fish(fish)
 	elif captive_fish != null and hold_ticks_remaining > 0:
 		hold_ticks_remaining -= 1
-		var damage = captive_fish.unit_info.melee_attack.damage
-		hurt_yourself(damage)
+		if captive_fish and captive_fish.unit_info and captive_fish.unit_info.melee_attack:
+			var damage = captive_fish.unit_info.melee_attack.damage
+			hurt_yourself(damage)
 		#print("Pelican taking : ", damage, " damage.")
 		if hold_ticks_remaining == 0:
 			release_fish()
