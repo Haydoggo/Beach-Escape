@@ -118,7 +118,8 @@ func _on_hit(attack_packet : AttackPacket):
 	if attack_packet.damage_type == AttackPacket.damage_types.GLUE:
 		is_slow = true
 	health_component._on_hit(attack_packet)
-	create_tween().tween_property(self, "modulate", Color.WHITE, 0.3).from(Color.RED)
+	if attack_packet.damage > 0:
+		create_tween().tween_property(self, "modulate", Color.WHITE, 0.3).from(Color.RED)
 
 
 func begin_dying():
