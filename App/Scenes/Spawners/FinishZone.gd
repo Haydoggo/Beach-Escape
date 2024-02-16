@@ -6,7 +6,7 @@ const finish_button = preload("res://App/Scenes/Spawners/finish_counter_icon.tsc
 enum States { WAITING, LISTENING }
 var State = States.WAITING
 @onready var level : BaseLevel = owner
-var arrived_units = {}
+var arrived_units = {} # key is String name, value is int count
 
 func _ready() -> void:
 	for unit_info in Globals.unit_metadata:
@@ -46,15 +46,28 @@ func _process(_delta):
 				#SceneLoader.load_scene(next_scene_path)
 			else:
 				print("Very sad, you lose :(((")
+				# TODO: send player to a lose screen
 				SceneLoader.reload_current_scene()
 
 
 func has_enough_units_to_win() -> bool:
-	# if required units list is empty, returns true
-	for required_unit_count in level.required_units_for_win:
-		if arrived_units[required_unit_count.unit_info.name] < required_unit_count.count:
-			return false
-	return true
+	if Globals.game_mode == Globals.game_modes.PUZZLE:
+		# count the specific types of fish and compare with level designer's requirements for that level
+		for required_unit_count in level.required_units_for_win:
+			if arrived_units[required_unit_count.unit_info.name] < required_unit_count.count:
+				return false
+		return true # if you made it this far, you've met the requirements
+	elif Globals.game_mode == Globals.game_modes.ARCADE:
+		# need at least 2 fish to proceed to procreation minigame
+		var at_least_one_mating_pair_remains = false
+		for unit_name in arrived_units.keys():
+			if arrived_units[unit_name] >= 2:
+				at_least_one_mating_pair_remains = true
+		return at_least_one_mating_pair_remains
+	
+	else:
+		printerr("FinishZone.gd: invalid game_mode")
+		return false
 	
 
 func get_unit_count_on_field():
