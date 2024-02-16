@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cim8b3k5lkraj"]
+[gd_scene load_steps=4 format=3 uid="uid://cim8b3k5lkraj"]
 
 [ext_resource type="PackedScene" uid="uid://b3tsqi2xelo17" path="res://App/Scenes/Entities/health_bar.tscn" id="1_acjw2"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Components/health_component.gd" id="1_lxxa6"]
+[ext_resource type="Texture2D" uid="uid://c3yrn257dc4sc" path="res://Assets/Images/Particles/Fish/Water_02.png" id="3_nsa5n"]
 
 [node name="HealthComponent" type="Node2D"]
 script = ExtResource("1_lxxa6")
 
 [node name="HealthBar" parent="." instance=ExtResource("1_acjw2")]
+visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="HealthBar"]
 layout_mode = 1
@@ -34,3 +36,66 @@ layout_mode = 2
 text = "1/1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HeartContainer" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = 74.0
+offset_right = 19.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeartTemplate" type="Control" parent="."]
+custom_minimum_size = Vector2(56, 52)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = 103.0
+offset_right = 27.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HeartTemplate"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 35.0
+offset_top = 14.6371
+offset_right = 75.0
+offset_bottom = 54.6371
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 2.87979
+texture = ExtResource("3_nsa5n")
+
+[node name="TextureRect2" type="TextureRect" parent="HeartTemplate"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = 14.6371
+offset_right = 6.0
+offset_bottom = 54.6371
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.40339
+scale = Vector2(-1, 1)
+texture = ExtResource("3_nsa5n")

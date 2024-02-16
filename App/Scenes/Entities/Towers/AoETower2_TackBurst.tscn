@@ -24,7 +24,7 @@ _data = {
 description = "Tack Thrower: causes damage in a short radius"
 turret_type = 2
 shots_per_magazine = 1
-health_max = 75.0
+health_max = 80
 animation_player = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" parent="." index="1"]

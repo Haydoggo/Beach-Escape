@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_goji5"]
 script = ExtResource("2_y4iij")
 damage_type = 0
-damage = 10.0
+damage = 20.0
 payload_scene_path = ""
 
 [resource]
@@ -17,7 +17,7 @@ description = "Stepping on these can be painful."
 movement_description = ""
 path = PackedVector2Array(128, 0, 0, 0)
 icon = ExtResource("1_bwd21")
-health = 110
+health = 100
 moisture = 5
 melee_attack = SubResource("Resource_goji5")
 packed_scene_path = "res://App/Scenes/Entities/Units/Urchin/Urchin.tscn"

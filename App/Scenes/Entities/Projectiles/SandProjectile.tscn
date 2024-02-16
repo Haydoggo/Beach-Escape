@@ -254,7 +254,7 @@ stream_2/weight = 1.0
 
 [node name="SandProjectile" type="Area2D"]
 script = ExtResource("1_8q4mn")
-damage = 25
+damage = 20
 
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -1

@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed = 120.0
-@export var damage = 5
+@export var damage = 20
 var velocity : Vector2
 @export var rotate_to_face_velocity : bool = false
 

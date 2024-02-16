@@ -9,6 +9,6 @@ name = "Octopus"
 description = "We call him, Grabby!"
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_ryd7i")
-health = 70
+health = 80
 moisture = 4
 packed_scene_path = "res://App/Scenes/Entities/Units/Octopus/Octopus.tscn"

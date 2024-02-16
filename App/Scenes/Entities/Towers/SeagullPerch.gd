@@ -14,7 +14,6 @@ func deferred_ready():
 		get_tree().call_group(PERCHES_GROUP, "update_number")
 	else:
 		$PanelContainer.hide()
-		print("I am %s, first is %s" % [self, get_tree().get_first_node_in_group(PERCHES_GROUP)])
 		if self == get_tree().get_first_node_in_group(PERCHES_GROUP):
 			var seagull = SEAGULL_SCENE.instantiate()
 			add_sibling(seagull)
