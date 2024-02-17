@@ -1,0 +1,109 @@
+[gd_scene load_steps=5 format=3 uid="uid://c07td8vg027sn"]
+
+[sub_resource type="Animation" id="Animation_5cged"]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Steam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Steam:self_modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cvg35"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Steam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mm6jj"]
+_data = {
+"Fade": SubResource("Animation_5cged"),
+"RESET": SubResource("Animation_cvg35")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_q7hfr"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(0.353553, 6.71751, -0.353553, -6.71751, -6, 47, -2.82843, 16.617, 2.82843, -16.617, -24, 15, -0.353553, 14.1421, 0.353553, -14.1421, -10, -24, -1.41421, 7.07107, 1.41421, -7.07107, -25, -53)
+}
+point_count = 4
+
+[node name="DryFX" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mm6jj")
+}
+autoplay = "Fade"
+
+[node name="Steam" type="CanvasGroup" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+
+[node name="Line2D" type="Line2D" parent="Steam"]
+points = PackedVector2Array(-4, 45, -9.3594, 41.5028, -16.1932, 34.7123, -19.6409, 30.6562, -22.4305, 26.0657, -24.0531, 20.8704, -24, 15, -22.6009, 9.13337, -20.669, 3.88469, -18.4206, -0.913357, -16.0719, -5.42808, -11.9389, -14.2768, -10, -24, -12.3935, -33.5031, -17.8977, -41.1516, -23.2032, -47.4744, -27, -52)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="Steam"]
+position = Vector2(24, 0)
+points = PackedVector2Array(-4, 45, -9.3594, 41.5028, -16.1932, 34.7123, -19.6409, 30.6562, -22.4305, 26.0657, -24.0531, 20.8704, -24, 15, -22.6009, 9.13337, -20.669, 3.88469, -18.4206, -0.913357, -16.0719, -5.42808, -11.9389, -14.2768, -10, -24, -12.3935, -33.5031, -17.8977, -41.1516, -23.2032, -47.4744, -27, -52)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D3" type="Line2D" parent="Steam"]
+position = Vector2(50, 0)
+points = PackedVector2Array(-4, 45, -9.3594, 41.5028, -16.1932, 34.7123, -19.6409, 30.6562, -22.4305, 26.0657, -24.0531, 20.8704, -24, 15, -22.6009, 9.13337, -20.669, 3.88469, -18.4206, -0.913357, -16.0719, -5.42808, -11.9389, -14.2768, -10, -24, -12.3935, -33.5031, -17.8977, -41.1516, -23.2032, -47.4744, -27, -52)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="Steam"]
+visible = false
+color = Color(0.584314, 0.0901961, 0, 1)
+polygon = PackedVector2Array(-40, -24, -24, -40, 0, -16, 24, -40, 40, -24, 16, 0, 40, 24, 24, 40, 0, 16, -24, 40, -40, 24, -16, 0)
+
+[node name="Path2D" type="Path2D" parent="Steam"]
+curve = SubResource("Curve2D_q7hfr")

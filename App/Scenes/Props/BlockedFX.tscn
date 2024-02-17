@@ -71,7 +71,6 @@ libraries = {
 autoplay = "Fade"
 
 [node name="Cross" type="CanvasGroup" parent="."]
-self_modulate = Color(1, 1, 1, 0)
 
 [node name="Line2D" type="Line2D" parent="Cross"]
 points = PackedVector2Array(-40, -24, -24, -40, 0, -16, 24, -40, 40, -24, 16, 0, 40, 24, 24, 40, 0, 16, -24, 40, -40, 24, -16, 0, -40, -24)

@@ -88,7 +88,7 @@ func on_blocked(target_position : Vector2):
 	var spawn_blocked_fx = func():
 		var blocked_fx = preload("res://App/Scenes/Props/BlockedFX.tscn").instantiate()
 		add_sibling(blocked_fx)
-		blocked_fx.global_position = global_position	
+		blocked_fx.global_position = global_position
 	
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", target_position, 0.15).set_ease(Tween.EASE_IN)
@@ -112,6 +112,11 @@ func attack_tower(tower):
 
 
 func do_drying():
+	var dry_fx = preload("res://App/Scenes/Props/DryFX.tscn").instantiate()
+	add_sibling(dry_fx)
+	dry_fx.global_position = global_position
+	
+	
 	var dry_damage = AttackPacket.new()
 	dry_damage.damage = 20
 	_on_hit(dry_damage)
