@@ -174,11 +174,11 @@ func hurt_yourself(damage):
 
 func disable_collision_areas():
 	for area in find_children("", "Area2D"):
-		area.monitoring = false
-		area.monitorable = false
+		area.set_deferred("monitoring", false)
+		area.set_deferred("monitorable", false)
 	
 func enable_collision_areas():
 	for area in find_children("", "Area2D"):
-		area.monitoring = true
-		area.monitorable = true
+		area.set_deferred("monitoring", true)
+		area.set_deferred("monitorable", true)
 
