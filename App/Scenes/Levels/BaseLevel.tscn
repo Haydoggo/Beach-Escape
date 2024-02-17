@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cfn46omcxn1xu" path="res://Assets/Images/Environment/Border_Ring.png" id="5_pgywy"]
 [ext_resource type="PackedScene" uid="uid://xya6xspmx2gu" path="res://App/Scenes/Spawners/DeploymentZone.tscn" id="6_6lisd"]
 [ext_resource type="PackedScene" uid="uid://bchfxguqqtrom" path="res://App/Scenes/GUI/GUI_BattleMap.tscn" id="8_3kuke"]
-[ext_resource type="AudioStream" uid="uid://lyfloletgdw" path="res://Assets/Music/MUS_MainLoopV2_01.ogg" id="11_ibc0y"]
-[ext_resource type="AudioStream" uid="uid://blueutm7kq1rw" path="res://Assets/Music/MUS_MainLoopV2_02.ogg" id="12_f5coq"]
-[ext_resource type="AudioStream" uid="uid://dw8iwg5jmxnb3" path="res://Assets/Music/MUS_MainLoopV2_03.ogg" id="13_aiol1"]
+[ext_resource type="AudioStream" uid="uid://fxvtodk02yrp" path="res://Assets/Music/MUS_BeachEscapeFnl_Low.ogg" id="10_8ckjo"]
+[ext_resource type="AudioStream" uid="uid://cbnhomlo3u4ul" path="res://Assets/Music/MUS_BeachEscapeFnl_Med.ogg" id="11_jd5ld"]
+[ext_resource type="AudioStream" uid="uid://ddp1q4yek0uun" path="res://Assets/Music/MUS_BeachEscapeFnl_High.ogg" id="12_ewajl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k81qk"]
 resource_local_to_scene = true
@@ -173,16 +173,16 @@ libraries = {
 [node name="Audio" type="Node2D" parent="."]
 
 [node name="MusicLow" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("11_ibc0y")
+stream = ExtResource("10_8ckjo")
 autoplay = true
 
 [node name="MusicMed" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("12_f5coq")
+stream = ExtResource("11_jd5ld")
 volume_db = -80.0
 autoplay = true
 
 [node name="MusicHigh" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("13_aiol1")
+stream = ExtResource("12_ewajl")
 volume_db = -80.0
 autoplay = true
 

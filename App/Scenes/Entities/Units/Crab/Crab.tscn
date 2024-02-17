@@ -71,3 +71,5 @@ scale = Vector2(1, -1)
 
 [node name="Spawn" type="AudioStreamPlayer2D" parent="Audio" index="0"]
 stream = SubResource("AudioStreamRandomizer_yu4ui")
+
+[editable path="HealthComponent"]

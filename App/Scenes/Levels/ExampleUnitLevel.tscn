@@ -27,7 +27,7 @@ position = Vector2(190, 316)
 [node name="Urchin" parent="." index="7" instance=ExtResource("4_nfgyh")]
 position = Vector2(195, 200)
 
-[node name="Audio" type="Node2D" parent="." index="12"]
+[node name="Audio2" type="Node2D" parent="." index="12"]
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio" index="0"]
 stream = ExtResource("5_qm0eg")
