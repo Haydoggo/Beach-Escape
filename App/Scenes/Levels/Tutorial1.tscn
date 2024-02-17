@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7pcrwcwshvt2"]
+
+[ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_ahc0r"]
+[ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_3a3km"]
+[ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="3_47uyb"]
+[ext_resource type="Resource" uid="uid://dkoxp7v5utuf7" path="res://App/Scenes/Entities/Units/GoldFish/GoldFishInfo.tres" id="3_ss4py"]
+
+[sub_resource type="Resource" id="Resource_i4581"]
+resource_name = "1 Gold Fish"
+script = ExtResource("2_3a3km")
+unit_info = ExtResource("3_ss4py")
+count = 1
+
+[sub_resource type="Resource" id="Resource_wk7xg"]
+resource_name = "1 Fish"
+script = ExtResource("2_3a3km")
+unit_info = ExtResource("3_47uyb")
+count = 1
+
+[sub_resource type="Resource" id="Resource_rctut"]
+resource_name = "1 Gold Fish"
+script = ExtResource("2_3a3km")
+unit_info = ExtResource("3_ss4py")
+count = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15e6c"]
+resource_local_to_scene = true
+size = Vector2(384, 512)
+
+[node name="BaseLevel" instance=ExtResource("1_ahc0r")]
+available_units = Array[ExtResource("2_3a3km")]([SubResource("Resource_i4581"), SubResource("Resource_wk7xg")])
+required_units_for_win = Array[ExtResource("2_3a3km")]([SubResource("Resource_rctut")])
+
+[node name="PlaySpace" parent="." index="1"]
+offset_left = 779.0
+offset_top = 123.0
+offset_right = 1803.0
+offset_bottom = 507.0
+
+[node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
+shape = SubResource("RectangleShape2D_15e6c")
+
+[node name="Towers" parent="PlaySpace" index="3"]
+layer_0/tile_data = PackedInt32Array(4, 0, 327680, 131076, 0, 327680, 65541, 0, 262144)
+
+[node name="Camera2D" parent="." index="2"]
+position = Vector2(1291, 315)
+anchor_mode = 1
+zoom = Vector2(1.23698, 1.23698)
+
+[editable path="PlaySpace/DeploymentZone"]
+[editable path="UI"]

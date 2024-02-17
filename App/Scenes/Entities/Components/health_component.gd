@@ -33,6 +33,7 @@ func update_health_bar():
 			heart.modulate = Color.WHITE
 		else:
 			heart.modulate = Color.DIM_GRAY
+	heart_container.visible = health < health_max
 	
 	$HealthBar.max_value = health_max
 	$HealthBar.value = health

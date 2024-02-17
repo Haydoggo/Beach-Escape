@@ -22,6 +22,7 @@ func remove_dummy_buttons():
 
 func _on_level_selected(level_path):
 	SceneLoader.load_scene(level_path)
+	TitleMusic.stop_music()
 
 
 func _on_back_to_main_pressed():

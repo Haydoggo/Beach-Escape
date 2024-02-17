@@ -1,12 +1,40 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdrk8mkxgd30e"]
+[gd_scene load_steps=10 format=3 uid="uid://cdrk8mkxgd30e"]
 
 [ext_resource type="Script" path="res://App/Scenes/Spawners/FinishZone.gd" id="1_14yyo"]
 [ext_resource type="Texture2D" uid="uid://cppte47udf4ni" path="res://Assets/Images/placeholder/shoreline3.png" id="2_upb64"]
 [ext_resource type="Texture2D" uid="uid://d3ifqn0behxb1" path="res://Assets/Images/Environment/01_Water_A.png" id="3_3ll7m"]
 [ext_resource type="Texture2D" uid="uid://dkh7qhymq08ve" path="res://Assets/Images/Environment/00_Foam_A.png" id="3_4vmuw"]
+[ext_resource type="PackedScene" uid="uid://dtamyip8lqavp" path="res://App/Scenes/Spawners/finish_counter_icon.tscn" id="5_4er6s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxut5"]
 size = Vector2(446, 1080)
+
+[sub_resource type="Animation" id="Animation_8yda3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Foam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-130, -700)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WaveFront:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-130, -700)]
+}
 
 [sub_resource type="Animation" id="Animation_0usv0"]
 resource_name = "Wave"
@@ -35,33 +63,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(0.5, -2, 2, 1),
 "update": 0,
 "values": [-115.0, -100.0, -130.0, -115.0]
-}
-
-[sub_resource type="Animation" id="Animation_8yda3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Foam:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-130, -700)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WaveFront:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-130, -700)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_64gmj"]
@@ -114,9 +115,9 @@ shape = SubResource("RectangleShape2D_wxut5")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(150, 75)
-offset_left = -66.0
+offset_left = -89.0
 offset_top = -542.0
-offset_right = 84.0
+offset_right = 61.0
 offset_bottom = -467.0
 
 [node name="Title" type="Label" parent="Panel"]
@@ -132,11 +133,14 @@ Survivors"
 horizontal_alignment = 1
 
 [node name="CompletedUnitCounters" type="BoxContainer" parent="."]
-offset_left = -56.0
+offset_left = -96.0
 offset_top = -459.0
-offset_right = 103.0
+offset_right = 63.0
 offset_bottom = -331.0
 vertical = true
+
+[node name="PreviewFinishCounter" parent="CompletedUnitCounters" instance=ExtResource("5_4er6s")]
+layout_mode = 2
 
 [node name="DebugInfo" type="Node2D" parent="."]
 

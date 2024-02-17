@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://f3mjubew8bl6"]
+[gd_scene load_steps=6 format=3 uid="uid://f3mjubew8bl6"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_rlvhh"]
 [ext_resource type="PackedScene" uid="uid://deohxbftxfqrr" path="res://App/Scenes/Entities/Units/Crab/Crab.tscn" id="2_a8227"]
 [ext_resource type="PackedScene" uid="uid://jkq4w83413kb" path="res://App/Scenes/Entities/Units/Fish/Fish.tscn" id="3_i0rtt"]
 [ext_resource type="PackedScene" uid="uid://cgd8xhw13e1wa" path="res://App/Scenes/Entities/Units/Urchin/Urchin.tscn" id="4_nfgyh"]
-[ext_resource type="AudioStream" uid="uid://bl2utd3tyx5jb" path="res://Assets/Music/Crab_Craze_Demo_2.ogg" id="5_qm0eg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xdpgx"]
 resource_local_to_scene = true
@@ -27,10 +26,9 @@ position = Vector2(190, 316)
 [node name="Urchin" parent="." index="7" instance=ExtResource("4_nfgyh")]
 position = Vector2(195, 200)
 
-[node name="Audio" type="Node2D" parent="." index="12"]
+[node name="Audio2" type="Node2D" parent="." index="12"]
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio" index="0"]
-stream = ExtResource("5_qm0eg")
 volume_db = -10.0
 autoplay = true
 

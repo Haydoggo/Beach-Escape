@@ -22,6 +22,7 @@ ProjectUiSoundController="res://Extras/Scenes/Autoloads/ProjectUISoundController
 ProjectLevelLoader="res://Extras/Scenes/Autoloads/ProjectLevelLoader.tscn"
 RuntimeLogger="res://Extras/Scripts/RuntimeLogger.gd"
 Globals="*res://App/Globals.gd"
+TitleMusic="*res://Extras/Scenes/Autoloads/TitleMusic.tscn"
 
 [display]
 

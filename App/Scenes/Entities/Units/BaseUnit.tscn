@@ -45,6 +45,7 @@ script = ExtResource("4_mhi5m")
 shape = SubResource("CircleShape2D_ll5tj")
 
 [node name="AttackRegion" type="Area2D" parent="."]
+monitorable = false
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_3aksf")]
 
@@ -74,5 +75,11 @@ gravity = Vector2(0, 500)
 initial_velocity_min = 500.0
 initial_velocity_max = 500.0
 color = Color(1, 0, 0, 1)
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="SFX"]
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="SFX"]
 
 [editable path="HealthComponent"]

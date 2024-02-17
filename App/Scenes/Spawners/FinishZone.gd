@@ -9,6 +9,8 @@ var State = States.WAITING
 var arrived_units = {} # key is String name, value is int count
 
 func _ready() -> void:
+	$CompletedUnitCounters/PreviewFinishCounter.free()
+	Globals.arrived_units = arrived_units
 	for unit_info in Globals.unit_metadata:
 		arrived_units[unit_info.name] = 0
 	for unit_count in level.required_units_for_win:
@@ -16,6 +18,7 @@ func _ready() -> void:
 		new_unit_counter.required_unit_count = unit_count.count
 		new_unit_counter.activate(unit_count.unit_info)
 		$CompletedUnitCounters.add_child(new_unit_counter)
+		await get_tree().create_timer(0.3).timeout
 
 func _on_area_entered(area):
 	if area.owner != null and area.owner.is_in_group("Units"):
@@ -45,9 +48,8 @@ func _process(_delta):
 					SceneLoader.load_scene("res://App/Scenes/CutScenes/procreate_acquire_new_units.tscn")
 				#SceneLoader.load_scene(next_scene_path)
 			else:
-				print("Very sad, you lose :(((")
-				# TODO: send player to a lose screen
-				SceneLoader.reload_current_scene()
+				await get_tree().create_timer(1).timeout
+				SceneLoader.load_scene("res://App/Scenes/Menus/EndGameScreens/LoseScreen.tscn")
 
 
 func has_enough_units_to_win() -> bool:

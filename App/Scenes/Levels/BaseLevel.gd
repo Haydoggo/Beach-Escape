@@ -32,6 +32,8 @@ func _enter_tree() -> void:
 			current_available_units.append(unit_count.duplicate())
 	
 func _ready() -> void:
+	Globals.current_level_path = scene_file_path
+	Globals.current_requirements = required_units_for_win # for lose screen
 	friendly_unit_spawner = find_child("FriendlyUnitSpawner")
 	user_instructions = find_child("HelpSystem")
 	#unit_stats_card = find_child("UnitInfoCard")
@@ -67,11 +69,9 @@ func add_unit_buttons():
 
 func select_first_available_button():
 	# added to prevent selecting invalid buttons
-	var button_selected : UnitButton = null
 	for button in unit_buttons.get_children():
 		if is_instance_valid(button) and button is UnitButton and button.unit_count.count > 0:
 			button.select()
-			button_selected = button
 			return
 	
 func remove_dummy_buttons():
