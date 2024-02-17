@@ -51,6 +51,9 @@ libraries = {
 "": SubResource("AnimationLibrary_x0gos")
 }
 
+[node name="AttackRegion" parent="." index="4"]
+monitorable = false
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRegion" index="0"]
 shape = SubResource("CircleShape2D_013ur")
 
@@ -58,3 +61,5 @@ shape = SubResource("CircleShape2D_013ur")
 
 [node name="Spawn" type="AudioStreamPlayer2D" parent="Audio" index="0"]
 stream = SubResource("AudioStreamRandomizer_4kswu")
+
+[editable path="HealthComponent"]

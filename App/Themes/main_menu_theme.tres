@@ -55,3 +55,6 @@ Button/styles/focus = SubResource("StyleBoxTexture_0iqs1")
 Button/styles/hover = SubResource("StyleBoxTexture_10ron")
 Button/styles/normal = SubResource("StyleBoxTexture_a8jdk")
 Button/styles/pressed = SubResource("StyleBoxTexture_372gj")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.843137)
+RichTextLabel/constants/shadow_offset_x = 2
+RichTextLabel/constants/shadow_offset_y = 2

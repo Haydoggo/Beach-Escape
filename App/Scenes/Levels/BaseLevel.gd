@@ -5,6 +5,7 @@ const UNIT_COUNT = &"unit_info"
 const UNIT_BUTTON = preload("res://App/Scenes/Levels/UnitButton.tscn")
 
 @export var available_units : Array[UnitCount]
+var current_available_units : Array[UnitCount]
 @export var required_units_for_win : Array[UnitCount]
 
 signal last_unit_sent()
@@ -26,10 +27,8 @@ func _init():
 	Globals.current_level = self
 
 func _enter_tree() -> void:
-	# annoying workaround to allow reloading these values on scene reload
-	for i in available_units.size():
-		if is_instance_valid(available_units[i]):
-			available_units[i] = available_units[i].duplicate()
+	for unit_count in available_units:
+		current_available_units.append(unit_count.duplicate())
 	
 func _ready() -> void:
 	friendly_unit_spawner = find_child("FriendlyUnitSpawner")
@@ -54,10 +53,10 @@ func add_unit_buttons():
 	button_hover_text_popup = find_child("ButtonHoverTextPopup")
 	remove_dummy_buttons() # dummy button left in for ui sizing in inspector
 	var shortcut_keycode = KEY_1
-	if available_units.size() == 0:
+	if current_available_units.size() == 0:
 		generate_available_units_from_global()
 
-	for unit_count in available_units:
+	for unit_count in current_available_units:
 		if unit_count and unit_count.count > 0:
 			add_unit_button(unit_count, shortcut_keycode)
 			shortcut_keycode = (shortcut_keycode + 1) as Key
@@ -87,7 +86,7 @@ func generate_available_units_from_global():
 			var new_unit_count = UnitCount.new()
 			new_unit_count.unit_info = unit_type
 			new_unit_count.count = Globals.surviving_units[unit_type.name]
-			available_units.push_back(new_unit_count)
+			current_available_units.push_back(new_unit_count)
 		
 
 func add_unit_button(unit_count : UnitCount, shortcut_keycode : int):

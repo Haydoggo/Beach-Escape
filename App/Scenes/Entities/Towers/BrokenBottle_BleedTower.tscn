@@ -1,15 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://bch3hc5ug6j73"]
+[gd_scene load_steps=17 format=3 uid="uid://bch3hc5ug6j73"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/StaticTrap_OnTick.gd" id="1_wc1qe"]
-[ext_resource type="Texture2D" uid="uid://bp7qrxlcv8pdu" path="res://Assets/Images/placeholder/broken_bottle.png" id="2_kcqf1"]
+[ext_resource type="Texture2D" uid="uid://bme8stfrmg1ty" path="res://Assets/Images/placeholder/campfire.png" id="2_mec6g"]
 [ext_resource type="PackedScene" uid="uid://nbtvtnucj37y" path="res://App/Scenes/Entities/Components/drop_shadow.tscn" id="3_2yfj0"]
 [ext_resource type="Texture2D" uid="uid://b63jhcpo0cgt3" path="res://Assets/Images/Towers/06_Hook_Rope_line2D.png" id="4_60a27"]
 [ext_resource type="PackedScene" uid="uid://bu4vg8os8fnp4" path="res://App/Scenes/Entities/Components/Weapons/persistent_stationary_weapon.tscn" id="5_8h4yb"]
+[ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="6_cewpx"]
 [ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="6_ltnqm"]
 [ext_resource type="PackedScene" uid="uid://bu3jbthd6q22s" path="res://App/Scenes/Entities/Components/relocate_at_intervals.tscn" id="7_0clo5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gafwi"]
 atlas = ExtResource("4_60a27")
+
+[sub_resource type="Resource" id="Resource_j7c8m"]
+script = ExtResource("6_cewpx")
+damage_type = 3
+damage = 0.0
+payload_scene_path = ""
 
 [sub_resource type="Animation" id="Animation_iqrtq"]
 length = 0.001
@@ -66,7 +73,7 @@ animation_player = NodePath("AnimationPlayer")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2, -29)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_kcqf1")
+texture = ExtResource("2_mec6g")
 hframes = 2
 
 [node name="Shadow" parent="Sprite2D" instance=ExtResource("3_2yfj0")]
@@ -89,6 +96,7 @@ end_cap_mode = 2
 [node name="Weapons" type="Node2D" parent="Components"]
 
 [node name="PersistentStationaryWeapon" parent="Components/Weapons" instance=ExtResource("5_8h4yb")]
+attack_packet = SubResource("Resource_j7c8m")
 
 [node name="HoverPopupInfo" parent="Components" instance=ExtResource("6_ltnqm")]
 

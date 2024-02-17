@@ -17,6 +17,31 @@ custom_minimum_size = Vector2(0, 1080)
 
 [node name="RichTextLabel" parent="ScrollContainer/VBoxContainer" index="1"]
 custom_minimum_size = Vector2(1900, 0)
+text = "[center]
+[font_size=48]Collaborators[/font_size]
+
+[font_size=48]Diarmuid - Lead Design[/font_size]
+[font_size=48]Hayden - Code[/font_size]
+[font_size=48]plexsoup - Code[/font_size]
+[font_size=48]KingRonnocJ - Audio[/font_size]
+[font_size=48]Bob the Seagull - Visual Art[/font_size]
+
+
+[font_size=32]Godot Game Template[/font_size]
+Author: [url=https://github.com/Maaack]Marek Belski[/url]  
+Source: [url=https://github.com/Maaack/Godot-Game-Template]github: Godot-Game-Template[/url]  
+License: [url=LICENSE.txt]MIT License[/url]  
+
+[font_size=48]Tools[/font_size]
+[font_size=24]Godot[/font_size]
+Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
+Source: [url=https://godotengine.org/]godotengine.org[/url]  
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
+
+[font_size=24]Git[/font_size]
+Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
+Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
+License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url][/center]"
 
 [node name="FooterSpace" parent="ScrollContainer/VBoxContainer" index="2"]
 custom_minimum_size = Vector2(0, 1080)

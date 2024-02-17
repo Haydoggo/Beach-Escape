@@ -1,14 +1,23 @@
-[gd_resource type="Resource" script_class="UnitInfo" load_steps=3 format=3 uid="uid://che77ris4hjg"]
+[gd_resource type="Resource" script_class="UnitInfo" load_steps=5 format=3 uid="uid://che77ris4hjg"]
 
 [ext_resource type="Texture2D" uid="uid://c2h2fk543mv8m" path="res://Assets/Images/Units/09_Octopus.png" id="1_ryd7i"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/UnitInfo.gd" id="1_ubwxy"]
+[ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_0t6pc"]
+
+[sub_resource type="Resource" id="Resource_he2lb"]
+script = ExtResource("2_0t6pc")
+damage_type = 0
+damage = 2.08165e-12
+payload_scene_path = ""
 
 [resource]
 script = ExtResource("1_ubwxy")
 name = "Octopus"
 description = "We call him, Grabby!"
+movement_description = ""
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_ryd7i")
 health = 80
 moisture = 4
+melee_attack = SubResource("Resource_he2lb")
 packed_scene_path = "res://App/Scenes/Entities/Units/Octopus/Octopus.tscn"
