@@ -6,7 +6,7 @@ func _ready() -> void:
 	
 	for unit_count in Globals.current_requirements:
 		var counter = COUNTER_SCENE.instantiate()
-		$Units.add_child(counter)
+		%Units.add_child(counter)
 		counter.unit_count = Globals.arrived_units[unit_count.unit_info.name]
 		counter.required_unit_count = unit_count.count
 		counter.activate(unit_count.unit_info)

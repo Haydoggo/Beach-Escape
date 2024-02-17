@@ -19,61 +19,18 @@ script = ExtResource("2_yxmeu")
 [node name="Backdrop" parent="." instance=ExtResource("1_7ctk8")]
 layout_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 576.0
-offset_top = 262.0
-offset_right = 1177.0
-offset_bottom = 701.0
-texture = ExtResource("3_tlki6")
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 96.0
+grow_horizontal = 2
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 728.0
-offset_top = 345.0
-offset_right = 1029.0
-offset_bottom = 474.0
-theme_override_fonts/font = ExtResource("4_esq66")
-theme_override_font_sizes/font_size = 64
-text = "Level failed"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 622.0
-offset_top = 437.0
-offset_right = 1122.0
-offset_bottom = 566.0
-theme_override_fonts/font = ExtResource("4_esq66")
-theme_override_font_sizes/font_size = 32
-text = "You didn't free all the
-required fishes"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Buttons" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 641.0
-offset_top = 577.0
-offset_right = 1111.0
-offset_bottom = 678.0
-
-[node name="Retry" type="Button" parent="Buttons"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
 layout_mode = 2
-text = "Retry"
 
-[node name="Menu" type="Button" parent="Buttons"]
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/MarginContainer"]
 layout_mode = 2
-text = "Menu
-"
-
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = 214.0
-offset_top = 8.0
-offset_right = 1545.0
-offset_bottom = 245.0
 texture = ExtResource("3_tlki6")
 region_rect = Rect2(0, 0, 458, 500)
 patch_margin_left = 48
@@ -81,13 +38,85 @@ patch_margin_top = 48
 patch_margin_right = 48
 patch_margin_bottom = 48
 
-[node name="Units" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 272.0
-offset_top = 72.0
-offset_right = 1481.0
-offset_bottom = 178.0
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="Units" type="HBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
 alignment = 1
 
-[connection signal="pressed" from="Buttons/Retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="Buttons/Menu" to="." method="_on_menu_pressed"]
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPanel" type="Control" parent="CenterContainer2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2/MainPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.5
+offset_top = -250.0
+offset_right = 300.5
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_tlki6")
+
+[node name="Label" type="Label" parent="CenterContainer2/MainPanel/TextureRect"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 83.0
+offset_right = 453.0
+offset_bottom = 212.0
+theme_override_fonts/font = ExtResource("4_esq66")
+theme_override_font_sizes/font_size = 64
+text = "Level failed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer2/MainPanel/TextureRect"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 175.0
+offset_right = 546.0
+offset_bottom = 304.0
+theme_override_fonts/font = ExtResource("4_esq66")
+theme_override_font_sizes/font_size = 32
+text = "You didn't free all the
+required fishes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="CenterContainer2/MainPanel/TextureRect"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 315.0
+offset_right = 537.0
+offset_bottom = 416.0
+
+[node name="Retry" type="Button" parent="CenterContainer2/MainPanel/TextureRect/Buttons"]
+layout_mode = 2
+text = "Retry"
+
+[node name="Menu" type="Button" parent="CenterContainer2/MainPanel/TextureRect/Buttons"]
+layout_mode = 2
+text = "Menu
+"
+
+[connection signal="pressed" from="CenterContainer2/MainPanel/TextureRect/Buttons/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="CenterContainer2/MainPanel/TextureRect/Buttons/Menu" to="." method="_on_menu_pressed"]
