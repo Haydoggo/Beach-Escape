@@ -62,9 +62,7 @@ func do_movement():
 			attack_tower(col.owner)
 			stopped = true
 	
-	if stopped:
-		do_drying()
-	else:
+	if not stopped:
 		move_forward(next_position)
 	
 	path_index += 1
@@ -96,7 +94,8 @@ func on_blocked(target_position : Vector2):
 	tween.tween_property(self, "global_position", target_position, 0.15).set_ease(Tween.EASE_IN)
 	tween.tween_callback(spawn_blocked_fx)
 	tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
-	await tween.finished
+	tween.tween_callback(do_drying)
+
 
 
 func attack_tower(tower):
@@ -109,6 +108,7 @@ func attack_tower(tower):
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "global_position", tower.global_position, 0.15).set_ease(Tween.EASE_IN)
 	tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
+	tween.tween_callback(do_drying)
 
 
 func do_drying():
