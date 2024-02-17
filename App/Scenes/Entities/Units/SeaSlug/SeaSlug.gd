@@ -47,6 +47,5 @@ func do_movement():
 		#do_drying()
 	else:
 		move_forward(next_position)
-	
-	path_index += 1
-	path_index %= unit_info.path.size()
+		path_index += 1
+		path_index %= unit_info.path.size()

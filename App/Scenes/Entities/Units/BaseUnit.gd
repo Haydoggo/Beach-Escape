@@ -65,9 +65,10 @@ func do_movement():
 	
 	if not stopped:
 		move_forward(next_position)
+		path_index += 1
+		path_index %= unit_info.path.size()
 	
-	path_index += 1
-	path_index %= unit_info.path.size()
+	
 
 
 func get_objects_in_path(next_position) -> Array[Node]:
