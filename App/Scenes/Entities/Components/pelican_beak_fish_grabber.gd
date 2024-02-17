@@ -48,8 +48,9 @@ func hurt_yourself(damage):
 	if owner.get("health") != null:
 		# might need to grab health from the health component instead.
 		if owner.health < damage:
+			if captive_fish != null:
+				released.emit()
 			# die and spawn a fish, with 20 less health
-			pass
 	if owner.has_method("_on_hit"):
 		var ap = AttackPacket.new()
 		ap.damage = damage

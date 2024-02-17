@@ -67,7 +67,6 @@ size = Vector2(96, 96)
 
 [node name="BrokenBottleBleedTower" type="Node2D" node_paths=PackedStringArray("animation_player") groups=["EnemyTraps"]]
 script = ExtResource("1_wc1qe")
-description = "Glass Bottle: injury from this causes persistent bleed damage."
 animation_player = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

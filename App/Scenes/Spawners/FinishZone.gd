@@ -7,7 +7,9 @@ enum States { WAITING, LISTENING }
 var State = States.WAITING
 @onready var level : BaseLevel = owner
 var arrived_units = {} # key is String name, value is int count
-
+var description = "Ocean. This is your goal. Get your fish here."
+	
+	
 func _ready() -> void:
 	$CompletedUnitCounters/PreviewFinishCounter.free()
 	Globals.arrived_units = arrived_units

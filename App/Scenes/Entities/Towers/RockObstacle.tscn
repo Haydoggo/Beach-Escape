@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3wt4bpu0wwo1"]
+[gd_scene load_steps=9 format=3 uid="uid://d3wt4bpu0wwo1"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/RockObstacle.gd" id="1_uo1ww"]
 [ext_resource type="Texture2D" uid="uid://bd8gk5qunher4" path="res://Assets/Images/Towers/04_Rock.png" id="2_620xl"]
 [ext_resource type="PackedScene" uid="uid://nbtvtnucj37y" path="res://App/Scenes/Entities/Components/drop_shadow.tscn" id="3_1ia84"]
+[ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="4_viuse"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0g15"]
 size = Vector2(64, 64)
@@ -70,6 +71,7 @@ _data = {
 
 [node name="RockObstacle" type="Node2D" groups=["EnemyTowers"]]
 script = ExtResource("1_uo1ww")
+description = "Rock Obstacle: Indestructible."
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.08165e-12, -12)
@@ -87,3 +89,5 @@ shape = SubResource("RectangleShape2D_m0g15")
 libraries = {
 "": SubResource("AnimationLibrary_xobfb")
 }
+
+[node name="HoverPopupInfo" parent="." instance=ExtResource("4_viuse")]

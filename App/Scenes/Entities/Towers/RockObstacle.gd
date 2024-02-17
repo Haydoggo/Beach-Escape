@@ -1,7 +1,7 @@
 ## Indestructible Obstacle
 
 extends Node2D
-
+@export var description = "Obstruction"
 
 
 

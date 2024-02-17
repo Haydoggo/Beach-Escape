@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdrk8mkxgd30e"]
+[gd_scene load_steps=12 format=3 uid="uid://cdrk8mkxgd30e"]
 
 [ext_resource type="Script" path="res://App/Scenes/Spawners/FinishZone.gd" id="1_14yyo"]
 [ext_resource type="Texture2D" uid="uid://cppte47udf4ni" path="res://Assets/Images/placeholder/shoreline3.png" id="2_upb64"]
 [ext_resource type="Texture2D" uid="uid://d3ifqn0behxb1" path="res://Assets/Images/Environment/01_Water_A.png" id="3_3ll7m"]
 [ext_resource type="Texture2D" uid="uid://dkh7qhymq08ve" path="res://Assets/Images/Environment/00_Foam_A.png" id="3_4vmuw"]
 [ext_resource type="PackedScene" uid="uid://dtamyip8lqavp" path="res://App/Scenes/Spawners/finish_counter_icon.tscn" id="5_4er6s"]
+[ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="6_4n7f3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxut5"]
 size = Vector2(446, 1080)
@@ -70,6 +71,9 @@ _data = {
 "RESET": SubResource("Animation_8yda3"),
 "Wave": SubResource("Animation_0usv0")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5slj"]
+size = Vector2(439, 1080)
 
 [node name="FinishZone" type="Area2D"]
 script = ExtResource("1_14yyo")
@@ -162,4 +166,13 @@ libraries = {
 autoplay = "Wave"
 speed_scale = 0.2
 
+[node name="HoverPopupInfo" parent="." instance=ExtResource("6_4n7f3")]
+position = Vector2(140, 2.08165e-12)
+
+[node name="CollisionShape2D" parent="HoverPopupInfo/Area2D" index="0"]
+position = Vector2(19.5, -2.08165e-12)
+shape = SubResource("RectangleShape2D_u5slj")
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+
+[editable path="HoverPopupInfo"]
