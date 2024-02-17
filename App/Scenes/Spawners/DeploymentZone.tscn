@@ -19,7 +19,7 @@ corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 
 [sub_resource type="Theme" id="Theme_y8hwc"]
-Label/colors/font_color = Color(0.737255, 1, 1, 1)
+Label/colors/font_color = Color(1, 1, 1, 1)
 Label/font_sizes/font_size = 32
 Label/fonts/font = ExtResource("2_h6but")
 Panel/styles/panel = SubResource("StyleBoxFlat_qfr2i")

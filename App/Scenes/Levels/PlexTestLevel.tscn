@@ -46,6 +46,9 @@ size = Vector2(384, 512)
 available_units = Array[ExtResource("2_o3j3f")]([SubResource("Resource_cjst4"), SubResource("Resource_70kxi"), SubResource("Resource_fikl7"), SubResource("Resource_bjcpm")])
 required_units_for_win = Array[ExtResource("2_o3j3f")]([SubResource("Resource_nmxui")])
 
+[node name="PlaySpace" parent="." index="1"]
+offset_bottom = 713.0
+
 [node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
 shape = SubResource("RectangleShape2D_rdvsl")
 
