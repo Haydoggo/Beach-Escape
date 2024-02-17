@@ -45,6 +45,11 @@ func _on_tick():
 			release_fish()
 
 func hurt_yourself(damage):
+	if owner.get("health") != null:
+		# might need to grab health from the health component instead.
+		if owner.health < damage:
+			# die and spawn a fish, with 20 less health
+			pass
 	if owner.has_method("_on_hit"):
 		var ap = AttackPacket.new()
 		ap.damage = damage
