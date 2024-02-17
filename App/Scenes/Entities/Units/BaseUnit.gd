@@ -7,7 +7,7 @@ class_name BaseUnit extends Node2D
 @onready var swipe_attack_fx: Path2D = $SwipeAttackFX
 @onready var blood_fx: CPUParticles2D = $BloodFX
 
-
+var squashers : Array[Squasher]
 var path_index := 0 # tracks the index of the path 
 var moisture : int
 var is_bleeding = false
@@ -16,6 +16,8 @@ var slow_counter = 0
 var is_captive = false
 
 func _ready() -> void:
+	squashers.append_array(find_children("", "Squasher"))
+	
 	health_component.health_max = unit_info.health
 	health_component.health = unit_info.health
 	health_component.update_health_bar()
@@ -76,9 +78,13 @@ func get_objects_in_path(next_position) -> Array[Node]:
 
 
 func move_forward(pos : Vector2):
+	if pos == global_position:
+		return
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "global_position", pos, 0.3)
+	for squasher in squashers:
+		tween.parallel().tween_callback(squasher.do_squash)
 
 
 func on_blocked(target_position : Vector2):
