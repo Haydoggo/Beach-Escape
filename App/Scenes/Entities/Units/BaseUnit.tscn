@@ -76,10 +76,4 @@ initial_velocity_min = 500.0
 initial_velocity_max = 500.0
 color = Color(1, 0, 0, 1)
 
-[node name="SFX" type="Node" parent="."]
-
-[node name="Spawn" type="AudioStreamPlayer2D" parent="SFX"]
-
-[node name="Attack" type="AudioStreamPlayer2D" parent="SFX"]
-
 [editable path="HealthComponent"]

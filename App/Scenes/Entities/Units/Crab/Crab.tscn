@@ -1,22 +1,33 @@
-[gd_scene load_steps=9 format=3 uid="uid://deohxbftxfqrr"]
+[gd_scene load_steps=13 format=3 uid="uid://deohxbftxfqrr"]
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_m6734"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Crab/Crab.gd" id="2_o7mpy"]
 [ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="3_ket8w"]
 [ext_resource type="Texture2D" uid="uid://5u580j055tun" path="res://Assets/Images/expanded/Entities/Fish/04_Crab_Basic.png" id="4_eaw8h"]
 [ext_resource type="PackedScene" uid="uid://cg5u8f8i41nqr" path="res://App/Scenes/Props/SwipeAttackFX.tscn" id="5_mrgbq"]
-
-[sub_resource type="Animation" id="Animation_k13ip"]
-resource_name = "spawn"
-length = 0.5
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhtjx"]
-_data = {
-"spawn": SubResource("Animation_k13ip")
-}
+[ext_resource type="AudioStream" uid="uid://bwaai1fqme3sj" path="res://Assets/SFX/Spawn/SFX_CrabDeploy_01.wav" id="6_15uyw"]
+[ext_resource type="AudioStream" uid="uid://bjjararbs5o2o" path="res://Assets/SFX/Spawn/SFX_CrabDeploy_02.wav" id="7_spf48"]
+[ext_resource type="AudioStream" uid="uid://fr5nj8lo7qln" path="res://Assets/SFX/Attack/SFX_CrabAttack_01.wav" id="8_x2ocp"]
+[ext_resource type="AudioStream" uid="uid://ug7q8nelkebc" path="res://Assets/SFX/Attack/SFX_CrabAttack_02.wav" id="9_kt43y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d86bo"]
 size = Vector2(42, 236)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hwal1"]
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("6_15uyw")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_spf48")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cuw0j"]
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("8_x2ocp")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("9_kt43y")
+stream_1/weight = 1.0
 
 [node name="Crab" instance=ExtResource("1_m6734")]
 script = ExtResource("2_o7mpy")
@@ -26,23 +37,21 @@ unit_info = ExtResource("3_ket8w")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_eaw8h")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
-libraries = {
-"": SubResource("AnimationLibrary_vhtjx")
-}
-
-[node name="Hitbox" parent="." index="3"]
+[node name="Hitbox" parent="." index="2"]
 monitoring = false
-
-[node name="AttackRegion" parent="." index="4"]
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRegion" index="0"]
 shape = SubResource("RectangleShape2D_d86bo")
 
-[node name="TopSwipeAttackFX" parent="." index="5" instance=ExtResource("5_mrgbq")]
+[node name="TopSwipeAttackFX" parent="." index="4" instance=ExtResource("5_mrgbq")]
 
-[node name="BottomSwipeAttackFX" parent="." index="6" instance=ExtResource("5_mrgbq")]
+[node name="BottomSwipeAttackFX" parent="." index="5" instance=ExtResource("5_mrgbq")]
 scale = Vector2(1, -1)
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="." index="10"]
+stream = SubResource("AudioStreamRandomizer_hwal1")
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="." index="11"]
+stream = SubResource("AudioStreamRandomizer_cuw0j")
 
 [editable path="HealthComponent"]

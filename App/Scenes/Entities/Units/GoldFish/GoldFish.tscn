@@ -1,13 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://7yta8d7hiwii"]
+[gd_scene load_steps=12 format=3 uid="uid://7yta8d7hiwii"]
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_ns8jx"]
 [ext_resource type="Resource" uid="uid://dkoxp7v5utuf7" path="res://App/Scenes/Entities/Units/GoldFish/GoldFishInfo.tres" id="2_wctia"]
 [ext_resource type="Texture2D" uid="uid://by7ruofs24557" path="res://Assets/Images/expanded/Entities/Fish/05_Fish_Gold.png" id="3_b1cv2"]
 [ext_resource type="Texture2D" uid="uid://ch0ay1c6m0fiu" path="res://Assets/Images/Particles/Sand/Sand_01.png" id="4_tg0xx"]
+[ext_resource type="AudioStream" uid="uid://d0jg7maanyg5s" path="res://Assets/SFX/Spawn/SFX_FishDeploy_01.wav" id="5_wiwl7"]
+[ext_resource type="AudioStream" uid="uid://besn8slgpfjqj" path="res://Assets/SFX/Spawn/SFX_FishDeploy_02.wav" id="6_cdh70"]
+[ext_resource type="AudioStream" uid="uid://dl47k2dampcg3" path="res://Assets/SFX/Attack/SFX_FishAttack_01.wav" id="7_igj8m"]
+[ext_resource type="AudioStream" uid="uid://3rvfvfcaof07" path="res://Assets/SFX/Attack/SFX_FishAttack_02.wav" id="8_71cdh"]
 
 [sub_resource type="Curve" id="Curve_kqh36"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.467606, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q4esc"]
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("5_wiwl7")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_cdh70")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_duuxh"]
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("7_igj8m")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("8_71cdh")
+stream_1/weight = 1.0
 
 [node name="GoldFish" instance=ExtResource("1_ns8jx")]
 unit_info = ExtResource("2_wctia")
@@ -30,3 +50,11 @@ angle_min = 45.0
 angle_max = 45.0
 scale_amount_min = 0.5
 scale_amount_curve = SubResource("Curve_kqh36")
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="." index="9"]
+stream = SubResource("AudioStreamRandomizer_q4esc")
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="." index="10"]
+stream = SubResource("AudioStreamRandomizer_duuxh")
+
+[editable path="HealthComponent"]

@@ -24,8 +24,7 @@ func _ready() -> void:
 	health_component.health = unit_info.health
 	health_component.update_health_bar()
 	
-	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("spawn"):
-		$AnimationPlayer.play("spawn")
+	$Spawn.play()
 
 
 # override this method for path generation
@@ -118,6 +117,7 @@ func attack_tower(tower):
 		tower._on_hit(unit_info.melee_attack)
 	swipe_attack_fx.look_at(tower.global_position)
 	swipe_attack_fx.swipe()
+	$Attack.play()
 	
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)

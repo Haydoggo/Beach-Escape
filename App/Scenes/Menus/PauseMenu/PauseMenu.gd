@@ -57,6 +57,7 @@ func _on_options_button_pressed():
 func _on_main_menu_button_pressed():
 	%ConfirmMainMenu.popup_centered()
 	popup_open = %ConfirmMainMenu
+	TitleMusic.play_music()
 
 func _on_exit_button_pressed():
 	%ConfirmExit.popup_centered()
@@ -67,6 +68,7 @@ func _on_confirm_restart_confirmed():
 	InGameMenuController.close_menu()
 
 func _on_confirm_main_menu_confirmed():
+	
 	SceneLoader.load_scene(main_menu_scene)
 	InGameMenuController.close_menu()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

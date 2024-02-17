@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bhu4081jn00fj"
-path="res://.godot/imported/SFX_UrchinDeploy_02.wav-b535ce6f4ff52cd4df98478ac65280e7.sample"
+path="res://.godot/imported/SFX_PufferDeploy_02.wav-b20ed1e9d899e6843c318c5344eaabd8.sample"
 
 [deps]
 
-source_file="res://Assets/SFX/Spawn/SFX_UrchinDeploy_02.wav"
-dest_files=["res://.godot/imported/SFX_UrchinDeploy_02.wav-b535ce6f4ff52cd4df98478ac65280e7.sample"]
+source_file="res://Assets/SFX/Spawn/SFX_PufferDeploy_02.wav"
+dest_files=["res://.godot/imported/SFX_PufferDeploy_02.wav-b20ed1e9d899e6843c318c5344eaabd8.sample"]
 
 [params]
 
