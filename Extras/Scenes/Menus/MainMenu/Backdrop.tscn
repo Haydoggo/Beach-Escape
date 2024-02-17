@@ -67,10 +67,10 @@ speed = 55.0
 
 [node name="Island" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 330.0
-offset_right = 1589.0
-offset_bottom = 1558.0
+offset_left = 4.0
+offset_top = 332.0
+offset_right = 1491.0
+offset_bottom = 1560.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_npmbq")
 
@@ -87,30 +87,30 @@ expand_mode = 3
 [node name="Urchin" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_left = 459.0
-offset_top = 598.0
-offset_right = 591.35
-offset_bottom = 726.0
+offset_left = 331.0
+offset_top = 600.0
+offset_right = 463.35
+offset_bottom = 728.0
 texture = ExtResource("5_06hir")
 expand_mode = 3
 
 [node name="Fish" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_left = 313.0
-offset_top = 598.0
-offset_right = 445.35
-offset_bottom = 726.0
+offset_left = 185.0
+offset_top = 600.0
+offset_right = 317.35
+offset_bottom = 728.0
 texture = ExtResource("6_yyyuq")
 expand_mode = 3
 
 [node name="Crab" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_left = 573.0
-offset_top = 598.0
-offset_right = 701.0
-offset_bottom = 726.0
+offset_left = 445.0
+offset_top = 600.0
+offset_right = 573.0
+offset_bottom = 728.0
 texture = ExtResource("7_ebt1a")
 expand_mode = 3
 

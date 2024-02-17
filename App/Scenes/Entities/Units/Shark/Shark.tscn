@@ -17,5 +17,4 @@ texture = ExtResource("4_alv2k")
 [node name="HealthComponent" parent="." index="4"]
 visible = false
 
-[node name="MoistureIndicator" parent="." index="5"]
-visible = false
+[editable path="HealthComponent"]

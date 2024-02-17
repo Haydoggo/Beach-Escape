@@ -30,9 +30,6 @@ libraries = {
 "": SubResource("AnimationLibrary_x0gos")
 }
 
-[node name="AttackRegion" parent="." index="4"]
-monitorable = false
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRegion" index="0"]
 shape = SubResource("RectangleShape2D_vcrr4")
 
