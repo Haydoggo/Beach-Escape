@@ -17,7 +17,6 @@ options_packed_scene = ExtResource("2_3vb8r")
 layout_mode = 1
 
 [node name="TitleImage" parent="MarginContainer/VBoxContainer/TitlesMargin" index="0"]
-modulate = Color(1, 1, 1, 0.915575)
 custom_minimum_size = Vector2(0, 500)
 texture = ExtResource("6_2uvcj")
 
