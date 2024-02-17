@@ -14,6 +14,7 @@ var is_bleeding = false
 var is_slow = false
 var slow_counter = 0
 var is_captive = false
+var is_dying = false
 
 func _ready() -> void:
 	squashers.append_array(find_children("", "Squasher"))
@@ -35,7 +36,7 @@ func get_path_points(origin : Vector2) -> Array[Vector2]:
 
 
 func _on_tick():
-	if is_captive:
+	if is_captive or is_dying:
 		return
 	if is_bleeding:
 		do_drying()
@@ -88,6 +89,7 @@ func move_forward(pos : Vector2):
 
 
 func on_blocked(target_position : Vector2):
+	disable_collision_areas() # we know we're going to die on the rock so we don't want other attacks to hit
 	var spawn_blocked_fx = func():
 		var blocked_fx = preload("res://App/Scenes/Props/BlockedFX.tscn").instantiate()
 		add_sibling(blocked_fx)
@@ -97,7 +99,11 @@ func on_blocked(target_position : Vector2):
 	tween.tween_property(self, "global_position", target_position, 0.15).set_ease(Tween.EASE_IN)
 	tween.tween_callback(spawn_blocked_fx)
 	tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
-	tween.tween_callback(do_drying)
+	#tween.tween_callback(do_drying)
+	await tween.finished
+	health_component.health = 0 # don't do _on_hit to avoid red flash
+	health_component.update_health_bar()
+	begin_dying()
 
 
 
@@ -111,7 +117,7 @@ func attack_tower(tower):
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "global_position", tower.global_position, 0.15).set_ease(Tween.EASE_IN)
 	tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
-	tween.tween_callback(do_drying)
+	#tween.tween_callback(do_drying)
 
 
 func do_drying():
@@ -136,6 +142,13 @@ func _on_hit(attack_packet : AttackPacket):
 
 
 func begin_dying():
+	is_dying = true
+	disable_collision_areas()
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN).set_parallel()
+	tween.tween_property(self, "global_position", global_position + Vector2.UP * Globals.tile_size, 0.5)
+	tween.tween_property(self, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	await tween.finished
 	queue_free()
 
 
@@ -156,7 +169,7 @@ func _on_released(num_squares_to_move_forward, damage_on_release):
 	
 func hurt_yourself(damage):
 	var ap = AttackPacket.new()
-	ap.damage = 5
+	ap.damage = damage
 	_on_hit(ap)
 
 func disable_collision_areas():

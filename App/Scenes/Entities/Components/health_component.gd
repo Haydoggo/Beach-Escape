@@ -59,4 +59,7 @@ func set_max_health(value : float):
 
 func set_health(value : float):
 	health = clampf(value, 0, health_max)
+	if roundi(health) % HEALTH_PER_HEART != 0:
+		printerr("%s is on %d health, should be multiple of %d" %[owner.name, health, HEALTH_PER_HEART])
+		print_stack()
 
