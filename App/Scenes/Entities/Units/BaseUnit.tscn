@@ -45,6 +45,7 @@ script = ExtResource("4_mhi5m")
 shape = SubResource("CircleShape2D_ll5tj")
 
 [node name="AttackRegion" type="Area2D" parent="."]
+monitorable = false
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_3aksf")]
 

@@ -25,12 +25,13 @@ func on_blocked(target_position):
 func _on_hit(attack_packet : AttackPacket):
 	if attack_packet == PIT_ATTACK:
 		path_index = 1
+		
 	else:
 		super._on_hit(attack_packet)
 
 func tunnel_down():
 	animation_player.play("TunnelDown")
-	$Hitbox/CollisionShape2D.disabled = true
+	disable_collision_areas()
 	await get_tree().create_timer(0.4).timeout
 	super.move_forward(global_position + Vector2(128,0).rotated(rotation))
 	
@@ -38,7 +39,7 @@ func tunnel_down():
 func tunnel_up():
 	animation_player.play("TunnelUp")
 	await animation_player.animation_finished
-	$Hitbox/CollisionShape2D.disabled = false
+	enable_collision_areas()
 
 func do_drying():
 	pass
