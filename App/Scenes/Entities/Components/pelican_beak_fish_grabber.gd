@@ -9,7 +9,7 @@ extends Node2D
 var active : bool = false
 #var captive_fish : Array[BaseUnit] # removed per requirements. issue #26 may only capture a single fish
 var captive_fish : BaseUnit
-var damage_on_release : int = 20
+#var damage_on_release : int = 20
 var damage_per_tick : int = 20
 @export var sprite : AnimatedSprite2D
 @export var hold_duration : int = 3
@@ -40,6 +40,7 @@ func _on_tick():
 		if captive_fish and captive_fish.unit_info and captive_fish.unit_info.melee_attack:
 			var damage = captive_fish.unit_info.melee_attack.damage
 			hurt_yourself(damage)
+			# note, fish doesn't take damage _on_tick, they take all the accumulated tick damage _on_release. This is to prevent invisible units animating and triggering events
 		hold_ticks_remaining -= 1
 		#print("Pelican taking : ", damage, " damage.")
 		if hold_ticks_remaining == 0:
@@ -50,8 +51,7 @@ func hurt_yourself(damage):
 		# might need to grab health from the health component instead.
 		if owner.health < damage:
 			if captive_fish != null:
-				released.emit(global_position, damage_per_tick * (hold_duration-hold_ticks_remaining))
-			# die and spawn a fish, with 20 less health
+				release_fish() # just before you die
 	if owner.has_method("_on_hit"):
 		var ap = AttackPacket.new()
 		ap.damage = damage
@@ -103,9 +103,9 @@ func move_toward_fish_and_back(fish):
 	sprite.frame = 1
 
 
-func release_fish():
+func release_fish(): # after ticks elapsed
 	captive_fish = null
 	var location = global_position
-	released.emit(location, damage_on_release)
+	released.emit(location, damage_per_tick * (hold_duration - hold_ticks_remaining))
 	for connection in released.get_connections():
 		released.disconnect(connection["callable"])
