@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bbrsf73mu8mlb"
+path="res://.godot/imported/Beach Escape Title.ogg-6abc1a3776e9a04a836ab07ed23ecbea.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/Beach Escape Title.ogg"
+dest_files=["res://.godot/imported/Beach Escape Title.ogg-6abc1a3776e9a04a836ab07ed23ecbea.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=60.0
+beat_count=76
+bar_beats=4
