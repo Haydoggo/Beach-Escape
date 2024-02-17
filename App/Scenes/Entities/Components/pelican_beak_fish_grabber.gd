@@ -10,6 +10,7 @@ var active : bool = false
 #var captive_fish : Array[BaseUnit] # removed per requirements. issue #26 may only capture a single fish
 var captive_fish : BaseUnit
 var damage_on_release : int = 20
+var damage_per_tick : int = 20
 @export var sprite : AnimatedSprite2D
 @export var hold_duration : int = 3
 var hold_ticks_remaining : int = 0
@@ -36,10 +37,10 @@ func _on_tick():
 		if fish:
 			catch_fish(fish)
 	elif captive_fish != null and hold_ticks_remaining > 0:
-		hold_ticks_remaining -= 1
 		if captive_fish and captive_fish.unit_info and captive_fish.unit_info.melee_attack:
 			var damage = captive_fish.unit_info.melee_attack.damage
 			hurt_yourself(damage)
+		hold_ticks_remaining -= 1
 		#print("Pelican taking : ", damage, " damage.")
 		if hold_ticks_remaining == 0:
 			release_fish()
@@ -49,7 +50,7 @@ func hurt_yourself(damage):
 		# might need to grab health from the health component instead.
 		if owner.health < damage:
 			if captive_fish != null:
-				released.emit()
+				released.emit(global_position, damage_per_tick * (hold_duration-hold_ticks_remaining))
 			# die and spawn a fish, with 20 less health
 	if owner.has_method("_on_hit"):
 		var ap = AttackPacket.new()
@@ -104,7 +105,7 @@ func move_toward_fish_and_back(fish):
 
 func release_fish():
 	captive_fish = null
-	var num_squares_to_move_forward = 0
-	released.emit(num_squares_to_move_forward, damage_on_release)
+	var location = global_position
+	released.emit(location, damage_on_release)
 	for connection in released.get_connections():
 		released.disconnect(connection["callable"])

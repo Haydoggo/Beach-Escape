@@ -167,10 +167,11 @@ func _on_captured():
 	disable_collision_areas()
 	visible = false
 
-func _on_released(num_squares_to_move_forward, damage_on_release):
+func _on_released(location, damage_on_release):
 	is_captive = false
 	hurt_yourself(damage_on_release)
-	position = position + (Vector2.RIGHT * Globals.tile_size * num_squares_to_move_forward)
+	#position = position + (Vector2.RIGHT * Globals.tile_size * num_squares_to_move_forward)
+	global_position = location
 	enable_collision_areas()
 	visible = true
 	
