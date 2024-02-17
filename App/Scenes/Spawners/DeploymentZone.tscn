@@ -11,11 +11,7 @@ resource_local_to_scene = true
 size = Vector2(384, 768)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfr2i"]
-bg_color = Color(0.458824, 0.627451, 0.733333, 0.545098)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
+bg_color = Color(0.458824, 0.627451, 0.733333, 0.278431)
 border_color = Color(0.705882, 0.658824, 0.588235, 1)
 corner_radius_top_left = 32
 corner_radius_top_right = 32
@@ -57,6 +53,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="ColorRect" type="TextureRect" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0.443137)
 material = SubResource("CanvasItemMaterial_6ostm")
 offset_left = 17.0
