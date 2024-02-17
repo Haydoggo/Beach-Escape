@@ -15,6 +15,7 @@ var level_paths = [
 	"res://App/Scenes/Levels/Level0.tscn",
 	"res://App/Scenes/Levels/Level1.tscn",
 	"res://App/Scenes/Levels/Level2.tscn",
+	"res://App/Scenes/Levels/Level3.tscn",
 	"res://App/Scenes/Levels/FirstLevel.tscn",
 	"res://App/Scenes/Levels/SecondLevel.tscn",
 	"res://App/Scenes/CutScenes/win_screen.tscn"
