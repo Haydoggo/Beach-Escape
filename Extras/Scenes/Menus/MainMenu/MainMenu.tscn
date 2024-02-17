@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://sbluwaaplbsg"]
+[gd_scene load_steps=7 format=3 uid="uid://sbluwaaplbsg"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://App/Scenes/Menus/MainMenu/MainMenu.tscn" id="1_y2dvq"]
 [ext_resource type="Script" path="res://Extras/Scenes/Menus/MainMenu/MainMenu.gd" id="1_yww1j"]
 [ext_resource type="PackedScene" uid="uid://cnk2y3bx5fsin" path="res://Extras/Scenes/Menus/OptionsMenu/MasterOptionsMenu.tscn" id="2_3vb8r"]
 [ext_resource type="Theme" uid="uid://bagdchotk6suu" path="res://App/Themes/main_menu_theme.tres" id="2_xycat"]
 [ext_resource type="PackedScene" uid="uid://dwei0railfayx" path="res://Extras/Scenes/Menus/MainMenu/Backdrop.tscn" id="5_872w8"]
+[ext_resource type="Texture2D" uid="uid://dnkf721tpdmio" path="res://Assets/Images/UI/06_Title.png" id="6_2uvcj"]
 
 [node name="MainMenu" instance=ExtResource("1_y2dvq")]
 theme = ExtResource("2_xycat")
@@ -25,10 +26,13 @@ custom_minimum_size = Vector2(0, 500)
 texture = ExtResource("6_2uvcj")
 
 [node name="Title" parent="MarginContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="0"]
+visible = false
 text = "Beach Escape"
 
 [node name="SubTitle" parent="MarginContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="1"]
+visible = false
 text = "The Quest for Peace"
 
-[node name="MenuButtons" parent="MarginContainer/VBoxContainer/MenuMargin" index="0"]
-theme_override_constants/separation = 48
+[node name="TitleImage" parent="MarginContainer/VBoxContainer/TitlesMargin" index="1"]
+custom_minimum_size = Vector2(0, 500)
+texture = ExtResource("6_2uvcj")

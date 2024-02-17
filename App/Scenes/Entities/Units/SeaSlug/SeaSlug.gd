@@ -43,7 +43,8 @@ func do_movement():
 	
 	# then we try to move forward
 	if stopped:
-		do_drying()
+		pass
+		#do_drying()
 	else:
 		move_forward(next_position)
 	
