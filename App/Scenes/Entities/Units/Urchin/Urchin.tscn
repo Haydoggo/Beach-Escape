@@ -1,27 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgd8xhw13e1wa"]
+[gd_scene load_steps=8 format=3 uid="uid://cgd8xhw13e1wa"]
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_oafl0"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Urchin/Urchin.gd" id="2_sqjcq"]
 [ext_resource type="Resource" uid="uid://bs31lf1urfggr" path="res://App/Scenes/Entities/Units/Urchin/UrchinInfo.tres" id="3_v1dl2"]
 [ext_resource type="Texture2D" uid="uid://btnaun7tt8ydf" path="res://Assets/Images/expanded/Entities/Fish/03_Urchin.png" id="4_bhcd8"]
-[ext_resource type="AudioStream" uid="uid://csfnmqm7miu0j" path="res://Assets/SFX/Spawn/SFX_UrchinDeploy_01.wav" id="5_gh15k"]
-[ext_resource type="AudioStream" uid="uid://bhu4081jn00fj" path="res://Assets/SFX/Spawn/SFX_UrchinDeploy_02.wav" id="6_n732a"]
 
 [sub_resource type="Animation" id="Animation_0nnwn"]
 resource_name = "spawn"
 length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Audio/Spawn:playing")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x0gos"]
 _data = {
@@ -30,13 +16,6 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcrr4"]
 size = Vector2(22, 264)
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4kswu"]
-streams_count = 2
-stream_0/stream = ExtResource("5_gh15k")
-stream_0/weight = 1.0
-stream_1/stream = ExtResource("6_n732a")
-stream_1/weight = 1.0
 
 [node name="Urchin" instance=ExtResource("1_oafl0")]
 script = ExtResource("2_sqjcq")
@@ -56,10 +35,5 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRegion" index="0"]
 shape = SubResource("RectangleShape2D_vcrr4")
-
-[node name="Audio" type="Node2D" parent="." index="8"]
-
-[node name="Spawn" type="AudioStreamPlayer2D" parent="Audio" index="0"]
-stream = SubResource("AudioStreamRandomizer_4kswu")
 
 [editable path="HealthComponent"]

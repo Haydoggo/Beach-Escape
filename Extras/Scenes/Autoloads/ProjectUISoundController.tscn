@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc37235kj4384"]
+[gd_scene load_steps=4 format=3 uid="uid://cc37235kj4384"]
 
 [ext_resource type="Script" path="res://App/Scripts/UISoundController.gd" id="1_dmagn"]
+[ext_resource type="AudioStream" uid="uid://dn6i7uyfoqro3" path="res://Assets/SFX/UI/ButtonClick.wav" id="2_7jh3d"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_avtxr"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("2_7jh3d")
+stream_0/weight = 1.0
 
 [node name="ProjectUISoundController" type="Node"]
 script = ExtResource("1_dmagn")
+button_pressed = SubResource("AudioStreamRandomizer_avtxr")
