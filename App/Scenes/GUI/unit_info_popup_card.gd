@@ -48,8 +48,9 @@ func spawn_info_field(title, description):
 
 func popup(unitInfo):
 	activate(unitInfo)
-	return
+	#tween_open()
 	
+func tween_open():
 	# Can't get these to look nice, so I'm not using them yet
 	if State == States.IDLE:
 		State = States.TWEENING
@@ -60,9 +61,11 @@ func popup(unitInfo):
 			State = States.IDLE
 	
 func close():
+	#tween_closed()
 	hide()
-	return
 
+
+func tween_closed():
 	# Can't get these to look nice, so I'm not using them yet
 	if State == States.IDLE:
 		State = States.TWEENING

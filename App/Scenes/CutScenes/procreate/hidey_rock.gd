@@ -54,10 +54,10 @@ func spawn_new_procreators():
 
 	for i in randi_range(2,5):
 		var newProcreator = load("res://App/Scenes/Entities/Units/Procreator.tscn").instantiate()
-		newProcreator.activate(unit_info)
-		add_child(newProcreator)
-		
 		var jitter = Vector2(randf_range(-64, 64), randf_range(-64, 64))
+		add_child(newProcreator)
 		newProcreator.global_position = global_position + jitter
 		newProcreator.start_iframes()
+		newProcreator.activate(unit_info)
+		
 

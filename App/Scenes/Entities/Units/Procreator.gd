@@ -29,6 +29,10 @@ func set_desired_direction():
 	var center_screen = get_viewport_rect().size/2
 	var direction = global_position.direction_to(center_screen)
 	var deviation = 1.2
+	if not $IFramesTimer.is_stopped():
+		deviation = 0.15
+	
+		
 	direction = direction.rotated(randf_range(-deviation, deviation))
 	velocity = direction * speed
 
@@ -70,7 +74,7 @@ func activate(unitInfo):
 	unit_info = unitInfo
 	$Sprite2D.texture = unitInfo.icon
 	$Sprite2D.scale = Vector2.ONE * ( 128.0 / unitInfo.icon.get_height() )
-	
+	set_desired_direction()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
