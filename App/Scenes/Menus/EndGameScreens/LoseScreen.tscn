@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://di56th1hm80ye"]
+
+[ext_resource type="PackedScene" uid="uid://dwei0railfayx" path="res://Extras/Scenes/Menus/MainMenu/Backdrop.tscn" id="1_7ctk8"]
+[ext_resource type="Theme" uid="uid://bagdchotk6suu" path="res://App/Themes/main_menu_theme.tres" id="1_lndqw"]
+[ext_resource type="Script" path="res://App/Scenes/Menus/EndGameScreens/LoseScreen.gd" id="2_yxmeu"]
+[ext_resource type="Texture2D" uid="uid://ds54y6pvtfuco" path="res://Assets/Images/expanded/UI/04_Dialogue_assembled.png" id="3_tlki6"]
+[ext_resource type="FontFile" uid="uid://bcsl4f1nq6mwv" path="res://App/Themes/Fonts/Protest_Riot/ProtestRiot-Regular.ttf" id="4_esq66"]
+
+[node name="LoseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lndqw")
+script = ExtResource("2_yxmeu")
+
+[node name="Backdrop" parent="." instance=ExtResource("1_7ctk8")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 262.0
+offset_right = 1177.0
+offset_bottom = 701.0
+texture = ExtResource("3_tlki6")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 728.0
+offset_top = 345.0
+offset_right = 1029.0
+offset_bottom = 474.0
+theme_override_fonts/font = ExtResource("4_esq66")
+theme_override_font_sizes/font_size = 64
+text = "Level failed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 622.0
+offset_top = 437.0
+offset_right = 1122.0
+offset_bottom = 566.0
+theme_override_fonts/font = ExtResource("4_esq66")
+theme_override_font_sizes/font_size = 32
+text = "You didn't free all the
+required fishes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 641.0
+offset_top = 577.0
+offset_right = 1111.0
+offset_bottom = 678.0
+
+[node name="Retry" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Retry"
+
+[node name="Menu" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Menu
+"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 8.0
+offset_right = 1545.0
+offset_bottom = 245.0
+texture = ExtResource("3_tlki6")
+region_rect = Rect2(0, 0, 458, 500)
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 48
+patch_margin_bottom = 48
+
+[node name="Units" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 72.0
+offset_right = 1481.0
+offset_bottom = 178.0
+alignment = 1
+
+[connection signal="pressed" from="Buttons/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Buttons/Menu" to="." method="_on_menu_pressed"]

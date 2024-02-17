@@ -142,6 +142,7 @@ layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Camera2D" type="Camera2D" parent="."]
+z_index = 20
 anchor_mode = 0
 
 [node name="Background" type="CanvasLayer" parent="."]

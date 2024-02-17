@@ -22,6 +22,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="TitleImage" parent="MarginContainer/VBoxContainer/TitlesMargin" index="0"]
+modulate = Color(1, 1, 1, 0.927029)
 custom_minimum_size = Vector2(0, 500)
 texture = ExtResource("6_2uvcj")
 
@@ -32,7 +33,3 @@ text = "Beach Escape"
 [node name="SubTitle" parent="MarginContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="1"]
 visible = false
 text = "The Quest for Peace"
-
-[node name="TitleImage" parent="MarginContainer/VBoxContainer/TitlesMargin" index="1"]
-custom_minimum_size = Vector2(0, 500)
-texture = ExtResource("6_2uvcj")

@@ -1,10 +1,11 @@
-extends BoxContainer
+extends Control
 var unit_count = 0
 var required_unit_count = 0
 
 func activate(unit_info):
+	$AnimationPlayer.play("Spawn in")
 	self.name = unit_info.name.to_pascal_case()
-	$UnitIcon.texture = unit_info.icon
+	%UnitIcon.texture = unit_info.icon
 	update_text()
 
 func add_unit():
@@ -14,10 +15,10 @@ func add_unit():
 
 func update_text():
 	if required_unit_count > 0:
-		$UnitCount.text = "%d/%d" % [unit_count, required_unit_count]
+		%UnitCount.text = "%d/%d" % [unit_count, required_unit_count]
 		if unit_count < required_unit_count:
-			$UnitCount.modulate = Color.DARK_RED
+			%UnitCount.modulate = Color.DARK_RED
 		else:
-			$UnitCount.modulate = Color.LAWN_GREEN
+			%UnitCount.modulate = Color.LAWN_GREEN
 	else:
-		$UnitCount.text = str(unit_count)
+		%UnitCount.text = str(unit_count)
