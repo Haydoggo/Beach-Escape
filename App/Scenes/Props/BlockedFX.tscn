@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://by570ebbq33pb"]
+
+[sub_resource type="Animation" id="Animation_5cged"]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cross:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cross:self_modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cvg35"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cross:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mm6jj"]
+_data = {
+"Fade": SubResource("Animation_5cged"),
+"RESET": SubResource("Animation_cvg35")
+}
+
+[node name="BlockedFx" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mm6jj")
+}
+autoplay = "Fade"
+
+[node name="Cross" type="CanvasGroup" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+
+[node name="Line2D" type="Line2D" parent="Cross"]
+points = PackedVector2Array(-40, -24, -24, -40, 0, -16, 24, -40, 40, -24, 16, 0, 40, 24, 24, 40, 0, 16, -24, 40, -40, 24, -16, 0, -40, -24)
+joint_mode = 2
+begin_cap_mode = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="Cross"]
+color = Color(0.584314, 0.0901961, 0, 1)
+polygon = PackedVector2Array(-40, -24, -24, -40, 0, -16, 24, -40, 40, -24, 16, 0, 40, 24, 24, 40, 0, 16, -24, 40, -40, 24, -16, 0)

@@ -38,7 +38,7 @@ func do_movement():
 	if not stopped:
 		for col in get_objects_in_path(next_position):
 			if col.is_in_group("BlockerHitbox") or col.is_in_group("EnemyTowerHitbox"):
-				on_blocked()
+				on_blocked(next_position)
 				stopped = true
 	
 	# then we try to move forward

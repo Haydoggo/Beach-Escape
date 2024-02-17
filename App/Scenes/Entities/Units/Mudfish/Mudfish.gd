@@ -16,11 +16,11 @@ func attack_tower(tower):
 	else:
 		super.attack_tower(tower)
 
-func on_blocked():
+func on_blocked(target_position):
 	if path_index == 2:
 		tunnel_up()
 	else:
-		super.on_blocked()
+		super.on_blocked(target_position)
 
 func _on_hit(attack_packet : AttackPacket):
 	if attack_packet == PIT_ATTACK:

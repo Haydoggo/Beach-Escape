@@ -56,7 +56,7 @@ func do_movement():
 	var stopped = false
 	for col in get_objects_in_path(next_position):
 		if col.is_in_group("BlockerHitbox"):
-			on_blocked()
+			on_blocked(next_position)
 			stopped = true
 		elif col.is_in_group("EnemyTowerHitbox"):
 			attack_tower(col.owner)
@@ -86,12 +86,17 @@ func move_forward(pos : Vector2):
 	tween.tween_property(self, "global_position", pos, 0.3)
 
 
-func on_blocked():
+func on_blocked(target_position : Vector2):
+	var spawn_blocked_fx = func():
+		var blocked_fx = preload("res://App/Scenes/Props/BlockedFX.tscn").instantiate()
+		add_sibling(blocked_fx)
+		blocked_fx.global_position = global_position	
+	
 	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(self, "rotation", 0.1, 0.1)
-	tween.tween_property(self, "rotation", -0.1, 0.2)
-	tween.tween_property(self, "rotation", 0, 0.1)
+	tween.tween_property(self, "global_position", target_position, 0.15).set_ease(Tween.EASE_IN)
+	tween.tween_callback(spawn_blocked_fx)
+	tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
+	await tween.finished
 
 
 func attack_tower(tower):
