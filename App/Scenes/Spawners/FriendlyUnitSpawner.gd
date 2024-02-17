@@ -27,7 +27,8 @@ func delayed_ready():
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("spawn_selected_unit"):
 		if is_square_free():
-			spawn_unit(selected_unit_button.unit_info)
+			if selected_unit_button:
+				spawn_unit(selected_unit_button.unit_info)
 
 
 func _process(_delta: float) -> void:
