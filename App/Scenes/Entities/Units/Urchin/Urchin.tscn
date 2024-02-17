@@ -28,8 +28,8 @@ _data = {
 "spawn": SubResource("Animation_0nnwn")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_013ur"]
-radius = 21.5407
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcrr4"]
+size = Vector2(22, 264)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4kswu"]
 streams_count = 2
@@ -55,7 +55,7 @@ libraries = {
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRegion" index="0"]
-shape = SubResource("CircleShape2D_013ur")
+shape = SubResource("RectangleShape2D_vcrr4")
 
 [node name="Audio" type="Node2D" parent="." index="8"]
 

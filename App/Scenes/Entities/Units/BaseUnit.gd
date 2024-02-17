@@ -15,6 +15,7 @@ var is_slow = false
 var slow_counter = 0
 var is_captive = false
 
+
 func _ready() -> void:
 	squashers.append_array(find_children("", "Squasher"))
 	
@@ -50,7 +51,7 @@ func _on_tick():
 
 
 func do_movement():
-	var next_position = global_position + unit_info.path[path_index]
+	var next_position = global_position + unit_info.path[path_index].rotated(rotation)
 	
 	var stopped = false
 	for col in get_objects_in_path(next_position):
@@ -97,7 +98,15 @@ func on_blocked(target_position : Vector2):
 	tween.tween_property(self, "global_position", target_position, 0.15).set_ease(Tween.EASE_IN)
 	tween.tween_callback(spawn_blocked_fx)
 	tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
-	tween.tween_callback(do_drying)
+	
+	#tween.tween_callback(do_drying)
+	
+	await tween.finished
+	health_component.health = 0 # don't do _on_hit to avoid red flash
+	health_component.update_health_bar()
+	begin_dying()
+	
+	# tween.tween_property(self, "rotation", rotation - PI/2, 0.2).set_ease(Tween.EASE_IN_OUT)
 
 
 
@@ -111,7 +120,8 @@ func attack_tower(tower):
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "global_position", tower.global_position, 0.15).set_ease(Tween.EASE_IN)
 	tween.tween_property(self, "global_position", global_position, 0.15).set_ease(Tween.EASE_OUT)
-	tween.tween_callback(do_drying)
+	await tween.finished
+	#tween.tween_callback(do_drying)
 
 
 func do_drying():
@@ -166,6 +176,7 @@ func disable_collision_areas():
 	
 func enable_collision_areas():
 	for area in find_children("", "Area2D"):
-		area.monitoring = true
-		area.monitorable = true
+		area.set_deferred("monitoring", true)
+		if area != attack_region:
+			area.set_deferred("monitorable", true)
 

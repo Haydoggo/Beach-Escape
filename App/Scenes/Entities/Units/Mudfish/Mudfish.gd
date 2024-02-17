@@ -32,7 +32,7 @@ func tunnel_down():
 	animation_player.play("TunnelDown")
 	$Hitbox/CollisionShape2D.disabled = true
 	await get_tree().create_timer(0.4).timeout
-	super.move_forward(global_position + Vector2(128,0))
+	super.move_forward(global_position + Vector2(128,0).rotated(rotation))
 	
 
 func tunnel_up():

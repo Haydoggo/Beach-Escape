@@ -20,6 +20,10 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="TitleImage" parent="MarginContainer/VBoxContainer/TitlesMargin" index="0"]
+custom_minimum_size = Vector2(0, 500)
+texture = ExtResource("6_2uvcj")
+
 [node name="Title" parent="MarginContainer/VBoxContainer/TitlesMargin/TitlesContainer" index="0"]
 text = "Beach Escape"
 
