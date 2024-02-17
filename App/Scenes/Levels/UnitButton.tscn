@@ -11,9 +11,10 @@ resource_local_to_scene = false
 resource_name = "ButtonHighlight"
 script/source = "extends TextureButton
 
-	
-func _toggled(toggled_on: bool) -> void:
-	$FocusOutline.visible = toggled_on
+@onready var focus_outline: Line2D = $FocusOutline
+
+func _process(delta: float) -> void:
+	focus_outline.visible = button_pressed
 
 "
 
