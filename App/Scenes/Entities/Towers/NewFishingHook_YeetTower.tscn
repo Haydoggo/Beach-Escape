@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://yp5j1g834v6v"]
+[gd_scene load_steps=13 format=3 uid="uid://yp5j1g834v6v"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/NewFishingHook_YeetTower.gd" id="1_s5kyd"]
 [ext_resource type="Texture2D" uid="uid://1kh6dd7gbxn0" path="res://Assets/Images/Towers/06_Hook.png" id="2_1loh0"]
@@ -7,16 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://b63jhcpo0cgt3" path="res://Assets/Images/Towers/06_Hook_Rope_line2D.png" id="4_oi4gj"]
 [ext_resource type="PackedScene" uid="uid://dv84evnrui8iq" path="res://App/Scenes/Entities/Components/Weapons/fish_hook_yeet_weapon.tscn" id="6_7l88q"]
 [ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="6_8646o"]
-[ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="7_wi1cl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gafwi"]
 atlas = ExtResource("4_oi4gj")
-
-[sub_resource type="Resource" id="Resource_51hhp"]
-script = ExtResource("7_wi1cl")
-damage_type = 0
-damage = 1000.0
-payload_scene_path = ""
 
 [sub_resource type="Animation" id="Animation_frhdh"]
 resource_name = "attack"
@@ -69,7 +62,6 @@ end_cap_mode = 2
 [node name="Weapons" type="Node2D" parent="Components"]
 
 [node name="FishHookYeetWeapon" parent="Components/Weapons" instance=ExtResource("6_7l88q")]
-attack_packet = SubResource("Resource_51hhp")
 
 [node name="HoverPopupInfo" parent="Components" instance=ExtResource("6_8646o")]
 

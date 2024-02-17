@@ -20,8 +20,8 @@ func spawn_unit(unit_metadata):
 	var screen_size = get_viewport_rect().size
 	var unit_size = 128
 	new_unit.global_position = Vector2(randf_range(128, screen_size.x-unit_size), randf_range(10, screen_size.y-unit_size))
-	new_unit.activate(unit_metadata)
 	add_child(new_unit)
+	new_unit.activate(unit_metadata)
 
 func _process(_delta):
 	if State == States.READY:
