@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://cdn88gi0lrg6h"]
+
+[ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_3wj8l"]
+[ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_y2wpi"]
+[ext_resource type="Resource" uid="uid://c8jmkxi6ybst4" path="res://App/Scenes/Entities/Units/Shark/SharkInfo.tres" id="4_fwqg6"]
+[ext_resource type="Resource" uid="uid://cniawdoeb00bm" path="res://App/Scenes/Entities/Units/SeaSlug/SeaSlugInfo.tres" id="4_r0rga"]
+[ext_resource type="Resource" uid="uid://bs31lf1urfggr" path="res://App/Scenes/Entities/Units/Urchin/UrchinInfo.tres" id="5_1vhla"]
+[ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="5_3crvw"]
+
+[sub_resource type="Resource" id="Resource_am67c"]
+resource_name = "1 Shark"
+script = ExtResource("2_y2wpi")
+unit_info = ExtResource("4_fwqg6")
+count = 1
+
+[sub_resource type="Resource" id="Resource_27tyn"]
+resource_name = "1 Sea Slug"
+script = ExtResource("2_y2wpi")
+unit_info = ExtResource("4_r0rga")
+count = 1
+
+[sub_resource type="Resource" id="Resource_8bivo"]
+resource_name = "2 Fish"
+script = ExtResource("2_y2wpi")
+unit_info = ExtResource("5_3crvw")
+count = 2
+
+[sub_resource type="Resource" id="Resource_nf3rl"]
+resource_name = "1 Urchin"
+script = ExtResource("2_y2wpi")
+unit_info = ExtResource("5_1vhla")
+count = 1
+
+[sub_resource type="Resource" id="Resource_53nsm"]
+resource_name = "1 Shark"
+script = ExtResource("2_y2wpi")
+unit_info = ExtResource("4_fwqg6")
+count = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmset"]
+resource_local_to_scene = true
+size = Vector2(384, 896)
+
+[node name="BaseLevel" instance=ExtResource("1_3wj8l")]
+available_units = Array[ExtResource("2_y2wpi")]([SubResource("Resource_am67c"), SubResource("Resource_27tyn"), SubResource("Resource_8bivo"), SubResource("Resource_nf3rl")])
+required_units_for_win = Array[ExtResource("2_y2wpi")]([SubResource("Resource_53nsm")])
+
+[node name="PlaySpace" parent="." index="1"]
+offset_right = 1981.0
+offset_bottom = 713.0
+play_space_size = Vector2i(15, 5)
+
+[node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
+position = Vector2(192, 448)
+shape = SubResource("RectangleShape2D_nmset")
+
+[node name="ColorRect" parent="PlaySpace/DeploymentZone" index="2"]
+offset_bottom = 896.0
+
+[node name="BottomBorder" parent="PlaySpace/Borders" index="1"]
+position = Vector2(0, 928)
+
+[node name="Towers" parent="PlaySpace" index="3"]
+layer_0/tile_data = PackedInt32Array(10, 0, 262144, 65545, 0, 262144, 65546, 0, 262144, 131083, 0, 262144, 131082, 0, 262144, 12, 0, 262144, 262154, 0, 262144, 262153, 0, 262144, 196619, 0, 262144, 196617, 0, 262144, 262148, 0, 458752, 196614, 0, 458752, 131077, 0, 458752, 7, 0, 458752, 65542, 0, 65536, 65544, 0, 131072, 262151, 0, 131072, 11, 0, 196608, 65548, 0, 196608, 65547, 0, 524288, 196618, 0, 524288, 262156, 0, 524288)
+
+[node name="PauseMenu" parent="UI" index="2"]
+visible = false
+
+[node name="VBoxContainer" parent="UI/PauseMenu" index="0"]
+visible = false
+
+[node name="MasterOptionsMenu" parent="UI/PauseMenu/VBoxContainer" index="0"]
+visible = false
+
+[node name="HelpSystem" parent="UI" index="3"]
+visible = false
+
+[editable path="PlaySpace/DeploymentZone"]
+[editable path="UI"]
