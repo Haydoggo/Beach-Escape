@@ -1,17 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq68aggh3rxym"]
+[gd_scene load_steps=10 format=3 uid="uid://dq68aggh3rxym"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_evr2g"]
 [ext_resource type="PackedScene" uid="uid://yp5j1g834v6v" path="res://App/Scenes/Entities/Towers/NewFishingHook_YeetTower.tscn" id="2_f7x1e"]
+[ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_o3j3f"]
+[ext_resource type="Resource" uid="uid://c8jmkxi6ybst4" path="res://App/Scenes/Entities/Units/Shark/SharkInfo.tres" id="3_mhirj"]
+[ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="4_gsp1i"]
+
+[sub_resource type="Resource" id="Resource_cjst4"]
+resource_name = "2 Shark"
+script = ExtResource("2_o3j3f")
+unit_info = ExtResource("3_mhirj")
+count = 2
+
+[sub_resource type="Resource" id="Resource_70kxi"]
+resource_name = "5 Fish"
+script = ExtResource("2_o3j3f")
+unit_info = ExtResource("4_gsp1i")
+count = 5
+
+[sub_resource type="Resource" id="Resource_nmxui"]
+resource_name = "1 Fish"
+script = ExtResource("2_o3j3f")
+unit_info = ExtResource("4_gsp1i")
+count = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdvsl"]
 resource_local_to_scene = true
 size = Vector2(384, 512)
 
 [node name="SecondLevel" instance=ExtResource("1_evr2g")]
-
-[node name="PlaySpace" parent="." index="1"]
-offset_right = 1725.0
-offset_bottom = 969.0
+available_units = Array[ExtResource("2_o3j3f")]([SubResource("Resource_cjst4"), SubResource("Resource_70kxi")])
+required_units_for_win = Array[ExtResource("2_o3j3f")]([SubResource("Resource_nmxui")])
 
 [node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
 shape = SubResource("RectangleShape2D_rdvsl")
@@ -23,10 +42,6 @@ position = Vector2(0, 544)
 position = Vector2(404, 7)
 layer_0/tile_data = PackedInt32Array(131075, 0, 262144, 65539, 0, 262144, 262147, 0, 262144, 196613, 0, 65536, 196615, 0, 65536, 196611, 0, 327680, 262148, 0, 131072, 196610, 0, 131072, 65538, 0, 131072, 131079, 0, 131072)
 
-[node name="PanelContainer" parent="UI" index="2"]
-offset_right = 131.0
-offset_bottom = 109.0
-
 [node name="FishingHookYeetower" parent="." index="9" instance=ExtResource("2_f7x1e")]
 position = Vector2(634, 638)
 
@@ -34,4 +49,3 @@ position = Vector2(634, 638)
 position = Vector2(622, 270)
 
 [editable path="PlaySpace/DeploymentZone"]
-[editable path="UI"]
