@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://App/Scenes/GUI/unit_info_popup_card.gd" id="1_jna32"]
 [ext_resource type="Theme" uid="uid://c0vvtqxyanoyo" path="res://App/Themes/info_popup_panel_theme.tres" id="1_ltiw7"]
 [ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="2_gvoxr"]
-[ext_resource type="PackedScene" uid="uid://h6c7e4aj1dnx" path="res://App/Scenes/GUI/unit_info_form_field.tscn" id="2_mjek8"]
+[ext_resource type="PackedScene" uid="uid://dxfejlfdm5pp" path="res://App/Scenes/GUI/unit_info_form_field.tscn" id="2_mjek8"]
 
 [node name="UnitInfoCard" type="Control"]
 layout_mode = 3

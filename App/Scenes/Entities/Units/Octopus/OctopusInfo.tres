@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_he2lb"]
 script = ExtResource("2_0t6pc")
 damage_type = 0
-damage = 2.08165e-12
+damage = 0
 payload_scene_path = ""
 
 [resource]

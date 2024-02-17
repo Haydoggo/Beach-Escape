@@ -29,8 +29,7 @@ func activate(unitInfo):
 	$Panel/VBoxContainer/Icon.texture = unitInfo.icon
 	fields["name"] = unitInfo.name
 	fields["movement"] = unitInfo.movement_description
-	fields["health"] = str(unit_info.health)
-	fields["moisture"] = str(unit_info.moisture)
+	fields["health"] = str(unit_info.health/20)
 	if unit_info.melee_attack != null:
 		fields["damage"] = str(unit_info.melee_attack.damage)
 	else:

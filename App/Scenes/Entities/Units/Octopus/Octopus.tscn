@@ -13,3 +13,5 @@ unit_info = ExtResource("2_ujpme")
 z_index = 1
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_0n8rx")
+
+[editable path="HealthComponent"]
