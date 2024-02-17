@@ -1,27 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqwo2aaci115b"]
+[gd_scene load_steps=12 format=3 uid="uid://dqwo2aaci115b"]
 
 [ext_resource type="Theme" uid="uid://6h5f7sqktd67" path="res://App/Themes/animatic_theme.tres" id="1_a6s3w"]
 [ext_resource type="Texture2D" uid="uid://dalyydqj0idie" path="res://Assets/Images/Units/04_Crab_Basic.png" id="2_3u44w"]
 [ext_resource type="Script" path="res://App/Scenes/CutScenes/AnimaticCutscene.gd" id="2_lc5yq"]
-[ext_resource type="Texture2D" uid="uid://beqt2qi8j86vu" path="res://Assets/Images/placeholder/island_empty.png" id="3_vktjv"]
+[ext_resource type="Texture2D" uid="uid://ds1fyut33dryj" path="res://Assets/Images/Cutscene/02_Sky.png" id="3_5ath5"]
+[ext_resource type="Texture2D" uid="uid://b4jxjryrr8cbd" path="res://Assets/Images/Cutscene/04_Ship.png" id="4_186cd"]
 [ext_resource type="Texture2D" uid="uid://c4l0sg83rc5m6" path="res://Assets/Images/Towers/Castle_Cannon.png" id="4_b5ksj"]
-[ext_resource type="Texture2D" uid="uid://d2nynmboek3i2" path="res://Assets/Images/placeholder/cruise_ship.png" id="5_2lj1f"]
-
-[sub_resource type="Gradient" id="Gradient_ktsnm"]
-colors = PackedColorArray(0.628375, 0.849338, 0.892248, 1, 0.885356, 0.933324, 0.951638, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7gcaa"]
-gradient = SubResource("Gradient_ktsnm")
-fill_to = Vector2(0, 1)
-
-[sub_resource type="Gradient" id="Gradient_ttwpq"]
-colors = PackedColorArray(0, 0, 0, 1, 0.160784, 0.65098, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_oducm"]
-gradient = SubResource("Gradient_ttwpq")
-width = 1900
-height = 128
-fill_to = Vector2(0, 1)
+[ext_resource type="Texture2D" uid="uid://prjs1gcajbob" path="res://Assets/Images/Cutscene/03_Island.png" id="6_20fcj"]
+[ext_resource type="Texture2D" uid="uid://cbr3mshrk46ff" path="res://Assets/Images/Cutscene/01_Ocean.png" id="7_wm7fm"]
 
 [sub_resource type="Animation" id="Animation_ue56q"]
 length = 0.001
@@ -245,25 +231,49 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_7gcaa")
+texture = ExtResource("3_5ath5")
+expand_mode = 3
+
+[node name="CruiseShip" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1946.0
+offset_top = 468.0
+offset_right = 2407.0
+offset_bottom = 690.0
+scale = Vector2(2.23747, 2.23747)
+texture = ExtResource("4_186cd")
+expand_mode = 3
 
 [node name="Crab" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_left = 349.0
 offset_top = 811.0
-offset_right = 477.0
+offset_right = 477.001
 offset_bottom = 939.0
 texture = ExtResource("2_3u44w")
 expand_mode = 3
 
 [node name="Island" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 126.0
-offset_top = 486.0
-offset_right = 638.0
-offset_bottom = 998.0
-texture = ExtResource("3_vktjv")
+offset_left = 122.0
+offset_top = 527.0
+offset_right = 634.0
+offset_bottom = 1039.0
+texture = ExtResource("6_20fcj")
+expand_mode = 5
+
+[node name="Ocean" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -614.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("7_wm7fm")
+expand_mode = 3
 
 [node name="Castle" type="TextureRect" parent="."]
 visible = false
@@ -275,27 +285,6 @@ offset_right = 586.0
 offset_bottom = 905.0
 texture = ExtResource("4_b5ksj")
 expand_mode = 3
-
-[node name="CruiseShip" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 1946.0
-offset_top = 468.0
-offset_right = 2407.0
-offset_bottom = 690.0
-scale = Vector2(2.23747, 2.23747)
-texture = ExtResource("5_2lj1f")
-expand_mode = 3
-
-[node name="Ocean" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -128.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = SubResource("GradientTexture2D_oducm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

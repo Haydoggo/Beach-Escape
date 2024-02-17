@@ -1,24 +1,16 @@
 [gd_scene load_steps=14 format=3 uid="uid://dwei0railfayx"]
 
+[ext_resource type="Texture2D" uid="uid://ds1fyut33dryj" path="res://Assets/Images/Cutscene/02_Sky.png" id="1_bhnqj"]
 [ext_resource type="Texture2D" uid="uid://c4g4n4sfyjr5a" path="res://Assets/Images/placeholder/cloud_1.png" id="1_c4kxx"]
 [ext_resource type="Script" path="res://Extras/Scenes/Menus/MainMenu/Backdrop.gd" id="1_r5fie"]
 [ext_resource type="Script" path="res://App/Scenes/CutScenes/h_scroll.gd" id="2_a2usc"]
 [ext_resource type="Texture2D" uid="uid://qd5byj3m2bwj" path="res://Assets/Images/placeholder/cloud_2.png" id="3_4rpuh"]
-[ext_resource type="Texture2D" uid="uid://beqt2qi8j86vu" path="res://Assets/Images/placeholder/island_empty.png" id="4_hrb06"]
 [ext_resource type="Texture2D" uid="uid://deg8od0brjbhi" path="res://Assets/Images/Units/03_Urchin.png" id="5_06hir"]
+[ext_resource type="Texture2D" uid="uid://cbr3mshrk46ff" path="res://Assets/Images/Cutscene/01_Ocean.png" id="6_ynu53"]
 [ext_resource type="Texture2D" uid="uid://ckqwfoi4guv8i" path="res://Assets/Images/Units/02_Fish_Boot.png" id="6_yyyuq"]
 [ext_resource type="Texture2D" uid="uid://dalyydqj0idie" path="res://Assets/Images/Units/04_Crab_Basic.png" id="7_ebt1a"]
+[ext_resource type="Texture2D" uid="uid://prjs1gcajbob" path="res://Assets/Images/Cutscene/03_Island.png" id="7_npmbq"]
 [ext_resource type="Script" path="res://App/Scenes/CutScenes/googly_eye.gd" id="8_kh5rq"]
-
-[sub_resource type="Gradient" id="Gradient_fucyf"]
-offsets = PackedFloat32Array(0.0708955, 0.365672, 0.436567, 0.970149)
-colors = PackedColorArray(3.35299e-07, 0, 0.26796, 1, 0.51284, 0.713881, 0.899779, 1, 1, 1, 1, 1, 0.920148, 0.774672, 0.583172, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_814em"]
-gradient = SubResource("Gradient_fucyf")
-width = 1900
-height = 1080
-fill_from = Vector2(1, 1)
 
 [sub_resource type="Gradient" id="Gradient_ubabo"]
 interpolation_mode = 2
@@ -40,8 +32,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_814em")
+texture = ExtResource("1_bhnqj")
+expand_mode = 3
 script = ExtResource("1_r5fie")
+
+[node name="Sky" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_bhnqj")
+expand_mode = 3
 
 [node name="Cloud1" type="TextureRect" parent="."]
 layout_mode = 0
@@ -65,21 +65,32 @@ expand_mode = 3
 script = ExtResource("2_a2usc")
 speed = 55.0
 
+[node name="Ocean" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ynu53")
+expand_mode = 3
+
 [node name="Island" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 126.0
-offset_top = 486.0
-offset_right = 638.0
-offset_bottom = 998.0
-texture = ExtResource("4_hrb06")
+offset_top = 526.0
+offset_right = 745.987
+offset_bottom = 1038.0
+texture = ExtResource("7_npmbq")
+expand_mode = 3
 
 [node name="Urchin" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_left = 349.0
-offset_top = 811.0
+offset_top = 782.0
 offset_right = 481.35
-offset_bottom = 939.0
+offset_bottom = 910.0
 texture = ExtResource("5_06hir")
 expand_mode = 3
 
@@ -87,9 +98,9 @@ expand_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_left = 203.0
-offset_top = 811.0
+offset_top = 782.0
 offset_right = 335.35
-offset_bottom = 939.0
+offset_bottom = 910.0
 texture = ExtResource("6_yyyuq")
 expand_mode = 3
 
@@ -97,9 +108,9 @@ expand_mode = 3
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_left = 463.0
-offset_top = 811.0
+offset_top = 782.0
 offset_right = 591.0
-offset_bottom = 939.0
+offset_bottom = 910.0
 texture = ExtResource("7_ebt1a")
 expand_mode = 3
 

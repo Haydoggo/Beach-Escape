@@ -14,15 +14,10 @@ game_scene_path = "res://App/Scenes/CutScenes/animatic_cutscene_1.tscn"
 options_packed_scene = ExtResource("2_3vb8r")
 
 [node name="Backdrop" parent="." index="0" instance=ExtResource("5_872w8")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
 
 [node name="TitleImage" parent="MarginContainer/VBoxContainer/TitlesMargin" index="0"]
-modulate = Color(1, 1, 1, 0.927029)
+modulate = Color(1, 1, 1, 0.915575)
 custom_minimum_size = Vector2(0, 500)
 texture = ExtResource("6_2uvcj")
 
