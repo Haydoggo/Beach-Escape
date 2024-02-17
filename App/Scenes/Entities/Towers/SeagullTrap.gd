@@ -55,7 +55,6 @@ func begin_dying():
 
 
 func move_next():
-	var perch = perches[perch_index]
 	seagull_sprite.play("fly")
 	hitbox_shape.disabled = true
 	

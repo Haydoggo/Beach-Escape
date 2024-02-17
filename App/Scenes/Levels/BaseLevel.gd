@@ -67,11 +67,9 @@ func add_unit_buttons():
 
 func select_first_available_button():
 	# added to prevent selecting invalid buttons
-	var button_selected : UnitButton = null
 	for button in unit_buttons.get_children():
 		if is_instance_valid(button) and button is UnitButton and button.unit_count.count > 0:
 			button.select()
-			button_selected = button
 			return
 	
 func remove_dummy_buttons():

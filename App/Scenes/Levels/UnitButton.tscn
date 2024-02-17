@@ -13,7 +13,7 @@ script/source = "extends TextureButton
 
 @onready var focus_outline: Line2D = $FocusOutline
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	focus_outline.visible = button_pressed
 
 "

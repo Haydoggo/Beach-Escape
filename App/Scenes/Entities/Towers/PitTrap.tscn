@@ -118,12 +118,9 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.6, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
-"method": &"trap_fish"
-}, {
 "args": [],
 "method": &"disappear"
 }]
@@ -154,7 +151,7 @@ stream_0/weight = 1.0
 stream_1/stream = ExtResource("5_pacfs")
 stream_1/weight = 1.0
 
-[node name="PitTrap" type="Node2D" groups=["EnemyTraps"]]
+[node name="PitTrap" type="CanvasGroup" groups=["EnemyTraps"]]
 script = ExtResource("1_o0acg")
 attack_packet = ExtResource("2_8abuw")
 
