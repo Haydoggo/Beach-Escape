@@ -28,7 +28,8 @@ func _init():
 
 func _enter_tree() -> void:
 	for unit_count in available_units:
-		current_available_units.append(unit_count.duplicate())
+		if is_instance_valid(unit_count):
+			current_available_units.append(unit_count.duplicate())
 	
 func _ready() -> void:
 	friendly_unit_spawner = find_child("FriendlyUnitSpawner")
