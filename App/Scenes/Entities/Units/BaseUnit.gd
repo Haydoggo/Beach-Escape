@@ -36,10 +36,7 @@ func _on_tick():
 	if is_captive:
 		return
 	if is_bleeding:
-		var ap = AttackPacket.new()
-		ap.damage = 20
-		_on_hit(ap)
-		blood_fx.emitting = true
+		do_drying()
 	if is_slow:
 		if (slow_counter % 2) == 0:
 			pass # wobble or something
