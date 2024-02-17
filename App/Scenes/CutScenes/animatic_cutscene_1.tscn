@@ -81,7 +81,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(349, 811)]
+"values": [Vector2(427, 643)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -145,7 +145,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 6, 8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(116, 486)]
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(299, 299)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -178,10 +178,10 @@ tracks/5/path = NodePath("Crab:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(8, 8.7),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 8, 8.7),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(349, 811), Vector2(410, 752)]
+"values": [Vector2(427, 643), Vector2(427, 643), Vector2(496, 591)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -234,44 +234,41 @@ grow_vertical = 2
 texture = ExtResource("3_5ath5")
 expand_mode = 3
 
-[node name="CruiseShip" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 1946.0
-offset_top = 468.0
-offset_right = 2407.0
-offset_bottom = 690.0
-scale = Vector2(2.23747, 2.23747)
-texture = ExtResource("4_186cd")
-expand_mode = 3
-
 [node name="Crab" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_left = 349.0
-offset_top = 811.0
-offset_right = 477.001
-offset_bottom = 939.0
+offset_left = 427.0
+offset_top = 643.0
+offset_right = 555.002
+offset_bottom = 771.0
 texture = ExtResource("2_3u44w")
 expand_mode = 3
 
 [node name="Island" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 122.0
-offset_top = 527.0
-offset_right = 634.0
-offset_bottom = 1039.0
+offset_left = 39.0
+offset_top = 293.0
+offset_right = 1526.0
+offset_bottom = 1521.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_20fcj")
-expand_mode = 5
+
+[node name="CruiseShip" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1946.0
+offset_top = 468.0
+offset_right = 3003.0
+offset_bottom = 1343.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_186cd")
 
 [node name="Ocean" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -614.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 texture = ExtResource("7_wm7fm")
 expand_mode = 3
 
@@ -279,10 +276,10 @@ expand_mode = 3
 visible = false
 custom_minimum_size = Vector2(196, 196)
 layout_mode = 0
-offset_left = 390.0
-offset_top = 709.0
-offset_right = 586.0
-offset_bottom = 905.0
+offset_left = 453.0
+offset_top = 502.0
+offset_right = 649.0
+offset_bottom = 698.0
 texture = ExtResource("4_b5ksj")
 expand_mode = 3
 

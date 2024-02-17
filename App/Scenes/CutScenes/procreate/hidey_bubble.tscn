@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1fgh7mohldqv"]
+
+[ext_resource type="Script" path="res://App/Scenes/CutScenes/procreate/hidey_rock.gd" id="1_cg5kx"]
+[ext_resource type="Texture2D" uid="uid://ee4kt307tr5x" path="res://Assets/Images/Particles/01_Bubble.png" id="2_jahx4"]
+[ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="3_tqnfw"]
+[ext_resource type="Texture2D" uid="uid://b5jujar7p1jvj" path="res://Assets/Images/Particles/01_Bubble_Top.png" id="3_wq26m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_smutc"]
+radius = 128.0
+
+[node name="HideyBubble" type="Node2D"]
+script = ExtResource("1_cg5kx")
+show_fish = true
+floating = true
+speed = 50.0
+
+[node name="Bubble" type="Sprite2D" parent="."]
+texture = ExtResource("2_jahx4")
+
+[node name="TrappedFish" type="Sprite2D" parent="."]
+texture = ExtResource("3_tqnfw")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_smutc")
+
+[node name="ShineOverlay" type="Sprite2D" parent="."]
+position = Vector2(-51, -43)
+texture = ExtResource("3_wq26m")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
