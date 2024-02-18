@@ -1,13 +1,35 @@
-[gd_scene load_steps=17 format=3 uid="uid://bch3hc5ug6j73"]
+[gd_scene load_steps=22 format=3 uid="uid://bch3hc5ug6j73"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/StaticTrap_OnTick.gd" id="1_wc1qe"]
-[ext_resource type="Texture2D" uid="uid://bme8stfrmg1ty" path="res://Assets/Images/placeholder/campfire.png" id="2_mec6g"]
+[ext_resource type="Texture2D" uid="uid://bxhfwrpnlhp3i" path="res://Assets/Images/expanded/Entities/Sand/09_Fire_Pit.png" id="2_26b2y"]
 [ext_resource type="PackedScene" uid="uid://nbtvtnucj37y" path="res://App/Scenes/Entities/Components/drop_shadow.tscn" id="3_2yfj0"]
 [ext_resource type="Texture2D" uid="uid://b63jhcpo0cgt3" path="res://Assets/Images/Towers/06_Hook_Rope_line2D.png" id="4_60a27"]
+[ext_resource type="Texture2D" uid="uid://dfsytf0cb1yp7" path="res://Assets/Images/expanded/Particles/Sand/fire.png" id="4_tnspg"]
 [ext_resource type="PackedScene" uid="uid://bu4vg8os8fnp4" path="res://App/Scenes/Entities/Components/Weapons/persistent_stationary_weapon.tscn" id="5_8h4yb"]
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="6_cewpx"]
 [ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="6_ltnqm"]
 [ext_resource type="PackedScene" uid="uid://bu3jbthd6q22s" path="res://App/Scenes/Entities/Components/relocate_at_intervals.tscn" id="7_0clo5"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rwc77"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_i7e0e"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.191223, 1), 0.0, 0.0, 0, 0, Vector2(0.501567, 0.943338), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_gwwt8"]
+curve = SubResource("Curve_i7e0e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nhk0t"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(64, 32, 1)
+gravity = Vector3(0, -500, 0)
+scale_curve = SubResource("CurveTexture_gwwt8")
+anim_offset_max = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gafwi"]
 atlas = ExtResource("4_60a27")
@@ -70,12 +92,18 @@ script = ExtResource("1_wc1qe")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2, -29)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_mec6g")
-hframes = 2
+texture = ExtResource("2_26b2y")
 
 [node name="Shadow" parent="Sprite2D" instance=ExtResource("3_2yfj0")]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite2D"]
+material = SubResource("CanvasItemMaterial_rwc77")
+process_material = SubResource("ParticleProcessMaterial_nhk0t")
+texture = ExtResource("4_tnspg")
+lifetime = 0.6
+fixed_fps = 0
+draw_order = 2
 
 [node name="Line2D" type="Line2D" parent="."]
 visible = false
@@ -97,9 +125,14 @@ end_cap_mode = 2
 [node name="PersistentStationaryWeapon" parent="Components/Weapons" instance=ExtResource("5_8h4yb")]
 attack_packet = SubResource("Resource_j7c8m")
 
+[node name="Area2D" parent="Components/Weapons/PersistentStationaryWeapon" index="0"]
+visible = false
+
 [node name="HoverPopupInfo" parent="Components" instance=ExtResource("6_ltnqm")]
+visible = false
 
 [node name="RelocateAtIntervals" parent="Components" instance=ExtResource("7_0clo5")]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -107,6 +140,7 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="." groups=["TrapHitbox"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_ibc57")
