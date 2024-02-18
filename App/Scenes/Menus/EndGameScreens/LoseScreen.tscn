@@ -19,17 +19,17 @@ script = ExtResource("2_yxmeu")
 [node name="Backdrop" parent="." instance=ExtResource("1_7ctk8")]
 layout_mode = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="RequiredUnitsDisplay" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 96.0
 grow_horizontal = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="RequiredUnitsDisplay"]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="RequiredUnitsDisplay/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("3_tlki6")
 region_rect = Rect2(0, 0, 458, 500)
@@ -38,14 +38,14 @@ patch_margin_top = 48
 patch_margin_right = 48
 patch_margin_bottom = 48
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="RequiredUnitsDisplay/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="Units" type="HBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer"]
+[node name="Units" type="HBoxContainer" parent="RequiredUnitsDisplay/MarginContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
@@ -77,7 +77,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_tlki6")
 
-[node name="Label" type="Label" parent="CenterContainer2/MainPanel/TextureRect"]
+[node name="LevelFailedLabel" type="Label" parent="CenterContainer2/MainPanel/TextureRect"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 152.0
 offset_top = 83.0
@@ -89,7 +90,8 @@ text = "Level failed"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="CenterContainer2/MainPanel/TextureRect"]
+[node name="DescriptionLabel" type="Label" parent="CenterContainer2/MainPanel/TextureRect"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 46.0
 offset_top = 175.0
@@ -103,13 +105,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buttons" type="HBoxContainer" parent="CenterContainer2/MainPanel/TextureRect"]
-layout_mode = 0
-offset_left = 65.0
-offset_top = 315.0
-offset_right = 537.0
-offset_bottom = 416.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -165.0
+offset_right = 232.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
 
 [node name="Retry" type="Button" parent="CenterContainer2/MainPanel/TextureRect/Buttons"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Retry"
 
