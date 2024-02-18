@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dd6hxhux1nflh"]
+[gd_scene load_steps=13 format=3 uid="uid://dd6hxhux1nflh"]
 
 [ext_resource type="PackedScene" uid="uid://bfet1wnvw1f0e" path="res://App/Scenes/Entities/Towers/BaseTower.tscn" id="1_311mb"]
 [ext_resource type="Texture2D" uid="uid://bmvndhs2hyj2v" path="res://Assets/Images/placeholder/pelican.png" id="2_rr62w"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://8c5uxh850y3v" path="res://Assets/Images/Towers/07_Pelican_Gulp.png" id="4_b1bcv"]
 [ext_resource type="Texture2D" uid="uid://dquq83j2vxldo" path="res://Assets/Images/Towers/07_Pelican_Gulp_2.png" id="5_kkd6s"]
 [ext_resource type="PackedScene" uid="uid://xtoq7vlyrwga" path="res://App/Scenes/Entities/Components/anim_drop_shadow.tscn" id="6_jcwgo"]
+[ext_resource type="AudioStream" uid="uid://ccut1ukd4jc2s" path="res://Assets/SFX/Attack/SFX_SeagullAttack_01.wav" id="8_v5se3"]
+[ext_resource type="AudioStream" uid="uid://b21irxkbcjmr6" path="res://Assets/SFX/Attack/SFX_SeagullAttack_02.wav" id="9_gp7tm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_waemt"]
 animations = [{
@@ -27,6 +29,14 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pqa1e"]
 size = Vector2(228, 322)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_su5qa"]
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("8_v5se3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("9_gp7tm")
+stream_1/weight = 1.0
 
 [node name="PelicanTower" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_311mb")]
 description = "Pelican captures fish, but might spit them out later."
@@ -56,3 +66,6 @@ shape = SubResource("RectangleShape2D_pqa1e")
 sprite = NodePath("../../../AnimatedSprite2D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+
+[node name="Attack" type="AudioStreamPlayer" parent="." index="8"]
+stream = SubResource("AudioStreamRandomizer_su5qa")

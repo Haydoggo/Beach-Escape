@@ -1,11 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://f03m1boon7ff"]
+[gd_scene load_steps=10 format=3 uid="uid://f03m1boon7ff"]
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_de5fe"]
 [ext_resource type="Resource" uid="uid://bjvlagw6io1pi" path="res://App/Scenes/Entities/Units/Seahorse/SeahorseInfo.tres" id="2_mkaad"]
 [ext_resource type="Texture2D" uid="uid://b81l4pi74efyq" path="res://Assets/Images/expanded/Entities/Fish/11_SeaHorse.png" id="3_v8qog"]
+[ext_resource type="AudioStream" uid="uid://bnra1ijck5hoe" path="res://Assets/SFX/Spawn/SFX_OctopusDeploy_01.wav" id="4_reue2"]
+[ext_resource type="AudioStream" uid="uid://saxer3jjep7q" path="res://Assets/SFX/Spawn/SFX_OctopusDeploy_02.wav" id="5_4q6ep"]
+[ext_resource type="AudioStream" uid="uid://xgh0w4yd74g3" path="res://Assets/SFX/Attack/SFX_OctopusAttack_01.wav" id="6_r87qo"]
+[ext_resource type="AudioStream" uid="uid://cwbf27u7ipaws" path="res://Assets/SFX/Attack/SFX_OctopusAttack_02.wav" id="7_nau41"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7dc15"]
 random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("4_reue2")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_4q6ep")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bxc6b"]
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("6_r87qo")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_nau41")
+stream_1/weight = 1.0
 
 [node name="BaseUnit" instance=ExtResource("1_de5fe")]
 unit_info = ExtResource("2_mkaad")
@@ -18,5 +35,6 @@ texture = ExtResource("3_v8qog")
 stream = SubResource("AudioStreamRandomizer_7dc15")
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="." index="9"]
+stream = SubResource("AudioStreamRandomizer_bxc6b")
 
 [editable path="HealthComponent"]

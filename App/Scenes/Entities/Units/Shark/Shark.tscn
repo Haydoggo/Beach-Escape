@@ -1,12 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbhcc46xtc4a8"]
+[gd_scene load_steps=11 format=3 uid="uid://dbhcc46xtc4a8"]
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_x1oo8"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Shark/Shark.gd" id="2_ip7ji"]
 [ext_resource type="Resource" uid="uid://c8jmkxi6ybst4" path="res://App/Scenes/Entities/Units/Shark/SharkInfo.tres" id="2_m770k"]
 [ext_resource type="Texture2D" uid="uid://di8y3pm5gqww7" path="res://Assets/Images/expanded/Entities/Fish/07_Shark.png" id="4_alv2k"]
+[ext_resource type="AudioStream" uid="uid://ckurp1insjgkj" path="res://Assets/SFX/Spawn/SFX_FishDeploy_01.wav" id="5_86k8q"]
+[ext_resource type="AudioStream" uid="uid://c6lo63yl5b7ry" path="res://Assets/SFX/Spawn/SFX_FishDeploy_02.wav" id="6_f50dv"]
+[ext_resource type="AudioStream" uid="uid://dl47k2dampcg3" path="res://Assets/SFX/Attack/SFX_FishAttack_01.wav" id="7_n3lgv"]
+[ext_resource type="AudioStream" uid="uid://3rvfvfcaof07" path="res://Assets/SFX/Attack/SFX_FishAttack_02.wav" id="8_s2ao8"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ps5lr"]
 random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("5_86k8q")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_f50dv")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fctbd"]
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("7_n3lgv")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("8_s2ao8")
+stream_1/weight = 1.0
 
 [node name="BaseUnit" instance=ExtResource("1_x1oo8")]
 script = ExtResource("2_ip7ji")
@@ -24,5 +41,6 @@ visible = false
 stream = SubResource("AudioStreamRandomizer_ps5lr")
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="." index="9"]
+stream = SubResource("AudioStreamRandomizer_fctbd")
 
 [editable path="HealthComponent"]
