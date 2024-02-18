@@ -4,12 +4,12 @@
 [ext_resource type="Shader" path="res://App/Materials/water_shader.gdshader" id="2_bskot"]
 [ext_resource type="Texture2D" uid="uid://b22y2epv8g5p0" path="res://Assets/Images/placeholder/EelGrass.png" id="3_ahbfk"]
 [ext_resource type="Material" uid="uid://6l54uqxvychm" path="res://App/Materials/grass_sway_wind_material.tres" id="3_cs5b6"]
+[ext_resource type="Texture2D" uid="uid://ds54y6pvtfuco" path="res://Assets/Images/expanded/UI/04_Dialogue_assembled.png" id="3_udu87"]
 [ext_resource type="Script" path="res://App/Scenes/CutScenes/BubbleGenerator.gd" id="5_k42m4"]
 [ext_resource type="PackedScene" uid="uid://ckjjdsagj8l3w" path="res://App/Scenes/Props/bubble.tscn" id="6_5prd1"]
 [ext_resource type="PackedScene" uid="uid://m5tp746d5riw" path="res://App/Scenes/CutScenes/procreate/hidey_rock.tscn" id="7_e8ufv"]
 [ext_resource type="PackedScene" uid="uid://b1fgh7mohldqv" path="res://App/Scenes/CutScenes/procreate/hidey_bubble.tscn" id="8_dt3r3"]
 [ext_resource type="PackedScene" uid="uid://caj1bi3amj48r" path="res://App/Scenes/CutScenes/procreate/fishing_hooks_in_ocean.tscn" id="8_rc32h"]
-[ext_resource type="PackedScene" uid="uid://dxe7nqbj04d8v" path="res://App/Scenes/CutScenes/procreate/ocean_hook.tscn" id="9_4b1gr"]
 
 [sub_resource type="Gradient" id="Gradient_8wrrq"]
 offsets = PackedFloat32Array(0.0147783, 1)
@@ -75,20 +75,6 @@ theme_override_font_sizes/font_size = 128
 text = "Procreate!"
 horizontal_alignment = 1
 
-[node name="TextEdit" type="TextEdit" parent="CanvasLayer/Control"]
-custom_minimum_size = Vector2(350, 35)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -350.0
-offset_bottom = 164.0
-grow_horizontal = 0
-mouse_filter = 2
-theme_override_font_sizes/font_size = 24
-text = "Use mouse to click and drag fish onto a matching mate."
-wrap_mode = 1
-
 [node name="PairsRemaining" type="HBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 3
@@ -109,6 +95,36 @@ text = "Pairs Remaining:"
 [node name="RemainingPairCount" type="Label" parent="CanvasLayer/Control/PairsRemaining"]
 layout_mode = 2
 text = "0"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -88.0
+offset_top = -32.0
+offset_right = 291.0
+offset_bottom = 317.0
+rotation = -0.271876
+texture = ExtResource("3_udu87")
+region_rect = Rect2(0, 0, 458, 500)
+patch_margin_left = 54
+patch_margin_top = 73
+patch_margin_right = 56
+patch_margin_bottom = 72
+
+[node name="Instructions" type="Label" parent="CanvasLayer/Control/NinePatchRect"]
+custom_minimum_size = Vector2(350, 35)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Use mouse to 
+click and drag fish 
+onto a matching mate."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Props" type="Node2D" parent="."]
 
@@ -163,5 +179,3 @@ position = Vector2(1629, 1004)
 position = Vector2(1446, 1328)
 
 [node name="FishingHooks" parent="Props" instance=ExtResource("8_rc32h")]
-
-[node name="OceanHook" parent="Props/FishingHooks" instance=ExtResource("9_4b1gr")]

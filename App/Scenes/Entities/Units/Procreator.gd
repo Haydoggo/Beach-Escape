@@ -92,6 +92,8 @@ func _process(delta):
 				# edge case where we didn't get the area_entered signal because they started overlapping
 				if overlapping_procreator.unit_info.name == unit_info.name:
 					procreate(overlapping_procreator)
+				else:
+					State = States.IDLE
 	elif State == States.IDLE:
 		global_position += velocity * speed_multiplier * delta
 		if is_outside_viewport():
