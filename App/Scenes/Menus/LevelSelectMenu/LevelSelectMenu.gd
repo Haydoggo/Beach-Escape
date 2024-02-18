@@ -21,6 +21,7 @@ func remove_dummy_buttons():
 			button.queue_free()
 
 func _on_level_selected(level_path):
+	Globals.game_mode == Globals.game_modes.PUZZLE
 	SceneLoader.load_scene(level_path)
 
 
