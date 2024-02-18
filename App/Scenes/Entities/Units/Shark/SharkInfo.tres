@@ -13,8 +13,8 @@ payload_scene_path = ""
 [resource]
 script = ExtResource("1_3vw8l")
 name = "Shark"
-description = "Why is there even a shark on the beach, anyways?! Everyone off the beach!"
-movement_description = "Tunnels in a straight line, dealing massive damage in its path"
+description = "Tunnels in a straight line, dealing massive damage in its path"
+movement_description = "Rook"
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_k5ae0")
 health = 1000
