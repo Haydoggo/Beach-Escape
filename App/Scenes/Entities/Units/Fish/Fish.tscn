@@ -1,21 +1,32 @@
-[gd_scene load_steps=8 format=3 uid="uid://jkq4w83413kb"]
+[gd_scene load_steps=12 format=3 uid="uid://jkq4w83413kb"]
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_582dg"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/Fish/Fish.gd" id="2_xd35r"]
 [ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="3_tpqs7"]
 [ext_resource type="Texture2D" uid="uid://cjglvhh5yfm6s" path="res://Assets/Images/expanded/Entities/Fish/02_Fish_Boot.png" id="4_6d5oa"]
-
-[sub_resource type="Animation" id="Animation_yevhs"]
-resource_name = "spawn"
-length = 0.5
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_whkrj"]
-_data = {
-"spawn": SubResource("Animation_yevhs")
-}
+[ext_resource type="AudioStream" uid="uid://d0jg7maanyg5s" path="res://Assets/SFX/Spawn/SFX_FishDeploy_01.wav" id="5_3av3t"]
+[ext_resource type="AudioStream" uid="uid://besn8slgpfjqj" path="res://Assets/SFX/Spawn/SFX_FishDeploy_02.wav" id="6_qf3ne"]
+[ext_resource type="AudioStream" uid="uid://dl47k2dampcg3" path="res://Assets/SFX/Attack/SFX_FishAttack_01.wav" id="7_vtv03"]
+[ext_resource type="AudioStream" uid="uid://3rvfvfcaof07" path="res://Assets/SFX/Attack/SFX_FishAttack_02.wav" id="8_yyfp3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lhysl"]
 radius = 21.5407
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n7g2p"]
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("5_3av3t")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_qf3ne")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e0jcf"]
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("7_vtv03")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("8_yyfp3")
+stream_1/weight = 1.0
 
 [node name="Fish" instance=ExtResource("1_582dg")]
 script = ExtResource("2_xd35r")
@@ -26,12 +37,13 @@ position = Vector2(-3, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_6d5oa")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
-libraries = {
-"": SubResource("AnimationLibrary_whkrj")
-}
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRegion" index="0"]
 shape = SubResource("CircleShape2D_lhysl")
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = SubResource("AudioStreamRandomizer_n7g2p")
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="." index="9"]
+stream = SubResource("AudioStreamRandomizer_e0jcf")
 
 [editable path="HealthComponent"]

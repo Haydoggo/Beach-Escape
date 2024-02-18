@@ -9,9 +9,11 @@ func deferred_ready():
 		get_parent().move_child(self, 0)
 		set_deferred("size" , get_viewport_rect().size)
 		get_tree().root.child_entered_tree.connect(on_scene_loaded)
+		TitleMusic.play_music()
 	else:
 		queue_free()
 
 func on_scene_loaded(scene : Node):
 	if scene is BaseLevel:
 		queue_free()
+		TitleMusic.stop_music()

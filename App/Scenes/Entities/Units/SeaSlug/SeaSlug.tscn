@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdq5sjyx14mwk"]
+[gd_scene load_steps=11 format=3 uid="uid://cdq5sjyx14mwk"]
 
 [ext_resource type="PackedScene" uid="uid://7dr0wg5hwlol" path="res://App/Scenes/Entities/Units/BaseUnit.tscn" id="1_hdff4"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Units/SeaSlug/SeaSlug.gd" id="2_c25ln"]
@@ -26,6 +26,9 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rcece"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bb2d1"]
+random_pitch = 1.2
 
 [node name="SeaSlug" instance=ExtResource("1_hdff4")]
 script = ExtResource("2_c25ln")
@@ -58,5 +61,10 @@ shape = SubResource("CircleShape2D_rcece")
 target_position = Vector2(0, 0)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="." index="9"]
+stream = SubResource("AudioStreamRandomizer_bb2d1")
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="." index="10"]
 
 [editable path="HealthComponent"]
