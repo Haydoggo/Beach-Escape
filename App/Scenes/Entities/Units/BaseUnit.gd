@@ -99,9 +99,16 @@ func get_objects_in_path(next_position) -> Array[Node]:
 func move_forward(pos : Vector2):
 	if pos == global_position:
 		return
+	#var original_scale = scale
+	var half_distance = global_position + (pos - global_position) / 2.0 + (Vector2.UP * 16)
 	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(self, "global_position", pos, 0.3)
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	tween.tween_property(self, "global_position", half_distance, 0.15)
+	#tween.parallel().tween_property(self, "scale", original_scale*1.1, 0.15)
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "global_position", pos, 0.15)
+	#tween.parallel().tween_property(self, "scale", original_scale, 0.15)
+		
 	for squasher in squashers:
 		tween.parallel().tween_callback(squasher.do_squash)
 
