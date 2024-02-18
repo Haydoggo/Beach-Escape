@@ -13,7 +13,7 @@ payload_scene_path = ""
 [resource]
 script = ExtResource("3_fbb3v")
 name = "Urchin"
-description = "Stepping on these can be painful."
+description = "Stepping on these can be painful. Damages towers to its sides as it moves"
 movement_description = ""
 path = PackedVector2Array(128, 0, 0, 0)
 icon = ExtResource("1_bwd21")

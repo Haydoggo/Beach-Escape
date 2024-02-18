@@ -13,7 +13,7 @@ payload_scene_path = ""
 [resource]
 script = ExtResource("1_d5e6e")
 name = "Sea Slug"
-description = "Sea Slug"
+description = "Powerful but fragile, only attacks diagonally"
 movement_description = ""
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_073vf")

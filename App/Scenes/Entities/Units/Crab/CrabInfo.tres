@@ -13,7 +13,7 @@ payload_scene_path = ""
 [resource]
 script = ExtResource("1_wn36o")
 name = "Crab"
-description = "You've got crabs! Very strong unit which moves in a zig-zag pattern."
+description = "You've got crabs! Strong unit which moves in a zig-zag pattern."
 movement_description = "Zipper"
 path = PackedVector2Array(128, 0, 128, 128, 128, 0, 128, -128)
 icon = ExtResource("1_nwo8n")
