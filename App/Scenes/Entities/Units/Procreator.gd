@@ -122,6 +122,9 @@ func procreate(area):
 	State = States.PROCREATING
 	area.State = area.States.PROCREATING
 	
+	if has_node("ProcreateNoise"):
+		$ProcreateNoise.play()
+	
 	if not Globals.surviving_units.has(unit_info.name):
 		Globals.surviving_units[unit_info.name] = 1 # 1 bonus because 3 can never beget more than 3 if the breeding pairs disappear
 	Globals.surviving_units[unit_info.name] += 3 # two parents and one baby

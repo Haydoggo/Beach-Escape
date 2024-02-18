@@ -1,10 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://bch3hc5ug6j73"]
+[gd_scene load_steps=24 format=3 uid="uid://bch3hc5ug6j73"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/StaticTrap_OnTick.gd" id="1_wc1qe"]
 [ext_resource type="Texture2D" uid="uid://bxhfwrpnlhp3i" path="res://Assets/Images/expanded/Entities/Sand/09_Fire_Pit.png" id="2_26b2y"]
 [ext_resource type="PackedScene" uid="uid://nbtvtnucj37y" path="res://App/Scenes/Entities/Components/drop_shadow.tscn" id="3_2yfj0"]
 [ext_resource type="Texture2D" uid="uid://b63jhcpo0cgt3" path="res://Assets/Images/Towers/06_Hook_Rope_line2D.png" id="4_60a27"]
-[ext_resource type="Texture2D" uid="uid://dfsytf0cb1yp7" path="res://Assets/Images/expanded/Particles/Sand/fire.png" id="4_tnspg"]
+[ext_resource type="Texture2D" uid="uid://dg2yhswbbdoon" path="res://Assets/Images/expanded/Particles/Sand/fire.png" id="4_tnspg"]
 [ext_resource type="PackedScene" uid="uid://bu4vg8os8fnp4" path="res://App/Scenes/Entities/Components/Weapons/persistent_stationary_weapon.tscn" id="5_8h4yb"]
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="6_cewpx"]
 [ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="6_ltnqm"]
@@ -15,6 +15,13 @@ particles_animation = true
 particles_anim_h_frames = 2
 particles_anim_v_frames = 2
 particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_rvcw6"]
+offsets = PackedFloat32Array(0, 0.552486, 0.917127)
+colors = PackedColorArray(1, 1, 0, 1, 0.747801, 0, 0.289473, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_irqjf"]
+gradient = SubResource("Gradient_rvcw6")
 
 [sub_resource type="Curve" id="Curve_i7e0e"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.191223, 1), 0.0, 0.0, 0, 0, Vector2(0.501567, 0.943338), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -29,6 +36,7 @@ emission_shape = 3
 emission_box_extents = Vector3(64, 32, 1)
 gravity = Vector3(0, -500, 0)
 scale_curve = SubResource("CurveTexture_gwwt8")
+color_ramp = SubResource("GradientTexture1D_irqjf")
 anim_offset_max = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gafwi"]
@@ -45,14 +53,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D/GPUParticles2D:amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [8]
 }
 
 [sub_resource type="Animation" id="Animation_bfkv2"]
@@ -60,14 +68,14 @@ resource_name = "attack"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D/GPUParticles2D:amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1]
+"values": [8, 15]
 }
 
 [sub_resource type="Animation" id="Animation_it45u"]
@@ -104,6 +112,10 @@ texture = ExtResource("4_tnspg")
 lifetime = 0.6
 fixed_fps = 0
 draw_order = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite2D"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-26, 74, 22, 48, 38, 72, 30, 74, -4, 76)
 
 [node name="Line2D" type="Line2D" parent="."]
 visible = false
