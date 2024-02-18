@@ -58,6 +58,8 @@ func wiggle():
 	tween.tween_property(self, "rotation", 0.0, 0.1)
 
 func pop_bubble():
+	if has_node("BubblePopNoise"):
+		$BubblePopNoise.play()
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1.2,1.2), 0.1)
 	tween.tween_callback(queue_free)

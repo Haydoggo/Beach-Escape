@@ -12,6 +12,8 @@ func _ready():
 				num_remaining -= 1
 				spawn_unit(unit_metadata)
 			Globals.surviving_units[unit_metadata.name] = 0
+	
+	TitleMusic.play_music()
 	State = States.READY
 
 	
@@ -28,6 +30,7 @@ func _process(_delta):
 		if Engine.get_process_frames() % 30 == 0:
 			var remaining_pairs = get_remaining_pairs_count()
 			if remaining_pairs == 0:
+				TitleMusic.stop_music()
 				Globals.load_next_level()
 			else:
 				$CanvasLayer/Control/PairsRemaining/RemainingPairCount.text = str(remaining_pairs)

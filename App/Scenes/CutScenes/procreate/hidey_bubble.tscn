@@ -1,12 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1fgh7mohldqv"]
+[gd_scene load_steps=8 format=3 uid="uid://b1fgh7mohldqv"]
 
 [ext_resource type="Script" path="res://App/Scenes/CutScenes/procreate/hidey_rock.gd" id="1_cg5kx"]
 [ext_resource type="Texture2D" uid="uid://ee4kt307tr5x" path="res://Assets/Images/Particles/01_Bubble.png" id="2_jahx4"]
 [ext_resource type="Texture2D" uid="uid://b4xpcuksnx4y0" path="res://icon.svg" id="3_tqnfw"]
 [ext_resource type="Texture2D" uid="uid://b5jujar7p1jvj" path="res://Assets/Images/Particles/01_Bubble_Top.png" id="3_wq26m"]
+[ext_resource type="AudioStream" uid="uid://dn6i7uyfoqro3" path="res://Assets/SFX/UI/SFX_ButtonClick.wav" id="5_0c5ve"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_smutc"]
 radius = 128.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t6u25"]
+streams_count = 1
+stream_0/stream = ExtResource("5_0c5ve")
+stream_0/weight = 1.0
 
 [node name="HideyBubble" type="Node2D"]
 script = ExtResource("1_cg5kx")
@@ -28,6 +34,9 @@ shape = SubResource("CircleShape2D_smutc")
 [node name="ShineOverlay" type="Sprite2D" parent="."]
 position = Vector2(-51, -43)
 texture = ExtResource("3_wq26m")
+
+[node name="BubblePopNoise" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_t6u25")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
