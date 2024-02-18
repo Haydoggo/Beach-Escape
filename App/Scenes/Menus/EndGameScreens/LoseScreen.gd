@@ -16,7 +16,7 @@ func _ready() -> void:
 			await get_tree().create_timer(0.3).timeout
 	elif Globals.game_mode == Globals.game_modes.ARCADE:
 		$RequiredUnitsDisplay.hide()
-		%DescriptionLabel.text = "You ran out of fish!\n" + str(Globals.arcade_difficulty_level) + " levels completed."
+		%DescriptionLabel.text = "You ran out of mating pairs!\n" + str(Globals.arcade_difficulty_level) + " levels completed."
 		%Retry.hide()
 
 func _on_retry_pressed() -> void:
