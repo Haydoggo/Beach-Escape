@@ -33,6 +33,8 @@ func _process(delta):
 				
 		if Input.is_action_just_pressed("drag_procreator") and hover:
 			State = States.DRAGGING
+			if has_node("RockDisturbedSFX"):
+				$RockDisturbedSFX.play()
 			spawn_new_procreators()
 			
 	
@@ -43,6 +45,7 @@ func _process(delta):
 			$Area2D.monitoring = false
 			if has_node("Bubble"):
 				pop_bubble()
+
 			
 	
 	elif State == States.FALLING:
@@ -60,6 +63,7 @@ func wiggle():
 func pop_bubble():
 	if has_node("BubblePopNoise"):
 		$BubblePopNoise.play()
+
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1.2,1.2), 0.1)
 	tween.tween_callback(queue_free)

@@ -32,6 +32,8 @@ func _on_area_entered(area):
 				new_unit_counter.activate(unit.unit_info) # sets the name
 				$CompletedUnitCounters.add_child(new_unit_counter)
 			$CompletedUnitCounters.get_node(unit.unit_info.name.to_pascal_case()).add_unit()
+			if has_node("UnitFinishedSFX"):
+				$UnitFinishedSFX.play()
 			arrived_units[unit.unit_info.name] += 1
 			
 		if area.owner.has_method("_on_finish_line_crossed"):

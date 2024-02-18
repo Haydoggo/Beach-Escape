@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://m5tp746d5riw"]
+[gd_scene load_steps=7 format=3 uid="uid://m5tp746d5riw"]
 
 [ext_resource type="Script" path="res://App/Scenes/CutScenes/procreate/hidey_rock.gd" id="1_yq7i2"]
 [ext_resource type="Texture2D" uid="uid://bd8gk5qunher4" path="res://Assets/Images/Towers/04_Rock.png" id="2_dcy4r"]
+[ext_resource type="AudioStream" uid="uid://d37cf85kfrq8y" path="res://Assets/SFX/Destroy/SFX_SandProjectileHit_01.wav" id="3_66ew5"]
+[ext_resource type="AudioStream" uid="uid://r2pfkpemdgp7" path="res://Assets/SFX/Destroy/SFX_SandProjectileHit_02.wav" id="4_y8smn"]
+[ext_resource type="AudioStream" uid="uid://btpooalyk76w6" path="res://Assets/SFX/Destroy/SFX_SandProjectileHit_03.wav" id="5_lcuxe"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cts4q"]
+random_pitch = 1.02
+streams_count = 3
+stream_0/stream = ExtResource("3_66ew5")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_y8smn")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_lcuxe")
+stream_2/weight = 1.0
 
 [node name="HideyRock" type="Node2D"]
 script = ExtResource("1_yq7i2")
@@ -13,6 +26,10 @@ texture = ExtResource("2_dcy4r")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(-110, 79, -112, 26, -81, -56, -21, -110, 42, -125, 59, -113, 92, -54, 91, -4, 114, 27, 102, 67, 110, 77, 104, 92, 88, 106, 31, 106, 12, 123, -24, 124, -75, 88)
+
+[node name="RockDisturbedSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_cts4q")
+volume_db = -6.0
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
