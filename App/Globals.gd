@@ -14,7 +14,7 @@ var lose_scene_path = "res://App/Scenes/Menus/EndGameScreens/LoseScreen.tscn"
 
 var level_paths := [
 	"res://App/Scenes/Levels/Tutorial1.tscn",
-	#"res://App/Scenes/Levels/Tutorial2.tscn",
+	"res://App/Scenes/Levels/Tutorial2.tscn",
 	"res://App/Scenes/Levels/Level0.tscn",
 	"res://App/Scenes/Levels/Level1.tscn",
 	"res://App/Scenes/Levels/Level2.tscn",
