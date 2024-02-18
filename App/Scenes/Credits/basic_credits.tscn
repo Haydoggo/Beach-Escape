@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://clcgxf6qug5wt"]
+
+[ext_resource type="Script" path="res://App/Scenes/Credits/basic_credits.gd" id="1_kvi3f"]
+[ext_resource type="Texture2D" uid="uid://ds54y6pvtfuco" path="res://Assets/Images/expanded/UI/04_Dialogue_assembled.png" id="2_04rwt"]
+
+[node name="BasicCredits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kvi3f")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(950, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_04rwt")
+patch_margin_left = 51
+patch_margin_top = 69
+patch_margin_right = 56
+patch_margin_bottom = 69
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -241.5
+offset_right = 290.5
+offset_bottom = 241.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 48
+text = "Diarmuid - Design
+Bob the Seagull King - Art
+KingRonnocJ - Audio 
+Haydoggo - Code
+Plexsoup - Code
+"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -29,17 +29,24 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="HeaderSpace" type="Control" parent="ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 720)
+custom_minimum_size = Vector2(0, 1080)
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1280, 0)
+custom_minimum_size = Vector2(1900, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 bbcode_enabled = true
 text = "[center]
 [font_size=48]Collaborators[/font_size]
+
+[font_size=48]Diarmuid - Lead Design[/font_size]
+[font_size=48]Hayden - Code[/font_size]
+[font_size=48]plexsoup - Code[/font_size]
+[font_size=48]KingRonnocJ - Audio[/font_size]
+[font_size=48]Bob the Seagull - Visual Art[/font_size]
+
 
 [font_size=32]Godot Game Template[/font_size]
 Author: [url=https://github.com/Maaack]Marek Belski[/url]  
@@ -60,7 +67,7 @@ fit_content = true
 scroll_active = false
 
 [node name="FooterSpace" type="Control" parent="ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 720)
+custom_minimum_size = Vector2(0, 1080)
 layout_mode = 2
 
 [node name="ScrollResetTimer" type="Timer" parent="."]

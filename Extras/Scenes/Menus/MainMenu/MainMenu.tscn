@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://sbluwaaplbsg"]
+[gd_scene load_steps=8 format=3 uid="uid://sbluwaaplbsg"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://App/Scenes/Menus/MainMenu/MainMenu.tscn" id="1_y2dvq"]
 [ext_resource type="Script" path="res://Extras/Scenes/Menus/MainMenu/MainMenu.gd" id="1_yww1j"]
 [ext_resource type="PackedScene" uid="uid://cnk2y3bx5fsin" path="res://Extras/Scenes/Menus/OptionsMenu/MasterOptionsMenu.tscn" id="2_3vb8r"]
 [ext_resource type="Theme" uid="uid://bagdchotk6suu" path="res://App/Themes/main_menu_theme.tres" id="2_xycat"]
 [ext_resource type="PackedScene" uid="uid://dwei0railfayx" path="res://Extras/Scenes/Menus/MainMenu/Backdrop.tscn" id="5_872w8"]
+[ext_resource type="PackedScene" uid="uid://clcgxf6qug5wt" path="res://App/Scenes/Credits/basic_credits.tscn" id="5_l6wq4"]
 [ext_resource type="Texture2D" uid="uid://dnkf721tpdmio" path="res://Assets/Images/UI/06_Title.png" id="6_2uvcj"]
 
 [node name="MainMenu" instance=ExtResource("1_y2dvq")]
@@ -12,6 +13,7 @@ theme = ExtResource("2_xycat")
 script = ExtResource("1_yww1j")
 game_scene_path = "res://App/Scenes/CutScenes/animatic_cutscene_1.tscn"
 options_packed_scene = ExtResource("2_3vb8r")
+credits_packed_scene = ExtResource("5_l6wq4")
 
 [node name="Backdrop" parent="." index="0" instance=ExtResource("5_872w8")]
 layout_mode = 1
