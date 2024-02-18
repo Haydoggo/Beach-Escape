@@ -57,6 +57,15 @@ func _ready():
 									# been opened in editor since update to code
 		fish_hook_probability += Globals.arcade_difficulty_level / 20.0
 
+		#shift_playspace() # isn't working properly
+
+func shift_playspace():
+	pass
+	
+	#I'm not sure why this would break spawning towers, but it causes them to spawn outside the area.
+	#global_position.x += (14-play_space_size.x)/2 * tile_size
+
+
 func spawn_random_towers():
 	if Globals.game_mode == Globals.game_modes.ARCADE:
 		var num_towers = min(2 + Globals.arcade_difficulty_level * 2, get_squares_count())
