@@ -10,6 +10,7 @@ var arcade_difficulty_level = 0 # increments with each arcade level completed
 var max_units_per_type : int = 10
 
 var arcade_level_path = "res://App/Scenes/Levels/arcade_level.tscn"
+var lose_scene_path = "res://App/Scenes/Menus/EndGameScreens/LoseScreen.tscn"
 
 var level_paths = [
 	"res://App/Scenes/Levels/Tutorial1.tscn",
@@ -74,7 +75,10 @@ var tower_paths = {
 func load_next_level():
 	if game_mode == game_modes.ARCADE:
 		arcade_difficulty_level += 1
-		SceneLoader.load_scene(arcade_level_path)
+		if get_total_surviving_fish() > 0:
+			SceneLoader.load_scene(arcade_level_path)
+		else:
+			SceneLoader.load_scene(lose_scene_path)
 
 	elif game_mode == game_modes.PUZZLE:
 		current_level_index += 1
@@ -91,3 +95,9 @@ func restart_level():
 			printerr("Global.gd: current_level_index out of bounds in load_next_level")
 	elif game_mode == game_modes.ARCADE:
 		SceneLoader.load_scene(arcade_level_path)
+
+func get_total_surviving_fish():
+	var total = 0
+	for key in surviving_units.keys():
+		total += surviving_units[key]
+	return total

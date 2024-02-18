@@ -125,7 +125,6 @@ scale_curve = SubResource("CurveTexture_yrlfb")
 [node name="MeleeAoEAttack" type="Area2D"]
 script = ExtResource("1_o31g5")
 speed = 2.08165e-12
-damage = 20
 duration_in_ticks = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -142,9 +141,10 @@ libraries = {
 
 [node name="Audio" type="Node2D" parent="."]
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_7kcj6")
 volume_db = -5.0
+bus = &"SFX"
 
 [node name="TackProjectileBust" type="GPUParticles2D" parent="."]
 emitting = false

@@ -23,9 +23,19 @@ func _ready() -> void:
 	health_component.health_max = unit_info.health
 	health_component.health = unit_info.health
 	health_component.update_health_bar()
+
+	#update_audio_buses()
 	
 	$Spawn.play()
 
+
+func update_audio_buses():
+	var audioNodes = []
+	audioNodes.append_array(find_children("", "AudioStreamPlayer2D"))
+	audioNodes.append_array(find_children("", "AudioStreamPlayer"))
+	for audioNode in audioNodes:
+		audioNode.set_bus(&"SFX")
+		
 
 # override this method for path generation
 func get_path_points(origin : Vector2) -> Array[Vector2]:

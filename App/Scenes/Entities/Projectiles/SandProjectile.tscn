@@ -296,12 +296,14 @@ polygon = PackedVector2Array(-10, 110, 70, 120, 50, 220, -50, 230, -180, 180, -2
 
 [node name="Audio" type="Node2D" parent="."]
 
-[node name="SpawnSound" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="SpawnSound" type="AudioStreamPlayer" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_3rprl")
 volume_db = -5.0
+bus = &"SFX"
 
-[node name="ImpactSound" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="ImpactSound" type="AudioStreamPlayer" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_18qx1")
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -162,12 +162,14 @@ libraries = {
 
 [node name="Audio" type="Node2D" parent="."]
 
-[node name="SpawnSound" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="SpawnSound" type="AudioStreamPlayer" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_e87e6")
 volume_db = -6.0
+bus = &"SFX"
 
-[node name="ExplodeSound" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="ExplodeSound" type="AudioStreamPlayer" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_64b20")
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -19,9 +19,12 @@ func attack_units_in_my_zone():
 				fish_sprite.show()
 
 
-func is_exempt(fish):
-	if fish.unit_info.name in [ "Mudfish", "Urchin"]:
-		return true
-	else:
-		return false
+func is_exempt(_fish):
+	return false
+	
+	# the exemption wasn't obvious to the player, looked like a bug.
+	#if fish.unit_info.name in [ "Mudfish", "Urchin"]:
+		#return true
+	#else:
+		#return false
 	
