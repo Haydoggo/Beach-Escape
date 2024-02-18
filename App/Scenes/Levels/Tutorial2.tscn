@@ -1,13 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnp6mcpwsgwiw"]
+[gd_scene load_steps=10 format=3 uid="uid://bnp6mcpwsgwiw"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_uvted"]
 [ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_0jlen"]
 [ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="3_ukgjh"]
+[ext_resource type="Resource" uid="uid://dkoxp7v5utuf7" path="res://App/Scenes/Entities/Units/GoldFish/GoldFishInfo.tres" id="4_ssawc"]
 
 [sub_resource type="Resource" id="Resource_v7eel"]
 resource_name = "1 Crab"
 script = ExtResource("2_0jlen")
 unit_info = ExtResource("3_ukgjh")
+count = 1
+
+[sub_resource type="Resource" id="Resource_e6mx4"]
+resource_name = "1 Gold Fish"
+script = ExtResource("2_0jlen")
+unit_info = ExtResource("4_ssawc")
 count = 1
 
 [sub_resource type="Resource" id="Resource_fsee5"]
@@ -16,25 +23,31 @@ script = ExtResource("2_0jlen")
 unit_info = ExtResource("3_ukgjh")
 count = 1
 
+[sub_resource type="Resource" id="Resource_bqh8l"]
+resource_name = "1 Gold Fish"
+script = ExtResource("2_0jlen")
+unit_info = ExtResource("4_ssawc")
+count = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rr4rt"]
 resource_local_to_scene = true
 size = Vector2(384, 512)
 
 [node name="BaseLevel" instance=ExtResource("1_uvted")]
-available_units = Array[ExtResource("2_0jlen")]([SubResource("Resource_v7eel")])
-required_units_for_win = Array[ExtResource("2_0jlen")]([SubResource("Resource_fsee5")])
+available_units = Array[ExtResource("2_0jlen")]([SubResource("Resource_v7eel"), SubResource("Resource_e6mx4")])
+required_units_for_win = Array[ExtResource("2_0jlen")]([SubResource("Resource_fsee5"), SubResource("Resource_bqh8l")])
 
 [node name="PlaySpace" parent="." index="1"]
 offset_left = 610.0
 offset_top = 185.0
-offset_right = 1634.0
+offset_right = 1762.0
 offset_bottom = 697.0
 
 [node name="CollisionShape2D" parent="PlaySpace/DeploymentZone" index="0"]
 shape = SubResource("RectangleShape2D_rr4rt")
 
 [node name="Towers" parent="PlaySpace" index="3"]
-layer_0/tile_data = PackedInt32Array(131075, 0, 327680, 65540, 0, 327680, 3, 0, 327680, 196612, 0, 327680, 196611, 0, 327680, 65541, 0, 458752, 65542, 0, 458752, 196613, 0, 458752, 196614, 0, 458752, 196615, 0, 458752, 65543, 0, 458752)
+layer_0/tile_data = PackedInt32Array(196611, 0, 327680, 131075, 0, 327680, 65544, 0, 262144, 65542, 0, 655360, 65540, 0, 327680)
 
 [node name="Camera2D" parent="." index="2"]
 position = Vector2(1122, 441)
