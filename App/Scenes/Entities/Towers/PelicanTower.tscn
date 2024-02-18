@@ -29,7 +29,7 @@ animations = [{
 size = Vector2(228, 322)
 
 [node name="PelicanTower" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_311mb")]
-description = "Pelican captures fish, but might spit them out later."
+description = "Pelican captures fish around it, but might spit them out later."
 shots_per_magazine = 1
 health_max = 80.0
 animation_player = NodePath("AnimationPlayer")

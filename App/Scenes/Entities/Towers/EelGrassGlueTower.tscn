@@ -28,7 +28,7 @@ size = Vector2(96, 96)
 
 [node name="EelGrassGlueTower" type="Node2D" groups=["EnemyTraps"]]
 script = ExtResource("1_rj7qc")
-description = "Eel Grass: slows fish down"
+description = "Eel Grass: slows fish down, even after they leave"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4, -12)

@@ -21,7 +21,7 @@ _data = {
 }
 
 [node name="TackThrowerAoETower" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_hj8eg")]
-description = "Tack Thrower: causes damage in a short radius"
+description = "Flag Thrower: causes damage in a short radius"
 turret_type = 2
 shots_per_magazine = 1
 health_max = 80
