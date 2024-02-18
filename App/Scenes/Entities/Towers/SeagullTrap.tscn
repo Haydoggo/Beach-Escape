@@ -61,9 +61,10 @@ health_max = 40.0
 
 [node name="Audio" type="Node2D" parent="."]
 
-[node name="SqwawkSFX" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="SqwawkSFX" type="AudioStreamPlayer" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_rsqc6")
 volume_db = -8.0
+bus = &"SFX"
 
 [node name="Seagull" type="AnimatedSprite2D" parent="."]
 position = Vector2(2.08165e-12, -1)

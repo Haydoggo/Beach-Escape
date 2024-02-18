@@ -70,6 +70,7 @@ script = ExtResource("1_bnpos")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_5l4h1")
 volume_db = -30.0
+bus = &"Music"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

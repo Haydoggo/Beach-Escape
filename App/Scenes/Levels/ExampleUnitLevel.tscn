@@ -31,6 +31,7 @@ position = Vector2(195, 200)
 [node name="Music" type="AudioStreamPlayer" parent="Audio" index="0"]
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 
 [editable path="PlaySpace/DeploymentZone"]
 [editable path="UI"]

@@ -180,8 +180,9 @@ libraries = {
 
 [node name="Audio" type="Node2D" parent="."]
 
-[node name="ClosingNoise" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="ClosingNoise" type="AudioStreamPlayer" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_frgpl")
+bus = &"SFX"
 
 [node name="Components" type="Node2D" parent="."]
 

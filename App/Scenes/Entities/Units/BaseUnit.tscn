@@ -78,8 +78,10 @@ color = Color(1, 0, 0, 1)
 
 [node name="SFX" type="Node" parent="."]
 
-[node name="Spawn" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="Spawn" type="AudioStreamPlayer" parent="SFX"]
+bus = &"SFX"
 
-[node name="Attack" type="AudioStreamPlayer2D" parent="SFX"]
+[node name="Attack" type="AudioStreamPlayer" parent="SFX"]
+bus = &"SFX"
 
 [editable path="HealthComponent"]
