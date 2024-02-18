@@ -55,7 +55,7 @@ func _ready():
 		snap = true
 		expand_deployment_area() 	# make sure changes are applied to scenes that haven't
 									# been opened in editor since update to code
-		fish_hook_probability += Globals.arcade_difficulty_level / 10.0
+		fish_hook_probability += Globals.arcade_difficulty_level / 20.0
 
 func spawn_random_towers():
 	if Globals.game_mode == Globals.game_modes.ARCADE:
