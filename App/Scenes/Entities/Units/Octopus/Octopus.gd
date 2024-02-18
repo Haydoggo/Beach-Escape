@@ -18,9 +18,10 @@ func do_movement():
 		time_spent_hugging += 1
 		if time_spent_hugging >= hugging_time or not is_instance_valid(hugged_tower):
 			hugging = false
-			hugged_tower.State = BaseTower.States.ACTIVE
+			if is_instance_valid(hugged_tower):
+				hugged_tower.State = BaseTower.States.ACTIVE
 			hugged_tower = null
-			
+				
 		else:
 			pass
 			#do_drying()
