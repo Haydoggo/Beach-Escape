@@ -109,8 +109,20 @@ func add_unit_button(unit_count : UnitCount, shortcut_keycode : int):
 func button_pressed(button : UnitButton):
 	friendly_unit_spawner.selected_unit_button = button.unit_count
 	#GUI.show_unit_info_card(button.unit_count.unit_info)
-
 	
+	if button and button.unit_count and button.unit_count.unit_info:
+		if button.unit_count.unit_info.name == "Seahorse":
+			
+			%SeahorseBlocker.enable()
+			%CrabBlocker.disable()
+		elif button.unit_count.unit_info.name == "Crab":
+			%CrabBlocker.enable()
+			%SeahorseBlocker.disable()
+		else:
+			%CrabBlocker.disable()
+			%SeahorseBlocker.disable()
+		
+			
 func button_hovered(unit_info : UnitInfo):
 	
 	button_hover_text_popup.popup( unit_info.description )
