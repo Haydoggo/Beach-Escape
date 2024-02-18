@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://qbpsg0ej0etl" path="res://Assets/Images/Units/hand_slap.png" id="1_4gqbo"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Projectiles/BaseProjectile.gd" id="1_xtkbi"]
-[ext_resource type="AudioStream" uid="uid://bbwmmej2tiaa5" path="res://Assets/SFX/thud.wav" id="3_ximhs"]
+[ext_resource type="AudioStream" uid="uid://cfbessjasxkq3" path="res://Assets/SFX/Destroy/SFX_FlagProjectileHit_01.wav" id="3_ximhs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vspf4"]
 radius = 128.0
