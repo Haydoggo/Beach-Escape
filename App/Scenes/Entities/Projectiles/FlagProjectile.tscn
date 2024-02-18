@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://d112yq11dwo3c"]
+[gd_scene load_steps=14 format=3 uid="uid://d112yq11dwo3c"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Projectiles/BaseProjectile.gd" id="1_3ui4u"]
 [ext_resource type="Texture2D" uid="uid://dvbqqyj5slckj" path="res://Assets/Images/Projectiles/Sand_Flag.png" id="2_x2p1l"]
-[ext_resource type="AudioStream" uid="uid://lw1swly7l0vy" path="res://Assets/SFX/fhoo.wav" id="3_w7p1a"]
-[ext_resource type="AudioStream" uid="uid://bavyyjvrs1c0s" path="res://Assets/SFX/pen_drag.wav" id="4_7ebvl"]
+[ext_resource type="AudioStream" uid="uid://b3s0ug0kei0w1" path="res://Assets/SFX/Spawn/SFX_SandProjectileShoot_01.wav" id="3_883aa"]
+[ext_resource type="AudioStream" uid="uid://cqjwuxhs6yagf" path="res://Assets/SFX/Spawn/SFX_SandProjectileShoot_02.wav" id="4_7p2eu"]
+[ext_resource type="AudioStream" uid="uid://cfbessjasxkq3" path="res://Assets/SFX/Destroy/SFX_FlagProjectileHit_01.wav" id="5_vgc7o"]
+[ext_resource type="AudioStream" uid="uid://dcdqnfd35txky" path="res://Assets/SFX/Destroy/SFX_FlagProjectileHit_02.wav" id="6_uoauh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iroj2"]
 size = Vector2(64, 64)
@@ -124,17 +126,19 @@ _data = {
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e87e6"]
 random_pitch = 1.1
-random_volume_offset_db = 3.0
-streams_count = 1
-stream_0/stream = ExtResource("3_w7p1a")
+streams_count = 2
+stream_0/stream = ExtResource("3_883aa")
 stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_7p2eu")
+stream_1/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_64b20"]
 random_pitch = 1.1
-random_volume_offset_db = 3.0
-streams_count = 1
-stream_0/stream = ExtResource("4_7ebvl")
+streams_count = 2
+stream_0/stream = ExtResource("5_vgc7o")
 stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_uoauh")
+stream_1/weight = 1.0
 
 [node name="FlagProjectile" type="Area2D"]
 script = ExtResource("1_3ui4u")

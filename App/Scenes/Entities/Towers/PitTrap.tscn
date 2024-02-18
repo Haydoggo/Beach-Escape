@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://b60xpjnh47rv8"]
+[gd_scene load_steps=13 format=3 uid="uid://b60xpjnh47rv8"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/PitTrap.gd" id="1_o0acg"]
 [ext_resource type="Resource" uid="uid://k4njdvs2mux0" path="res://App/Scenes/Entities/Towers/PitTrapAttack.tres" id="2_8abuw"]
 [ext_resource type="Texture2D" uid="uid://dysq2u3840crl" path="res://Assets/Images/Towers/Sand_Pit.png" id="2_n8g11"]
-[ext_resource type="AudioStream" uid="uid://dqremj0i0gfp1" path="res://Assets/SFX/close1.wav" id="4_roctm"]
-[ext_resource type="AudioStream" uid="uid://bmcdir5sqa0rj" path="res://Assets/SFX/close2.wav" id="5_pacfs"]
+[ext_resource type="AudioStream" uid="uid://chiwkab5fdll3" path="res://Assets/SFX/Attack/SFX_PitAttack.wav" id="4_rhylr"]
 [ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="6_68mip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqg8i"]
@@ -145,11 +144,10 @@ _data = {
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_frgpl"]
-streams_count = 2
-stream_0/stream = ExtResource("4_roctm")
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_rhylr")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("5_pacfs")
-stream_1/weight = 1.0
 
 [node name="PitTrap" type="CanvasGroup" groups=["EnemyTraps"]]
 script = ExtResource("1_o0acg")
