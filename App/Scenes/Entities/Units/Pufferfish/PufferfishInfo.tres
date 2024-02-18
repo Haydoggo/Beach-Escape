@@ -13,7 +13,7 @@ payload_scene_path = ""
 [resource]
 script = ExtResource("1_ojimx")
 name = "Pufferfish"
-description = "Puffs up like a balloon, obviously. It's a pufferfish."
+description = "Puffs up like a balloon when damaged"
 movement_description = ""
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_v3ld0")

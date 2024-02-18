@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var description : String = "Campfire. Hot! Causes persistent moisture loss."
+@export var description : String = "Campfire. Hot! Causes persistent health loss."
 @export var animation_player : Node
 
 enum States { IDLE, ATTACKING, DISABLED }

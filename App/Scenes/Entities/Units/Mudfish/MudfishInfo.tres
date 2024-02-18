@@ -13,7 +13,7 @@ payload_scene_path = ""
 [resource]
 script = ExtResource("1_ulce5")
 name = "Mudfish"
-description = "The timid mudfish, hides under the mud for brief intervals."
+description = "The timid mudfish, hides under the mud for brief intervals, can dig up pits without harm"
 movement_description = ""
 path = PackedVector2Array(128, 0, 0, 0, 0, 0, 128, 0)
 icon = ExtResource("1_44khv")
