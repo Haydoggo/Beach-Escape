@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7pcrwcwshvt2"]
+[gd_scene load_steps=11 format=3 uid="uid://b7pcrwcwshvt2"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_ahc0r"]
 [ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_3a3km"]
 [ext_resource type="Resource" uid="uid://cx6dnvb3ynwbi" path="res://App/Scenes/Entities/Units/Fish/FishInfo.tres" id="3_47uyb"]
 [ext_resource type="Resource" uid="uid://dkoxp7v5utuf7" path="res://App/Scenes/Entities/Units/GoldFish/GoldFishInfo.tres" id="3_ss4py"]
+[ext_resource type="Texture2D" uid="uid://ds54y6pvtfuco" path="res://Assets/Images/expanded/UI/04_Dialogue_assembled.png" id="5_ya5lj"]
+[ext_resource type="FontFile" uid="uid://bcsl4f1nq6mwv" path="res://App/Themes/Fonts/Protest_Riot/ProtestRiot-Regular.ttf" id="6_42vfv"]
 
 [sub_resource type="Resource" id="Resource_i4581"]
 resource_name = "1 Gold Fish"
@@ -47,6 +49,105 @@ layer_0/tile_data = PackedInt32Array(4, 0, 327680, 131076, 0, 327680, 65541, 0, 
 position = Vector2(1291, 315)
 anchor_mode = 1
 zoom = Vector2(1.23698, 1.23698)
+
+[node name="UI" parent="." index="4"]
+visible = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." index="9"]
+offset_left = 526.0
+offset_top = -127.0
+offset_right = 962.0
+offset_bottom = 86.0
+texture = ExtResource("5_ya5lj")
+region_rect = Rect2(0, 0, 458, 500)
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 48
+patch_margin_bottom = 48
+
+[node name="DescriptionLabel" type="Label" parent="NinePatchRect" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.5
+offset_top = -64.5
+offset_right = 170.5
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_42vfv")
+theme_override_font_sizes/font_size = 32
+text = "Get the listed fish back
+to the sea!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="." index="10"]
+offset_left = 965.0
+offset_top = -123.0
+offset_right = 1401.0
+offset_bottom = 90.0
+texture = ExtResource("5_ya5lj")
+region_rect = Rect2(0, 0, 458, 500)
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 48
+patch_margin_bottom = 48
+
+[node name="DescriptionLabel" type="Label" parent="NinePatchRect2" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.5
+offset_top = -64.5
+offset_right = 170.5
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_42vfv")
+theme_override_font_sizes/font_size = 32
+text = "Use your other fish
+to clear a path!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="." index="11"]
+offset_left = 1408.0
+offset_top = -115.0
+offset_right = 1744.0
+offset_bottom = 98.0
+texture = ExtResource("5_ya5lj")
+region_rect = Rect2(0, 0, 458, 500)
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 48
+patch_margin_bottom = 48
+
+[node name="DescriptionLabel" type="Label" parent="NinePatchRect3" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.5
+offset_top = -64.5
+offset_right = 170.5
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_42vfv")
+theme_override_font_sizes/font_size = 32
+text = "Hover over items
+for hints"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [editable path="PlaySpace/DeploymentZone"]
 [editable path="UI"]

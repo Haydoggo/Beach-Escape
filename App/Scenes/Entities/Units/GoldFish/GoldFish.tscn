@@ -4,8 +4,8 @@
 [ext_resource type="Resource" uid="uid://dkoxp7v5utuf7" path="res://App/Scenes/Entities/Units/GoldFish/GoldFishInfo.tres" id="2_wctia"]
 [ext_resource type="Texture2D" uid="uid://by7ruofs24557" path="res://Assets/Images/expanded/Entities/Fish/05_Fish_Gold.png" id="3_b1cv2"]
 [ext_resource type="Texture2D" uid="uid://ch0ay1c6m0fiu" path="res://Assets/Images/Particles/Sand/Sand_01.png" id="4_tg0xx"]
-[ext_resource type="AudioStream" uid="uid://d0jg7maanyg5s" path="res://Assets/SFX/Spawn/SFX_FishDeploy_01.wav" id="5_wiwl7"]
-[ext_resource type="AudioStream" uid="uid://besn8slgpfjqj" path="res://Assets/SFX/Spawn/SFX_FishDeploy_02.wav" id="6_cdh70"]
+[ext_resource type="AudioStream" uid="uid://ckurp1insjgkj" path="res://Assets/SFX/Spawn/SFX_FishDeploy_01.wav" id="5_wiwl7"]
+[ext_resource type="AudioStream" uid="uid://c6lo63yl5b7ry" path="res://Assets/SFX/Spawn/SFX_FishDeploy_02.wav" id="6_cdh70"]
 [ext_resource type="AudioStream" uid="uid://dl47k2dampcg3" path="res://Assets/SFX/Attack/SFX_FishAttack_01.wav" id="7_igj8m"]
 [ext_resource type="AudioStream" uid="uid://3rvfvfcaof07" path="res://Assets/SFX/Attack/SFX_FishAttack_02.wav" id="8_71cdh"]
 
