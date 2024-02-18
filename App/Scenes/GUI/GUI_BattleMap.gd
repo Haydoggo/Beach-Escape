@@ -10,3 +10,11 @@ func show_unit_info_card(unitInfo):
 
 func hide_unit_info_card():
 	$UnitInfoCard.close()
+
+func show_level_win():
+	$LevelWin/AnimationPlayer.play("LevelPassed")
+
+
+func _on_next_level_pressed() -> void:
+	Globals.load_next_level()
+	print("next please")
