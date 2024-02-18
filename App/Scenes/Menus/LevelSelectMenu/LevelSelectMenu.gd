@@ -22,6 +22,7 @@ func remove_dummy_buttons():
 
 func _on_level_selected(level_path):
 	Globals.game_mode == Globals.game_modes.PUZZLE
+	Globals.current_level_index = Globals.level_paths.find(level_path)
 	SceneLoader.load_scene(level_path)
 
 

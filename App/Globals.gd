@@ -12,7 +12,7 @@ var max_units_per_type : int = 10
 var arcade_level_path = "res://App/Scenes/Levels/arcade_level.tscn"
 var lose_scene_path = "res://App/Scenes/Menus/EndGameScreens/LoseScreen.tscn"
 
-var level_paths = [
+var level_paths := [
 	"res://App/Scenes/Levels/Tutorial1.tscn",
 	#"res://App/Scenes/Levels/Tutorial2.tscn",
 	"res://App/Scenes/Levels/Level0.tscn",
@@ -24,7 +24,7 @@ var level_paths = [
 	"res://App/Scenes/CutScenes/win_screen.tscn"
 ]
 
-var current_level_index : int = 0 # so get_next_level() returns 0 on first call
+var current_level_index : int = -1 # so get_next_level() returns 0 on first call
 var current_level_path
 var current_level : BaseLevel
 var arrived_units : Dictionary
