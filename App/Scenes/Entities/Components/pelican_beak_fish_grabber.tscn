@@ -1,6 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqsia6ajsrmdm"]
+[gd_scene load_steps=6 format=3 uid="uid://dqsia6ajsrmdm"]
 
 [ext_resource type="Script" path="res://App/Scenes/Entities/Components/pelican_beak_fish_grabber.gd" id="1_y7oai"]
+[ext_resource type="AudioStream" uid="uid://ccut1ukd4jc2s" path="res://Assets/SFX/Attack/SFX_SeagullAttack_01.wav" id="2_36f43"]
+[ext_resource type="AudioStream" uid="uid://b21irxkbcjmr6" path="res://Assets/SFX/Attack/SFX_SeagullAttack_02.wav" id="3_yvutd"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3i0ii"]
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("2_36f43")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_yvutd")
+stream_1/weight = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpkgn"]
 size = Vector2(96, 96)
@@ -8,21 +18,26 @@ size = Vector2(96, 96)
 [node name="PelicanBeakFishGrabber" type="Node2D"]
 script = ExtResource("1_y7oai")
 
-[node name="FishDetector" type="ShapeCast2D" parent="."]
+[node name="AttackNoise" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_3i0ii")
+
+[node name="Detectors" type="Node2D" parent="."]
+
+[node name="FishDetector" type="ShapeCast2D" parent="Detectors"]
 position = Vector2(-115, -1)
 shape = SubResource("RectangleShape2D_gpkgn")
 target_position = Vector2(2.08165e-12, 2.08165e-12)
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="FishDetector2" type="ShapeCast2D" parent="."]
+[node name="FishDetector2" type="ShapeCast2D" parent="Detectors"]
 position = Vector2(0, -108)
 shape = SubResource("RectangleShape2D_gpkgn")
 target_position = Vector2(2.08165e-12, 2.08165e-12)
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="FishDetector3" type="ShapeCast2D" parent="."]
+[node name="FishDetector3" type="ShapeCast2D" parent="Detectors"]
 position = Vector2(1, 113)
 shape = SubResource("RectangleShape2D_gpkgn")
 target_position = Vector2(2.08165e-12, 2.08165e-12)

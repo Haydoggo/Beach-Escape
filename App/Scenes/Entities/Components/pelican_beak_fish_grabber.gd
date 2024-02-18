@@ -58,7 +58,7 @@ func hurt_yourself(damage):
 		owner._on_hit(ap)
 
 func get_first_available_fish():
-	for fish_detector in get_children():
+	for fish_detector in $Detectors.get_children():
 		var collisions = fish_detector.collision_result
 		if not collisions.is_empty():
 			if not has_tower(collisions):
@@ -80,6 +80,8 @@ func has_tower(collisionList):
 
 
 func catch_fish(fish):
+	if has_node("AttackNoise"):
+		$AttackNoise.play()
 	if fish.get_parent() and is_instance_valid(fish):
 		#captive_fish.push_back(fish.unit_info)
 		if fish.has_method("_on_captured"):

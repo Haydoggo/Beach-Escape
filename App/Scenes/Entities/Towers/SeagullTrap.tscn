@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://App/Scenes/Entities/Towers/SeagullTrap.gd" id="1_r6ph7"]
 [ext_resource type="Script" path="res://App/Scenes/Combat/AttackPacket.gd" id="2_0vh0u"]
 [ext_resource type="Texture2D" uid="uid://pl4e8m2n0pf1" path="res://Assets/Images/placeholder/seagull_dead.png" id="3_1cwv3"]
+[ext_resource type="AudioStream" uid="uid://ccut1ukd4jc2s" path="res://Assets/SFX/Attack/SFX_SeagullAttack_01.wav" id="3_j68ja"]
 [ext_resource type="Texture2D" uid="uid://d3ri40ja5r0mw" path="res://Assets/Images/Towers/08_Seagull_Soar.png" id="4_4oowv"]
 [ext_resource type="Texture2D" uid="uid://c4qxmf2uir0p7" path="res://Assets/Images/Towers/08_Seagull_Sit.png" id="5_odeqt"]
 [ext_resource type="Script" path="res://App/Scenes/Entities/Components/flip_h.gd" id="8_7dfah"]
 [ext_resource type="PackedScene" uid="uid://cim8b3k5lkraj" path="res://App/Scenes/Entities/Components/health_component.tscn" id="9_5x6r6"]
-[ext_resource type="AudioStream" uid="uid://ni17kd3fvvgg" path="res://Assets/SFX/sqwawk.wav" id="9_ncg0j"]
 [ext_resource type="PackedScene" uid="uid://bu27vm7wqya25" path="res://App/Scenes/Entities/Components/hover_popup_info.tscn" id="9_rlpxg"]
 
 [sub_resource type="Resource" id="Resource_tuo7h"]
@@ -18,7 +18,7 @@ payload_scene_path = ""
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rsqc6"]
 streams_count = 1
-stream_0/stream = ExtResource("9_ncg0j")
+stream_0/stream = ExtResource("3_j68ja")
 stream_0/weight = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w4n3j"]

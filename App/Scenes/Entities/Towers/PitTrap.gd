@@ -34,9 +34,10 @@ func _on_hit_box_area_entered(area):
 
 
 func trap_fish():
-	fish_in_trap.hide()
-	if fish_in_trap != null and fish_in_trap.has_method("_on_hit"):
-		fish_in_trap._on_hit(attack_packet)
+	if is_instance_valid(fish_in_trap):
+		fish_in_trap.hide()
+		if fish_in_trap != null and fish_in_trap.has_method("_on_hit"):
+			fish_in_trap._on_hit(attack_packet)
 			
 
 func disappear():

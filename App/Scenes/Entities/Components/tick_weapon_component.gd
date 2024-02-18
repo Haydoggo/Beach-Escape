@@ -1,3 +1,5 @@
+## tick_weapon_component
+
 extends Node2D
 
 @export var ticks_between_shots : int = 0
@@ -26,12 +28,14 @@ func deactivate():
 	active = false
 
 func spawn_projectile():
-	var new_projectile = projectile.instantiate()
-	# TODO: add a targeting lead based on the velocity of the target and projectile
-	add_sibling(new_projectile)
-	new_projectile.global_position = $MuzzleLocation.global_position
-	new_projectile.activate(Vector2.from_angle(actor.turret_rotation))
-
+	if projectile != null:
+		var new_projectile = projectile.instantiate()
+		# TODO: add a targeting lead based on the velocity of the target and projectile
+		add_sibling(new_projectile)
+		new_projectile.global_position = $MuzzleLocation.global_position
+		new_projectile.activate(Vector2.from_angle(actor.turret_rotation))
+	else:
+		printerr("tick_weapon_component on ", owner.name, " has no projectile")
 	
 
 

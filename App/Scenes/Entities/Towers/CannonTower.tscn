@@ -137,7 +137,6 @@ _data = {
 
 [node name="SandCannon" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_dr6oi")]
 description = "Sand Cannon throws damaging sand balls in a straight line forward."
-health_max = 40
 animation_player = NodePath("AnimationPlayer")
 metadata/_edit_horizontal_guides_ = [29.0]
 

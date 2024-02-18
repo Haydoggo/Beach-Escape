@@ -64,7 +64,9 @@ func _on_activation_triggers_area_entered(area):
 		if active_target == null or not is_instance_valid(active_target):
 			if area.owner != null and area.owner.is_in_group("Units"):
 				active_target = area
-				$Attack.play()
+				# Moved into weapon component
+				#if has_node("Attack"):
+					#$Attack.play()
 				for weapon in $Components/Weapon.get_children():
 					weapon.activate()					
 
