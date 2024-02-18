@@ -93,6 +93,7 @@ layout_mode = 2
 text = "Dummy Button"
 
 [node name="BackToMain" type="Button" parent="MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Back to Main Menu"

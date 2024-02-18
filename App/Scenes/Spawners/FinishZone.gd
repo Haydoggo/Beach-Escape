@@ -44,8 +44,8 @@ func _process(_delta):
 			
 			if has_enough_units_to_win():
 				if Globals.game_mode == Globals.game_modes.PUZZLE:
-					print("Level Complete!")
-					Globals.load_next_level()
+					level.GUI.show_level_win()
+					set_process(false)
 				else:
 					SceneLoader.load_scene("res://App/Scenes/CutScenes/procreate_acquire_new_units.tscn")
 				#SceneLoader.load_scene(next_scene_path)

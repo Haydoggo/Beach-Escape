@@ -24,7 +24,7 @@ var level_paths = [
 	"res://App/Scenes/CutScenes/win_screen.tscn"
 ]
 
-var current_level_index : int = -1 # so get_next_level() returns 0 on first call
+var current_level_index : int = 0 # so get_next_level() returns 0 on first call
 var current_level_path
 var current_level : BaseLevel
 var arrived_units : Dictionary
