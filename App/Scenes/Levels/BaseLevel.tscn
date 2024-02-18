@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://de3bma3kyx7em"]
+[gd_scene load_steps=20 format=3 uid="uid://de3bma3kyx7em"]
 
 [ext_resource type="Script" path="res://App/Scenes/Levels/BaseLevel.gd" id="1_cs8tg"]
 [ext_resource type="TileSet" uid="uid://dwo7o7lpg52g0" path="res://App/Scenes/Levels/towers_tile_set.tres" id="1_sr1u4"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cdrk8mkxgd30e" path="res://App/Scenes/Spawners/FinishZone.tscn" id="5_32fpb"]
 [ext_resource type="Texture2D" uid="uid://cfn46omcxn1xu" path="res://Assets/Images/Environment/Border_Ring.png" id="5_pgywy"]
 [ext_resource type="PackedScene" uid="uid://xya6xspmx2gu" path="res://App/Scenes/Spawners/DeploymentZone.tscn" id="6_6lisd"]
+[ext_resource type="PackedScene" uid="uid://ctml2uwk6iid8" path="res://App/Scenes/GUI/seahorse_blocker.tscn" id="7_naacr"]
 [ext_resource type="PackedScene" uid="uid://bchfxguqqtrom" path="res://App/Scenes/GUI/GUI_BattleMap.tscn" id="8_3kuke"]
 [ext_resource type="AudioStream" uid="uid://fxvtodk02yrp" path="res://Assets/Music/MUS_BeachEscapeFnl_Low.ogg" id="10_8ckjo"]
 [ext_resource type="AudioStream" uid="uid://cbnhomlo3u4ul" path="res://Assets/Music/MUS_BeachEscapeFnl_Med.ogg" id="11_jd5ld"]
@@ -142,6 +143,13 @@ layer_0/y_sort_enabled = true
 layer_1/name = "Sky"
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array()
+
+[node name="SeahorseBlocker" parent="PlaySpace" instance=ExtResource("7_naacr")]
+unique_name_in_owner = true
+
+[node name="CrabBlocker" parent="PlaySpace" instance=ExtResource("7_naacr")]
+unique_name_in_owner = true
+position = Vector2(67, 444)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 20
