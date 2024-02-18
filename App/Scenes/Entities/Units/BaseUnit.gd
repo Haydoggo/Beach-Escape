@@ -15,7 +15,7 @@ var is_slow = false
 var slow_counter = 0
 var is_captive = false
 var is_dying = false
-
+var completed_playspace = false
 
 func _ready() -> void:
 	squashers.append_array(find_children("", "Squasher"))
@@ -77,8 +77,15 @@ func do_movement():
 		path_index += 1
 		path_index %= unit_info.path.size()
 	
+	if not Globals.current_level.is_inside_playspace(global_position) and global_position.x > get_viewport_rect().size.x * 0.67:
+		tween_into_finish_line()
 	
-
+	
+	
+func tween_into_finish_line():
+	var tween = create_tween()
+	tween.tween_property(self, "global_position", Vector2(get_viewport_rect().size.x - 128, global_position.y ), 0.625)
+	
 
 func get_objects_in_path(next_position) -> Array[Node]:
 	var retval : Array[Node] = []
