@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnp6mcpwsgwiw"]
+[gd_scene load_steps=12 format=3 uid="uid://bnp6mcpwsgwiw"]
 
 [ext_resource type="PackedScene" uid="uid://de3bma3kyx7em" path="res://App/Scenes/Levels/BaseLevel.tscn" id="1_uvted"]
 [ext_resource type="Script" path="res://App/Scenes/Levels/UnitCount.gd" id="2_0jlen"]
 [ext_resource type="Resource" uid="uid://4y1n7vpixqx4" path="res://App/Scenes/Entities/Units/Crab/CrabInfo.tres" id="3_ukgjh"]
 [ext_resource type="Resource" uid="uid://dkoxp7v5utuf7" path="res://App/Scenes/Entities/Units/GoldFish/GoldFishInfo.tres" id="4_ssawc"]
+[ext_resource type="Resource" uid="uid://c8jmkxi6ybst4" path="res://App/Scenes/Entities/Units/Shark/SharkInfo.tres" id="5_hxr12"]
 
 [sub_resource type="Resource" id="Resource_v7eel"]
 resource_name = "1 Crab"
@@ -15,6 +16,12 @@ count = 1
 resource_name = "1 Gold Fish"
 script = ExtResource("2_0jlen")
 unit_info = ExtResource("4_ssawc")
+count = 1
+
+[sub_resource type="Resource" id="Resource_4bwp6"]
+resource_name = "1 Shark"
+script = ExtResource("2_0jlen")
+unit_info = ExtResource("5_hxr12")
 count = 1
 
 [sub_resource type="Resource" id="Resource_fsee5"]
@@ -34,7 +41,7 @@ resource_local_to_scene = true
 size = Vector2(384, 512)
 
 [node name="BaseLevel" instance=ExtResource("1_uvted")]
-available_units = Array[ExtResource("2_0jlen")]([SubResource("Resource_v7eel"), SubResource("Resource_e6mx4")])
+available_units = Array[ExtResource("2_0jlen")]([SubResource("Resource_v7eel"), SubResource("Resource_e6mx4"), SubResource("Resource_4bwp6")])
 required_units_for_win = Array[ExtResource("2_0jlen")]([SubResource("Resource_fsee5"), SubResource("Resource_bqh8l")])
 
 [node name="PlaySpace" parent="." index="1"]

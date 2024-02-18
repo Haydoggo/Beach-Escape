@@ -13,7 +13,7 @@ payload_scene_path = ""
 [resource]
 script = ExtResource("1_ubwxy")
 name = "Octopus"
-description = "We call him, Grabby!"
+description = "We call him, Grabby! Disables a tower for a short time."
 movement_description = ""
 path = PackedVector2Array(128, 0)
 icon = ExtResource("1_ryd7i")

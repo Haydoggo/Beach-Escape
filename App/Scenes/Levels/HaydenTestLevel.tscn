@@ -43,7 +43,7 @@ shape = SubResource("RectangleShape2D_504sy")
 position = Vector2(0, 544)
 
 [node name="Towers" parent="PlaySpace" index="3"]
-layer_0/tile_data = PackedInt32Array(65538, 0, 327680, 196611, 0, 327680, 196612, 0, 327680, 4, 0, 327680)
+layer_0/tile_data = PackedInt32Array(65538, 0, 327680, 196611, 0, 327680, 196612, 0, 327680, 4, 0, 327680, 262147, 0, 524288, 262148, 0, 458752)
 
 [editable path="PlaySpace/DeploymentZone"]
 [editable path="UI"]
