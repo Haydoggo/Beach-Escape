@@ -78,7 +78,8 @@ func do_movement():
 		path_index %= unit_info.path.size()
 	
 	if not Globals.current_level.is_inside_playspace(global_position) and global_position.x > get_viewport_rect().size.x * 0.67:
-		tween_into_finish_line()
+		if Globals.game_mode == Globals.game_modes.ARCADE:
+			tween_into_finish_line()
 	
 	
 	
